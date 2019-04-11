@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:vividgold_app/screens/home.dart';
-import 'package:vividgold_app/screens/signup.dart';
+import 'package:vividgold_app/ui/home/home.dart';
 import 'package:vividgold_app/utils/bubble_indication_painter.dart';
 import 'package:vividgold_app/utils/colors.dart' as Theme;
 
-class LoginPage extends StatefulWidget {
+class AuthPage extends StatefulWidget {
 
   final Key fieldKey;
   final String hintText;
@@ -16,7 +15,7 @@ class LoginPage extends StatefulWidget {
   final FormFieldValidator<String> validator;
   final ValueChanged<String> onFieldSubmitted;
 
-  const LoginPage({Key key, this.fieldKey, this.hintText, this.labelText, this.helperText, this.onSaved, this.validator, this.onFieldSubmitted}) : super(key: key);
+  const AuthPage({Key key, this.fieldKey, this.hintText, this.labelText, this.helperText, this.onSaved, this.validator, this.onFieldSubmitted}) : super(key: key);
 
   ThemeData buildTheme() {
     final ThemeData base = ThemeData();
@@ -31,10 +30,10 @@ class LoginPage extends StatefulWidget {
     );
   }
   @override
-  State<StatefulWidget> createState() => LoginPageState();
+  State<StatefulWidget> createState() => AuthPageState();
 }
 
-class LoginPageState extends State<LoginPage>
+class AuthPageState extends State<AuthPage>
     with SingleTickerProviderStateMixin {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -77,9 +76,9 @@ class LoginPageState extends State<LoginPage>
         child: SingleChildScrollView(
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height >= 875.0
+            height: MediaQuery.of(context).size.height >= 955.0
                 ? MediaQuery.of(context).size.height
-                : 875.0,
+                : 955.0,
             decoration: new BoxDecoration(
               gradient: new LinearGradient(
                   colors: [
@@ -204,7 +203,8 @@ class LoginPageState extends State<LoginPage>
                   style: TextStyle(
                       color: left,
                       fontSize: 16.0,
-                      fontFamily: "WorkSansSemiBold"),
+                      //fontFamily: "WorkSansSemiBold"
+                  ),
                 ),
               ),
             ),
@@ -219,7 +219,8 @@ class LoginPageState extends State<LoginPage>
                   style: TextStyle(
                       color: right,
                       fontSize: 16.0,
-                      fontFamily: "WorkSansSemiBold"),
+                      //fontFamily: "WorkSansSemiBold"
+                  ),
                 ),
               ),
             ),
@@ -257,9 +258,9 @@ class LoginPageState extends State<LoginPage>
                           controller: loginEmailController,
                           keyboardType: TextInputType.emailAddress,
                           style: TextStyle(
-                              fontFamily: "WorkSansSemiBold",
-                              fontSize: 16.0,
-                              //color: Colors.black
+                            fontFamily: "WorkSansSemiBold",
+                            fontSize: 16.0,
+                            //color: Colors.black
                           ),
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -287,9 +288,9 @@ class LoginPageState extends State<LoginPage>
                           controller: loginPasswordController,
                           obscureText: _obscureTextLogin,
                           style: TextStyle(
-                              fontFamily: "WorkSansSemiBold",
-                              fontSize: 16.0,
-                              //color: Colors.black
+                            fontFamily: "WorkSansSemiBold",
+                            fontSize: 16.0,
+                            //color: Colors.black
                           ),
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -357,8 +358,8 @@ class LoginPageState extends State<LoginPage>
                             fontFamily: "WorkSansBold"),
                       ),
                     ),
-                    onPressed: () =>
-                        showInSnackBar("Login button pressed")),
+                    onPressed: () => _performLogin
+                ),
               ),
             ],
           ),
@@ -496,9 +497,9 @@ class LoginPageState extends State<LoginPage>
                           keyboardType: TextInputType.text,
                           textCapitalization: TextCapitalization.words,
                           style: TextStyle(
-                              fontFamily: "WorkSansSemiBold",
-                              fontSize: 16.0,
-                              //color: Colors.black
+                            fontFamily: "WorkSansSemiBold",
+                            fontSize: 16.0,
+                            //color: Colors.black
                           ),
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -525,9 +526,9 @@ class LoginPageState extends State<LoginPage>
                           controller: signupEmailController,
                           keyboardType: TextInputType.emailAddress,
                           style: TextStyle(
-                              fontFamily: "WorkSansSemiBold",
-                              fontSize: 16.0,
-                              //color: Colors.black
+                            fontFamily: "WorkSansSemiBold",
+                            fontSize: 16.0,
+                            //color: Colors.black
                           ),
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -554,9 +555,9 @@ class LoginPageState extends State<LoginPage>
                           controller: signupPhoneController,
                           keyboardType: TextInputType.phone,
                           style: TextStyle(
-                              fontFamily: "WorkSansSemiBold",
-                              fontSize: 16.0,
-                              //color: Colors.black
+                            fontFamily: "WorkSansSemiBold",
+                            fontSize: 16.0,
+                            //color: Colors.black
                           ),
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -618,9 +619,9 @@ class LoginPageState extends State<LoginPage>
                           controller: signupConfirmPasswordController,
                           obscureText: _obscureTextSignupConfirm,
                           style: TextStyle(
-                              fontFamily: "WorkSansSemiBold",
-                              fontSize: 16.0,
-                              //color: Colors.black
+                            fontFamily: "WorkSansSemiBold",
+                            fontSize: 16.0,
+                            //color: Colors.black
                           ),
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -687,10 +688,27 @@ class LoginPageState extends State<LoginPage>
                             fontFamily: "WorkSansBold"),
                       ),
                     ),
-                    onPressed: () =>
-                        showInSnackBar("SignUp button pressed")),
+                    onPressed: () => _submit
+                ),
               ),
             ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 30.0),
+            child: FlatButton(
+                onPressed: () {},
+                child: Text(
+                  "By creating an account you acknowledge that you agree with our "
+                      "Terms Of Service, Privacy Policy and Refund Policy",
+                  style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      color: Colors.white,
+                      fontSize: 14.0,
+                      fontFamily: "WorkSansThin",
+                  ),
+                  textAlign: TextAlign.center,
+                )
+            ),
           ),
         ],
       ),
@@ -723,6 +741,18 @@ class LoginPageState extends State<LoginPage>
     setState(() {
       _obscureTextSignupConfirm = !_obscureTextSignupConfirm;
     });
+  }
+
+  void _submit() {
+    //showInSnackBar("SignUp button pressed");
+    _performLogin();
+  }
+
+  void _performLogin() {
+    // This is just a demo, so no actual login here.
+    showInSnackBar("Login button pressed");
+    //Navigator.pushNamed(context, '/home');
+    Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
   }
 }
 

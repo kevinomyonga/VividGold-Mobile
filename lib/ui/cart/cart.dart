@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vividgold_app/screens/checkout.dart';
-import 'package:vividgold_app/screens/items.dart';
+import 'package:vividgold_app/ui/cart/checkout.dart';
+import 'package:vividgold_app/ui/items/items.dart';
 
 enum DialogDemoAction {
   cancel,

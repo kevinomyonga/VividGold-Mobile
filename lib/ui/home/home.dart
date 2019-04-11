@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:vividgold_app/screens/account.dart';
-import 'package:vividgold_app/screens/cart.dart';
-import 'package:vividgold_app/screens/help.dart';
-import 'package:vividgold_app/screens/items.dart';
-import 'package:vividgold_app/screens/login.dart';
-import 'package:vividgold_app/screens/order_history.dart';
-import 'package:vividgold_app/screens/settings.dart';
+import 'package:vividgold_app/ui/account/account.dart';
+import 'package:vividgold_app/ui/cart/cart.dart';
+import 'package:vividgold_app/ui/settings/help.dart';
+import 'package:vividgold_app/ui/items/items.dart';
+import 'package:vividgold_app/ui/auth/auth.dart';
+import 'package:vividgold_app/ui/orders/order_history.dart';
+import 'package:vividgold_app/ui/settings/settings.dart';
 
 const String _kGalleryAssetsPackage = 'flutter_gallery_assets';
 
@@ -198,7 +198,6 @@ class HomePageState extends State<HomePage> {
 
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=> OrderHistoryPage(toolbarname: ' Order History',)));
-
                       }),
                 ],
               ),
@@ -235,7 +234,7 @@ class HomePageState extends State<HomePage> {
                     new TextStyle(color: Colors.redAccent, fontSize: 17.0),
                   ),
                   onTap: () {
-                    Navigator.push(context,MaterialPageRoute(builder: (context) => LoginPage()));
+                    Navigator.push(context,MaterialPageRoute(builder: (context) => AuthPage()));
                   }),
             )
           ],

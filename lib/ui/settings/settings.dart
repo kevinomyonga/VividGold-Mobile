@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:vividgold_app/screens/cart.dart';
+import 'package:vividgold_app/ui/cart/cart.dart';
 
-class HelpPage extends StatefulWidget {
+class SettingsPage extends StatefulWidget {
   final String toolbarname;
 
-  HelpPage({Key key, this.toolbarname}) : super(key: key);
+  SettingsPage({Key key, this.toolbarname}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => HelpPageState(toolbarname);
+  State<StatefulWidget> createState() => SettingsPageState(toolbarname);
 }
 
-class HelpPageState extends State<HelpPage> {
+class SettingsPageState extends State<SettingsPage> {
   List list = ['12', '11'];
 
   bool switchValue = false;
@@ -19,7 +19,7 @@ class HelpPageState extends State<HelpPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String toolbarname;
 
-  HelpPageState(this.toolbarname);
+  SettingsPageState(this.toolbarname);
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,6 @@ class HelpPageState extends State<HelpPage> {
         body: Container(
           child: Column(
             children: <Widget>[
-
               new Container(
                 height: 50.0,
                 alignment: Alignment.topLeft,
@@ -74,7 +73,74 @@ class HelpPageState extends State<HelpPage> {
                                 builder: (context) => signup_screen()));*/
                       },
                       child: new Text(
-                        'Contact Us',
+                        'Notification',
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            //color: Colors.black87,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 10.0),
+                child: Card(
+                    child: Container(
+                      padding: EdgeInsets.only(
+                          left: 10.0, top: 5.0, bottom: 5.0, right: 5.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                  Icons.notifications,
+                                  //color: Colors.black54
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 5.0),
+                              ),
+                              Text(
+                                'Notification',
+                                style: TextStyle(
+                                  fontSize: 17.0,
+                                  //color: Colors.black87,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Switch(
+                              value: switchValue,
+                              onChanged: (bool value) {
+                                setState(() {
+                                  switchValue = value;
+                                });
+                              }),
+                        ],
+                      ),
+                    )),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 15.0),
+              ),
+              new Container(
+                height: 50.0,
+                alignment: Alignment.topLeft,
+                margin: EdgeInsets.only(top: 7.0),
+                child: new Row(
+                  children: <Widget>[
+                    _verticalD(),
+                    new GestureDetector(
+                      onTap: () {
+                        /*Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => signup_screen()));*/
+                      },
+                      child: new Text(
+                        'Legal',
                         style: TextStyle(
                             fontSize: 18.0,
                             //color: Colors.black87,
@@ -101,14 +167,14 @@ class HelpPageState extends State<HelpPage> {
                                 child: Row(
                                   children: <Widget>[
                                     Icon(
-                                        Icons.mail,
+                                        Icons.assignment,
                                         //color: Colors.black54
                                     ),
                                     Container(
                                       margin: EdgeInsets.only(left: 5.0),
                                     ),
                                     Text(
-                                      'Email US',
+                                      'Terms Of Use',
                                       style: TextStyle(
                                         fontSize: 17.0,
                                         //color: Colors.black87,
@@ -120,7 +186,7 @@ class HelpPageState extends State<HelpPage> {
                                   showDemoDialog<DialogDemoAction>(
                                       context: context,
                                       child: AlertDialog(
-                                          title: const Text('Terms Use'),
+                                          title: const Text('Terms Of Use'),
                                           content: Text(
                                               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                                               style: dialogTextStyle),
@@ -150,14 +216,14 @@ class HelpPageState extends State<HelpPage> {
                                   child: Row(
                                     children: <Widget>[
                                       Icon(
-                                          Icons.info,
+                                          Icons.lock_outline,
                                           //color: Colors.black54
                                       ),
                                       Container(
                                         margin: EdgeInsets.only(left: 5.0),
                                       ),
                                       Text(
-                                        'About US',
+                                        'Privacy Policy',
                                         style: TextStyle(
                                             fontSize: 17.0,
                                             //color: Colors.black87
@@ -170,54 +236,6 @@ class HelpPageState extends State<HelpPage> {
                                         context: context,
                                         child: AlertDialog(
                                             title: const Text('About Us'),
-                                            content: Text(
-                                                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                                                style: dialogTextStyle),
-                                            actions: <Widget>[
-                                              FlatButton(
-                                                  child: const Text('DISAGREE'),
-                                                  onPressed: () {
-                                                    Navigator.pop(context,
-                                                        DialogDemoAction.disagree);
-                                                  }),
-                                              /* FlatButton(
-                                              child: const Text('AGREE'),
-                                              onPressed: () {
-                                                Navigator.pop(context,
-                                                    DialogDemoAction.agree);
-                                              })*/
-                                            ]));
-                                  })),
-                          Divider(
-                            height: 5.0,
-                          ),
-                          Container(
-                              padding: EdgeInsets.only(
-                                  left: 10.0, top: 15.0, bottom: 15.0),
-                              child: GestureDetector(
-                                  child: Row(
-                                    children: <Widget>[
-                                      Icon(
-                                          Icons.feedback,
-                                          //color: Colors.black54
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(left: 5.0),
-                                      ),
-                                      Text(
-                                        'Send Feedback',
-                                        style: TextStyle(
-                                            fontSize: 17.0,
-                                            //color: Colors.black87
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  onTap: () {
-                                    showDemoDialog<DialogDemoAction>(
-                                        context: context,
-                                        child: AlertDialog(
-                                            title: const Text('Send Feedback'),
                                             content: Text(
                                                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                                                 style: dialogTextStyle),

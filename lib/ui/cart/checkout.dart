@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vividgold_app/screens/payment.dart';
+import 'package:vividgold_app/ui/cart/payment.dart';
 
 class CheckoutPage extends StatefulWidget {
   @override
@@ -109,7 +109,8 @@ class CheckoutPageState extends State<CheckoutPage> {
                                           style: TextStyle(
                                               fontSize: 18.0,
                                               fontWeight: FontWeight.bold,
-                                              color: Colors.black),
+                                              //color: Colors.black
+                                          ),
                                         ),
                                         IconButton(
                                             icon: Icon(
@@ -131,12 +132,13 @@ class CheckoutPageState extends State<CheckoutPage> {
                                           style: TextStyle(
                                               fontSize: 18.0,
                                               fontWeight: FontWeight.bold,
-                                              color: Colors.black38),
+                                              //color: Colors.black38
+                                          ),
                                         ),
                                         IconButton(
                                             icon: Icon(
                                               Icons.check_circle,
-                                              color: Colors.black38,
+                                              //color: Colors.black38,
                                             ),
                                             onPressed: null)
                                       ],
@@ -154,7 +156,7 @@ class CheckoutPageState extends State<CheckoutPage> {
             child: new Text(
               'Delivery Address',
               style: TextStyle(
-                  color: Colors.black87,
+                  //color: Colors.black87,
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0),
             ),
@@ -203,7 +205,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                                     new Text(
                                       'Naomi A. Schultz',
                                       style: TextStyle(
-                                        color: Colors.black87,
+                                        //color: Colors.black87,
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.bold,
                                         letterSpacing: 0.5,
@@ -213,7 +215,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                                     new Text(
                                       '2585 Columbia Boulevard',
                                       style: TextStyle(
-                                          color: Colors.black45,
+                                          //color: Colors.black45,
                                           fontSize: 13.0,
                                           letterSpacing: 0.5),
                                     ),
@@ -221,7 +223,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                                     new Text(
                                       'Salisbury',
                                       style: TextStyle(
-                                          color: Colors.black45,
+                                          //color: Colors.black45,
                                           fontSize: 13.0,
                                           letterSpacing: 0.5),
                                     ),
@@ -229,7 +231,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                                     new Text(
                                       'MD 21801',
                                       style: TextStyle(
-                                          color: Colors.black45,
+                                          //color: Colors.black45,
                                           fontSize: 13.0,
                                           letterSpacing: 0.5),
                                     ),
@@ -249,7 +251,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                                             'Delivery Address',
                                             style: TextStyle(
                                               fontSize: 15.0,
-                                              color: Colors.black26,
+                                              //color: Colors.black26,
                                             ),
                                           ),
                                           _verticalD(),
@@ -296,7 +298,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                                     new Text(
                                       'Lisa J. Cunningham',
                                       style: TextStyle(
-                                        color: Colors.black87,
+                                        //color: Colors.black87,
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.bold,
                                         letterSpacing: 0.5,
@@ -306,7 +308,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                                     new Text(
                                       '49 Bagwell Avenue',
                                       style: TextStyle(
-                                          color: Colors.black45,
+                                          //color: Colors.black45,
                                           fontSize: 13.0,
                                           letterSpacing: 0.5),
                                     ),
@@ -314,7 +316,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                                     new Text(
                                       'Ocala',
                                       style: TextStyle(
-                                          color: Colors.black45,
+                                          //color: Colors.black45,
                                           fontSize: 13.0,
                                           letterSpacing: 0.5),
                                     ),
@@ -322,7 +324,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                                     new Text(
                                       ' FL 34471',
                                       style: TextStyle(
-                                          color: Colors.black45,
+                                          //color: Colors.black45,
                                           fontSize: 13.0,
                                           letterSpacing: 0.5),
                                     ),
@@ -342,7 +344,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                                             'Delivery Address',
                                             style: TextStyle(
                                               fontSize: 15.0,
-                                              color: Colors.black12,
+                                              //color: Colors.black12,
                                             ),
                                           ),
                                           _verticalD(),
@@ -389,7 +391,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                                     new Text(
                                       'Elizabeth J. Schmidt',
                                       style: TextStyle(
-                                        color: Colors.black87,
+                                        //color: Colors.black87,
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.bold,
                                         letterSpacing: 0.5,
@@ -399,7 +401,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                                     new Text(
                                       '3674 Oakway Lane',
                                       style: TextStyle(
-                                          color: Colors.black45,
+                                          //color: Colors.black45,
                                           fontSize: 13.0,
                                           letterSpacing: 0.5),
                                     ),
@@ -407,7 +409,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                                     new Text(
                                       'Long Beach',
                                       style: TextStyle(
-                                          color: Colors.black45,
+                                          //color: Colors.black45,
                                           fontSize: 13.0,
                                           letterSpacing: 0.5),
                                     ),
@@ -415,7 +417,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                                     new Text(
                                       ' CA 90802',
                                       style: TextStyle(
-                                          color: Colors.black45,
+                                          //color: Colors.black45,
                                           fontSize: 13.0,
                                           letterSpacing: 0.5),
                                     ),
@@ -435,7 +437,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                                             'Delivery Address',
                                             style: TextStyle(
                                               fontSize: 15.0,
-                                              color: Colors.black12,
+                                              //color: Colors.black12,
                                             ),
                                           ),
                                           _verticalD(),
@@ -469,7 +471,7 @@ class CheckoutPageState extends State<CheckoutPage> {
             child: new Text(
               'Order Summary',
               style: TextStyle(
-                  color: Colors.black87,
+                  //color: Colors.black87,
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0),
             ),
@@ -498,17 +500,17 @@ class CheckoutPageState extends State<CheckoutPage> {
                                   Text(itemList[ind].itemName,
                                       style: TextStyle(
                                           fontSize: 16.0,
-                                          color: Colors.black87,
+                                          //color: Colors.black87,
                                           fontWeight: FontWeight.bold)),
                                   Text(itemList[ind].itemQun,
                                       style: TextStyle(
                                           fontSize: 16.0,
-                                          color: Colors.black87,
+                                          //color: Colors.black87,
                                           fontWeight: FontWeight.bold)),
                                   Text(itemList[ind].itemPrice,
                                       style: TextStyle(
                                           fontSize: 16.0,
-                                          color: Colors.black87,
+                                          //color: Colors.black87,
                                           fontWeight: FontWeight.bold)),
                                 ],
 
@@ -530,12 +532,15 @@ class CheckoutPageState extends State<CheckoutPage> {
                       'Total :',
                       style: TextStyle(
                           fontSize: 17.0,
-                          color: Colors.black,
+                          //color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
                       '\₹ 524',
-                      style: TextStyle(fontSize: 17.0, color: Colors.black54),
+                      style: TextStyle(
+                          fontSize: 17.0,
+                          //color: Colors.black54
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),

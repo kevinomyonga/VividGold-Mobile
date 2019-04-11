@@ -1,7 +1,7 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
-import 'package:vividgold_app/screens/cart.dart';
-import 'package:vividgold_app/screens/checkout.dart';
+import 'package:vividgold_app/ui/cart/cart.dart';
+import 'package:vividgold_app/ui/cart/checkout.dart';
 
 class ItemDetailsPage extends StatefulWidget {
   @override

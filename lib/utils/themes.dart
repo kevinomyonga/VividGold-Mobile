@@ -11,10 +11,11 @@ class Themes {
 
   static ThemeData androidTheme() {
     return ThemeData(
-        primaryColor: Colors.amber,
-        primaryColorDark: Colors.amber[700],
-        accentColor: Colors.amberAccent,
-        brightness: Brightness.dark
+      primaryColor: Colors.amber,
+      primaryColorDark: Colors.amber[700],
+      accentColor: Colors.amberAccent,
+      brightness: Brightness.dark,
+      fontFamily: 'WorkSans',
     );
   }
 

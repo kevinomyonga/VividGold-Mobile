@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_range_slider/flutter_range_slider.dart';
-import 'package:vividgold_app/screens/cart.dart';
-import 'package:vividgold_app/screens/item_details.dart';
+import 'package:vividgold_app/ui/cart/cart.dart';
+import 'package:vividgold_app/ui/items/item_details.dart';
 
 class ItemsPage extends StatefulWidget {
   final String toolbarname;

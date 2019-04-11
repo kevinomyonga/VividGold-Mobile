@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vividgold_app/screens/login.dart';
+import 'package:vividgold_app/ui/auth/auth.dart';
 
 class SignUpPage extends StatefulWidget {
 
@@ -73,7 +73,7 @@ class SignUpPageState extends State<SignUpPage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => LoginPage()));
+                                    builder: (context) => AuthPage()));
                           },
                           child: new Text(
                             'Login',
@@ -332,7 +332,7 @@ class SignUpPageState extends State<SignUpPage> {
       content: Text('Email: $_email, password: $_password'),
     );
     scaffoldKey.currentState.showSnackBar(snackbar);*/
-    Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+    Navigator.push(context, MaterialPageRoute(builder: (context)=> AuthPage()));
   }
 
   _verticalD() => Container(
