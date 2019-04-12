@@ -1,4 +1,7 @@
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:vividgold_app/components/horizontal_listview.dart';
+import 'package:vividgold_app/components/products.dart';
 import 'package:vividgold_app/ui/account/account.dart';
 import 'package:vividgold_app/ui/cart/cart.dart';
 import 'package:vividgold_app/ui/settings/help.dart';
@@ -7,7 +10,207 @@ import 'package:vividgold_app/ui/auth/auth.dart';
 import 'package:vividgold_app/ui/orders/order_history.dart';
 import 'package:vividgold_app/ui/settings/settings.dart';
 
-const String _kGalleryAssetsPackage = 'flutter_gallery_assets';
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    Widget image_carousel = new Container(
+      height: 200.0,
+      child:  new Carousel(
+        boxFit: BoxFit.cover,
+        images: [
+          AssetImage('images/w3.jpeg'),
+          AssetImage('images/m1.jpeg'),
+          AssetImage('images/c1.jpg'),
+          AssetImage('images/w4.jpeg'),
+          AssetImage('images/m2.jpg'),
+        ],
+        autoplay: true,
+        animationCurve: Curves.fastOutSlowIn,
+        animationDuration: Duration(milliseconds: 1000),
+        dotSize: 4.0,
+        indicatorBgPadding: 7.0,
+      ),
+    );
+
+    return Scaffold(
+      appBar: new AppBar(
+        elevation: 0.1,
+        //backgroundColor: Colors.red,
+        title: Text('VividGold'),
+        actions: <Widget>[
+          new IconButton(
+              icon: Icon(
+                Icons.search,
+                //color: Colors.white,
+              ),
+              onPressed: () {}),
+          new IconButton(
+              icon: Icon(
+                Icons.shopping_cart,
+                //color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/cart');
+              }
+          )
+        ],
+      ),
+      drawer: new Drawer(
+        child: new ListView(
+          children: <Widget>[
+//            header
+            new UserAccountsDrawerHeader(
+              accountName: Text('Kevin Omyonga',
+                style: TextStyle(
+                  color: Colors.white,
+                  shadows: <Shadow>[
+                    Shadow(
+                      offset: Offset(10.0, 10.0),
+                      blurRadius: 3.0,
+                      color: Color.fromARGB(0, 0, 0, 0),
+                    ),
+                    /*Shadow(
+                      offset: Offset(10.0, 10.0),
+                      blurRadius: 8.0,
+                      color: Color.fromARGB(125, 0, 0, 255),
+                    ),*/
+                  ],
+                ),
+              ),
+              accountEmail: Text('komyonga@gmail.com',
+                style: TextStyle(
+                  color: Colors.white,
+                  shadows: <Shadow>[
+                    Shadow(
+                      offset: Offset(10.0, 10.0),
+                      blurRadius: 3.0,
+                      color: Color.fromARGB(0, 0, 0, 0),
+                    ),
+                  ],
+                ),
+              ),
+              currentAccountPicture: GestureDetector(
+                child: new CircleAvatar(
+                  backgroundColor: Colors.grey,
+                  child: Icon(Icons.person, color: Colors.white,),
+                ),
+              ),
+              decoration: new BoxDecoration(
+                //color: Colors.red,
+                image: new DecorationImage(
+                  image: new AssetImage("images/m1.jpeg"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+
+//            body
+
+            InkWell(
+              onTap: (){},
+              child: ListTile(
+                title: Text('Home'),
+                leading: Icon(Icons.home),
+              ),
+            ),
+
+            InkWell(
+              onTap: (){
+                //Navigator.push(context, MaterialPageRoute(builder: (context)=> AccountPage()));
+                Navigator.pushNamed(context, '/account');
+              },
+              child: ListTile(
+                title: Text('My account'),
+                leading: Icon(Icons.person),
+              ),
+            ),
+
+            InkWell(
+              onTap: (){
+                Navigator.pushNamed(context, '/orders');
+              },
+              child: ListTile(
+                title: Text('My Orders'),
+                leading: Icon(Icons.shopping_basket),
+              ),
+            ),
+
+            InkWell(
+              onTap: (){},
+              child: ListTile(
+                title: Text('Categories'),
+                leading: Icon(Icons.dashboard),
+              ),
+            ),
+
+            InkWell(
+              onTap: (){
+                Navigator.pushNamed(context, '/items');
+              },
+              child: ListTile(
+                title: Text('Favourites'),
+                leading: Icon(Icons.favorite),
+              ),
+            ),
+
+            Divider(),
+
+            InkWell(
+              onTap: (){
+                Navigator.pushNamed(context, '/settings');
+              },
+              child: ListTile(
+                title: Text('Settings'),
+                leading: Icon(Icons.settings, color: Colors.blue,),
+              ),
+            ),
+
+            InkWell(
+              onTap: (){
+                Navigator.pushNamed(context, '/auth');
+              },
+              child: ListTile(
+                title: Text('About'),
+                leading: Icon(Icons.info, color: Colors.green),
+              ),
+            ),
+          ],
+        ),
+      ),
+
+      body: new ListView(
+        children: <Widget>[
+          //image carousel begins here
+          image_carousel,
+
+          //padding widget
+          new Padding(padding: const EdgeInsets.all(20.0),
+            child: new Text('Categories'),),
+
+          //Horizontal list view begins here
+          HorizontalList(),
+
+          //padding widget
+          new Padding(padding: const EdgeInsets.all(20.0),
+            child: new Text('Recent products'),),
+
+          //grid view
+          Container(
+            height: 320.0,
+            child: Products(),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+/*const String _kGalleryAssetsPackage = 'flutter_gallery_assets';
 
 class HomePage extends StatefulWidget {
   @override
@@ -106,12 +309,12 @@ class HomePageState extends State<HomePage> {
               width: 30.0,
               child: new GestureDetector(
                 onTap: () {
-                  /*Navigator.of(context).push(
+                  *//*Navigator.of(context).push(
                   new MaterialPageRoute(
                       builder:(BuildContext context) =>
                       new CartItemsScreen()
                   )
-              );*/
+              );*//*
                 },
                 child: Stack(
                   children: <Widget>[
@@ -168,10 +371,10 @@ class HomePageState extends State<HomePage> {
                   backgroundBlendMode: BlendMode.difference,
                   color: Colors.white30,
 
-                  /* image: new DecorationImage(
+                  *//* image: new DecorationImage(
                //   image: new ExactAssetImage('assets/images/lake.jpeg'),
                   fit: BoxFit.cover,
-                ),*/
+                ),*//*
                 ),
                 currentAccountPicture: CircleAvatar(
                     backgroundImage: NetworkImage(
@@ -329,7 +532,7 @@ class HomePageState extends State<HomePage> {
                             ),
                           )
 
-                          /*Positioned(
+                          *//*Positioned(
                           bottom: 16.0,
                           left: 16.0,
                           right: 16.0,
@@ -340,7 +543,7 @@ class HomePageState extends State<HomePage> {
                               style: titleStyle,
                             ),
                           ),
-                        ),*/
+                        ),*//*
                         ],
                       ),
                     ),
@@ -373,7 +576,7 @@ class HomePageState extends State<HomePage> {
                             ),
                           )
 
-                          /*Positioned(
+                          *//*Positioned(
                           bottom: 16.0,
                           left: 16.0,
                           right: 16.0,
@@ -384,7 +587,7 @@ class HomePageState extends State<HomePage> {
                               style: titleStyle,
                             ),
                           ),
-                        ),*/
+                        ),*//*
                         ],
                       ),
                     ),
@@ -417,7 +620,7 @@ class HomePageState extends State<HomePage> {
                             ),
                           )
 
-                          /*Positioned(
+                          *//*Positioned(
                           bottom: 16.0,
                           left: 16.0,
                           right: 16.0,
@@ -428,7 +631,7 @@ class HomePageState extends State<HomePage> {
                               style: titleStyle,
                             ),
                           ),
-                        ),*/
+                        ),*//*
                         ],
                       ),
                     ),
@@ -461,7 +664,7 @@ class HomePageState extends State<HomePage> {
                             ),
                           )
 
-                          /*Positioned(
+                          *//*Positioned(
                           bottom: 16.0,
                           left: 16.0,
                           right: 16.0,
@@ -472,7 +675,7 @@ class HomePageState extends State<HomePage> {
                               style: titleStyle,
                             ),
                           ),
-                        ),*/
+                        ),*//*
                         ],
                       ),
                     ),
@@ -595,7 +798,7 @@ class HomePageState extends State<HomePage> {
                                             ),
                                           ),
 
-                                          /*Positioned(
+                                          *//*Positioned(
                                     child: FittedBox(
                                      fit: BoxFit.fill,
                                       alignment: Alignment.centerLeft,
@@ -603,7 +806,7 @@ class HomePageState extends State<HomePage> {
                                         style: TextStyle(color: Colors.black87,fontSize: 15.0),
                                       ),
                                   )
-                                  )*/
+                                  )*//*
                                         ],
                                       ),
                                     ),
@@ -624,7 +827,7 @@ class HomePageState extends State<HomePage> {
     );
   }
 
-/*
+*//*
   new Container(
   alignment: Alignment.topCenter,
   child: GridView.count(
@@ -634,7 +837,7 @@ class HomePageState extends State<HomePage> {
   children: List.generate(photos.length, (index) {
   return getStructuredGridCell(photos[index]);
   }),
-  ))*/
+  ))*//*
   Icon keyloch = new Icon(
     Icons.arrow_forward,
     //color: Colors.black26,
@@ -645,4 +848,4 @@ class HomePageState extends State<HomePage> {
   );
 
 
-}
+}*/

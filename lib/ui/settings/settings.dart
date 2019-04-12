@@ -52,7 +52,8 @@ class SettingsPageState extends State<SettingsPage> {
               Navigator.pop(context);
             },
           ),
-          title: Text(toolbarname),
+          //title: Text(toolbarname),
+          title: Text('Settings'),
           //backgroundColor: Colors.white,
         ),
         body: Container(

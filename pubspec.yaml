@@ -51,6 +51,21 @@ flutter:
   #  - images/a_dot_ham.jpeg
 
   assets:
+    - images/c1.jpg
+    - images/m1.jpeg
+    - images/w3.jpeg
+    - images/w4.jpeg
+    - images/m2.jpg
+    - images/cats/tshirt.png
+    - images/cats/dress.png
+    - images/cats/formal.png
+    - images/cats/informal.png
+    - images/cats/shoe.png
+    - images/cats/jeans.png
+    - images/cats/accessories.png
+    - images/products/blazer1.jpeg
+    - images/products/dress1.jpeg
+
     - images/login_logo.png
     - images/back.jpg
     - images/groceries.jpg
@@ -102,14 +117,14 @@ flutter:
   # see https://flutter.io/custom-fonts/#from-packages
 
   fonts:
-    - family: WorkSans
-      fonts:
-      - asset: assets/fonts/Work_Sans/WorkSans-Black.ttf
-      - asset: assets/fonts/Work_Sans/WorkSans-Bold.ttf
-      - asset: assets/fonts/Work_Sans/WorkSans-ExtraBold.ttf
-      - asset: assets/fonts/Work_Sans/WorkSans-ExtraLight.ttf
-      - asset: assets/fonts/Work_Sans/WorkSans-Light.ttf
-      - asset: assets/fonts/Work_Sans/WorkSans-Medium.ttf
-      - asset: assets/fonts/Work_Sans/WorkSans-Regular.ttf
-      - asset: assets/fonts/Work_Sans/WorkSans-SemiBold.ttf
-      - asset: assets/fonts/Work_Sans/WorkSans-Thin.ttf
+  - family: WorkSans
+    fonts:
+    - asset: assets/fonts/Work_Sans/WorkSans-Black.ttf
+    - asset: assets/fonts/Work_Sans/WorkSans-Bold.ttf
+    - asset: assets/fonts/Work_Sans/WorkSans-ExtraBold.ttf
+    - asset: assets/fonts/Work_Sans/WorkSans-ExtraLight.ttf
+    - asset: assets/fonts/Work_Sans/WorkSans-Light.ttf
+    - asset: assets/fonts/Work_Sans/WorkSans-Medium.ttf
+    - asset: assets/fonts/Work_Sans/WorkSans-Regular.ttf
+    - asset: assets/fonts/Work_Sans/WorkSans-SemiBold.ttf
+    - asset: assets/fonts/Work_Sans/WorkSans-Thin.ttf

@@ -85,7 +85,8 @@ class ItemsPageState extends State<ItemsPage> {
             Navigator.pop(context);
           },
         ),
-        title: Text(toolbarname),
+        //title: Text(toolbarname),
+        title: Text('Items'),
         //backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(

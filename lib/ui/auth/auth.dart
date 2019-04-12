@@ -17,7 +17,7 @@ class AuthPage extends StatefulWidget {
 
   const AuthPage({Key key, this.fieldKey, this.hintText, this.labelText, this.helperText, this.onSaved, this.validator, this.onFieldSubmitted}) : super(key: key);
 
-  ThemeData buildTheme() {
+  /*ThemeData buildTheme() {
     final ThemeData base = ThemeData();
     return base.copyWith(
       hintColor: Colors.red,
@@ -28,7 +28,7 @@ class AuthPage extends StatefulWidget {
         ),
       ),
     );
-  }
+  }*/
   @override
   State<StatefulWidget> createState() => AuthPageState();
 }

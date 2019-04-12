@@ -43,9 +43,7 @@ class AccountPageState extends State<AccountPage> {
     //List<address> addresLst = loadAddress() as List<address> ;
     return new Scaffold(
       appBar: new AppBar(
-        title: Text(
-          'My Account',
-        ),
+        title: Text('My Account',),
       ),
       body: new Container(
           child: SingleChildScrollView(
@@ -109,7 +107,7 @@ class AccountPageState extends State<AccountPage> {
                                     new Text(
                                       mobilenumber,
                                       style: TextStyle(
-                                          //color: Colors.black45,
+                                        //color: Colors.black45,
                                           fontSize: 13.0,
                                           fontWeight: FontWeight.bold,
                                           letterSpacing: 0.5),
@@ -118,7 +116,7 @@ class AccountPageState extends State<AccountPage> {
                                     new Text(
                                       eid,
                                       style: TextStyle(
-                                          //color: Colors.black45,
+                                        //color: Colors.black45,
                                           fontSize: 13.0,
                                           fontWeight: FontWeight.bold,
                                           letterSpacing: 0.5),
@@ -146,7 +144,7 @@ class AccountPageState extends State<AccountPage> {
                     child: new Text(
                       'Addresses',
                       style: TextStyle(
-                          //color: Colors.black87,
+                        //color: Colors.black87,
                           fontWeight: FontWeight.bold,
                           fontSize: 18.0),
                     ),
@@ -189,7 +187,7 @@ class AccountPageState extends State<AccountPage> {
                                             new Text(
                                               '2585 Columbia Boulevard',
                                               style: TextStyle(
-                                                  //color: Colors.black45,
+                                                //color: Colors.black45,
                                                   fontSize: 13.0,
                                                   letterSpacing: 0.5),
                                             ),
@@ -197,7 +195,7 @@ class AccountPageState extends State<AccountPage> {
                                             new Text(
                                               'Salisbury',
                                               style: TextStyle(
-                                                  //color: Colors.black45,
+                                                //color: Colors.black45,
                                                   fontSize: 13.0,
                                                   letterSpacing: 0.5),
                                             ),
@@ -205,7 +203,7 @@ class AccountPageState extends State<AccountPage> {
                                             new Text(
                                               ' MD 21801',
                                               style: TextStyle(
-                                                  //color: Colors.black45,
+                                                //color: Colors.black45,
                                                   fontSize: 13.0,
                                                   letterSpacing: 0.5),
                                             ),
@@ -290,7 +288,7 @@ class AccountPageState extends State<AccountPage> {
                                             new Text(
                                               '4528 Filbert Street',
                                               style: TextStyle(
-                                                  //color: Colors.black45,
+                                                //color: Colors.black45,
                                                   fontSize: 13.0,
                                                   letterSpacing: 0.5),
                                             ),
@@ -298,7 +296,7 @@ class AccountPageState extends State<AccountPage> {
                                             new Text(
                                               'Philadelphia',
                                               style: TextStyle(
-                                                  //color: Colors.black45,
+                                                //color: Colors.black45,
                                                   fontSize: 13.0,
                                                   letterSpacing: 0.5),
                                             ),
@@ -306,7 +304,7 @@ class AccountPageState extends State<AccountPage> {
                                             new Text(
                                               ' PA 19103',
                                               style: TextStyle(
-                                                  //color: Colors.black45,
+                                                //color: Colors.black45,
                                                   fontSize: 13.0,
                                                   letterSpacing: 0.5),
                                             ),
@@ -389,7 +387,7 @@ class AccountPageState extends State<AccountPage> {
                                             new Text(
                                               '3674 Oakway Lane',
                                               style: TextStyle(
-                                                  //color: Colors.black45,
+                                                //color: Colors.black45,
                                                   fontSize: 13.0,
                                                   letterSpacing: 0.5),
                                             ),
@@ -397,7 +395,7 @@ class AccountPageState extends State<AccountPage> {
                                             new Text(
                                               'Long Beach',
                                               style: TextStyle(
-                                                  //color: Colors.black45,
+                                                //color: Colors.black45,
                                                   fontSize: 13.0,
                                                   letterSpacing: 0.5),
                                             ),
@@ -405,7 +403,7 @@ class AccountPageState extends State<AccountPage> {
                                             new Text(
                                               'CA 90802',
                                               style: TextStyle(
-                                                  //color: Colors.black45,
+                                                //color: Colors.black45,
                                                   fontSize: 13.0,
                                                   letterSpacing: 0.5),
                                             ),
@@ -463,13 +461,13 @@ class AccountPageState extends State<AccountPage> {
                       elevation: 1.0,
                       child: Row(
                         children: <Widget>[
-                          new IconButton(icon: keyloch, onPressed: null),
+                          new IconButton(icon: keyloch, onPressed: _changePass),
                           _verticalD(),
                           new Text(
                             'Change Password',
                             style: TextStyle(
-                                fontSize: 15.0,
-                                //color: Colors.black87
+                              fontSize: 15.0,
+                              //color: Colors.black87
                             ),
                           )
                         ],
@@ -482,7 +480,7 @@ class AccountPageState extends State<AccountPage> {
                       elevation: 1.0,
                       child: Row(
                         children: <Widget>[
-                          new IconButton(icon: clear, onPressed: null),
+                          new IconButton(icon: clear, onPressed: _clearHistory),
                           _verticalD(),
                           new Text(
                             'Clear History',
@@ -501,7 +499,31 @@ class AccountPageState extends State<AccountPage> {
                       elevation: 1.0,
                       child: Row(
                         children: <Widget>[
-                          new IconButton(icon: logout, onPressed: null),
+                          new IconButton(
+                              icon: logout,
+                              onPressed: (){
+                                _logout();
+                              }
+                          ),
+                          _verticalD(),
+                          new Text(
+                            'Logout',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              color: Colors.redAccent,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  new Container(
+                    margin: EdgeInsets.all(7.0),
+                    child: Card(
+                      elevation: 1.0,
+                      child: Row(
+                        children: <Widget>[
+                          new IconButton(icon: logout, onPressed: _deactivate),
                           _verticalD(),
                           new Text(
                             'Deactivate Account',
@@ -529,5 +551,14 @@ class AccountPageState extends State<AccountPage> {
     margin: EdgeInsets.only(left: 3.0, right: 0.0, top: 0.0, bottom: 0.0),
   );
 
+  void _changePass() {}
+
+  void _clearHistory() {}
+
+  void _logout() {
+    Navigator.pushNamed(context, '/auth');
+  }
+
+  void _deactivate() {}
 
 }
