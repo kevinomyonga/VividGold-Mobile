@@ -12,7 +12,8 @@ import 'package:vividgold_app/ui/cart/payment.dart';
 import 'package:vividgold_app/ui/settings/settings.dart';
 
 final routes = {
-  '/'               : (BuildContext context) => AuthPage(),
+  //'/'               : (BuildContext context) => AuthPage(),
+  '/'               : (BuildContext context) => HomePage(),
   '/home'           : (BuildContext context) => HomePage(),
   '/items'          : (BuildContext context) => ItemsPage(),
   '/item_details'   : (BuildContext context) => ItemDetailsPage(),

@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vividgold_app/ui/home/home.dart';
 import 'package:vividgold_app/utils/bubble_indication_painter.dart';
-import 'package:vividgold_app/utils/colors.dart' as Theme;
+import 'package:vividgold_app/utils/colors.dart' as ColorTheme;
 
 class AuthPage extends StatefulWidget {
 
@@ -82,8 +82,8 @@ class AuthPageState extends State<AuthPage>
             decoration: new BoxDecoration(
               gradient: new LinearGradient(
                   colors: [
-                    Theme.Colors.loginGradientStart,
-                    Theme.Colors.loginGradientEnd
+                    ColorTheme.Colors.loginGradientStart,
+                    ColorTheme.Colors.loginGradientEnd
                   ],
                   begin: const FractionalOffset(0.0, 0.0),
                   end: const FractionalOffset(1.0, 1.0),
@@ -171,11 +171,13 @@ class AuthPageState extends State<AuthPage>
         value,
         textAlign: TextAlign.center,
         style: TextStyle(
-            color: Colors.white,
-            fontSize: 16.0,
-            fontFamily: "WorkSansSemiBold"),
+          color: Colors.white,
+          fontSize: 16.0,
+          fontWeight: FontWeight.w600,
+          //fontFamily: "WorkSansSemiBold"
+        ),
       ),
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.indigo,
       duration: Duration(seconds: 3),
     ));
   }
@@ -201,9 +203,10 @@ class AuthPageState extends State<AuthPage>
                 child: Text(
                   "Existing",
                   style: TextStyle(
-                      color: left,
-                      fontSize: 16.0,
-                      //fontFamily: "WorkSansSemiBold"
+                    color: left,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w600,
+                    //fontFamily: "WorkSansSemiBold"
                   ),
                 ),
               ),
@@ -217,9 +220,10 @@ class AuthPageState extends State<AuthPage>
                 child: Text(
                   "New",
                   style: TextStyle(
-                      color: right,
-                      fontSize: 16.0,
-                      //fontFamily: "WorkSansSemiBold"
+                    color: right,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w600,
+                    //fontFamily: "WorkSansSemiBold"
                   ),
                 ),
               ),
@@ -258,8 +262,9 @@ class AuthPageState extends State<AuthPage>
                           controller: loginEmailController,
                           keyboardType: TextInputType.emailAddress,
                           style: TextStyle(
-                            fontFamily: "WorkSansSemiBold",
+                            //fontFamily: "WorkSansSemiBold",
                             fontSize: 16.0,
+                            fontWeight: FontWeight.w600,
                             //color: Colors.black
                           ),
                           decoration: InputDecoration(
@@ -271,7 +276,10 @@ class AuthPageState extends State<AuthPage>
                             ),
                             hintText: "Email Address",
                             hintStyle: TextStyle(
-                                fontFamily: "WorkSansSemiBold", fontSize: 17.0),
+                              //fontFamily: "WorkSansSemiBold",
+                              fontSize: 17.0,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ),
@@ -288,8 +296,9 @@ class AuthPageState extends State<AuthPage>
                           controller: loginPasswordController,
                           obscureText: _obscureTextLogin,
                           style: TextStyle(
-                            fontFamily: "WorkSansSemiBold",
+                            //fontFamily: "WorkSansSemiBold",
                             fontSize: 16.0,
+                            fontWeight: FontWeight.w600,
                             //color: Colors.black
                           ),
                           decoration: InputDecoration(
@@ -301,7 +310,10 @@ class AuthPageState extends State<AuthPage>
                             ),
                             hintText: "Password",
                             hintStyle: TextStyle(
-                                fontFamily: "WorkSansSemiBold", fontSize: 17.0),
+                              //fontFamily: "WorkSansSemiBold",
+                              fontSize: 17.0,
+                              fontWeight: FontWeight.w600,
+                            ),
                             suffixIcon: GestureDetector(
                               onTap: _toggleLogin,
                               child: Icon(
@@ -323,20 +335,20 @@ class AuthPageState extends State<AuthPage>
                   borderRadius: BorderRadius.all(Radius.circular(5.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                      color: Theme.Colors.loginGradientStart,
+                      color: ColorTheme.Colors.loginGradientStart,
                       offset: Offset(1.0, 6.0),
                       blurRadius: 20.0,
                     ),
                     BoxShadow(
-                      color: Theme.Colors.loginGradientEnd,
+                      color: ColorTheme.Colors.loginGradientEnd,
                       offset: Offset(1.0, 6.0),
                       blurRadius: 20.0,
                     ),
                   ],
                   gradient: new LinearGradient(
                       colors: [
-                        Theme.Colors.loginGradientEnd,
-                        Theme.Colors.loginGradientStart
+                        ColorTheme.Colors.loginGradientEnd,
+                        ColorTheme.Colors.loginGradientStart
                       ],
                       begin: const FractionalOffset(0.2, 0.2),
                       end: const FractionalOffset(1.0, 1.0),
@@ -345,7 +357,7 @@ class AuthPageState extends State<AuthPage>
                 ),
                 child: MaterialButton(
                     highlightColor: Colors.transparent,
-                    splashColor: Theme.Colors.loginGradientEnd,
+                    splashColor: ColorTheme.Colors.loginGradientEnd,
                     //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -355,7 +367,9 @@ class AuthPageState extends State<AuthPage>
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 25.0,
-                            fontFamily: "WorkSansBold"),
+                            fontWeight: FontWeight.w700
+                          //fontFamily: "WorkSansBold"
+                        ),
                       ),
                     ),
                     onPressed: () => _performLogin
@@ -370,10 +384,12 @@ class AuthPageState extends State<AuthPage>
                 child: Text(
                   "Forgot Password?",
                   style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      color: Colors.white,
-                      fontSize: 16.0,
-                      fontFamily: "WorkSansMedium"),
+                    decoration: TextDecoration.underline,
+                    color: Colors.white,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500,
+                    //fontFamily: "WorkSansMedium"
+                  ),
                 )),
           ),
           Padding(
@@ -401,9 +417,10 @@ class AuthPageState extends State<AuthPage>
                   child: Text(
                     "Or",
                     style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16.0,
-                        fontFamily: "WorkSansMedium"),
+                      color: Colors.white,
+                      fontSize: 16.0,
+                      //fontFamily: "WorkSansMedium"
+                    ),
                   ),
                 ),
                 Container(
@@ -497,8 +514,9 @@ class AuthPageState extends State<AuthPage>
                           keyboardType: TextInputType.text,
                           textCapitalization: TextCapitalization.words,
                           style: TextStyle(
-                            fontFamily: "WorkSansSemiBold",
+                            //fontFamily: "WorkSansSemiBold",
                             fontSize: 16.0,
+                            fontWeight: FontWeight.w600,
                             //color: Colors.black
                           ),
                           decoration: InputDecoration(
@@ -509,7 +527,10 @@ class AuthPageState extends State<AuthPage>
                             ),
                             hintText: "Name",
                             hintStyle: TextStyle(
-                                fontFamily: "WorkSansSemiBold", fontSize: 16.0),
+                              //fontFamily: "WorkSansSemiBold",
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ),
@@ -526,8 +547,9 @@ class AuthPageState extends State<AuthPage>
                           controller: signupEmailController,
                           keyboardType: TextInputType.emailAddress,
                           style: TextStyle(
-                            fontFamily: "WorkSansSemiBold",
+                            //fontFamily: "WorkSansSemiBold",
                             fontSize: 16.0,
+                            fontWeight: FontWeight.w600,
                             //color: Colors.black
                           ),
                           decoration: InputDecoration(
@@ -538,7 +560,10 @@ class AuthPageState extends State<AuthPage>
                             ),
                             hintText: "Email Address",
                             hintStyle: TextStyle(
-                                fontFamily: "WorkSansSemiBold", fontSize: 16.0),
+                              //fontFamily: "WorkSansSemiBold",
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ),
@@ -555,8 +580,9 @@ class AuthPageState extends State<AuthPage>
                           controller: signupPhoneController,
                           keyboardType: TextInputType.phone,
                           style: TextStyle(
-                            fontFamily: "WorkSansSemiBold",
+                            //fontFamily: "WorkSansSemiBold",
                             fontSize: 16.0,
+                            fontWeight: FontWeight.w600,
                             //color: Colors.black
                           ),
                           decoration: InputDecoration(
@@ -567,7 +593,10 @@ class AuthPageState extends State<AuthPage>
                             ),
                             hintText: "Phone Number",
                             hintStyle: TextStyle(
-                                fontFamily: "WorkSansSemiBold", fontSize: 16.0),
+                              //fontFamily: "WorkSansSemiBold",
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ),
@@ -584,9 +613,11 @@ class AuthPageState extends State<AuthPage>
                           controller: signupPasswordController,
                           obscureText: _obscureTextSignup,
                           style: TextStyle(
-                              fontFamily: "WorkSansSemiBold",
-                              fontSize: 16.0,
-                              color: Colors.black),
+                            //fontFamily: "WorkSansSemiBold",
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w600,
+                            //color: Colors.black
+                          ),
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             icon: Icon(
@@ -595,7 +626,10 @@ class AuthPageState extends State<AuthPage>
                             ),
                             hintText: "Password",
                             hintStyle: TextStyle(
-                                fontFamily: "WorkSansSemiBold", fontSize: 16.0),
+                              //fontFamily: "WorkSansSemiBold",
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w600,
+                            ),
                             suffixIcon: GestureDetector(
                               onTap: _toggleSignup,
                               child: Icon(
@@ -619,8 +653,9 @@ class AuthPageState extends State<AuthPage>
                           controller: signupConfirmPasswordController,
                           obscureText: _obscureTextSignupConfirm,
                           style: TextStyle(
-                            fontFamily: "WorkSansSemiBold",
+                            //fontFamily: "WorkSansSemiBold",
                             fontSize: 16.0,
+                            fontWeight: FontWeight.w600,
                             //color: Colors.black
                           ),
                           decoration: InputDecoration(
@@ -631,7 +666,10 @@ class AuthPageState extends State<AuthPage>
                             ),
                             hintText: "Confirmation",
                             hintStyle: TextStyle(
-                                fontFamily: "WorkSansSemiBold", fontSize: 16.0),
+                              //fontFamily: "WorkSansSemiBold",
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w600,
+                            ),
                             suffixIcon: GestureDetector(
                               onTap: _toggleSignupConfirm,
                               child: Icon(
@@ -653,20 +691,20 @@ class AuthPageState extends State<AuthPage>
                   borderRadius: BorderRadius.all(Radius.circular(5.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                      color: Theme.Colors.loginGradientStart,
+                      color: ColorTheme.Colors.loginGradientStart,
                       offset: Offset(1.0, 6.0),
                       blurRadius: 20.0,
                     ),
                     BoxShadow(
-                      color: Theme.Colors.loginGradientEnd,
+                      color: ColorTheme.Colors.loginGradientEnd,
                       offset: Offset(1.0, 6.0),
                       blurRadius: 20.0,
                     ),
                   ],
                   gradient: new LinearGradient(
                       colors: [
-                        Theme.Colors.loginGradientEnd,
-                        Theme.Colors.loginGradientStart
+                        ColorTheme.Colors.loginGradientEnd,
+                        ColorTheme.Colors.loginGradientStart
                       ],
                       begin: const FractionalOffset(0.2, 0.2),
                       end: const FractionalOffset(1.0, 1.0),
@@ -675,7 +713,7 @@ class AuthPageState extends State<AuthPage>
                 ),
                 child: MaterialButton(
                     highlightColor: Colors.transparent,
-                    splashColor: Theme.Colors.loginGradientEnd,
+                    splashColor: ColorTheme.Colors.loginGradientEnd,
                     //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -683,12 +721,14 @@ class AuthPageState extends State<AuthPage>
                       child: Text(
                         "SIGN UP",
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25.0,
-                            fontFamily: "WorkSansBold"),
+                          color: Colors.white,
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.w700,
+                          //fontFamily: "WorkSansBold"
+                        ),
                       ),
                     ),
-                    onPressed: () => _submit
+                    onPressed: () => Navigator.pushNamed(context, '/home')
                 ),
               ),
             ],
@@ -701,10 +741,11 @@ class AuthPageState extends State<AuthPage>
                   "By creating an account you acknowledge that you agree with our "
                       "Terms Of Service, Privacy Policy and Refund Policy",
                   style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      color: Colors.white,
-                      fontSize: 14.0,
-                      fontFamily: "WorkSansThin",
+                    decoration: TextDecoration.underline,
+                    color: Colors.white,
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w500,
+                    //fontFamily: "WorkSansThin",
                   ),
                   textAlign: TextAlign.center,
                 )
@@ -752,7 +793,7 @@ class AuthPageState extends State<AuthPage>
     // This is just a demo, so no actual login here.
     showInSnackBar("Login button pressed");
     //Navigator.pushNamed(context, '/home');
-    Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
+    //Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
   }
 }
 
