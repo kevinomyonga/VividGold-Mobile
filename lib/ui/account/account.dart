@@ -70,7 +70,8 @@ class AccountPageState extends State<AccountPage> {
                                   child: Image.network(
                                       'https://www.fakenamegenerator.com/images/sil-female.png'),
                                 ),
-                              )),
+                              )
+                          ),
 
                           new FlatButton(
                             onPressed: null,

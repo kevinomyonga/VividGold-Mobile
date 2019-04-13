@@ -13,16 +13,18 @@ import 'package:vividgold_app/ui/settings/settings.dart';
 
 final routes = <String, WidgetBuilder> {
   '/'               : (context) => HomePage(),
+  '/account'        : (context) => AccountPage(),
   '/auth'           : (context) => AuthPage(),
-  '/home'           : (context) => HomePage(),
-  '/items'          : (context) => ItemsPage(),
-  '/item_details'   : (context) => ItemDetailsPage(),
   '/cart'           : (context) => CartPage(),
   '/checkout'       : (context) => CheckoutPage(),
-  '/account'        : (context) => AccountPage(),
   '/help'           : (context) => HelpPage(),
+  '/home'           : (context) => HomePage(),
+  '/item_details'   : (context) => ItemDetailsPage(),
+  '/items'          : (context) => ItemsPage(),
+  '/notifications'  : (context) => ItemsPage(),
   '/orders'         : (context) => OrderHistoryPage(),
   '/payment'        : (context) => PaymentPage(),
+  '/search'         : (context) => SettingsPage(),
   '/settings'       : (context) => SettingsPage(),
 
   /*'/'               : (BuildContext context) => new HomePage(),

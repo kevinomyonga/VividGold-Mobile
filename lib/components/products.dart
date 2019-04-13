@@ -8,44 +8,44 @@ class Products extends StatefulWidget {
 class _ProductsState extends State<Products> {
   var product_list = [
     {
-      "name": "Blazer",
-      "picture": "images/products/blazer1.jpeg",
+      "name": "NBA Live",
+      "picture": "https://vividgold.co.ke/wp-content/uploads/2019/03/LIVE-18-203x250.jpg",
       "old_price": 120,
       "price": 85,
     },
     {
-      "name": "Red dress",
-      "picture": "images/products/dress1.jpeg",
+      "name": "Viking",
+      "picture": "https://vividgold.co.ke/wp-content/uploads/2019/02/viking.jpg",
       "old_price": 100,
       "price": 50,
     },
     {
-      "name": "Red dress1",
-      "picture": "images/products/dress1.jpeg",
+      "name": "PS4 Spidey",
+      "picture": "https://vividgold.co.ke/wp-content/uploads/2018/09/PS4-Console-Pro-1TB-Black-SpiderMan.jpg",
       "old_price": 100,
       "price": 50,
     },
     {
-      "name": "Red dress2",
-      "picture": "images/products/dress1.jpeg",
+      "name": "Headphones",
+      "picture": "https://vividgold.co.ke/wp-content/uploads/2019/01/500pro-headset.jpg",
       "old_price": 100,
       "price": 50,
     },
     {
-      "name": "Red dress3",
-      "picture": "images/products/dress1.jpeg",
+      "name": "N Switch",
+      "picture": "https://vividgold.co.ke/wp-content/uploads/2017/10/neon-switch.png",
       "old_price": 100,
       "price": 50,
     },
     {
-      "name": "Red dress4",
-      "picture": "images/products/dress1.jpeg",
+      "name": "PS4 Pad",
+      "picture": "https://vividgold.co.ke/wp-content/uploads/2017/10/ps4-red1.png",
       "old_price": 100,
       "price": 50,
     },
     {
-      "name": "Red dress5",
-      "picture": "images/products/dress1.jpeg",
+      "name": "XBOX Pad",
+      "picture": "https://vividgold.co.ke/wp-content/uploads/2017/10/xbox-1-white-slim.jpg",
       "old_price": 100,
       "price": 50,
     }
@@ -54,6 +54,8 @@ class _ProductsState extends State<Products> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+        shrinkWrap: true,
+        physics: ScrollPhysics(), // to disable GridView's scrolling
         itemCount: product_list.length,
         gridDelegate:
         new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
@@ -107,12 +109,12 @@ class Single_prod extends StatelessWidget {
                         style: TextStyle(
                             color: Colors.black54,
                             fontWeight: FontWeight.w800,
-                            decoration
-                                :TextDecoration.lineThrough),
+                            decoration: TextDecoration.lineThrough
+                        ),
                       ),
                     ),
                   ),
-                  child: Image.asset(
+                  child: Image.network(
                     prod_pricture,
                     fit: BoxFit.cover,
                   )

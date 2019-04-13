@@ -10,32 +10,32 @@ class HorizontalList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: <Widget>[
           Category(
-            image_location: 'images/cats/tshirt.png',
+            image_location: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Playstation_logo_colour.svg/1280px-Playstation_logo_colour.svg.png',
             image_caption: 'Playstation',
           ),
 
           Category(
-            image_location: 'images/cats/dress.png',
+            image_location: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Xbox_one_logo.svg/1024px-Xbox_one_logo.svg.png',
             image_caption: 'XBOX',
           ),
 
           Category(
-            image_location: 'images/cats/jeans.png',
+            image_location: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Nintendo_Logo_2017.png',
             image_caption: 'Nintendo',
           ),
 
           Category(
-            image_location: 'images/cats/formal.png',
+            image_location: 'http://www.sclance.com/pngs/pc-logo-png/pc_logo_png_996767.png',
             image_caption: 'PC',
           ),
 
           Category(
-            image_location: 'images/cats/informal.png',
+            image_location: 'http://www.dutyfree.ca/application/files/3114/8597/6357/preorder.png',
             image_caption: 'Pre Order',
           ),
 
           Category(
-            image_location: 'images/cats/informal.png',
+            image_location: 'http://www.pngmart.com/files/7/Trade-PNG-Transparent.png',
             image_caption: 'Trade In',
           ),
         ],
@@ -59,11 +59,23 @@ class Category extends StatelessWidget {
         child: Container(
           width: 100.0,
           child: ListTile(
-              title: Image.asset(
+              title: new Container(
+                //alignment: Alignment.topCenter,
+                  child: Container(
+                    width: 100.0,
+                    height: 80.0,
+                    //margin: const EdgeInsets.all(10.0),
+                    // padding: const EdgeInsets.all(3.0),
+                    child: Image.network(
+                        image_location
+                    ),
+                  )
+              ),
+              /*title: Image.asset(
                 image_location,
                 width: 100.0,
                 height: 80.0,
-              ),
+              ),*/
               subtitle: Container(
                 alignment: Alignment.topCenter,
                 child: Text(

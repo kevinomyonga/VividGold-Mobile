@@ -372,7 +372,7 @@ class AuthPageState extends State<AuthPage>
                         ),
                       ),
                     ),
-                    onPressed: () => _performLogin
+                    onPressed: _performLogin
                 ),
               ),
             ],
@@ -728,7 +728,7 @@ class AuthPageState extends State<AuthPage>
                         ),
                       ),
                     ),
-                    onPressed: () => Navigator.pushNamed(context, '/home')
+                    onPressed: _submit
                 ),
               ),
             ],
@@ -791,8 +791,7 @@ class AuthPageState extends State<AuthPage>
 
   void _performLogin() {
     // This is just a demo, so no actual login here.
-    showInSnackBar("Login button pressed");
-    //Navigator.pushNamed(context, '/home');
+    Navigator.pushNamed(context, '/home');
     //Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
   }
 }
