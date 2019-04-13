@@ -10,6 +10,7 @@ import 'package:vividgold_app/ui/items/items.dart';
 import 'package:vividgold_app/ui/auth/auth.dart';
 import 'package:vividgold_app/ui/orders/order_history.dart';
 import 'package:vividgold_app/ui/settings/settings.dart';
+import 'package:vividgold_app/utils/colors.dart' as ColorScheme;
 
 class HomePage extends StatefulWidget {
   @override
@@ -44,7 +45,8 @@ class _HomePageState extends State<HomePage> {
       appBar: new AppBar(
         elevation: 0.1,
         //backgroundColor: Colors.red,
-        title: Text('VividGold'),
+        //title: Text('VividGold'),
+        title: new Image.asset('images/vivid_gold_logo.png', fit: BoxFit.cover),
         actions: <Widget>[
           /*new IconButton(
               icon: Icon(
@@ -124,7 +126,6 @@ class _HomePageState extends State<HomePage> {
 
             InkWell(
               onTap: (){
-                //Navigator.push(context, MaterialPageRoute(builder: (context)=> AccountPage()));
                 Navigator.pushNamed(context, '/account');
               },
               child: ListTile(
@@ -185,7 +186,7 @@ class _HomePageState extends State<HomePage> {
 
             InkWell(
               onTap: (){
-                Navigator.pushNamed(context, '/auth');
+                Navigator.pushNamed(context, '/about');
               },
               child: ListTile(
                 title: Text('About'),
@@ -202,7 +203,30 @@ class _HomePageState extends State<HomePage> {
           image_carousel,
 
           new Container(
-            color: Theme.of(context).primaryColor,
+            //color: Theme.of(context).primaryColor,
+            decoration: new BoxDecoration(
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                  color: ColorScheme.Colors.loginGradientStart,
+                  offset: Offset(1.0, 6.0),
+                  blurRadius: 20.0,
+                ),
+                BoxShadow(
+                  color: ColorScheme.Colors.loginGradientEnd,
+                  offset: Offset(1.0, 6.0),
+                  blurRadius: 20.0,
+                ),
+              ],
+              gradient: new LinearGradient(
+                  colors: [
+                    ColorScheme.Colors.loginGradientEnd,
+                    ColorScheme.Colors.loginGradientStart
+                  ],
+                  begin: const FractionalOffset(0.2, 0.2),
+                  end: const FractionalOffset(1.0, 1.0),
+                  stops: [0.0, 1.0],
+                  tileMode: TileMode.clamp),
+            ),
             child: new Padding(
               padding: new EdgeInsets.all(8.0),
               child: new InkWell(
@@ -221,7 +245,11 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.grey,
                     ),
                     hintText: 'Search Our Store',
-                    hintStyle: TextStyle(color: Colors.grey),
+                    hintStyle: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.w600,
+                    ),
                     contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(32.0)),

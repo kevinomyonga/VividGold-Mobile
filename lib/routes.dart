@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:vividgold_app/ui/about.dart';
 import 'package:vividgold_app/ui/account/account.dart';
 import 'package:vividgold_app/ui/cart/cart.dart';
 import 'package:vividgold_app/ui/cart/checkout.dart';
+import 'package:vividgold_app/ui/notifications.dart';
+import 'package:vividgold_app/ui/search.dart';
 import 'package:vividgold_app/ui/settings/help.dart';
 import 'package:vividgold_app/ui/home/home.dart';
 import 'package:vividgold_app/ui/items/item_details.dart';
@@ -13,6 +16,7 @@ import 'package:vividgold_app/ui/settings/settings.dart';
 
 final routes = <String, WidgetBuilder> {
   '/'               : (context) => HomePage(),
+  '/about'          : (context) => AboutPage(),
   '/account'        : (context) => AccountPage(),
   '/auth'           : (context) => AuthPage(),
   '/cart'           : (context) => CartPage(),
@@ -21,10 +25,10 @@ final routes = <String, WidgetBuilder> {
   '/home'           : (context) => HomePage(),
   '/item_details'   : (context) => ItemDetailsPage(),
   '/items'          : (context) => ItemsPage(),
-  '/notifications'  : (context) => ItemsPage(),
+  '/notifications'  : (context) => NotificationsPage(),
   '/orders'         : (context) => OrderHistoryPage(),
   '/payment'        : (context) => PaymentPage(),
-  '/search'         : (context) => SettingsPage(),
+  '/search'         : (context) => SearchPage(),
   '/settings'       : (context) => SettingsPage(),
 
   /*'/'               : (BuildContext context) => new HomePage(),

@@ -55,7 +55,9 @@ class Category extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(2.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, '/items');
+        },
         child: Container(
           width: 100.0,
           child: ListTile(

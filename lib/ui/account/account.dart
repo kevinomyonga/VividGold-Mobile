@@ -31,6 +31,10 @@ class AccountPageState extends State<AccountPage> {
       Icons.do_not_disturb_on,
       //color: Colors.black38,
     );
+    Icon deactivate = new Icon(
+      Icons.close,
+      //color: Colors.black38,
+    );
 
     Icon menu = new Icon(
       Icons.more_vert,
@@ -502,9 +506,7 @@ class AccountPageState extends State<AccountPage> {
                         children: <Widget>[
                           new IconButton(
                               icon: logout,
-                              onPressed: (){
-                                _logout();
-                              }
+                              onPressed: _logout
                           ),
                           _verticalD(),
                           new Text(
@@ -524,7 +526,7 @@ class AccountPageState extends State<AccountPage> {
                       elevation: 1.0,
                       child: Row(
                         children: <Widget>[
-                          new IconButton(icon: logout, onPressed: _deactivate),
+                          new IconButton(icon: deactivate, onPressed: _deactivate),
                           _verticalD(),
                           new Text(
                             'Deactivate Account',

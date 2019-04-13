@@ -51,6 +51,7 @@ flutter:
   #  - images/a_dot_ham.jpeg
 
   assets:
+    - images/vivid_gold_logo.png
     - images/c1.jpg
     - images/m1.jpeg
     - images/w3.jpeg
