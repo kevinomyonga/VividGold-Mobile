@@ -65,7 +65,7 @@ class _SearchPageState extends State<SearchPage> {
                     size: 22.0,
                     color: Colors.grey,
                   ),
-                  hintText: 'Search Our Store',
+                  hintText: 'What are you looking for?',
                   hintStyle: TextStyle(
                     color: Colors.grey,
                     fontSize: 17.0,

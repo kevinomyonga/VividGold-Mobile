@@ -3,21 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vividgold_app/components/horizontal_listview.dart';
 import 'package:vividgold_app/components/products.dart';
-import 'package:vividgold_app/ui/account/account.dart';
-import 'package:vividgold_app/ui/cart/cart.dart';
-import 'package:vividgold_app/ui/settings/help.dart';
-import 'package:vividgold_app/ui/items/items.dart';
-import 'package:vividgold_app/ui/auth/auth.dart';
-import 'package:vividgold_app/ui/orders/order_history.dart';
-import 'package:vividgold_app/ui/settings/settings.dart';
 import 'package:vividgold_app/utils/colors.dart' as ColorScheme;
+import 'package:vividgold_app/utils/constants.dart';
 
 class HomePage extends StatefulWidget {
+
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+
+  List list = ['12', '11'];
+
   @override
   Widget build(BuildContext context) {
     Widget image_carousel = new Container(
@@ -48,20 +46,56 @@ class _HomePageState extends State<HomePage> {
         //title: Text('VividGold'),
         title: new Image.asset('images/vivid_gold_logo.png', fit: BoxFit.cover),
         actions: <Widget>[
-          /*new IconButton(
-              icon: Icon(
-                Icons.search,
-                //color: Colors.white,
+          new Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: new Container(
+              height: 150.0,
+              width: 30.0,
+              child: new GestureDetector(
+                onTap: () {
+                  /*Navigator.of(context).push(
+                    new MaterialPageRoute(
+                    builder:(BuildContext context) =>
+                    new CartItemsScreen()
+                    )
+                    );*/
+                },
+                child: Stack(
+                  children: <Widget>[
+                    new IconButton(
+                        icon: new Icon(
+                          Icons.shopping_cart,
+                        ),
+                        onPressed: (){
+                          //Navigator.push(context, MaterialPageRoute(builder: (context)=> CartPage()));
+                          Navigator.pushNamed(context, Constants.ROUTE_CART);
+                        }
+                    ),
+                    list.length == 0
+                        ? new Container()
+                        : new Positioned(
+                        child: new Stack(
+                          children: <Widget>[
+                            new Icon(Icons.brightness_1,
+                                size: 20.0, color: Colors.green.shade500),
+                            new Positioned(
+                                top: 4.0,
+                                right: 5.5,
+                                child: new Center(
+                                  child: new Text(
+                                    list.length.toString(),
+                                    style: new TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 11.0,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                )),
+                          ],
+                        )),
+                  ],
+                ),
               ),
-              onPressed: () {}),*/
-          new IconButton(
-              icon: Icon(
-                Icons.shopping_cart,
-                //color: Colors.white,
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/cart');
-              }
+            ),
           )
         ],
       ),
@@ -79,11 +113,6 @@ class _HomePageState extends State<HomePage> {
                       blurRadius: 3.0,
                       color: Color.fromARGB(0, 0, 0, 0),
                     ),
-                    /*Shadow(
-                      offset: Offset(10.0, 10.0),
-                      blurRadius: 8.0,
-                      color: Color.fromARGB(125, 0, 0, 255),
-                    ),*/
                   ],
                 ),
               ),
@@ -126,7 +155,7 @@ class _HomePageState extends State<HomePage> {
 
             InkWell(
               onTap: (){
-                Navigator.pushNamed(context, '/account');
+                Navigator.pushNamed(context, Constants.ROUTE_ACCOUNT);
               },
               child: ListTile(
                 title: Text('My account'),
@@ -136,7 +165,7 @@ class _HomePageState extends State<HomePage> {
 
             InkWell(
               onTap: (){
-                Navigator.pushNamed(context, '/orders');
+                Navigator.pushNamed(context, Constants.ROUTE_ORDERS);
               },
               child: ListTile(
                 title: Text('My Orders'),
@@ -146,7 +175,7 @@ class _HomePageState extends State<HomePage> {
 
             InkWell(
               onTap: (){
-                Navigator.pushNamed(context, '/notifications');
+                Navigator.pushNamed(context, Constants.ROUTE_NOTIFICATIONS);
               },
               child: ListTile(
                 title: Text('Notifications'),
@@ -164,7 +193,7 @@ class _HomePageState extends State<HomePage> {
 
             InkWell(
               onTap: (){
-                Navigator.pushNamed(context, '/items');
+                Navigator.pushNamed(context, Constants.ROUTE_PRODUCTS);
               },
               child: ListTile(
                 title: Text('Favourites'),
@@ -176,7 +205,7 @@ class _HomePageState extends State<HomePage> {
 
             InkWell(
               onTap: (){
-                Navigator.pushNamed(context, '/settings');
+                Navigator.pushNamed(context, Constants.ROUTE_SETTINGS);
               },
               child: ListTile(
                 title: Text('Settings'),
@@ -186,7 +215,7 @@ class _HomePageState extends State<HomePage> {
 
             InkWell(
               onTap: (){
-                Navigator.pushNamed(context, '/about');
+                Navigator.pushNamed(context, Constants.ROUTE_ABOUT);
               },
               child: ListTile(
                 title: Text('About'),
@@ -231,7 +260,7 @@ class _HomePageState extends State<HomePage> {
               padding: new EdgeInsets.all(8.0),
               child: new InkWell(
                 onTap: (){
-                  Navigator.pushNamed(context, '/search');
+                  Navigator.pushNamed(context, Constants.ROUTE_SEARCH);
                 },
                 child: new TextField(
                   enabled: false,

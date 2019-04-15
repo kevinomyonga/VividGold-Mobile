@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/ui/cart/checkout.dart';
-import 'package:vividgold_app/ui/items/items.dart';
+import 'package:vividgold_app/ui/products/products_list.dart';
 
 enum DialogDemoAction {
   cancel,
@@ -55,7 +55,7 @@ class CartPageState extends State<CartPage> {
         itemQun: 'Qty:1',
         itemPrice: '\₹ 50'),
   ];
-  String toolbarname = 'My Cart (4)';
+  String toolbarname = 'My Cart';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   IconData _backIcon() {
@@ -127,41 +127,6 @@ class CartPageState extends State<CartPage> {
           },
         ),
         title: Text(toolbarname),
-        //backgroundColor: Colors.white,
-        actions: <Widget>[
-          new Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: new Container(
-              height: 150.0,
-              width: 30.0,
-              child: new GestureDetector(
-                onTap: () {
-                  /*Navigator.of(context).push(
-                  new MaterialPageRoute(
-                      builder:(BuildContext context) =>
-                      new CartItemsScreen()
-                  )
-              );*/
-                },
-                child: Stack(
-                  children: <Widget>[
-                    new IconButton(
-                        icon: new Icon(
-                          Icons.home,
-                          //color: Colors.black,
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ItemsPage()));
-                        }),
-                  ],
-                ),
-              ),
-            ),
-          )
-        ],
       ),
       body: Column(
         children: <Widget>[

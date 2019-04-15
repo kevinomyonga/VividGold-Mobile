@@ -1,26 +1,215 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_range_slider/flutter_range_slider.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:vividgold_app/scoped_model/product_scoped_model.dart';
 import 'package:vividgold_app/ui/cart/cart.dart';
-import 'package:vividgold_app/ui/items/item_details.dart';
+import 'package:vividgold_app/ui/products/product_details.dart';
+import 'package:vividgold_app/utils/constants.dart';
+import 'package:vividgold_app/widgets/products_list_item.dart';
 
-class ItemsPage extends StatefulWidget {
-  final String toolbarname;
+class ProductsListPage extends StatelessWidget {
 
-  ItemsPage({Key key, this.toolbarname}) : super(key: key);
+  List list = ['12', '11'];
 
   @override
-  State<StatefulWidget> createState() => ItemsPageState(toolbarname);
+  Widget build(BuildContext context) {
+    ProductScopedModel productModel = ProductScopedModel();
+    productModel.parseProductsFromResponse(95, 1);
+
+    return new ScopedModel<ProductScopedModel>(
+      model: productModel,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Product List"),
+          actions: <Widget>[
+            new Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: new Container(
+                height: 150.0,
+                width: 30.0,
+                child: new GestureDetector(
+                  onTap: () {
+                    /*Navigator.of(context).push(
+                    new MaterialPageRoute(
+                    builder:(BuildContext context) =>
+                    new CartItemsScreen()
+                    )
+                    );*/
+                  },
+                  child: Stack(
+                    children: <Widget>[
+                      new IconButton(
+                          icon: new Icon(
+                            Icons.shopping_cart,
+                          ),
+                          onPressed: (){
+                            //Navigator.push(context, MaterialPageRoute(builder: (context)=> CartPage()));
+                            Navigator.pushNamed(context, Constants.ROUTE_CART);
+                          }
+                      ),
+                      list.length == 0
+                          ? new Container()
+                          : new Positioned(
+                          child: new Stack(
+                            children: <Widget>[
+                              new Icon(Icons.brightness_1,
+                                  size: 20.0, color: Colors.green.shade500),
+                              new Positioned(
+                                  top: 4.0,
+                                  right: 5.5,
+                                  child: new Center(
+                                    child: new Text(
+                                      list.length.toString(),
+                                      style: new TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 11.0,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  )),
+                            ],
+                          )),
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+        body: ProductsListPageBody(),
+      ),
+    );
+  }
 }
 
-class Item {
-  final String itemname;
-  final String imagename;
-  final String itmprice;
+class ProductsListPageBody extends StatelessWidget {
 
-  Item({this.itemname, this.imagename, this.itmprice});
+  BuildContext context;
+  ProductScopedModel model;
+
+  int pageIndex = 1;
+
+  @override
+  Widget build(BuildContext context) {
+    this.context = context;
+
+    return ScopedModelDescendant<ProductScopedModel>(
+      builder: (context, child, model) {
+        this.model = model;
+        return model.isLoading
+            ? _buildCircularProgressIndicator()
+            : _buildListView();
+      },
+    );
+  }
+
+  _buildCircularProgressIndicator() {
+    return Center(
+      child: CircularProgressIndicator(),
+    );
+  }
+
+  _buildListView() {
+    Size screenSize = MediaQuery.of(context).size;
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: model.getProductsCount() == 0
+          ? Center(child: Text("No products available."))
+          : ListView.builder(
+        itemCount: model.getProductsCount() + 2,
+        itemBuilder: (context, index) {
+          if (index == model.getProductsCount()) {
+            if (model.hasMoreProducts) {
+              pageIndex++;
+              model.parseProductsFromResponse(95, pageIndex);
+              return Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: Center(child: CircularProgressIndicator()),
+              );
+            }
+            return Container();
+          } else if (index == 0) {
+            //0th index would contain filter icons
+            return _buildFilterWidgets(screenSize);
+          } else if (index % 2 == 0) {
+            //2nd, 4th, 6th.. index would contain nothing since this would
+            //be handled by the odd indexes where the row contains 2 items
+            return Container();
+          } else {
+            //1st, 3rd, 5th.. index would contain a row containing 2 products
+
+            if (index > model.getProductsCount() - 1) {
+              return Container();
+            }
+
+            return ProductsListItem(
+              product1: model.productsList[index - 1],
+              product2: model.productsList[index],
+            );
+          }
+        },
+      ),
+    );
+  }
+
+  _buildFilterWidgets(Size screenSize) {
+    return Container(
+      margin: const EdgeInsets.all(12.0),
+      width: screenSize.width,
+      child: Card(
+        elevation: 4.0,
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 12.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              _buildFilterButton("SORT"),
+              Container(
+                color: Colors.black,
+                width: 2.0,
+                height: 24.0,
+              ),
+              _buildFilterButton("REFINE"),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  _buildFilterButton(String title) {
+    return InkWell(
+      onTap: () {
+        print(title);
+      },
+      child: Row(
+        children: <Widget>[
+          Icon(
+            Icons.arrow_drop_down,
+            //color: Colors.black,
+          ),
+          SizedBox(
+            width: 2.0,
+          ),
+          Text(title),
+        ],
+      ),
+    );
+  }
 }
 
-class ItemsPageState extends State<ItemsPage> {
+/*class ProductsListPage extends StatefulWidget {
+
+  final String toolbarname;
+
+  ProductsListPage({Key key, this.toolbarname}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => ProductsListPageState(toolbarname);
+}
+
+class ProductsListPageState extends State<ProductsListPage> {
   List list = ['12', '11'];
   bool checkboxValueA = true;
   bool checkboxValueB = false;
@@ -50,7 +239,7 @@ class ItemsPageState extends State<ItemsPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String toolbarname;
 
-  ItemsPageState(this.toolbarname);
+  ProductsListPageState(this.toolbarname);
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +258,7 @@ class ItemsPageState extends State<ItemsPage> {
 
     var size = MediaQuery.of(context).size;
 
-    /*24 is for notification bar on Android*/
+    *//*24 is for notification bar on Android*//*
     final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
     final double itemWidth = size.width / 2;
 
@@ -116,12 +305,12 @@ class ItemsPageState extends State<ItemsPage> {
               width: 30.0,
               child: new GestureDetector(
                 onTap: () {
-                  /*Navigator.of(context).push(
+                  *//*Navigator.of(context).push(
                   new MaterialPageRoute(
                       builder:(BuildContext context) =>
                       new CartItemsScreen()
                   )
-              );*/
+              );*//*
                 },
                 child: Stack(
                   children: <Widget>[
@@ -185,7 +374,7 @@ class ItemsPageState extends State<ItemsPage> {
         ],
       ),
 
-      /* return new GestureDetector(
+      *//* return new GestureDetector(
                   onTap: (){},
                   child: Container(
                     height: 360.0,
@@ -217,7 +406,7 @@ class ItemsPageState extends State<ItemsPage> {
                       ),
                     ),
                   ),
-                );*/
+                );*//*
     );
   }
 
@@ -642,7 +831,7 @@ class ItemsPageState extends State<ItemsPage> {
                   )
               ),
 
-              /*  Container(
+              *//*  Container(
           padding: const EdgeInsets.only(top: 50.0, left: 10.0, right: 10.0),
           child: new Column(
               children: <Widget>[]
@@ -684,7 +873,7 @@ class ItemsPageState extends State<ItemsPage> {
               // each one having some specific customizations
               //
                 ..addAll(_buildRangeSliders())),
-        ),*/
+        ),*//*
 
               _verticalDivider(),
               Container(
@@ -1255,7 +1444,7 @@ class TravelDestinationItem extends StatelessWidget {
             height: height,
             child: GestureDetector(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> ItemDetailsPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductDetailsPage()));
               },
 
               child: Card(
@@ -1334,7 +1523,7 @@ class TravelDestinationItem extends StatelessWidget {
                           child: const Text('Add'),
                           textColor: Colors.amber.shade500,
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> ItemDetailsPage()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductDetailsPage()));
                           },
                           shape: new OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30.0),
@@ -1353,7 +1542,7 @@ class TravelDestinationItem extends StatelessWidget {
 
 
 
-/* List<RangeSliderData> _rangeSliderDefinitions() {
+*//* List<RangeSliderData> _rangeSliderDefinitions() {
     return <RangeSliderData>[
       RangeSliderData(
           min: 0.0, max: 100.0, lowerValue: 10.0, upperValue: 100.0),
@@ -1390,7 +1579,7 @@ class TravelDestinationItem extends StatelessWidget {
           thumbColor: Colors.grey,
           valueIndicatorColor: Colors.grey),
     ];
-  }*/
+  }*//*
 }
 
 // ---------------------------------------------------
@@ -1506,4 +1695,4 @@ class RangeSliderData {
       ),
     );
   }
-}
+}*/

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vividgold_app/utils/bubble_indication_painter.dart';
 import 'package:vividgold_app/utils/colors.dart' as ColorScheme;
+import 'package:vividgold_app/utils/constants.dart';
 
 class AuthPage extends StatefulWidget {
 
@@ -790,7 +791,7 @@ class AuthPageState extends State<AuthPage>
 
   void _performLogin() {
     // This is just a demo, so no actual login here.
-    Navigator.pushNamed(context, '/home');
+    Navigator.pushNamed(context, Constants.ROUTE_HOME);
     //Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
   }
 }

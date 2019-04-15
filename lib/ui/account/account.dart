@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vividgold_app/utils/constants.dart';
 
 class AccountPage extends StatefulWidget {
   @override
@@ -559,7 +560,7 @@ class AccountPageState extends State<AccountPage> {
   void _clearHistory() {}
 
   void _logout() {
-    Navigator.pushNamed(context, '/auth');
+    Navigator.pushNamed(context, Constants.ROUTE_AUTH);
   }
 
   void _deactivate() {}
