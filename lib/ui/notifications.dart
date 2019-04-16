@@ -6,23 +6,28 @@ class NotificationsPage extends StatefulWidget {
 }
 
 class _NotificationsPageState extends State<NotificationsPage> {
+
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: new AppBar(
-        elevation: 0.1,
-        title: Text('Notifications'),
-      ),
+        appBar: new AppBar(
+          elevation: 0.1,
+          title: Text('Notifications'),
+        ),
 
-      body: new ListView(
-        children: <Widget>[
+        body: _buildNotificationsPage(context)
+    );
+  }
 
-          //padding widget
-          new Padding(padding: const EdgeInsets.all(20.0),
-            child: new Text('You Have No Notifications. Come Back Later'),),
-        ],
-      ),
+  _buildNotificationsPage(BuildContext context) {
+    return new ListView(
+      children: <Widget>[
+
+        //padding widget
+        new Padding(padding: const EdgeInsets.all(20.0),
+          child: new Text('You Have No Notifications. Come Back Later'),),
+      ],
     );
   }
 }

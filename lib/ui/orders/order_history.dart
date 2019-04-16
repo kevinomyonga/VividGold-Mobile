@@ -1,34 +1,38 @@
 import 'package:flutter/material.dart';
 
-class OrderHistoryPage extends StatefulWidget {
-  final String toolbarname;
+class OrdersPage extends StatefulWidget {
 
-  OrderHistoryPage({Key key, this.toolbarname}) : super(key: key);
+  final String toolbarName;
+
+  OrdersPage({Key key, this.toolbarName}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => OrderHistoryPageState(toolbarname);
+  State<StatefulWidget> createState() => OrdersPageState(toolbarName);
 }
 
 class Item {
   final String name;
   final String deliveryTime;
-  final String oderId;
-  final String oderAmount;
+  final String orderId;
+  final String orderAmount;
   final String paymentType;
   final String address;
-  final String cancelOder;
+  final String cancelOrder;
 
   Item(
-      {this.name,
+      {
+        this.name,
         this.deliveryTime,
-        this.oderId,
-        this.oderAmount,
+        this.orderId,
+        this.orderAmount,
         this.paymentType,
         this.address,
-        this.cancelOder});
+        this.cancelOrder}
+      );
 }
 
-class OrderHistoryPageState extends State<OrderHistoryPage> {
+class OrdersPageState extends State<OrdersPage> {
+
   List list = ['12', '11'];
   bool checkboxValueA = true;
   bool checkboxValueB = false;
@@ -38,54 +42,53 @@ class OrderHistoryPageState extends State<OrderHistoryPage> {
     Item(
         name: 'Jhone Miller',
         deliveryTime: '26-5-2106',
-        oderId: '#CN23656',
-        oderAmount: '\₹ 650',
+        orderId: '#CN23656',
+        orderAmount: '\₹ 650',
         paymentType: 'online',
         address: '1338 Karen Lane,Louisville,Kentucky',
-        cancelOder: 'Cancel Order'),
+        cancelOrder: 'Cancel Order'),
     Item(
         name: 'Gautam Dass',
         deliveryTime: '10-8-2106',
-        oderId: '#CN33568',
-        oderAmount: '\₹ 900',
+        orderId: '#CN33568',
+        orderAmount: '\₹ 900',
         paymentType: 'COD',
         address: '319 Alexander Drive,Ponder,Texas',
-        cancelOder: 'View Receipt'),
+        cancelOrder: 'View Receipt'),
     Item(
         name: 'Jhone Hill',
         deliveryTime: '23-3-2107',
-        oderId: '#CN75695',
-        oderAmount: '\₹ 250',
+        orderId: '#CN75695',
+        orderAmount: '\₹ 250',
         paymentType: 'online',
         address: '92 Jarvis Street,Buffalo,New York',
-        cancelOder: 'View Receipt'),
+        cancelOrder: 'View Receipt'),
     Item(
         name: 'Miller Root',
         deliveryTime: '10-5-2107',
-        oderId: '#CN45238',
-        oderAmount: '\₹ 500',
+        orderId: '#CN45238',
+        orderAmount: '\₹ 500',
         paymentType: 'Bhim/upi',
         address: '103 Romrog Way,Grand Island,Nebraska',
-        cancelOder: 'Cancel Order'),
+        cancelOrder: 'Cancel Order'),
     Item(
         name: 'Lag Gilli',
         deliveryTime: '26-10-2107',
-        oderId: '#CN69532',
-        oderAmount: '\₹ 1120',
+        orderId: '#CN69532',
+        orderAmount: '\₹ 1120',
         paymentType: 'online',
         address: '8 Clarksburg Park,Marble Canyon,Arizona',
-        cancelOder: 'View Receipt'),
+        cancelOrder: 'View Receipt'),
   ];
 
-  // String toolbarname = 'Fruiys & Vegetables';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  String toolbarname;
+  String toolbarName;
 
-  OrderHistoryPageState(this.toolbarname);
+  OrdersPageState(this.toolbarName);
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+
     IconData _backIcon() {
       switch (Theme.of(context).platform) {
         case TargetPlatform.android:
@@ -120,11 +123,18 @@ class OrderHistoryPageState extends State<OrderHistoryPage> {
           title: Text('My Orders'),
           //backgroundColor: Colors.white,
         ),
-        body: ListView.builder(
-            itemCount: itemList.length,
-            itemBuilder: (BuildContext cont, int ind) {
-              return SafeArea(
-                  child: Column(children: <Widget>[
+        body: _buildOrdersPage(context)
+    );
+  }
+
+  _buildOrdersPage(context) {
+
+    return ListView.builder(
+        itemCount: itemList.length,
+        itemBuilder: (BuildContext cont, int ind) {
+          return SafeArea(
+              child: Column(
+                  children: <Widget>[
                     Container(
                         margin: EdgeInsets.only(left: 5.0, right: 5.0, bottom: 5.0),
                         color:Colors.black12,
@@ -160,8 +170,8 @@ class OrderHistoryPageState extends State<OrderHistoryPage> {
                                             'To Deliver On :' +
                                                 itemList[ind].deliveryTime,
                                             style: TextStyle(
-                                                fontSize: 13.0,
-                                                //color: Colors.black54
+                                              fontSize: 13.0,
+                                              //color: Colors.black54
                                             ),
                                           ),
                                         ),
@@ -184,17 +194,17 @@ class OrderHistoryPageState extends State<OrderHistoryPage> {
                                                     Text(
                                                       'Order Id',
                                                       style: TextStyle(
-                                                          fontSize: 13.0,
-                                                          //color: Colors.black54
+                                                        fontSize: 13.0,
+                                                        //color: Colors.black54
                                                       ),
                                                     ),
                                                     Container(
                                                       margin: EdgeInsets.only(top: 3.0),
                                                       child: Text(
-                                                        itemList[ind].oderId,
+                                                        itemList[ind].orderId,
                                                         style: TextStyle(
-                                                            fontSize: 15.0,
-                                                            //color: Colors.black87
+                                                          fontSize: 15.0,
+                                                          //color: Colors.black87
                                                         ),
                                                       ),
                                                     )
@@ -209,17 +219,17 @@ class OrderHistoryPageState extends State<OrderHistoryPage> {
                                                     Text(
                                                       'Order Amount',
                                                       style: TextStyle(
-                                                          fontSize: 13.0,
-                                                          //color: Colors.black54
+                                                        fontSize: 13.0,
+                                                        //color: Colors.black54
                                                       ),
                                                     ),
                                                     Container(
                                                       margin: EdgeInsets.only(top: 3.0),
                                                       child: Text(
-                                                        itemList[ind].oderAmount,
+                                                        itemList[ind].orderAmount,
                                                         style: TextStyle(
-                                                            fontSize: 15.0,
-                                                            //color: Colors.black87
+                                                          fontSize: 15.0,
+                                                          //color: Colors.black87
                                                         ),
                                                       ),
                                                     ),
@@ -234,8 +244,8 @@ class OrderHistoryPageState extends State<OrderHistoryPage> {
                                                     Text(
                                                       'Payment Type',
                                                       style: TextStyle(
-                                                          fontSize: 13.0,
-                                                          //color: Colors.black54
+                                                        fontSize: 13.0,
+                                                        //color: Colors.black54
                                                       ),
                                                     ),
                                                     Container(
@@ -243,8 +253,8 @@ class OrderHistoryPageState extends State<OrderHistoryPage> {
                                                       child: Text(
                                                         itemList[ind].paymentType,
                                                         style: TextStyle(
-                                                            fontSize: 15.0,
-                                                            //color: Colors.black87
+                                                          fontSize: 15.0,
+                                                          //color: Colors.black87
                                                         ),
                                                       ),
                                                     )
@@ -267,8 +277,8 @@ class OrderHistoryPageState extends State<OrderHistoryPage> {
                                             ),
                                             Text(itemList[ind].address,
                                                 style: TextStyle(
-                                                    fontSize: 13.0,
-                                                    //color: Colors.black54
+                                                  fontSize: 13.0,
+                                                  //color: Colors.black54
                                                 )
                                             ),
                                           ],
@@ -278,12 +288,19 @@ class OrderHistoryPageState extends State<OrderHistoryPage> {
                                           color: Colors.amber.shade500,
                                         ),
                                         Container(
-                                            child:_status(itemList[ind].cancelOder)
+                                            child:_status(itemList[ind].cancelOrder)
                                         )
                                       ],
-                                    ))))),
-                  ]));
-            }));
+                                    )
+                                )
+                            )
+                        )
+                    ),
+                  ]
+              )
+          );
+        }
+    );
   }
 
   _verticalDivider() => Container(
@@ -317,7 +334,8 @@ class OrderHistoryPageState extends State<OrderHistoryPage> {
       return Text("Waiting");
     }
   }
-  erticalD() => Container(
+
+  _verticalD() => Container(
     margin: EdgeInsets.only(left: 10.0, right: 0.0, top: 0.0, bottom: 0.0),
   );
 

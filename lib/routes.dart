@@ -3,6 +3,7 @@ import 'package:vividgold_app/ui/about.dart';
 import 'package:vividgold_app/ui/account/account.dart';
 import 'package:vividgold_app/ui/cart/cart.dart';
 import 'package:vividgold_app/ui/cart/checkout.dart';
+import 'package:vividgold_app/ui/categories.dart';
 import 'package:vividgold_app/ui/notifications.dart';
 import 'package:vividgold_app/ui/search.dart';
 import 'package:vividgold_app/ui/settings/help.dart';
@@ -22,13 +23,14 @@ final routes = <String, WidgetBuilder> {
   Constants.ROUTE_ACCOUNT           : (context) => AccountPage(),
   Constants.ROUTE_AUTH              : (context) => AuthPage(),
   Constants.ROUTE_CART              : (context) => CartPage(),
+  Constants.ROUTE_CATEGORIES        : (context) => CategoriesPage(),
   Constants.ROUTE_CHECKOUT          : (context) => CheckoutPage(),
   Constants.ROUTE_HELP              : (context) => HelpPage(),
   Constants.ROUTE_HOME              : (context) => HomePage(),
   Constants.ROUTE_PRODUCT_DETAILS   : (context) => ProductDetailsPage(),
   Constants.ROUTE_PRODUCTS          : (context) => ProductsListPage(),
   Constants.ROUTE_NOTIFICATIONS     : (context) => NotificationsPage(),
-  Constants.ROUTE_ORDERS            : (context) => OrderHistoryPage(),
+  Constants.ROUTE_ORDERS            : (context) => OrdersPage(),
   Constants.ROUTE_PAYMENT           : (context) => PaymentPage(),
   Constants.ROUTE_SEARCH            : (context) => SearchPage(),
   Constants.ROUTE_SETTINGS          : (context) => SettingsPage(),

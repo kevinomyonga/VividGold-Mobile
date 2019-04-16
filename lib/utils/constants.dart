@@ -9,6 +9,7 @@ class Constants {
   static const String ROUTE_ACCOUNT         = '/account';
   static const String ROUTE_AUTH            = '/auth';
   static const String ROUTE_CART            = '/cart';
+  static const String ROUTE_CATEGORIES      = '/categories';
   static const String ROUTE_CHECKOUT        = '/checkout';
   static const String ROUTE_HELP            = '/help';
   static const String ROUTE_HOME            = '/home';

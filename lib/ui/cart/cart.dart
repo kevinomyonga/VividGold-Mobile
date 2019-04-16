@@ -77,40 +77,7 @@ class CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     // TODO: implement build
 
-    IconData _add_icon() {
-      switch (Theme.of(context).platform) {
-        case TargetPlatform.android:
-        case TargetPlatform.fuchsia:
-          return Icons.add_circle;
-        case TargetPlatform.iOS:
-          return Icons.add_circle;
-      }
-      assert(false);
-      return null;
-    }
-    IconData _sub_icon() {
-      switch (Theme.of(context).platform) {
-        case TargetPlatform.android:
-        case TargetPlatform.fuchsia:
-          return Icons.remove_circle;
-        case TargetPlatform.iOS:
-          return Icons.remove_circle;
-      }
-      assert(false);
-      return null;
-    }
-    double width = MediaQuery
-        .of(context)
-        .size
-        .width;
-    double height = MediaQuery
-        .of(context)
-        .size
-        .height;
 
-    double dd = width * 0.77;
-    double hh = height - 215.0;
-    int item = 0;
     final ThemeData theme = Theme.of(context);
     final TextStyle dialogTextStyle = theme.textTheme.subhead.copyWith(
         color: theme.textTheme.caption.color);
@@ -128,284 +95,326 @@ class CartPageState extends State<CartPage> {
         ),
         title: Text(toolbarname),
       ),
-      body: Column(
-        children: <Widget>[
-          Container(
-              margin: EdgeInsets.only(left: 0.0, right: 0.0, bottom: 10.0),
-              child: Card(
-                  child: Container(
-                      padding:
-                      const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-                      child: GestureDetector(
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              // three line description
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    'Pincode : ',
+      body: _buildCartPage(context),
+    );
+  }
+
+  _buildCartPage(BuildContext context) {
+
+    IconData _add_icon() {
+      switch (Theme.of(context).platform) {
+        case TargetPlatform.android:
+        case TargetPlatform.fuchsia:
+          return Icons.add_circle;
+        case TargetPlatform.iOS:
+          return Icons.add_circle;
+      }
+      assert(false);
+      return null;
+    }
+
+    IconData _sub_icon() {
+      switch (Theme.of(context).platform) {
+        case TargetPlatform.android:
+        case TargetPlatform.fuchsia:
+          return Icons.remove_circle;
+        case TargetPlatform.iOS:
+          return Icons.remove_circle;
+      }
+      assert(false);
+      return null;
+    }
+
+    double width = MediaQuery
+        .of(context)
+        .size
+        .width;
+    double height = MediaQuery
+        .of(context)
+        .size
+        .height;
+
+    double dd = width * 0.77;
+    double hh = height - 215.0;
+    int item = 0;
+
+    return Column(
+      children: <Widget>[
+        Container(
+            margin: EdgeInsets.only(left: 0.0, right: 0.0, bottom: 10.0),
+            child: Card(
+                child: Container(
+                    padding:
+                    const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                    child: GestureDetector(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            // three line description
+                            Row(
+                              children: <Widget>[
+                                Text(
+                                  'Pincode : ',
+                                  style: TextStyle(
+                                    fontSize: 17.0,
+                                    fontStyle: FontStyle.normal,
+                                    //color: Colors.black54,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(right: 2.0),
+                                ),
+                                GestureDetector(
+                                  child: Text(
+                                    '383310',
                                     style: TextStyle(
-                                      fontSize: 17.0,
-                                      fontStyle: FontStyle.normal,
-                                      //color: Colors.black54,
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.bold,
+                                      decoration: TextDecoration.underline,
+                                      //color: Colors.black
                                     ),
                                   ),
-                                  Container(
-                                    margin: EdgeInsets.only(right: 2.0),
-                                  ),
-                                  GestureDetector(
-                                    child: Text(
-                                      '383310',
-                                      style: TextStyle(
-                                          fontSize: 18.0,
-                                          fontWeight: FontWeight.bold,
-                                          decoration: TextDecoration.underline,
-                                          //color: Colors.black
-                                      ),
-                                    ),
-                                    onTap: () {
-                                      showDemoDialog<DialogDemoAction>(
-                                          context: context,
-                                          child: AlertDialog(
-                                              title: const Text(
-                                                  'Location/Area Pincode'),
-                                              content:SizedBox(
-                                                height: 24.0,
-                                                child: TextFormField(
-                                                    keyboardType: TextInputType.emailAddress, // Use email input type for emails.
-                                                    decoration: new InputDecoration(
-                                                        hintText: '******',
-                                                        labelText: 'Pincode'
-                                                    ),
-                                                    //  validator: this._validateEmail,
-                                                    onSaved: (String value) {
-                                                      this.pincode = value;
-                                                    }
-                                                ),),
+                                  onTap: () {
+                                    showDemoDialog<DialogDemoAction>(
+                                        context: context,
+                                        child: AlertDialog(
+                                            title: const Text(
+                                                'Location/Area Pincode'),
+                                            content:SizedBox(
+                                              height: 24.0,
+                                              child: TextFormField(
+                                                  keyboardType: TextInputType.emailAddress, // Use email input type for emails.
+                                                  decoration: new InputDecoration(
+                                                      hintText: '******',
+                                                      labelText: 'Pincode'
+                                                  ),
+                                                  //  validator: this._validateEmail,
+                                                  onSaved: (String value) {
+                                                    this.pincode = value;
+                                                  }
+                                              ),),
 
-                                              actions: <Widget>[
-                                                FlatButton(
-                                                    child: const Text(
-                                                        'CANCEL'),
-                                                    onPressed: () {
-                                                      Navigator.pop(context,
-                                                          DialogDemoAction
-                                                              .disagree);
-                                                    }
-                                                ),
-                                                FlatButton(
-                                                    child: const Text('SAVE'),
-                                                    onPressed: () {
-                                                      Navigator.pop(context,
-                                                          DialogDemoAction
-                                                              .agree);
-                                                    }
-                                                )
-                                              ]
-                                          )
-                                      );
-                                    },
-                                  )
+                                            actions: <Widget>[
+                                              FlatButton(
+                                                  child: const Text(
+                                                      'CANCEL'),
+                                                  onPressed: () {
+                                                    Navigator.pop(context,
+                                                        DialogDemoAction
+                                                            .disagree);
+                                                  }
+                                              ),
+                                              FlatButton(
+                                                  child: const Text('SAVE'),
+                                                  onPressed: () {
+                                                    Navigator.pop(context,
+                                                        DialogDemoAction
+                                                            .agree);
+                                                  }
+                                              )
+                                            ]
+                                        )
+                                    );
+                                  },
+                                )
 
-                                ],
-                              ),
-                            ],
-                          ))))),
-          Container(
-              margin: EdgeInsets.only(
-                  left: 12.0, top: 5.0, right: 12.0, bottom: 10.0),
-              height: hh,
-              child: ListView.builder(
-                  itemCount: itemList.length,
-                  itemBuilder: (BuildContext cont, int ind) {
-                    return SafeArea(
-                        child: Container(
-                          alignment: Alignment.topLeft,
-                          child: Column(
-                            children: <Widget>[
-                              Container(
+                              ],
+                            ),
+                          ],
+                        ))))),
+        Container(
+            margin: EdgeInsets.only(
+                left: 12.0, top: 5.0, right: 12.0, bottom: 10.0),
+            height: hh,
+            child: ListView.builder(
+                itemCount: itemList.length,
+                itemBuilder: (BuildContext cont, int ind) {
+                  return SafeArea(
+                      child: Container(
+                        alignment: Alignment.topLeft,
+                        child: Column(
+                          children: <Widget>[
+                            Container(
 
-                                  alignment: Alignment.topLeft,
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
+                                alignment: Alignment.topLeft,
+                                child: Row(
+                                  children: <Widget>[
+                                    Container(
 
-                                        height: 120.0,
-                                        width: dd,
-                                        child: Card(
-                                          child: Row(
-                                            children: <Widget>[
-                                              SizedBox(
-                                                  height: 110.0,
-                                                  width: 100.0,
-                                                  child: Image.asset(
-                                                    itemList[ind].itemImage,
-                                                    fit: BoxFit.fill,
-                                                  )),
-                                              SizedBox(
-                                                  height: 110.0,
-                                                  child: Container(
-                                                    alignment: Alignment
-                                                        .topLeft,
-                                                    child: Column(
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                      children: <Widget>[
-                                                        _verticalD(),
-                                                        Row(
-                                                          mainAxisAlignment:
-                                                          MainAxisAlignment.start,
-                                                          children: <Widget>[
-                                                            Text(
-                                                              itemList[ind].itemName,
-                                                              style: TextStyle(
-                                                                  fontWeight: FontWeight.bold,
-                                                                  fontSize: 18.0,
-                                                                  //color: Colors.black
-                                                              ),
+                                      height: 120.0,
+                                      width: dd,
+                                      child: Card(
+                                        child: Row(
+                                          children: <Widget>[
+                                            SizedBox(
+                                                height: 110.0,
+                                                width: 100.0,
+                                                child: Image.asset(
+                                                  itemList[ind].itemImage,
+                                                  fit: BoxFit.fill,
+                                                )),
+                                            SizedBox(
+                                                height: 110.0,
+                                                child: Container(
+                                                  alignment: Alignment
+                                                      .topLeft,
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                    children: <Widget>[
+                                                      _verticalD(),
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                        children: <Widget>[
+                                                          Text(
+                                                            itemList[ind].itemName,
+                                                            style: TextStyle(
+                                                              fontWeight: FontWeight.bold,
+                                                              fontSize: 18.0,
+                                                              //color: Colors.black
                                                             ),
-                                                          ],
-                                                        ),
-                                                        _verticalD(),
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.start,
-                                                          mainAxisSize: MainAxisSize.max,
-                                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                                          children: <Widget>[
-                                                            Text(
-                                                              itemList[ind].itemPrice,
-                                                              style: TextStyle(
-                                                                  fontSize: 15.0,
-                                                                  //color:Colors.black54
-                                                              ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      _verticalD(),
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                        mainAxisSize: MainAxisSize.max,
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: <Widget>[
+                                                          Text(
+                                                            itemList[ind].itemPrice,
+                                                            style: TextStyle(
+                                                              fontSize: 15.0,
+                                                              //color:Colors.black54
                                                             ),
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          mainAxisSize: MainAxisSize.max,
-                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                                          children: <Widget>[
-                                                            new IconButton(
-                                                              icon: Icon(
-                                                                  _add_icon(),
-                                                                  color: Colors
-                                                                      .amber
-                                                                      .shade500),
-                                                              onPressed: () {
-                                                                // item = item + 1;
-                                                              },
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize: MainAxisSize.max,
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                                        children: <Widget>[
+                                                          new IconButton(
+                                                            icon: Icon(
+                                                                _add_icon(),
+                                                                color: Colors
+                                                                    .amber
+                                                                    .shade500),
+                                                            onPressed: () {
+                                                              // item = item + 1;
+                                                            },
 
-                                                            ),
-                                                            Container(
-                                                              margin: EdgeInsets
-                                                                  .only(
-                                                                  left: 2.0),
-                                                            ),
-                                                            Text(
-                                                              item.toString(),
-                                                              /*     style: descriptionStyle.copyWith(
+                                                          ),
+                                                          Container(
+                                                            margin: EdgeInsets
+                                                                .only(
+                                                                left: 2.0),
+                                                          ),
+                                                          Text(
+                                                            item.toString(),
+                                                            /*     style: descriptionStyle.copyWith(
                                                    fontSize: 20.0,
                                                    color: Colors.black87),*/
-                                                            ),
-                                                            Container(
-                                                              margin: EdgeInsets
-                                                                  .only(
-                                                                  right: 2.0),
-                                                            ),
-                                                            new IconButton(
-                                                              icon: Icon(
-                                                                  _sub_icon(),
-                                                                  color: Colors
-                                                                      .amber
-                                                                      .shade500),
-                                                              onPressed: () {
-                                                                /* if(item<0){
+                                                          ),
+                                                          Container(
+                                                            margin: EdgeInsets
+                                                                .only(
+                                                                right: 2.0),
+                                                          ),
+                                                          new IconButton(
+                                                            icon: Icon(
+                                                                _sub_icon(),
+                                                                color: Colors
+                                                                    .amber
+                                                                    .shade500),
+                                                            onPressed: () {
+                                                              /* if(item<0){
                                                  }
                                                  else{
                                                    item = item -1;
                                                  }*/
-                                                              },
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ))
-                                            ],
-                                          ),
+                                                            },
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ))
+                                          ],
                                         ),
                                       ),
+                                    ),
 
-                                      SizedBox(
-                                          height: 110.0,
-                                          width: 50.0,
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            child: Text(
-                                              itemList[ind].itemPrice,
-                                            ),
-                                          )
+                                    SizedBox(
+                                        height: 110.0,
+                                        width: 50.0,
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            itemList[ind].itemPrice,
+                                          ),
+                                        )
 
-                                      ),
+                                    ),
 
-                                    ],
-                                  )),
+                                  ],
+                                )),
 
-                            ],
-                          ),
-                        ));
-                  })),
-          Container(
-              alignment: Alignment.bottomLeft,
-              height: 60.0,
-              child: Card(
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    IconButton(icon: Icon(Icons.info), onPressed: null),
-                    Text(
-                      'Total :',
-                      style: TextStyle(
-                          fontSize: 17.0,
-                          //color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                          ],
+                        ),
+                      ));
+                })),
+        Container(
+            alignment: Alignment.bottomLeft,
+            height: 60.0,
+            child: Card(
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  IconButton(icon: Icon(Icons.info), onPressed: null),
+                  Text(
+                    'Total :',
+                    style: TextStyle(
+                        fontSize: 17.0,
+                        //color: Colors.black,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    '\₹ 524',
+                    style: TextStyle(
+                      fontSize: 17.0,
+                      //color: Colors.black54
                     ),
-                    Text(
-                      '\₹ 524',
-                      style: TextStyle(
-                          fontSize: 17.0,
-                          //color: Colors.black54
-                      ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: OutlineButton(
+                          borderSide:
+                          BorderSide(color: Colors.amber.shade500),
+                          child: const Text('CONFIRM ORDER'),
+                          textColor: Colors.amber.shade500,
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CheckoutPage()));
+                          },
+                          shape: new OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          )),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        alignment: Alignment.center,
-                        child: OutlineButton(
-                            borderSide:
-                            BorderSide(color: Colors.amber.shade500),
-                            child: const Text('CONFIRM ORDER'),
-                            textColor: Colors.amber.shade500,
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => CheckoutPage()));
-                            },
-                            shape: new OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                            )),
-                      ),
-                    ),
-                  ],
-                ),
-              )),
-        ],
-      ),
+                  ),
+                ],
+              ),
+            )),
+      ],
     );
   }
 

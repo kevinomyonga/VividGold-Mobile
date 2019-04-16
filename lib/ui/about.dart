@@ -15,10 +15,14 @@ class _AboutPageState extends State<AboutPage> {
         title: Text('About'),
       ),
 
-      body: new ListView(
-        children: <Widget>[
-        ],
-      ),
+      body: _buildAboutPage(context)
+    );
+  }
+
+  _buildAboutPage(BuildContext context) {
+    new ListView(
+      children: <Widget>[
+      ],
     );
   }
 }

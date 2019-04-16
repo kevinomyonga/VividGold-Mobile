@@ -17,18 +17,6 @@ class AuthPage extends StatefulWidget {
 
   const AuthPage({Key key, this.fieldKey, this.hintText, this.labelText, this.helperText, this.onSaved, this.validator, this.onFieldSubmitted}) : super(key: key);
 
-  /*ThemeData buildTheme() {
-    final ThemeData base = ThemeData();
-    return base.copyWith(
-      hintColor: Colors.red,
-      inputDecorationTheme: InputDecorationTheme(
-        labelStyle: TextStyle(
-            color: Colors.yellow,
-            fontSize: 24.0
-        ),
-      ),
-    );
-  }*/
   @override
   State<StatefulWidget> createState() => AuthPageState();
 }
@@ -69,73 +57,78 @@ class AuthPageState extends State<AuthPage>
   Widget build(BuildContext context) {
     return new Scaffold(
       key: _scaffoldKey,
-      body: NotificationListener<OverscrollIndicatorNotification>(
-        onNotification: (overscroll) {
-          overscroll.disallowGlow();
-        },
-        child: SingleChildScrollView(
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height >= 955.0
-                ? MediaQuery.of(context).size.height
-                : 955.0,
-            decoration: new BoxDecoration(
-              gradient: new LinearGradient(
-                  colors: [
-                    ColorScheme.Colors.loginGradientStart,
-                    ColorScheme.Colors.loginGradientEnd
+      body: _buildAuthPage(context)
+    );
+  }
+
+  _buildAuthPage(BuildContext context) {
+    
+    return NotificationListener<OverscrollIndicatorNotification>(
+      onNotification: (overscroll) {
+        overscroll.disallowGlow();
+      },
+      child: SingleChildScrollView(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height >= 955.0
+              ? MediaQuery.of(context).size.height
+              : 955.0,
+          decoration: new BoxDecoration(
+            gradient: new LinearGradient(
+                colors: [
+                  ColorScheme.Colors.loginGradientStart,
+                  ColorScheme.Colors.loginGradientEnd
+                ],
+                begin: const FractionalOffset(0.0, 0.0),
+                end: const FractionalOffset(1.0, 1.0),
+                stops: [0.0, 1.0],
+                tileMode: TileMode.clamp),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(top: 75.0),
+                child: new Image(
+                    width: 250.0,
+                    height: 191.0,
+                    fit: BoxFit.contain,
+                    image: new AssetImage('images/vivid_gold_logo.png')),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 20.0),
+                child: _buildMenuBar(context),
+              ),
+              Expanded(
+                flex: 2,
+                child: PageView(
+                  controller: _pageController,
+                  onPageChanged: (i) {
+                    if (i == 0) {
+                      setState(() {
+                        right = Colors.white;
+                        left = Colors.black;
+                      });
+                    } else if (i == 1) {
+                      setState(() {
+                        right = Colors.black;
+                        left = Colors.white;
+                      });
+                    }
+                  },
+                  children: <Widget>[
+                    new ConstrainedBox(
+                      constraints: const BoxConstraints.expand(),
+                      child: _buildSignIn(context),
+                    ),
+                    new ConstrainedBox(
+                      constraints: const BoxConstraints.expand(),
+                      child: _buildSignUp(context),
+                    ),
                   ],
-                  begin: const FractionalOffset(0.0, 0.0),
-                  end: const FractionalOffset(1.0, 1.0),
-                  stops: [0.0, 1.0],
-                  tileMode: TileMode.clamp),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(top: 75.0),
-                  child: new Image(
-                      width: 250.0,
-                      height: 191.0,
-                      fit: BoxFit.contain,
-                      image: new AssetImage('images/vivid_gold_logo.png')),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 20.0),
-                  child: _buildMenuBar(context),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: PageView(
-                    controller: _pageController,
-                    onPageChanged: (i) {
-                      if (i == 0) {
-                        setState(() {
-                          right = Colors.white;
-                          left = Colors.black;
-                        });
-                      } else if (i == 1) {
-                        setState(() {
-                          right = Colors.black;
-                          left = Colors.white;
-                        });
-                      }
-                    },
-                    children: <Widget>[
-                      new ConstrainedBox(
-                        constraints: const BoxConstraints.expand(),
-                        child: _buildSignIn(context),
-                      ),
-                      new ConstrainedBox(
-                        constraints: const BoxConstraints.expand(),
-                        child: _buildSignUp(context),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -792,245 +785,5 @@ class AuthPageState extends State<AuthPage>
   void _performLogin() {
     // This is just a demo, so no actual login here.
     Navigator.pushNamed(context, Constants.ROUTE_HOME);
-    //Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
   }
 }
-
-/*class LoginPageState extends State<LoginPage> {
-
-  ShapeBorder shape;
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-  final formKey = GlobalKey<FormState>();
-
-  String _email;
-  String _password;
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  bool _autovalidate = false;
-  bool _formWasEdited = false;
-
-  String _validateName(String value) {
-    _formWasEdited = true;
-    if (value.isEmpty)
-      return 'Name is required.';
-    final RegExp nameExp = RegExp(r'^[A-Za-z ]+$');
-    if (!nameExp.hasMatch(value))
-      return 'Please enter only alphabetical characters.';
-    return null;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    bool _obscureText = true;
-    return new Scaffold(
-        key: scaffoldKey,
-        appBar: new AppBar(
-          title: Text('Login'),
-          //backgroundColor: Colors.white,
-        ),
-        body: SafeArea(
-            child: new SingleChildScrollView(
-              child: new Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  new Container(
-                    height: 50.0,
-                    alignment: Alignment.topLeft,
-                    margin: EdgeInsets.only(top: 7.0),
-                    child: new Row(
-                      children: <Widget>[
-                        _verticalD(),
-                        new GestureDetector(
-                          onTap: () {
-                            *//* Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => login_screen()));*//*
-                          },
-                          child: new Text(
-                            'Login',
-                            style: TextStyle(
-                                fontSize: 20.0,
-                                //color: Colors.black87,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        _verticalD(),
-                        new GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SignUpPage()));
-                          },
-                          child: new Text(
-                            'Signup',
-                            style: TextStyle(
-                                fontSize: 20.0,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  new SafeArea(
-
-                      top: false,
-                      bottom: false,
-                      child: Card(
-                          elevation: 5.0,
-                          child: Form(
-                              key: formKey,
-                              autovalidate: _autovalidate,
-                              child: SingleChildScrollView(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                                    children: <Widget>[
-                                      const SizedBox(height: 24.0),
-                                      TextFormField(
-                                        decoration: const InputDecoration(
-                                            border: UnderlineInputBorder(
-                                              borderSide: BorderSide(color: Colors.black87,style: BorderStyle.solid),
-                                            ),
-                                            focusedBorder:  UnderlineInputBorder(
-                                              borderSide: BorderSide(color: Colors.black87,style: BorderStyle.solid),
-                                            ),
-                                            icon: Icon(
-                                              Icons.email,
-                                              //color: Colors.black38,
-                                            ),
-                                            hintText: 'Your email address',
-                                            labelText: 'E-mail',
-                                            //labelStyle: TextStyle(color: Colors.black54)
-                                        ),
-                                        keyboardType: TextInputType.emailAddress,
-                                        validator: (val) =>
-                                        !val.contains('@') ? 'Not a valid email.' : null,
-                                        onSaved: (val) => _email = val,
-                                      ),
-
-                                      const SizedBox(height: 24.0),
-                                      TextFormField(
-                                        obscureText: true,
-                                        decoration: const InputDecoration(
-                                            border: UnderlineInputBorder(
-                                              borderSide: BorderSide(color: Colors.black87,style: BorderStyle.solid),
-                                            ),
-                                            focusedBorder:  UnderlineInputBorder(
-                                              borderSide: BorderSide(color: Colors.black87,style: BorderStyle.solid),
-                                            ),
-                                            icon: Icon(
-                                              Icons.lock,
-                                              //color: Colors.black38,
-                                            ),
-                                            hintText: 'Your password',
-                                            labelText: 'Password',
-                                            //labelStyle: TextStyle(color: Colors.black54)
-                                        ),
-
-                                        validator: (val) =>
-                                        val.length < 6 ? 'Password too short.' : null,
-                                        onSaved: (val) => _password = val,
-                                      ),
-
-                                      SizedBox(height: 35.0,),
-                                      new Container(
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: <Widget>[
-
-                                            new Container(
-                                              alignment: Alignment.bottomLeft,
-                                              margin: EdgeInsets.only(left: 10.0),
-                                              child: new GestureDetector(
-                                                onTap: (){
-
-                                                },
-                                                child: Text('FORGOT PASSWORD?',style: TextStyle(
-                                                    color: Colors.blueAccent,fontSize: 13.0
-                                                ),),
-                                              ),
-                                            ),
-                                            new Container(
-                                              alignment: Alignment.bottomRight,
-                                              child: new GestureDetector(
-                                                onTap: (){
-                                                  _submit();
-                                                },
-                                                child: Text('LOGIN',style: TextStyle(
-                                                    color: Colors.orange,fontSize: 20.0,fontWeight: FontWeight.bold
-                                                ),),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-
-                                      *//*   const SizedBox(height:24.0),
-                            new Row(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: <Widget>[
-                                new GestureDetector(
-                                  onTap: (){
-                                  },
-                                  child: Text('FORGOT PASSWORD?',style: TextStyle(
-                                    color: Colors.blueAccent,fontSize: 13.0
-                                  ),),
-                                ),
-                                new GestureDetector(
-                                  onTap: (){
-                                  },
-                                  child: Text('LOGIN',style: TextStyle(
-                                      color: Colors.orange,fontSize: 15.0
-                                  ),),
-                                ),
-                              ],
-                            )
-*//*
-                                    ]
-                                ),
-                              )
-
-                          )        //login,
-                      ))
-                ],
-              ),
-            )
-        ));
-  }
-
-  void _submit() {
-    final form = formKey.currentState;
-
-    if (form.validate()) {
-      form.save();
-
-      // Email & password matched our validation rules
-      // and are saved to _email and _password fields.
-      _performLogin();
-    }
-    else{
-      showInSnackBar('Please fix the errors in red before submitting.');
-
-    }
-  }
-
-  void showInSnackBar(String value) {
-    scaffoldKey.currentState.showSnackBar(SnackBar(
-        content: Text(value)
-    ));
-  }
-  void _performLogin() {
-    // This is just a demo, so no actual login here.
-    Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
-  }
-
-  _verticalD() => Container(
-    margin: EdgeInsets.only(left: 10.0, right: 0.0, top: 0.0, bottom: 0.0),
-  );
-
-}*/
