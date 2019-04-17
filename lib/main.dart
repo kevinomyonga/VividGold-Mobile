@@ -11,13 +11,6 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       theme: Themes.androidTheme(),
       routes: routes,
-      /*onUnknownRoute: (RouteSettings setting) {
-        // To can ask the RouterSettings for unknown router name.
-        String unknownRoute = setting.name ;
-        return new MaterialPageRoute(
-            builder: (context) => NotFoundPage()
-        );
-      },*/
     );
   }
 }

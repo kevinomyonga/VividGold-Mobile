@@ -34,17 +34,4 @@ final routes = <String, WidgetBuilder> {
   Constants.ROUTE_PAYMENT           : (context) => PaymentPage(),
   Constants.ROUTE_SEARCH            : (context) => SearchPage(),
   Constants.ROUTE_SETTINGS          : (context) => SettingsPage(),
-
-  /*'/'               : (BuildContext context) => new HomePage(),
-  '/auth'           : (BuildContext context) => AuthPage(),
-  '/home'           : (BuildContext context) => HomePage(),
-  '/items'          : (BuildContext context) => ItemsPage(),
-  '/item_details'   : (BuildContext context) => ItemDetailsPage(),
-  '/cart'           : (BuildContext context) => CartPage(),
-  '/checkout'       : (BuildContext context) => CheckoutPage(),
-  '/account'        : (BuildContext context) => AccountPage(),
-  '/help'           : (BuildContext context) => HelpPage(),
-  '/orders'         : (BuildContext context) => OrderHistoryPage(),
-  '/payment'        : (BuildContext context) => PaymentPage(),
-  '/settings'       : (BuildContext context) => SettingsPage(),*/
 };

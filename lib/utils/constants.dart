@@ -21,4 +21,9 @@ class Constants {
   static const String ROUTE_SEARCH          = '/search';
   static const String ROUTE_SETTINGS        = '/settings';
 
+  //Images
+  static const String imageDir    = "assets/images";
+  static const String loginLogo   = "$imageDir/vivid_gold_logo.png";
+  static const String appBarLogo  = "$imageDir/vivid_gold_logo.png";
+
 }

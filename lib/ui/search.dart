@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vividgold_app/components/products.dart';
-import 'package:vividgold_app/utils/colors.dart' as ColorScheme;
+import 'package:vividgold_app/utils/themes.dart';
 
 class SearchPage extends StatefulWidget {
   @override
@@ -32,20 +32,20 @@ class _SearchPageState extends State<SearchPage> {
           decoration: new BoxDecoration(
             boxShadow: <BoxShadow>[
               BoxShadow(
-                color: ColorScheme.Colors.loginGradientStart,
+                color: Themes.loginGradientStart,
                 offset: Offset(1.0, 6.0),
                 blurRadius: 20.0,
               ),
               BoxShadow(
-                color: ColorScheme.Colors.loginGradientEnd,
+                color: Themes.loginGradientEnd,
                 offset: Offset(1.0, 6.0),
                 blurRadius: 20.0,
               ),
             ],
             gradient: new LinearGradient(
                 colors: [
-                  ColorScheme.Colors.loginGradientEnd,
-                  ColorScheme.Colors.loginGradientStart
+                  Themes.loginGradientEnd,
+                  Themes.loginGradientStart
                 ],
                 begin: const FractionalOffset(0.2, 0.2),
                 end: const FractionalOffset(1.0, 1.0),

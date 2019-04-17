@@ -22,19 +22,36 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  loader_search_bar: ^1.0.2
   cupertino_icons: ^0.1.2
-  flutter_range_slider: "^1.0.1"
+
+  # A Flutter Carousel widget.
   carousel_pro: ^0.0.13
+
+  # An extension of the Flutter Material Slider to allow selection of a range of values via 2 thumbs.
+  flutter_range_slider: ^1.1.0
+
+  # A composable, Future-based library for making HTTP requests.
+  http: ^0.12.0+2
+
+  # A Flutter plugin for Android and iOS supports cropping images
+  image_cropper: ^1.0.1
+
+  # A Flutter plugin for iOS and Android for picking images from the image library, and taking new pictures with the camera.
+  image_picker: ^0.5.3+1
+
+  #
+  loader_search_bar: ^1.0.2
+
+  # A set of utilities that allow you to easily pass a data Model from a parent Widget down to it's descendants.
   scoped_model: ^1.0.1
 
-  http: ^0.12.0+2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  font_awesome_flutter: ^8.0.1
+  # The Font Awesome Icon pack available as set of Flutter Icons
+  font_awesome_flutter: ^8.4.0
 
 
 # For information on the generic Dart part of this file, see the
@@ -54,44 +71,7 @@ flutter:
   #  - images/a_dot_ham.jpeg
 
   assets:
-    - images/vivid_gold_logo.png
-    - images/c1.jpg
-    - images/m1.jpeg
-    - images/w3.jpeg
-    - images/w4.jpeg
-    - images/m2.jpg
-    - images/cats/tshirt.png
-    - images/cats/dress.png
-    - images/cats/formal.png
-    - images/cats/informal.png
-    - images/cats/shoe.png
-    - images/cats/jeans.png
-    - images/cats/accessories.png
-    - images/products/blazer1.jpeg
-    - images/products/dress1.jpeg
-
-    - images/login_logo.png
-    - images/back.jpg
-    - images/groceries.jpg
-    - images/grtwo.jpg
-    - images/grthre.jpg
-    - images/veg.jpg
-    - images/frozen.jpg
-    - images/bev.jpg
-    - images/brand_f.jpg
-    - images/be.jpg
-    - images/eggs.jpg
-    - images/home.jpg
-    - images/nonveg.jpg
-    - images/apple.jpg
-    - images/grapes.jpg
-    - images/guava.jpg
-    - images/kiwi.jpg
-    - images/lemons.jpg
-    - images/pineapple.jpg
-    - images/tomato.jpg
-    - images/gro.jpg
-
+    - assets/images/
     - assets/address.json
 
   # An image asset can refer to one or more resolution-specific "variants", see

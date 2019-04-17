@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vividgold_app/components/horizontal_listview.dart';
 import 'package:vividgold_app/components/products.dart';
-import 'package:vividgold_app/utils/colors.dart' as ColorScheme;
 import 'package:vividgold_app/utils/constants.dart';
+import 'package:vividgold_app/utils/themes.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -24,9 +24,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: new AppBar(
           elevation: 0.1,
-          //backgroundColor: Colors.red,
           //title: Text('VividGold'),
-          title: new Image.asset('images/vivid_gold_logo.png', fit: BoxFit.cover),
+          title: new Image.asset(Constants.appBarLogo, fit: BoxFit.cover),
           actions: <Widget>[
             new Padding(
               padding: const EdgeInsets.all(10.0),
@@ -187,7 +186,7 @@ class _HomePageState extends State<HomePage> {
               Navigator.pushNamed(context, Constants.ROUTE_ACCOUNT);
             },
             child: ListTile(
-              title: Text('My account'),
+              title: Text('My Account'),
               leading: Icon(Icons.person),
             ),
           ),
@@ -271,20 +270,20 @@ class _HomePageState extends State<HomePage> {
           decoration: new BoxDecoration(
             boxShadow: <BoxShadow>[
               BoxShadow(
-                color: ColorScheme.Colors.loginGradientStart,
+                color: Themes.loginGradientStart,
                 offset: Offset(1.0, 6.0),
                 blurRadius: 20.0,
               ),
               BoxShadow(
-                color: ColorScheme.Colors.loginGradientEnd,
+                color: Themes.loginGradientEnd,
                 offset: Offset(1.0, 6.0),
                 blurRadius: 20.0,
               ),
             ],
             gradient: new LinearGradient(
                 colors: [
-                  ColorScheme.Colors.loginGradientEnd,
-                  ColorScheme.Colors.loginGradientStart
+                  Themes.loginGradientEnd,
+                  Themes.loginGradientStart
                 ],
                 begin: const FractionalOffset(0.2, 0.2),
                 end: const FractionalOffset(1.0, 1.0),

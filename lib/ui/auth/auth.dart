@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vividgold_app/utils/bubble_indication_painter.dart';
-import 'package:vividgold_app/utils/colors.dart' as ColorScheme;
 import 'package:vividgold_app/utils/constants.dart';
+import 'package:vividgold_app/utils/themes.dart';
 
 class AuthPage extends StatefulWidget {
 
@@ -76,8 +76,8 @@ class AuthPageState extends State<AuthPage>
           decoration: new BoxDecoration(
             gradient: new LinearGradient(
                 colors: [
-                  ColorScheme.Colors.loginGradientStart,
-                  ColorScheme.Colors.loginGradientEnd
+                  Themes.loginGradientStart,
+                  Themes.loginGradientEnd
                 ],
                 begin: const FractionalOffset(0.0, 0.0),
                 end: const FractionalOffset(1.0, 1.0),
@@ -93,7 +93,7 @@ class AuthPageState extends State<AuthPage>
                     width: 250.0,
                     height: 191.0,
                     fit: BoxFit.contain,
-                    image: new AssetImage('images/vivid_gold_logo.png')),
+                    image: new AssetImage(Constants.loginLogo)),
               ),
               Padding(
                 padding: EdgeInsets.only(top: 20.0),
@@ -328,20 +328,20 @@ class AuthPageState extends State<AuthPage>
                   borderRadius: BorderRadius.all(Radius.circular(5.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                      color: ColorScheme.Colors.loginGradientStart,
+                      color: Themes.loginGradientStart,
                       offset: Offset(1.0, 6.0),
                       blurRadius: 20.0,
                     ),
                     BoxShadow(
-                      color: ColorScheme.Colors.loginGradientEnd,
+                      color: Themes.loginGradientEnd,
                       offset: Offset(1.0, 6.0),
                       blurRadius: 20.0,
                     ),
                   ],
                   gradient: new LinearGradient(
                       colors: [
-                        ColorScheme.Colors.loginGradientEnd,
-                        ColorScheme.Colors.loginGradientStart
+                        Themes.loginGradientEnd,
+                        Themes.loginGradientStart
                       ],
                       begin: const FractionalOffset(0.2, 0.2),
                       end: const FractionalOffset(1.0, 1.0),
@@ -350,7 +350,7 @@ class AuthPageState extends State<AuthPage>
                 ),
                 child: MaterialButton(
                     highlightColor: Colors.transparent,
-                    splashColor: ColorScheme.Colors.loginGradientEnd,
+                    splashColor: Themes.loginGradientEnd,
                     //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -684,20 +684,20 @@ class AuthPageState extends State<AuthPage>
                   borderRadius: BorderRadius.all(Radius.circular(5.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                      color: ColorScheme.Colors.loginGradientStart,
+                      color: Themes.loginGradientStart,
                       offset: Offset(1.0, 6.0),
                       blurRadius: 20.0,
                     ),
                     BoxShadow(
-                      color: ColorScheme.Colors.loginGradientEnd,
+                      color: Themes.loginGradientEnd,
                       offset: Offset(1.0, 6.0),
                       blurRadius: 20.0,
                     ),
                   ],
                   gradient: new LinearGradient(
                       colors: [
-                        ColorScheme.Colors.loginGradientEnd,
-                        ColorScheme.Colors.loginGradientStart
+                        Themes.loginGradientEnd,
+                        Themes.loginGradientStart
                       ],
                       begin: const FractionalOffset(0.2, 0.2),
                       end: const FractionalOffset(1.0, 1.0),
@@ -706,7 +706,7 @@ class AuthPageState extends State<AuthPage>
                 ),
                 child: MaterialButton(
                     highlightColor: Colors.transparent,
-                    splashColor: ColorScheme.Colors.loginGradientEnd,
+                    splashColor: Themes.loginGradientEnd,
                     //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
