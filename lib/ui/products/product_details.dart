@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vividgold_app/models/product.dart';
 import 'package:vividgold_app/ui/cart/cart.dart';
 import 'package:vividgold_app/ui/cart/checkout.dart';
+import 'package:vividgold_app/utils/constants.dart';
 
 class ProductDetailsPage extends StatefulWidget {
 
@@ -138,8 +139,10 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                   controller: imagesController,
                   children: product.images.map(
                         (image) {
-                      return Image.network(
-                        image.imageURL,
+                      return FadeInImage(
+                        fit: BoxFit.cover,
+                        placeholder: AssetImage(Constants.placeholder),
+                        image: NetworkImage(image.imageURL),
                       );
                     },
                   ).toList(),

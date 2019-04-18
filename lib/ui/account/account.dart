@@ -10,6 +10,9 @@ class AccountPage extends StatefulWidget {
 
 class AccountPageState extends State<AccountPage> {
 
+  var headerImageHeight = 260.0;
+
+  String avatarURL = 'https://avatarfiles.alphacoders.com/149/149117.jpg';
   String firstName = 'Kevin';
   String lastName = 'Omyonga';
   String emailAddress = 'komyonga@gmail.com';
@@ -17,7 +20,7 @@ class AccountPageState extends State<AccountPage> {
 
   final formKey = GlobalKey<FormState>();
 
-  bool _autovalidate = false;
+  bool _autoValidate = false;
 
   @override
   Widget build(BuildContext context) {
@@ -74,20 +77,30 @@ class AccountPageState extends State<AccountPage> {
   _profileHeader() => Container(
       margin: EdgeInsets.all(7.0),
       alignment: Alignment.topCenter,
-      height: 260.0,
+      height: headerImageHeight,
       child: new Card(
           elevation: 3.0,
           child: new Stack(
               children: <Widget>[
 
                 new Container(
-                  height: 260.0,
-                  decoration: new BoxDecoration(
+                  width: MediaQuery.of(context).size.width,
+                  height: headerImageHeight,
+                  child: FadeInImage(
+                    fit: BoxFit.cover,
+                    placeholder: AssetImage(Constants.placeholder),
+                    image: NetworkImage(avatarURL),
+                  ),
+                ),
+
+                new Container(
+                  height: headerImageHeight,
+                  /*decoration: new BoxDecoration(
                     image: new DecorationImage(
                       image: NetworkImage("https://avatarfiles.alphacoders.com/149/149117.jpg"),
                       fit: BoxFit.cover,
                     ),
-                  ),
+                  ),*/
                   child: new BackdropFilter(
                     filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
                     child: new Container(
@@ -103,14 +116,21 @@ class AccountPageState extends State<AccountPage> {
                     new Container(
                         alignment: Alignment.topCenter,
                         child: Container(
-                          width: 100.0,
-                          height: 100.0,
+                          width: 120.0,
+                          height: 120.0,
                           margin: const EdgeInsets.all(10.0),
                           // padding: const EdgeInsets.all(3.0),
-                          child: CircleAvatar(
+                          /*child: CircleAvatar(
                             radius: 40.0,
-                            backgroundImage: NetworkImage(
-                                "https://avatarfiles.alphacoders.com/149/149117.jpg"),
+                            backgroundImage: NetworkImage(avatarURL),
+                          ),*/
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(60),
+                            child: FadeInImage(
+                              fit: BoxFit.fill,
+                              placeholder: AssetImage(Constants.placeholder),
+                              image: NetworkImage(avatarURL),
+                            ),
                           ),
                         )
                     ),
@@ -164,7 +184,7 @@ class AccountPageState extends State<AccountPage> {
               elevation: 3.0,
               child: Form(
                   key: formKey,
-                  autovalidate: _autovalidate,
+                  autovalidate: _autoValidate,
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(

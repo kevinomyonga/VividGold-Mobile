@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Constants {
 
   // Server URL
@@ -21,9 +23,19 @@ class Constants {
   static const String ROUTE_SEARCH          = '/search';
   static const String ROUTE_SETTINGS        = '/settings';
 
+  // App Colors
+  static Color primaryColor      = Colors.amber;
+  static Color primaryColorDark  = Colors.amber.shade700;
+  static Color accentColor       = Colors.amberAccent;
+  static Color opposingColor     = Colors.black;
+
   //Images
-  static const String imageDir    = "assets/images";
-  static const String loginLogo   = "$imageDir/vivid_gold_logo.png";
-  static const String appBarLogo  = "$imageDir/vivid_gold_logo.png";
+  static const String imageDir      = "assets/images";
+  static const String appBarLogo    = "$imageDir/vivid_gold_logo.png";
+  static const String loginLogo     = "$imageDir/vividgold_logo.png";
+  static const String placeholder   = "$imageDir/placeholder.jpg";
+
+  // Fonts
+  static const String workSansFont = 'WorkSans';
 
 }

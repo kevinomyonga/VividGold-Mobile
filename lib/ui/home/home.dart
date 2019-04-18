@@ -18,6 +18,11 @@ class _HomePageState extends State<HomePage> {
 
   List list = ['12', '11'];
 
+  String avatarURL = 'https://avatarfiles.alphacoders.com/149/149117.jpg';
+  String firstName = 'Kevin';
+  String lastName = 'Omyonga';
+  String emailAddress = 'komyonga@gmail.com';
+
   @override
   Widget build(BuildContext context) {
 
@@ -92,7 +97,7 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
           // header
           new UserAccountsDrawerHeader(
-            accountName: Text('Kevin Omyonga',
+            accountName: Text(firstName + " " + lastName,
               style: TextStyle(
                 color: Colors.white,
                 shadows: <Shadow>[
@@ -104,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            accountEmail: Text('komyonga@gmail.com',
+            accountEmail: Text(emailAddress,
               style: TextStyle(
                 color: Colors.white,
                 shadows: <Shadow>[
@@ -121,33 +126,28 @@ class _HomePageState extends State<HomePage> {
                 backgroundColor: Colors.grey,
                 child: Icon(Icons.person, color: Colors.white,),
               ),*/
-              decoration: BoxDecoration(
+              /*decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
                       fit: BoxFit.fill,
                       image: NetworkImage("https://avatarfiles.alphacoders.com/149/149117.jpg")
                   )
+              ),*/
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(35),
+                child: FadeInImage(
+                  fit: BoxFit.fill,
+                  placeholder: AssetImage(Constants.placeholder),
+                  image: NetworkImage(avatarURL),
+                ),
               ),
             ),
-            /*decoration: new BoxDecoration(
-              //color: Colors.red,
-              image: new DecorationImage(
-                image: new AssetImage("images/m1.jpeg"),
-                fit: BoxFit.cover,
-              ),
-            ),*/
             decoration: new BoxDecoration(
               image: new DecorationImage(
-                image: new NetworkImage("https://avatarfiles.alphacoders.com/149/149117.jpg"),
+                image: new NetworkImage(avatarURL),
                 fit: BoxFit.cover,
               ),
             ),
-            /*child: new BackdropFilter(
-              filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-              child: new Container(
-                decoration: new BoxDecoration(color: Colors.white.withOpacity(0.0)),
-              ),
-            ),*/
           ),
 
           // body

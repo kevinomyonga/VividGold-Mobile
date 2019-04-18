@@ -15,7 +15,6 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       appBar: new AppBar(
         elevation: 0.1,
-        //backgroundColor: Colors.red,
         title: Text('Search'),
       ),
 
@@ -85,8 +84,7 @@ class _SearchPageState extends State<SearchPage> {
         ),
 
         //padding widget
-        new Padding(padding: const EdgeInsets.all(20.0),
-          child: new Text('Recent products'),),
+        new Padding(padding: const EdgeInsets.all(20.0)),
 
         //grid view
         Container(

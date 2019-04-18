@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/ui/cart/checkout.dart';
 import 'package:vividgold_app/ui/products/products_list.dart';
+import 'package:vividgold_app/utils/constants.dart';
 
 enum DialogDemoAction {
   cancel,
@@ -25,32 +26,32 @@ class Item {
 class CartPageState extends State<CartPage> {
   List<Item> itemList = <Item>[
     Item(
-        itemImage: 'images/grapes.jpg',
+        itemImage: Constants.placeholder,
         itemName: 'Black Grape',
         itemQun: 'Qty:1',
-        itemPrice: '\₹ 100'),
+        itemPrice: '\$ 100'),
     Item(
-        itemImage: 'images/tomato.jpg',
+        itemImage: Constants.placeholder,
         itemName: 'Tomato',
         itemQun: 'Qty:3',
-        itemPrice: '\₹ 112'),
+        itemPrice: '\$ 112'),
     Item(
-        itemImage: 'images/guava.jpg',
+        itemImage: Constants.placeholder,
         itemName: 'Guava',
         itemQun: 'Qty:2',
-        itemPrice: '\₹ 105'),
+        itemPrice: '\Kshs 105'),
     Item(
-        itemImage: 'images/kiwi.jpg',
+        itemImage: Constants.placeholder,
         itemName: 'Kiwi',
         itemQun: 'Qty:1',
-        itemPrice: '\₹ 90'),
+        itemPrice: '\Kshs 90'),
     Item(
-        itemImage: 'images/lemons.jpg',
+        itemImage: Constants.placeholder,
         itemName: 'Lemon',
         itemQun: 'Qty:2',
         itemPrice: '\₹ 70'),
     Item(
-        itemImage: 'images/apple.jpg',
+        itemImage: Constants.placeholder,
         itemName: 'Apple',
         itemQun: 'Qty:1',
         itemPrice: '\₹ 50'),
