@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: new AppBar(
           elevation: 0.1,
-          //title: Text('VividGold'),
+          //title: Text(Constants.appName),
           title: new Image.asset(Constants.appBarLogo, fit: BoxFit.cover),
           actions: <Widget>[
             new Padding(
@@ -39,12 +39,7 @@ class _HomePageState extends State<HomePage> {
                 width: 30.0,
                 child: new GestureDetector(
                   onTap: () {
-                    /*Navigator.of(context).push(
-                    new MaterialPageRoute(
-                    builder:(BuildContext context) =>
-                    new CartItemsScreen()
-                    )
-                    );*/
+                    Navigator.pushNamed(context, Constants.ROUTE_CART);
                   },
                   child: Stack(
                     children: <Widget>[
@@ -53,7 +48,6 @@ class _HomePageState extends State<HomePage> {
                             Icons.shopping_cart,
                           ),
                           onPressed: (){
-                            //Navigator.push(context, MaterialPageRoute(builder: (context)=> CartPage()));
                             Navigator.pushNamed(context, Constants.ROUTE_CART);
                           }
                       ),
@@ -63,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                           child: new Stack(
                             children: <Widget>[
                               new Icon(Icons.brightness_1,
-                                  size: 20.0, color: Colors.green.shade500),
+                                  size: 20.0, color: Constants.cartIconColor),
                               new Positioned(
                                   top: 4.0,
                                   right: 5.5,
@@ -239,31 +233,10 @@ class _HomePageState extends State<HomePage> {
 
   _buildHomePage(BuildContext context) {
 
-    Widget image_carousel = new Container(
-      height: 200.0,
-      child:  new Carousel(
-        boxFit: BoxFit.cover,
-        images: [
-          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/04/days-gone.jpg'),
-          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/03/apex-legends.jpg'),
-          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/03/mortal-kombat-11.jpg'),
-          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/03/fifa-ultimate-team.jpg'),
-          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/01/game-pass.jpg'),
-          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/01/gaming-kenya.jpg'),
-        ],
-        autoplay: true,
-        autoplayDuration: Duration(milliseconds: 5000),
-        animationCurve: Curves.fastOutSlowIn,
-        animationDuration: Duration(milliseconds: 1000),
-        dotSize: 4.0,
-        indicatorBgPadding: 7.0,
-      ),
-    );
-
     return new ListView(
       children: <Widget>[
         //image carousel begins here
-        image_carousel,
+        _buildImageCarousel(context),
 
         new Container(
           //color: Theme.of(context).primaryColor,
@@ -340,6 +313,31 @@ class _HomePageState extends State<HomePage> {
         )
       ],
     );
+  }
+
+  _buildImageCarousel(BuildContext context) {
+    Widget imageCarousel = new Container(
+      height: 200.0,
+      child:  new Carousel(
+        boxFit: BoxFit.cover,
+        images: [
+          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/04/days-gone.jpg'),
+          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/03/apex-legends.jpg'),
+          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/03/mortal-kombat-11.jpg'),
+          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/03/fifa-ultimate-team.jpg'),
+          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/01/game-pass.jpg'),
+          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/01/gaming-kenya.jpg'),
+        ],
+        autoplay: true,
+        autoplayDuration: Duration(milliseconds: 5000),
+        animationCurve: Curves.fastOutSlowIn,
+        animationDuration: Duration(milliseconds: 1000),
+        dotSize: 4.0,
+        indicatorBgPadding: 7.0,
+      ),
+    );
+
+    return imageCarousel;
   }
 }
 

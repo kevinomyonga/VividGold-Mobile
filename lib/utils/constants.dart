@@ -28,6 +28,7 @@ class Constants {
   static Color primaryColorDark  = Colors.amber.shade700;
   static Color accentColor       = Colors.amberAccent;
   static Color opposingColor     = Colors.black;
+  static Color cartIconColor     = Colors.green.shade500;
 
   //Images
   static const String imageDir      = "assets/images";
@@ -38,4 +39,6 @@ class Constants {
   // Fonts
   static const String workSansFont = 'WorkSans';
 
+  // Strings
+  static const String appName = 'VividGold';
 }
