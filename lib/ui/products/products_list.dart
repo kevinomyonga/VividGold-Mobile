@@ -4,7 +4,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:vividgold_app/scoped_model/product_scoped_model.dart';
 import 'package:vividgold_app/ui/cart/cart.dart';
 import 'package:vividgold_app/ui/products/product_details.dart';
-import 'package:vividgold_app/utils/constants.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 import 'package:vividgold_app/widgets/products_list_item.dart';
 
 class ProductsListPage extends StatelessWidget {
@@ -44,7 +44,7 @@ class ProductsListPage extends StatelessWidget {
                           ),
                           onPressed: (){
                             //Navigator.push(context, MaterialPageRoute(builder: (context)=> CartPage()));
-                            Navigator.pushNamed(context, Constants.ROUTE_CART);
+                            Navigator.pushNamed(context, UIConstants.ROUTE_CART);
                           }
                       ),
                       list.length == 0

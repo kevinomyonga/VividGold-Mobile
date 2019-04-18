@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vividgold_app/components/horizontal_listview.dart';
 import 'package:vividgold_app/components/products.dart';
-import 'package:vividgold_app/utils/constants.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 import 'package:vividgold_app/utils/themes.dart';
 
 class HomePage extends StatefulWidget {
@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
         appBar: new AppBar(
           elevation: 0.1,
           //title: Text(Constants.appName),
-          title: new Image.asset(Constants.appBarLogo, fit: BoxFit.cover),
+          title: new Image.asset(UIConstants.appBarLogo, fit: BoxFit.cover),
           actions: <Widget>[
             new Padding(
               padding: const EdgeInsets.all(10.0),
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
                 width: 30.0,
                 child: new GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, Constants.ROUTE_CART);
+                    Navigator.pushNamed(context, UIConstants.ROUTE_CART);
                   },
                   child: Stack(
                     children: <Widget>[
@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                             Icons.shopping_cart,
                           ),
                           onPressed: (){
-                            Navigator.pushNamed(context, Constants.ROUTE_CART);
+                            Navigator.pushNamed(context, UIConstants.ROUTE_CART);
                           }
                       ),
                       list.length == 0
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                           child: new Stack(
                             children: <Widget>[
                               new Icon(Icons.brightness_1,
-                                  size: 20.0, color: Constants.cartIconColor),
+                                  size: 20.0, color: UIConstants.cartIconColor),
                               new Positioned(
                                   top: 4.0,
                                   right: 5.5,
@@ -131,16 +131,26 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.circular(35),
                 child: FadeInImage(
                   fit: BoxFit.fill,
-                  placeholder: AssetImage(Constants.placeholder),
+                  placeholder: AssetImage(UIConstants.placeholder),
                   image: NetworkImage(avatarURL),
                 ),
               ),
             ),
-            decoration: new BoxDecoration(
+            decoration: /*new BoxDecoration(
               image: new DecorationImage(
                 image: new NetworkImage(avatarURL),
                 fit: BoxFit.cover,
-              ),
+              ),*/
+            new BoxDecoration(
+              gradient: new LinearGradient(
+                  colors: [
+                    Themes.loginGradientEnd,
+                    Themes.loginGradientStart
+                  ],
+                  begin: const FractionalOffset(0.2, 0.2),
+                  end: const FractionalOffset(1.0, 1.0),
+                  stops: [0.0, 1.0],
+                  tileMode: TileMode.clamp),
             ),
           ),
 
@@ -148,27 +158,27 @@ class _HomePageState extends State<HomePage> {
           InkWell(
             onTap: (){},
             child: ListTile(
-              title: Text('Home'),
+              title: Text(UIConstants.home),
               leading: Icon(Icons.home),
             ),
           ),
 
           InkWell(
             onTap: (){
-              Navigator.pushNamed(context, Constants.ROUTE_CATEGORIES);
+              Navigator.pushNamed(context, UIConstants.ROUTE_CATEGORIES);
             },
             child: ListTile(
-              title: Text('Categories'),
+              title: Text(UIConstants.categories),
               leading: Icon(Icons.dashboard),
             ),
           ),
 
           InkWell(
             onTap: (){
-              Navigator.pushNamed(context, Constants.ROUTE_NOTIFICATIONS);
+              Navigator.pushNamed(context, UIConstants.ROUTE_NOTIFICATIONS);
             },
             child: ListTile(
-              title: Text('Notifications'),
+              title: Text(UIConstants.notifications),
               leading: Icon(Icons.notifications),
             ),
           ),
@@ -177,30 +187,30 @@ class _HomePageState extends State<HomePage> {
 
           InkWell(
             onTap: (){
-              Navigator.pushNamed(context, Constants.ROUTE_ACCOUNT);
+              Navigator.pushNamed(context, UIConstants.ROUTE_ACCOUNT);
             },
             child: ListTile(
-              title: Text('My Account'),
+              title: Text(UIConstants.my_account),
               leading: Icon(Icons.person),
             ),
           ),
 
           InkWell(
             onTap: (){
-              Navigator.pushNamed(context, Constants.ROUTE_ORDERS);
+              Navigator.pushNamed(context, UIConstants.ROUTE_ORDERS);
             },
             child: ListTile(
-              title: Text('My Orders'),
+              title: Text(UIConstants.my_orders),
               leading: Icon(Icons.shopping_basket),
             ),
           ),
 
           InkWell(
             onTap: (){
-              Navigator.pushNamed(context, Constants.ROUTE_PRODUCTS);
+              Navigator.pushNamed(context, UIConstants.ROUTE_FAVOURITES);
             },
             child: ListTile(
-              title: Text('Favourites'),
+              title: Text(UIConstants.favourites),
               leading: Icon(Icons.favorite),
             ),
           ),
@@ -209,20 +219,20 @@ class _HomePageState extends State<HomePage> {
 
           InkWell(
             onTap: (){
-              Navigator.pushNamed(context, Constants.ROUTE_SETTINGS);
+              Navigator.pushNamed(context, UIConstants.ROUTE_SETTINGS);
             },
             child: ListTile(
-              title: Text('Settings'),
+              title: Text(UIConstants.settings),
               leading: Icon(Icons.settings, color: Colors.blue,),
             ),
           ),
 
           InkWell(
             onTap: (){
-              Navigator.pushNamed(context, Constants.ROUTE_ABOUT);
+              Navigator.pushNamed(context, UIConstants.ROUTE_ABOUT);
             },
             child: ListTile(
-              title: Text('About'),
+              title: Text(UIConstants.about),
               leading: Icon(Icons.info, color: Colors.green),
             ),
           ),
@@ -267,7 +277,7 @@ class _HomePageState extends State<HomePage> {
             padding: new EdgeInsets.all(8.0),
             child: new InkWell(
               onTap: (){
-                Navigator.pushNamed(context, Constants.ROUTE_SEARCH);
+                Navigator.pushNamed(context, UIConstants.ROUTE_SEARCH);
               },
               child: new TextField(
                 enabled: false,
@@ -280,7 +290,7 @@ class _HomePageState extends State<HomePage> {
                     size: 22.0,
                     color: Colors.grey,
                   ),
-                  hintText: 'Search Our Store',
+                  hintText: UIConstants.search_hint1,
                   hintStyle: TextStyle(
                     color: Colors.grey,
                     fontSize: 17.0,
@@ -297,14 +307,14 @@ class _HomePageState extends State<HomePage> {
 
         //padding widget
         new Padding(padding: const EdgeInsets.all(20.0),
-          child: new Text('Categories'),),
+          child: new Text(UIConstants.categories),),
 
         //Horizontal list view begins here
         HorizontalList(),
 
         //padding widget
         new Padding(padding: const EdgeInsets.all(20.0),
-          child: new Text('Recent products'),),
+          child: new Text(UIConstants.recent_products),),
 
         //grid view
         Container(
@@ -340,643 +350,3 @@ class _HomePageState extends State<HomePage> {
     return imageCarousel;
   }
 }
-
-/*const String _kGalleryAssetsPackage = 'flutter_gallery_assets';
-
-class HomePage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => new HomePageState();
-// TODO: implement createState
-
-}
-
-class Photo {
-  Photo({
-    this.assetName,
-    this.assetPackage,
-    this.title,
-    this.caption,
-  });
-
-  final String assetName;
-  final String assetPackage;
-  final String title;
-  final String caption;
-}
-
-class HomePageState extends State<HomePage> {
-  List list = ['12', '11'];
-
-  List<Photo> photos = <Photo>[
-    Photo(
-      assetName: 'images/veg.jpg',
-      title: 'Playstation',
-    ),
-    Photo(
-      assetName: 'images/frozen.jpg',
-      title: 'XBOX',
-    ),
-    Photo(
-      assetName: 'images/bev.jpg',
-      title: 'Nintendo',
-    ),
-    Photo(
-      assetName: 'images/brand_f.jpg',
-      title: 'PC',
-    ),
-    Photo(
-      assetName: 'images/be.jpg',
-      title: 'Pre Order',
-    ),
-    Photo(
-      assetName: 'images/home.jpg',
-      title: 'Trade In',
-    ),
-    Photo(
-      assetName: 'images/nonveg.jpg',
-      title: 'Non Veg',
-    ),
-    Photo(
-      assetName: 'images/eggs.jpg',
-      title: 'Dairy, Bakery & Eggs',
-    ),
-  ];
-
-  final List<String> items = ['Balbhadra', 'Maulik', 'Roshi'];
-  static const double height = 366.0;
-  String name ='My Wishlist';
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    final Orientation orientation = MediaQuery.of(context).orientation;
-    final ThemeData theme = Theme.of(context);
-    final TextStyle titleStyle =
-    theme.textTheme.headline.copyWith(color: Colors.black54);
-    final TextStyle descriptionStyle = theme.textTheme.subhead;
-    ShapeBorder shapeBorder;
-
-
-    return Scaffold(
-      appBar: new AppBar(
-        //backgroundColor: Colors.white,
-
-        title: Text("VividGold"),
-        actions: <Widget>[
-          IconButton(
-            tooltip: 'Search',
-            icon: const Icon(Icons.search),
-            onPressed: () async {
-              final int selected = await showSearch<int>(
-                context: context,
-                //delegate: _delegate,
-              );
-
-            },
-          ),
-          new Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: new Container(
-              height: 150.0,
-              width: 30.0,
-              child: new GestureDetector(
-                onTap: () {
-                  *//*Navigator.of(context).push(
-                  new MaterialPageRoute(
-                      builder:(BuildContext context) =>
-                      new CartItemsScreen()
-                  )
-              );*//*
-                },
-                child: Stack(
-                  children: <Widget>[
-                    new IconButton(
-                        icon: new Icon(
-                          Icons.shopping_cart,
-                          //color: Colors.black,
-                        ),
-                        onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>CartPage()));
-                        }),
-                    list.length == 0
-                        ? new Container()
-                        : new Positioned(
-                        child: new Stack(
-                          children: <Widget>[
-                            new Icon(Icons.brightness_1,
-                                size: 20.0, color: Colors.green.shade500),
-                            new Positioned(
-                                top: 4.0,
-                                right: 5.5,
-                                child: new Center(
-                                  child: new Text(
-                                    list.length.toString(),
-                                    style: new TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 11.0,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                )),
-                          ],
-                        )),
-                  ],
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
-      drawer: new Drawer(
-        child: new ListView(
-          children: <Widget>[
-            new Card(
-              child: UserAccountsDrawerHeader(
-                accountName: new Text("Naomi A. Schultz"),
-                accountEmail: new Text("NaomiASchultz@armyspy.com"),
-                onDetailsPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => AccountPage()));
-                },
-                decoration: new BoxDecoration(
-                  backgroundBlendMode: BlendMode.difference,
-                  color: Colors.white30,
-
-                  *//* image: new DecorationImage(
-               //   image: new ExactAssetImage('assets/images/lake.jpeg'),
-                  fit: BoxFit.cover,
-                ),*//*
-                ),
-                currentAccountPicture: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        "https://www.fakenamegenerator.com/images/sil-female.png"
-                    )
-                ),
-              ),
-            ),
-            new Card(
-              elevation: 4.0,
-              child: new Column(
-                children: <Widget>[
-                  new ListTile(
-                      leading: Icon(Icons.favorite),
-                      title: new Text(name),
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> ItemsPage(toolbarname: name,)));
-                      }),
-                  new Divider(),
-                  new ListTile(
-                      leading: Icon(Icons.history),
-                      title: new Text("Order History"),
-
-
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> OrderHistoryPage(toolbarname: ' Order History',)));
-                      }),
-                ],
-              ),
-            ),
-            new Card(
-              elevation: 4.0,
-              child: new Column(
-                children: <Widget>[
-                  new ListTile(
-                      leading: Icon(Icons.settings),
-                      title: new Text("Settings"),
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> SettingsPage(toolbarname: 'Setting',)));
-                      }),
-                  new Divider(),
-                  new ListTile(
-                      leading: Icon(Icons.help),
-                      title: new Text("Help"),
-                      onTap: () {
-
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HelpPage(toolbarname: 'Help',)));
-
-                      }),
-                ],
-              ),
-            ),
-            new Card(
-              elevation: 4.0,
-              child: new ListTile(
-                  leading: Icon(Icons.power_settings_new),
-                  title: new Text(
-                    "Logout",
-                    style:
-                    new TextStyle(color: Colors.redAccent, fontSize: 17.0),
-                  ),
-                  onTap: () {
-                    Navigator.push(context,MaterialPageRoute(builder: (context) => AuthPage()));
-                  }),
-            )
-          ],
-        ),
-      ),
-      body: new SingleChildScrollView(
-        child: Container(
-          child: new Column(children: <Widget>[
-            new Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  _verticalD(),
-                  new GestureDetector(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> ItemsPage(toolbarname: 'Fruits & Vegetables',)));
-                    },
-                    child: new Text(
-                      'Best value',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          //color: Colors.black87,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  _verticalD(),
-                  new GestureDetector(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> ItemsPage(toolbarname: 'Fruits & Vegetables',)));
-                    },
-                    child: new Text(
-                      'Top sellers',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          //color: Colors.black26,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  _verticalD(),
-                  new Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      new GestureDetector(
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> ItemsPage(toolbarname: 'Fruits & Vegetables',)));
-                        },
-                        child: new Text(
-                          'All',
-                          style: TextStyle(
-                              fontSize: 20.0,
-                              //color: Colors.black26,
-                              color: Colors.grey,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      _verticalD(),
-                      IconButton(
-                        icon: keyloch,
-                        //color: Colors.black26,
-                      )
-                    ],
-                  )
-                ]),
-            new Container(
-              height: 188.0,
-              margin: EdgeInsets.only(left: 5.0),
-              child:
-              ListView(scrollDirection: Axis.horizontal, children: <Widget>[
-                SafeArea(
-                  top: true,
-                  bottom: true,
-                  child: Container(
-                    width: 270.0,
-
-                    child: Card(
-                      shape: shapeBorder,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          SizedBox(
-                            height: 180.0,
-                            child: Stack(
-                              children: <Widget>[
-                                Positioned.fill(
-                                  child: Image.asset(
-                                    'images/grthre.jpg',
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-
-                          *//*Positioned(
-                          bottom: 16.0,
-                          left: 16.0,
-                          right: 16.0,
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            alignment: Alignment.centerLeft,
-                            child: Text('',
-                              style: titleStyle,
-                            ),
-                          ),
-                        ),*//*
-                        ],
-                      ),
-                    ),
-                    // description and share/explore buttons
-                    // share, explore buttons
-                  ),
-                ),
-                SafeArea(
-                  top: true,
-                  bottom: true,
-                  child: Container(
-                    width: 270.0,
-
-                    child: Card(
-                      shape: shapeBorder,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          SizedBox(
-                            height: 180.0,
-                            child: Stack(
-                              children: <Widget>[
-                                Positioned.fill(
-                                  child: Image.asset(
-                                    'images/grtwo.jpg',
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-
-                          *//*Positioned(
-                          bottom: 16.0,
-                          left: 16.0,
-                          right: 16.0,
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            alignment: Alignment.centerLeft,
-                            child: Text('',
-                              style: titleStyle,
-                            ),
-                          ),
-                        ),*//*
-                        ],
-                      ),
-                    ),
-                    // description and share/explore buttons
-                    // share, explore buttons
-                  ),
-                ),
-                SafeArea(
-                  top: true,
-                  bottom: true,
-                  child: Container(
-                    width: 270.0,
-
-                    child: Card(
-                      shape: shapeBorder,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          SizedBox(
-                            height: 180.0,
-                            child: Stack(
-                              children: <Widget>[
-                                Positioned.fill(
-                                  child: Image.asset(
-                                    'images/groceries.jpg',
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-
-                          *//*Positioned(
-                          bottom: 16.0,
-                          left: 16.0,
-                          right: 16.0,
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            alignment: Alignment.centerLeft,
-                            child: Text('',
-                              style: titleStyle,
-                            ),
-                          ),
-                        ),*//*
-                        ],
-                      ),
-                    ),
-                    // description and share/explore buttons
-                    // share, explore buttons
-                  ),
-                ),
-                SafeArea(
-                  top: true,
-                  bottom: true,
-                  child: Container(
-                    width: 270.0,
-
-                    child: Card(
-                      shape: shapeBorder,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          SizedBox(
-                            height: 180.0,
-                            child: Stack(
-                              children: <Widget>[
-                                Positioned.fill(
-                                  child: Image.asset(
-                                    'images/back.jpg',
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-
-                          *//*Positioned(
-                          bottom: 16.0,
-                          left: 16.0,
-                          right: 16.0,
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            alignment: Alignment.centerLeft,
-                            child: Text('',
-                              style: titleStyle,
-                            ),
-                          ),
-                        ),*//*
-                        ],
-                      ),
-                    ),
-                    // description and share/explore buttons
-                    // share, explore buttons
-                  ),
-                ),
-              ]),
-            ),
-            new Container(
-              margin: EdgeInsets.only(top: 7.0),
-              child: new Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    _verticalD(),
-                    new GestureDetector(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> ItemsPage(toolbarname: 'Fruits & Vegetables',)));
-                      },
-                      child: new Text(
-                        'Categories',
-                        style: TextStyle(
-                            fontSize: 20.0,
-                            //color: Colors.black87,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    _verticalD(),
-                    new GestureDetector(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> ItemsPage(toolbarname: 'Fruits & Vegetables',)));
-                      },
-                      child: new Text(
-                        'Popular',
-                        style: TextStyle(
-                            fontSize: 20.0,
-                            //color: Colors.black26,
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    _verticalD(),
-                    new Row(
-                      children: <Widget>[
-                        new GestureDetector(
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> ItemsPage(toolbarname: 'Fruits & Vegetables',)));
-                          },
-                          child: new Text(
-                            'Whats New',
-                            style: TextStyle(
-                                fontSize: 20.0,
-                                //color: Colors.black26,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
-                    )
-                  ]),
-            ),
-            new Container(
-              alignment: Alignment.topCenter,
-              height: 700.0,
-
-              child: new GridView.builder(
-                  itemCount: photos.length,
-                  primary: false,
-                  physics: NeverScrollableScrollPhysics(),
-                  padding: const EdgeInsets.all(10.0),
-                  gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
-                  itemBuilder: (BuildContext context, int index) {
-                    return new GestureDetector(
-                        onTap: (){
-
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> ItemsPage(toolbarname: 'Fruits & Vegetables',)));
-                        },
-
-                        child: new Container(
-                            margin: EdgeInsets.all(5.0),
-                            child: new Card(
-                              shape: shapeBorder,
-                              elevation: 3.0,
-                              child: new Container(
-                                //  mainAxisSize: MainAxisSize.max,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    SizedBox(
-                                      height: 152.0,
-                                      child: Stack(
-                                        children: <Widget>[
-                                          Positioned.fill(
-                                              child: Image.asset(
-                                                photos[index].assetName,
-                                                fit: BoxFit.cover,
-                                              )),
-                                          Container(
-                                            color: Colors.black38,
-                                          ),
-                                          Container(
-                                            //margin: EdgeInsets.only(left: 10.0),
-                                            padding: EdgeInsets.only(
-                                                left: 3.0, bottom: 3.0),
-                                            alignment: Alignment.bottomLeft,
-                                            child: new GestureDetector(
-                                              onTap: () {
-                                                Navigator.push(context, MaterialPageRoute(builder: (context)=> ItemsPage(toolbarname: 'Fruits & Vegetables',)));
-                                              },
-                                              child: new Text(
-                                                photos[index].title,
-                                                style: TextStyle(
-                                                    fontSize: 18.0,
-                                                    color: Colors.white,
-                                                    fontWeight:
-                                                    FontWeight.bold),
-                                              ),
-                                            ),
-                                          ),
-
-                                          *//*Positioned(
-                                    child: FittedBox(
-                                     fit: BoxFit.fill,
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(photos[index].title,
-                                        style: TextStyle(color: Colors.black87,fontSize: 15.0),
-                                      ),
-                                  )
-                                  )*//*
-                                        ],
-                                      ),
-                                    ),
-
-                                    // new Text(photos[index].title.toString()),
-                                  ],
-                                ),
-                              ),
-                            )
-                        )
-
-                    );
-                  }),
-            )
-          ]),
-        ),
-      ),
-    );
-  }
-
-*//*
-  new Container(
-  alignment: Alignment.topCenter,
-  child: GridView.count(
-  primary: true,
-  crossAxisCount: 2,
-  childAspectRatio: 0.80,
-  children: List.generate(photos.length, (index) {
-  return getStructuredGridCell(photos[index]);
-  }),
-  ))*//*
-  Icon keyloch = new Icon(
-    Icons.arrow_forward,
-    //color: Colors.black26,
-  );
-
-  _verticalD() => Container(
-    margin: EdgeInsets.only(left: 5.0, right: 0.0, top: 5.0, bottom: 0.0),
-  );
-
-
-}*/

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/routes.dart';
+import 'package:vividgold_app/ui/intro/intro.dart';
 import 'package:vividgold_app/utils/themes.dart';
 
 void main() => runApp(MyApp());
@@ -9,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+      home: IntroPage(),
       theme: Themes.androidTheme(),
       routes: routes,
     );

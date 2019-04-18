@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 
 class PaymentPage extends StatefulWidget {
   @override
@@ -45,7 +46,8 @@ class PaymentPageState extends State<PaymentPage> {
     Item(itemName: 'Lemon', itemQun: 'Qty:2', itemPrice: '\₹ 70'),
     Item(itemName: 'Apple', itemQun: 'Qty:1', itemPrice: '\₹ 50'),
   ];
-  String toolbarname = 'CheckOut';
+
+  String toolbarname = UIConstants.payment;
 
   @override
   Widget build(BuildContext context) {

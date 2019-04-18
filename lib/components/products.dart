@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/models/product.dart';
 import 'package:vividgold_app/ui/products/product_details.dart';
-import 'package:vividgold_app/utils/constants.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 
 class ProductsListItem extends StatelessWidget {
   final Product product1;
@@ -49,7 +49,7 @@ class ProductsListItem extends StatelessWidget {
               ),*/
               child: FadeInImage(
                 fit: BoxFit.cover,
-                placeholder: AssetImage(Constants.placeholder),
+                placeholder: AssetImage(UIConstants.placeholder),
                 image: NetworkImage(product.images[0].imageURL),
               ),
               height: 250.0,
@@ -206,7 +206,7 @@ class Single_prod extends StatelessWidget {
           child: Material(
             child: InkWell(
               onTap: () {
-                Navigator.pushNamed(context, Constants.ROUTE_PRODUCT_DETAILS);
+                Navigator.pushNamed(context, UIConstants.ROUTE_PRODUCT_DETAILS);
               },
               child: GridTile(
                   footer: Container(
@@ -233,7 +233,7 @@ class Single_prod extends StatelessWidget {
                   ),
                   child: FadeInImage(
                     fit: BoxFit.cover,
-                    placeholder: AssetImage(Constants.placeholder),
+                    placeholder: AssetImage(UIConstants.placeholder),
                     image: NetworkImage(prod_picture),
                   ),
                   /*child: Image.network(

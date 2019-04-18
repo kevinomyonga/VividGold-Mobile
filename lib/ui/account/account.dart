@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:vividgold_app/utils/constants.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 
 class AccountPage extends StatefulWidget {
   @override
@@ -27,7 +27,7 @@ class AccountPageState extends State<AccountPage> {
 
     return new Scaffold(
         appBar: new AppBar(
-          title: Text('My Account',),
+          title: Text(UIConstants.my_account),
         ),
         body: _buildAccountPage(context)
     );
@@ -88,7 +88,7 @@ class AccountPageState extends State<AccountPage> {
                   height: headerImageHeight,
                   child: FadeInImage(
                     fit: BoxFit.cover,
-                    placeholder: AssetImage(Constants.placeholder),
+                    placeholder: AssetImage(UIConstants.placeholder),
                     image: NetworkImage(avatarURL),
                   ),
                 ),
@@ -128,31 +128,19 @@ class AccountPageState extends State<AccountPage> {
                             borderRadius: BorderRadius.circular(60),
                             child: FadeInImage(
                               fit: BoxFit.fill,
-                              placeholder: AssetImage(Constants.placeholder),
+                              placeholder: AssetImage(UIConstants.placeholder),
                               image: NetworkImage(avatarURL),
                             ),
                           ),
                         )
                     ),
 
-                    /*new FlatButton(
-                      onPressed: null,
-                      child: Text(
-                        'Change',
-                        style:
-                        TextStyle(fontSize: 13.0, color: Colors.blueAccent),
-                      ),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0),
-                          side: BorderSide(color: Colors.blueAccent)),
-                    ),*/
-
                     new OutlineButton(
                         borderSide: BorderSide(color: Colors.amber.shade500),
                         child: const Text('Change'),
                         textColor: Colors.amber.shade500,
                         onPressed: () {
-                          Navigator.pushNamed(context, Constants.ROUTE_CATEGORIES);
+                          Navigator.pushNamed(context, UIConstants.ROUTE_CATEGORIES);
                         },
                         shape: new OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -645,7 +633,7 @@ class AccountPageState extends State<AccountPage> {
                 new IconButton(icon: keyLock, onPressed: _changePass),
                 _verticalD(),
                 new Text(
-                  'Change Password',
+                  UIConstants.change_password,
                   style: TextStyle(
                     fontSize: 15.0,
                     //color: Colors.black87
@@ -664,7 +652,7 @@ class AccountPageState extends State<AccountPage> {
                 new IconButton(icon: clear, onPressed: _clearHistory),
                 _verticalD(),
                 new Text(
-                  'Clear History',
+                  UIConstants.clear_history,
                   style: TextStyle(
                     fontSize: 15.0,
                     //color: Colors.black87,
@@ -686,7 +674,7 @@ class AccountPageState extends State<AccountPage> {
                 ),
                 _verticalD(),
                 new Text(
-                  'Logout',
+                  UIConstants.logout,
                   style: TextStyle(
                     fontSize: 15.0,
                     color: Colors.redAccent,
@@ -705,7 +693,7 @@ class AccountPageState extends State<AccountPage> {
                 new IconButton(icon: deactivateAccount, onPressed: _deactivate),
                 _verticalD(),
                 new Text(
-                  'Deactivate Account',
+                  UIConstants.deactivate_account,
                   style: TextStyle(
                     fontSize: 15.0,
                     color: Colors.redAccent,
@@ -731,7 +719,7 @@ class AccountPageState extends State<AccountPage> {
   void _clearHistory() {}
 
   void _logout() {
-    Navigator.pushNamed(context, Constants.ROUTE_AUTH);
+    Navigator.pushNamed(context, UIConstants.ROUTE_AUTH);
   }
 
   void _deactivate() {}

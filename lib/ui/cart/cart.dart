@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/ui/cart/checkout.dart';
 import 'package:vividgold_app/ui/products/products_list.dart';
-import 'package:vividgold_app/utils/constants.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 
 enum DialogDemoAction {
   cancel,
@@ -26,37 +26,37 @@ class Item {
 class CartPageState extends State<CartPage> {
   List<Item> itemList = <Item>[
     Item(
-        itemImage: Constants.placeholder,
+        itemImage: UIConstants.placeholder,
         itemName: 'Black Grape',
         itemQun: 'Qty:1',
         itemPrice: '\$ 100'),
     Item(
-        itemImage: Constants.placeholder,
+        itemImage: UIConstants.placeholder,
         itemName: 'Tomato',
         itemQun: 'Qty:3',
         itemPrice: '\$ 112'),
     Item(
-        itemImage: Constants.placeholder,
+        itemImage: UIConstants.placeholder,
         itemName: 'Guava',
         itemQun: 'Qty:2',
         itemPrice: '\Kshs 105'),
     Item(
-        itemImage: Constants.placeholder,
+        itemImage: UIConstants.placeholder,
         itemName: 'Kiwi',
         itemQun: 'Qty:1',
         itemPrice: '\Kshs 90'),
     Item(
-        itemImage: Constants.placeholder,
+        itemImage: UIConstants.placeholder,
         itemName: 'Lemon',
         itemQun: 'Qty:2',
         itemPrice: '\₹ 70'),
     Item(
-        itemImage: Constants.placeholder,
+        itemImage: UIConstants.placeholder,
         itemName: 'Apple',
         itemQun: 'Qty:1',
         itemPrice: '\₹ 50'),
   ];
-  String toolbarname = 'My Cart';
+  String toolbarname = UIConstants.cart;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   IconData _backIcon() {

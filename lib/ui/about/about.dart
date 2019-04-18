@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 
 class AboutPage extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class _AboutPageState extends State<AboutPage> {
     return Scaffold(
       appBar: new AppBar(
         elevation: 0.1,
-        title: Text('About'),
+        title: Text(UIConstants.about),
       ),
 
       body: _buildAboutPage(context)

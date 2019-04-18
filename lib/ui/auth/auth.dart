@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vividgold_app/utils/bubble_indication_painter.dart';
-import 'package:vividgold_app/utils/constants.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 import 'package:vividgold_app/utils/themes.dart';
 
 class AuthPage extends StatefulWidget {
@@ -93,7 +93,8 @@ class AuthPageState extends State<AuthPage>
                     width: 250.0,
                     height: 191.0,
                     fit: BoxFit.contain,
-                    image: new AssetImage(Constants.loginLogo)),
+                    image: new AssetImage(UIConstants.loginLogo)
+                ),
               ),
               Padding(
                 padding: EdgeInsets.only(top: 20.0),
@@ -194,7 +195,7 @@ class AuthPageState extends State<AuthPage>
                 highlightColor: Colors.transparent,
                 onPressed: _onSignInButtonPress,
                 child: Text(
-                  "Existing",
+                  UIConstants.auth_existing,
                   style: TextStyle(
                     color: left,
                     fontSize: 16.0,
@@ -211,7 +212,7 @@ class AuthPageState extends State<AuthPage>
                 highlightColor: Colors.transparent,
                 onPressed: _onSignUpButtonPress,
                 child: Text(
-                  "New",
+                  UIConstants.auth_new,
                   style: TextStyle(
                     color: right,
                     fontSize: 16.0,
@@ -267,7 +268,7 @@ class AuthPageState extends State<AuthPage>
                               //color: Colors.black,
                               size: 22.0,
                             ),
-                            hintText: "Email Address",
+                            hintText: UIConstants.hint_email_address,
                             hintStyle: TextStyle(
                               //fontFamily: "WorkSansSemiBold",
                               fontSize: 17.0,
@@ -301,7 +302,7 @@ class AuthPageState extends State<AuthPage>
                               size: 22.0,
                               //color: Colors.black,
                             ),
-                            hintText: "Password",
+                            hintText: UIConstants.hint_password,
                             hintStyle: TextStyle(
                               //fontFamily: "WorkSansSemiBold",
                               fontSize: 17.0,
@@ -356,7 +357,7 @@ class AuthPageState extends State<AuthPage>
                       padding: const EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 42.0),
                       child: Text(
-                        "LOGIN",
+                        UIConstants.login,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 25.0,
@@ -375,7 +376,7 @@ class AuthPageState extends State<AuthPage>
             child: FlatButton(
                 onPressed: () {},
                 child: Text(
-                  "Forgot Password?",
+                  UIConstants.forgot_password,
                   style: TextStyle(
                     decoration: TextDecoration.underline,
                     color: Colors.white,
@@ -408,7 +409,7 @@ class AuthPageState extends State<AuthPage>
                 Padding(
                   padding: EdgeInsets.only(left: 15.0, right: 15.0),
                   child: Text(
-                    "Or",
+                    UIConstants.or,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16.0,
@@ -518,7 +519,7 @@ class AuthPageState extends State<AuthPage>
                               FontAwesomeIcons.user,
                               //color: Colors.black,
                             ),
-                            hintText: "Name",
+                            hintText: UIConstants.hint_name,
                             hintStyle: TextStyle(
                               //fontFamily: "WorkSansSemiBold",
                               fontSize: 16.0,
@@ -551,7 +552,7 @@ class AuthPageState extends State<AuthPage>
                               FontAwesomeIcons.envelope,
                               //color: Colors.black,
                             ),
-                            hintText: "Email Address",
+                            hintText: UIConstants.hint_email_address,
                             hintStyle: TextStyle(
                               //fontFamily: "WorkSansSemiBold",
                               fontSize: 16.0,
@@ -584,7 +585,7 @@ class AuthPageState extends State<AuthPage>
                               FontAwesomeIcons.phone,
                               //color: Colors.black,
                             ),
-                            hintText: "Phone Number",
+                            hintText: UIConstants.hint_phone_number,
                             hintStyle: TextStyle(
                               //fontFamily: "WorkSansSemiBold",
                               fontSize: 16.0,
@@ -617,7 +618,7 @@ class AuthPageState extends State<AuthPage>
                               FontAwesomeIcons.lock,
                               //color: Colors.black,
                             ),
-                            hintText: "Password",
+                            hintText: UIConstants.hint_password,
                             hintStyle: TextStyle(
                               //fontFamily: "WorkSansSemiBold",
                               fontSize: 16.0,
@@ -657,7 +658,7 @@ class AuthPageState extends State<AuthPage>
                               FontAwesomeIcons.lock,
                               //color: Colors.black,
                             ),
-                            hintText: "Confirmation",
+                            hintText: UIConstants.hint_confirm_password,
                             hintStyle: TextStyle(
                               //fontFamily: "WorkSansSemiBold",
                               fontSize: 16.0,
@@ -712,7 +713,7 @@ class AuthPageState extends State<AuthPage>
                       padding: const EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 42.0),
                       child: Text(
-                        "SIGN UP",
+                        UIConstants.sign_up,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 25.0,
@@ -731,8 +732,7 @@ class AuthPageState extends State<AuthPage>
             child: FlatButton(
                 onPressed: () {},
                 child: Text(
-                  "By creating an account you acknowledge that you agree with our "
-                      "Terms Of Service, Privacy Policy and Refund Policy",
+                  UIConstants.tos_agreement,
                   style: TextStyle(
                     decoration: TextDecoration.underline,
                     color: Colors.white,
@@ -784,6 +784,6 @@ class AuthPageState extends State<AuthPage>
 
   void _performLogin() {
     // This is just a demo, so no actual login here.
-    Navigator.pushNamed(context, Constants.ROUTE_HOME);
+    Navigator.pushNamed(context, UIConstants.ROUTE_HOME);
   }
 }

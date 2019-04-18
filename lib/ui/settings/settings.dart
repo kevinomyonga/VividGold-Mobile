@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/ui/cart/cart.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 
 class SettingsPage extends StatefulWidget {
   final String toolbarName;
@@ -42,13 +43,13 @@ class SettingsPageState extends State<SettingsPage> {
           leading: IconButton(
             icon: Icon(_backIcon()),
             alignment: Alignment.centerLeft,
-            tooltip: 'Back',
+            tooltip: UIConstants.back,
             onPressed: () {
               Navigator.pop(context);
             },
           ),
           //title: Text(toolbarname),
-          title: Text('Settings'),
+          title: Text(UIConstants.settings),
           //backgroundColor: Colors.white,
         ),
         body: _buildSettingsPage(context)

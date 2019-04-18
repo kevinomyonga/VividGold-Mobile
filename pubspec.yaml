@@ -39,7 +39,8 @@ dependencies:
   # A Flutter plugin for iOS and Android for picking images from the image library, and taking new pictures with the camera.
   image_picker: ^0.5.3+1
 
-  #
+  introduction_screen: ^1.0.0
+
   loader_search_bar: ^1.0.2
 
   # A set of utilities that allow you to easily pass a data Model from a parent Widget down to it's descendants.

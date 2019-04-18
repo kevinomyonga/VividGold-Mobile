@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vividgold_app/utils/constants.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 
 class Themes {
 
@@ -7,24 +7,24 @@ class Themes {
   static ThemeData iosTheme() {
     return ThemeData(
       primaryColor: Colors.grey[100],
-      primarySwatch: Constants.primaryColor,
+      primarySwatch: UIConstants.primaryColor,
       primaryColorBrightness: Brightness.light,
     );
   }
 
   static ThemeData androidTheme() {
     return ThemeData(
-      primaryColor: Constants.primaryColor,
-      primaryColorDark: Constants.primaryColorDark,
-      accentColor: Constants.accentColor,
+      primaryColor: UIConstants.primaryColor,
+      primaryColorDark: UIConstants.primaryColorDark,
+      accentColor: UIConstants.accentColor,
       brightness: Brightness.dark,
-      fontFamily: Constants.workSansFont,
+      fontFamily: UIConstants.workSansFont,
     );
   }
 
   // Gradient
-  static Color loginGradientStart = Constants.primaryColor;
-  static Color loginGradientEnd = Constants.opposingColor;
+  static Color loginGradientStart = UIConstants.primaryColor;
+  static Color loginGradientEnd = UIConstants.opposingColor;
 
   static final primaryGradient = LinearGradient(
     colors: [loginGradientStart, loginGradientEnd],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vividgold_app/components/products.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 import 'package:vividgold_app/utils/themes.dart';
 
 class SearchPage extends StatefulWidget {
@@ -15,7 +16,7 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       appBar: new AppBar(
         elevation: 0.1,
-        title: Text('Search'),
+        title: Text(UIConstants.search),
       ),
 
       body: _buildSearchPage(context)
@@ -69,7 +70,7 @@ class _SearchPageState extends State<SearchPage> {
                   size: 22.0,
                   color: Colors.grey,
                 ),
-                hintText: 'What are you looking for?',
+                hintText: UIConstants.search_hint1,
                 hintStyle: TextStyle(
                   color: Colors.grey,
                   fontSize: 17.0,

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vividgold_app/models/product.dart';
 import 'package:vividgold_app/ui/cart/cart.dart';
 import 'package:vividgold_app/ui/cart/checkout.dart';
-import 'package:vividgold_app/utils/constants.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 
 class ProductDetailsPage extends StatefulWidget {
 
@@ -50,7 +50,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
         leading: IconButton(
           icon: Icon(_backIcon()),
           alignment: Alignment.centerLeft,
-          tooltip: 'Back',
+          tooltip: UIConstants.back,
           onPressed: () {
             Navigator.pop(context);
           },
@@ -141,7 +141,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                         (image) {
                       return FadeInImage(
                         fit: BoxFit.cover,
-                        placeholder: AssetImage(Constants.placeholder),
+                        placeholder: AssetImage(UIConstants.placeholder),
                         image: NetworkImage(image.imageURL),
                       );
                     },

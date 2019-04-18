@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vividgold_app/utils/constants.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 
 class HorizontalList extends StatelessWidget {
 
@@ -57,7 +57,7 @@ class Category extends StatelessWidget {
       padding: const EdgeInsets.all(2.0),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, Constants.ROUTE_PRODUCTS);
+          Navigator.pushNamed(context, UIConstants.ROUTE_PRODUCTS);
         },
         child: Container(
           width: 100.0,

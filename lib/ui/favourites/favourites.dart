@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/components/products.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 
-class CategoriesPage extends StatefulWidget {
+class FavouritesPage extends StatefulWidget {
   @override
-  _CategoriesPageState createState() => _CategoriesPageState();
+  _FavouritesPageState createState() => _FavouritesPageState();
 }
 
-class _CategoriesPageState extends State<CategoriesPage> {
+class _FavouritesPageState extends State<FavouritesPage> {
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
         appBar: new AppBar(
           elevation: 0.1,
-          title: Text('Categories'),
+          title: Text(UIConstants.favourites),
         ),
 
-        body: _buildCategoriesPage(context)
+        body: _buildFavouritesPage(context)
     );
   }
 
-  _buildCategoriesPage(BuildContext context) {
+  _buildFavouritesPage(BuildContext context) {
     return new ListView(
       children: <Widget>[
         //grid view

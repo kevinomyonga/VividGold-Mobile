@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 
 class OrdersPage extends StatefulWidget {
 
@@ -114,13 +115,13 @@ class OrdersPageState extends State<OrdersPage> {
           leading: IconButton(
             icon: Icon(_backIcon()),
             alignment: Alignment.centerLeft,
-            tooltip: 'Back',
+            tooltip: UIConstants.back,
             onPressed: () {
               Navigator.pop(context);
             },
           ),
           //title: Text(toolbarname),
-          title: Text('My Orders'),
+          title: Text(UIConstants.my_orders),
           //backgroundColor: Colors.white,
         ),
         body: _buildOrdersPage(context)

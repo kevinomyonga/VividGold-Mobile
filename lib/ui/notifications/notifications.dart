@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 
 class NotificationsPage extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
     return Scaffold(
         appBar: new AppBar(
           elevation: 0.1,
-          title: Text('Notifications'),
+          title: Text(UIConstants.notifications),
         ),
 
         body: _buildNotificationsPage(context)
