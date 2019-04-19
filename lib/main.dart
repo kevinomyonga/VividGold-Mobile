@@ -10,8 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: IntroPage(),
       theme: Themes.androidTheme(),
+      home: IntroPage(),
       routes: routes,
     );
   }

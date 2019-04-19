@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
         appBar: new AppBar(
-          elevation: 0.1,
+          elevation: 1.0,
           //title: Text(Constants.appName),
           title: new Image.asset(UIConstants.appBarLogo, fit: BoxFit.cover),
           actions: <Widget>[
@@ -249,30 +249,7 @@ class _HomePageState extends State<HomePage> {
         _buildImageCarousel(context),
 
         new Container(
-          //color: Theme.of(context).primaryColor,
-          decoration: new BoxDecoration(
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                color: Themes.loginGradientStart,
-                offset: Offset(1.0, 6.0),
-                blurRadius: 20.0,
-              ),
-              BoxShadow(
-                color: Themes.loginGradientEnd,
-                offset: Offset(1.0, 6.0),
-                blurRadius: 20.0,
-              ),
-            ],
-            gradient: new LinearGradient(
-                colors: [
-                  Themes.loginGradientEnd,
-                  Themes.loginGradientStart
-                ],
-                begin: const FractionalOffset(0.2, 0.2),
-                end: const FractionalOffset(1.0, 1.0),
-                stops: [0.0, 1.0],
-                tileMode: TileMode.clamp),
-          ),
+          color: Theme.of(context).primaryColor,
           child: new Padding(
             padding: new EdgeInsets.all(8.0),
             child: new InkWell(
@@ -284,15 +261,15 @@ class _HomePageState extends State<HomePage> {
                 //controller: searchController,
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: UIConstants.searchFieldColor,
                   prefixIcon: Icon(
                     FontAwesomeIcons.search,
                     size: 22.0,
-                    color: Colors.grey,
+                    color: UIConstants.searchPrefixIconColor,
                   ),
                   hintText: UIConstants.search_hint1,
                   hintStyle: TextStyle(
-                    color: Colors.grey,
+                    color: UIConstants.searchFieldHintTextColor,
                     fontSize: 17.0,
                     fontWeight: FontWeight.w600,
                   ),
@@ -307,14 +284,30 @@ class _HomePageState extends State<HomePage> {
 
         //padding widget
         new Padding(padding: const EdgeInsets.all(20.0),
-          child: new Text(UIConstants.categories),),
+          child: new Text(
+              UIConstants.categories,
+              style: TextStyle(
+                fontSize: 17.0,
+                fontWeight: FontWeight.w600,
+              )
+          ),
+        ),
 
         //Horizontal list view begins here
         HorizontalList(),
 
+        Divider(),
+
         //padding widget
         new Padding(padding: const EdgeInsets.all(20.0),
-          child: new Text(UIConstants.recent_products),),
+          child: new Text(
+              UIConstants.recent_products,
+              style: TextStyle(
+                fontSize: 17.0,
+                fontWeight: FontWeight.w600,
+              )
+          ),
+        ),
 
         //grid view
         Container(

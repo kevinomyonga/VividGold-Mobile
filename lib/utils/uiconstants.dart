@@ -29,6 +29,13 @@ class UIConstants {
   static Color opposingColor     = Colors.black;
   static Color cartIconColor     = Colors.green.shade500;
 
+  // Search Field Colors
+  static Color searchFieldColor             = Colors.white;
+  static Color searchPrefixIconColor        = Colors.grey;
+  static Color searchFieldHintTextColor     = Colors.grey;
+  static Color searchFieldTextColor         = Colors.black;
+
+
   //Images
   static const String imageDir      = "assets/images";
   static const String appBarLogo    = "$imageDir/vivid_gold_logo.png";

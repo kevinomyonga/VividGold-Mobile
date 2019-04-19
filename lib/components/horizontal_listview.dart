@@ -60,7 +60,7 @@ class Category extends StatelessWidget {
           Navigator.pushNamed(context, UIConstants.ROUTE_PRODUCTS);
         },
         child: Container(
-          width: 100.0,
+          width: 110.0,
           child: ListTile(
               title: new Container(
                 //alignment: Alignment.topCenter,
@@ -69,8 +69,38 @@ class Category extends StatelessWidget {
                     height: 80.0,
                     //margin: const EdgeInsets.all(10.0),
                     // padding: const EdgeInsets.all(3.0),
-                    child: Image.network(
-                        image_location
+                    /*child: FadeInImage(
+                      fit: BoxFit.fill,
+                      placeholder: AssetImage(UIConstants.placeholder),
+                      image: NetworkImage(image_location),
+                    ),*/
+                    /*child: new CircleAvatar(
+                      backgroundColor: Colors.grey,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(60),
+                        child: FadeInImage(
+                          fit: BoxFit.fill,
+                          placeholder: AssetImage(UIConstants.placeholder),
+                          image: NetworkImage(image_location),
+                        ),
+                      ),
+                    ),*/
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey, //                   <--- border color
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(60.0) //         <--- border radius here
+                      ),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(60),
+                      child: FadeInImage(
+                        fit: BoxFit.fill,
+                        placeholder: AssetImage(UIConstants.placeholder),
+                        image: NetworkImage(image_location),
+                      ),
                     ),
                   )
               ),
@@ -84,7 +114,8 @@ class Category extends StatelessWidget {
                 child: Text(
                   image_caption,
                   style: new TextStyle(
-                      fontSize: 12.0
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               )

@@ -155,6 +155,7 @@ class AccountPageState extends State<AccountPage> {
   );
 
   _profileInfo() => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         new Container(
           margin: EdgeInsets.only(left: 12.0, top: 5.0, right: 0.0, bottom: 5.0),
@@ -301,6 +302,7 @@ class AccountPageState extends State<AccountPage> {
   );
 
   _profileAddresses() => Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         new Container(
           margin:

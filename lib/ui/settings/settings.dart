@@ -14,6 +14,7 @@ class SettingsPage extends StatefulWidget {
 class SettingsPageState extends State<SettingsPage> {
   List list = ['12', '11'];
 
+  bool darkThemeEnabled = true;
   bool switchValue = false;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -80,7 +81,76 @@ class SettingsPageState extends State<SettingsPage> {
                                 builder: (context) => signup_screen()));*/
                   },
                   child: new Text(
-                    'Notification',
+                    'Theme',
+                    style: TextStyle(
+                        fontSize: 18.0,
+                        //color: Colors.black87,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 10.0),
+            child: Card(
+                child: Container(
+                  padding: EdgeInsets.only(
+                      left: 10.0, top: 5.0, bottom: 5.0, right: 5.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.brightness_4,
+                            //color: Colors.black54
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 5.0),
+                          ),
+                          Text(
+                            'Dark Theme',
+                            style: TextStyle(
+                              fontSize: 17.0,
+                              //color: Colors.black87,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Switch(
+                          value: darkThemeEnabled,
+                          onChanged: (bool value) {
+                            setState(() {
+                              darkThemeEnabled = value;
+                            });
+                          }
+                      ),
+                    ],
+                  ),
+                )),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 15.0),
+          ),
+
+          new Container(
+            height: 50.0,
+            alignment: Alignment.topLeft,
+            margin: EdgeInsets.only(top: 7.0),
+            child: new Row(
+              children: <Widget>[
+                _verticalD(),
+                new GestureDetector(
+                  onTap: () {
+                    /*Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => signup_screen()));*/
+                  },
+                  child: new Text(
+                    UIConstants.notifications,
                     style: TextStyle(
                         fontSize: 18.0,
                         //color: Colors.black87,
@@ -124,7 +194,8 @@ class SettingsPageState extends State<SettingsPage> {
                             setState(() {
                               switchValue = value;
                             });
-                          }),
+                          }
+                      ),
                     ],
                   ),
                 )),

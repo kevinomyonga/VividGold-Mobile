@@ -120,12 +120,11 @@ class PaymentPageState extends State<PaymentPage> {
                                         style: TextStyle(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.black38),
+                                        ),
                                       ),
                                       IconButton(
                                           icon: Icon(
                                             Icons.play_circle_outline,
-                                            color: Colors.black38,
                                           ),
                                           onPressed: null)
                                     ],
@@ -142,7 +141,7 @@ class PaymentPageState extends State<PaymentPage> {
                                         style: TextStyle(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.black),
+                                        ),
                                       ),
                                       IconButton(
                                           icon: Icon(
@@ -180,7 +179,6 @@ class PaymentPageState extends State<PaymentPage> {
           child: new Text(
             'Payment Method',
             style: TextStyle(
-                color: Colors.black87,
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0),
           ),
@@ -203,7 +201,9 @@ class PaymentPageState extends State<PaymentPage> {
                               Text("Wallet / UPI",
                                   maxLines: 10,
                                   style: TextStyle(
-                                      fontSize: 15.0, color: Colors.black)),
+                                      fontSize: 15.0,
+                                  )
+                              ),
                               Radio<int>(
                                   value: 0,
                                   groupValue: 0,
@@ -222,7 +222,9 @@ class PaymentPageState extends State<PaymentPage> {
                                 Text("Net Banking",
                                     maxLines: 10,
                                     style: TextStyle(
-                                        fontSize: 15.0, color: Colors.black)),
+                                        fontSize: 15.0,
+                                    )
+                                ),
                                 Radio<int>(
                                     value: 0,
                                     groupValue: radioValue,
@@ -240,7 +242,9 @@ class PaymentPageState extends State<PaymentPage> {
                                 Text("Credit / Debit / ATM Card",
                                     maxLines: 10,
                                     style: TextStyle(
-                                        fontSize: 15.0, color: Colors.black)),
+                                        fontSize: 15.0,
+                                    )
+                                ),
                                 Radio<int>(
                                     value: 0,
                                     groupValue: 0,
@@ -258,7 +262,9 @@ class PaymentPageState extends State<PaymentPage> {
                                 Text("Cash on Delivery",
                                     maxLines: 10,
                                     style: TextStyle(
-                                        fontSize: 15.0, color: Colors.black)),
+                                        fontSize: 15.0,
+                                    )
+                                ),
                                 Radio<int>(
                                     value: 0,
                                     groupValue: 0,
@@ -283,12 +289,13 @@ class PaymentPageState extends State<PaymentPage> {
                     'Total :',
                     style: TextStyle(
                         fontSize: 17.0,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.bold
+                    ),
                   ),
                   Text(
                     '\₹ 524',
-                    style: TextStyle(fontSize: 17.0, color: Colors.black54),
+                    style: TextStyle(fontSize: 17.0,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),

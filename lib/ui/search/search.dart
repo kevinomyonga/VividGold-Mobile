@@ -15,7 +15,7 @@ class _SearchPageState extends State<SearchPage> {
 
     return Scaffold(
       appBar: new AppBar(
-        elevation: 0.1,
+        elevation: 1.0,
         title: Text(UIConstants.search),
       ),
 
@@ -28,30 +28,7 @@ class _SearchPageState extends State<SearchPage> {
       children: <Widget>[
 
         new Container(
-          //color: Theme.of(context).primaryColor,
-          decoration: new BoxDecoration(
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                color: Themes.loginGradientStart,
-                offset: Offset(1.0, 6.0),
-                blurRadius: 20.0,
-              ),
-              BoxShadow(
-                color: Themes.loginGradientEnd,
-                offset: Offset(1.0, 6.0),
-                blurRadius: 20.0,
-              ),
-            ],
-            gradient: new LinearGradient(
-                colors: [
-                  Themes.loginGradientEnd,
-                  Themes.loginGradientStart
-                ],
-                begin: const FractionalOffset(0.2, 0.2),
-                end: const FractionalOffset(1.0, 1.0),
-                stops: [0.0, 1.0],
-                tileMode: TileMode.clamp),
-          ),
+          color: Theme.of(context).primaryColor,
           child: new Padding(
             padding: new EdgeInsets.all(8.0),
             child: new TextField(
@@ -60,19 +37,19 @@ class _SearchPageState extends State<SearchPage> {
                 //fontFamily: "WorkSansSemiBold",
                   fontSize: 16.0,
                   fontWeight: FontWeight.w600,
-                  color: Colors.black
+                  color: UIConstants.searchFieldTextColor
               ),
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: UIConstants.searchFieldColor,
                 prefixIcon: Icon(
                   FontAwesomeIcons.search,
                   size: 22.0,
                   color: Colors.grey,
                 ),
-                hintText: UIConstants.search_hint1,
+                hintText: UIConstants.search_hint2,
                 hintStyle: TextStyle(
-                  color: Colors.grey,
+                  color: UIConstants.searchFieldHintTextColor,
                   fontSize: 17.0,
                   fontWeight: FontWeight.w600,
                 ),
