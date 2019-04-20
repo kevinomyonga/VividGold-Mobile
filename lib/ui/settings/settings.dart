@@ -1,3 +1,4 @@
+import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/ui/cart/cart.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
@@ -14,7 +15,6 @@ class SettingsPage extends StatefulWidget {
 class SettingsPageState extends State<SettingsPage> {
   List list = ['12', '11'];
 
-  bool darkThemeEnabled = true;
   bool switchValue = false;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -49,7 +49,6 @@ class SettingsPageState extends State<SettingsPage> {
               Navigator.pop(context);
             },
           ),
-          //title: Text(toolbarname),
           title: Text(UIConstants.settings),
           //backgroundColor: Colors.white,
         ),
@@ -58,6 +57,8 @@ class SettingsPageState extends State<SettingsPage> {
   }
 
   _buildSettingsPage(context) {
+
+    bool darkThemeEnabled = Theme.of(context).brightness == Brightness.dark? true: false;
 
     final ThemeData theme = Theme.of(context);
     final TextStyle dialogTextStyle =
@@ -125,6 +126,7 @@ class SettingsPageState extends State<SettingsPage> {
                             setState(() {
                               darkThemeEnabled = value;
                             });
+                            changeBrightness();
                           }
                       ),
                     ],
@@ -395,7 +397,7 @@ class SettingsPageState extends State<SettingsPage> {
     }
   }
 
-  erticalD() => Container(
+  verticalD() => Container(
     margin: EdgeInsets.only(left: 10.0, right: 0.0, top: 0.0, bottom: 0.0),
   );
 
@@ -414,5 +416,16 @@ class SettingsPageState extends State<SettingsPage> {
         mText = "Press to hide";
       }
     });
+  }
+
+  void changeBrightness() {
+    DynamicTheme.of(context).setBrightness(
+        Theme.of(context).brightness == Brightness.dark? Brightness.light: Brightness.dark);
+  }
+
+  void changeColor() {
+    DynamicTheme.of(context).setThemeData(new ThemeData(
+        primaryColor: Theme.of(context).primaryColor == Colors.indigo? Colors.red: Colors.indigo
+    ));
   }
 }

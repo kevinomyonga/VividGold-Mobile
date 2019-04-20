@@ -22,8 +22,8 @@ import 'package:vividgold_app/utils/uiconstants.dart';
 final routes = <String, WidgetBuilder> {
 
   //Constants.ROUTE_BASE              : (context) => HomePage(),
-  /*UIConstants.ROUTE_ABOUT             : (context) => AboutPage(),
-  UIConstants.ROUTE_ACCOUNT           : (context) => AccountPage(),
+  UIConstants.ROUTE_ABOUT             : (context) => AboutPage(),
+  /*UIConstants.ROUTE_ACCOUNT           : (context) => AccountPage(),
   UIConstants.ROUTE_AUTH              : (context) => AuthPage(),*/
   UIConstants.ROUTE_CART              : (context) => CartPage(),
   /*UIConstants.ROUTE_CATEGORIES        : (context) => CategoriesPage(),*/

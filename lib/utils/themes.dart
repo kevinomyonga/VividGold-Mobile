@@ -4,21 +4,13 @@ import 'package:vividgold_app/utils/uiconstants.dart';
 class Themes {
 
   // Theme Data
-  static ThemeData iosTheme() {
-    return ThemeData(
-      primaryColor            : Colors.grey[100],
-      primarySwatch           : UIConstants.primaryColor,
-      primaryColorBrightness  : Brightness.light,
-    );
-  }
-
-  static ThemeData androidTheme() {
+  static ThemeData appTheme(brightness) {
     return ThemeData(
       primaryColor      : UIConstants.primaryColor,
       primaryColorDark  : UIConstants.primaryColorDark,
       primarySwatch     : UIConstants.primaryColor,
       accentColor       : UIConstants.accentColor,
-      brightness        : Brightness.dark,
+      brightness        : brightness,
       fontFamily        : UIConstants.workSansFont,
     );
   }

@@ -27,6 +27,9 @@ dependencies:
   # A Flutter Carousel widget.
   carousel_pro: ^0.0.13
 
+  # A package that manages changing your theme during runtime and persiting that theme
+  dynamic_theme: ^1.0.0
+
   # An extension of the Flutter Material Slider to allow selection of a range of values via 2 thumbs.
   flutter_range_slider: ^1.1.0
 
