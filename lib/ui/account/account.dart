@@ -26,9 +26,6 @@ class AccountPageState extends State<AccountPage> {
   Widget build(BuildContext context) {
 
     return new Scaffold(
-        appBar: new AppBar(
-          title: Text(UIConstants.my_account),
-        ),
         body: _buildAccountPage(context)
     );
   }

@@ -12,11 +12,6 @@ class _FavouritesPageState extends State<FavouritesPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-        appBar: new AppBar(
-          elevation: 0.1,
-          title: Text(UIConstants.favourites),
-        ),
-
         body: _buildFavouritesPage(context)
     );
   }

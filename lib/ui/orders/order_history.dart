@@ -110,20 +110,6 @@ class OrdersPageState extends State<OrdersPage> {
 
     final Orientation orientation = MediaQuery.of(context).orientation;
     return new Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(_backIcon()),
-            alignment: Alignment.centerLeft,
-            tooltip: UIConstants.back,
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-          //title: Text(toolbarname),
-          title: Text(UIConstants.my_orders),
-          //backgroundColor: Colors.white,
-        ),
         body: _buildOrdersPage(context)
     );
   }

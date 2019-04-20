@@ -446,11 +446,28 @@ class AuthPageState extends State<AuthPage>
                     padding: const EdgeInsets.all(15.0),
                     decoration: new BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.white,
+                      color: Color(0xFF3B5998),
                     ),
                     child: new Icon(
                       FontAwesomeIcons.facebookF,
-                      color: Color(0xFFFFC107),
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10.0, right: 40.0),
+                child: GestureDetector(
+                  onTap: () => showInSnackBar("Google button pressed"),
+                  child: Container(
+                    padding: const EdgeInsets.all(15.0),
+                    decoration: new BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xFFEA4335),
+                    ),
+                    child: new Icon(
+                      FontAwesomeIcons.google,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -458,16 +475,16 @@ class AuthPageState extends State<AuthPage>
               Padding(
                 padding: EdgeInsets.only(top: 10.0),
                 child: GestureDetector(
-                  onTap: () => showInSnackBar("Google button pressed"),
+                  onTap: () => showInSnackBar("Twitter button pressed"),
                   child: Container(
                     padding: const EdgeInsets.all(15.0),
                     decoration: new BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.white,
+                      color: Color(0xFF1DA1F2),
                     ),
                     child: new Icon(
-                      FontAwesomeIcons.google,
-                      color: Color(0xFFFFC107),
+                      FontAwesomeIcons.twitter,
+                      color: Colors.white,
                     ),
                   ),
                 ),

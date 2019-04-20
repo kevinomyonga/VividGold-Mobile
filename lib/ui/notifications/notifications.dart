@@ -12,11 +12,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-        appBar: new AppBar(
-          elevation: 0.1,
-          title: Text(UIConstants.notifications),
-        ),
-
         body: _buildNotificationsPage(context)
     );
   }

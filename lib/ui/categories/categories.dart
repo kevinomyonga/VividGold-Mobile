@@ -12,11 +12,6 @@ class _CategoriesPageState extends State<CategoriesPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-        appBar: new AppBar(
-          elevation: 0.1,
-          title: Text(UIConstants.categories),
-        ),
-
         body: _buildCategoriesPage(context)
     );
   }
