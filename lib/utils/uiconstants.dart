@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class UIConstants {
 
   // Routes
@@ -21,20 +19,6 @@ class UIConstants {
   static const String ROUTE_PAYMENT         = '/payment';
   static const String ROUTE_SEARCH          = '/search';
   static const String ROUTE_SETTINGS        = '/settings';
-
-  // App Colors
-  static Color primaryColor      = Colors.amber;
-  static Color primaryColorDark  = Colors.amber.shade700;
-  static Color accentColor       = Colors.amberAccent;
-  static Color opposingColor     = Colors.black;
-  static Color cartIconColor     = Colors.green.shade500;
-
-  // Search Field Colors
-  static Color searchFieldColor             = Colors.white;
-  static Color searchPrefixIconColor        = Colors.grey;
-  static Color searchFieldHintTextColor     = Colors.grey;
-  static Color searchFieldTextColor         = Colors.black;
-
 
   //Images
   static const String imageDir      = "assets/images";

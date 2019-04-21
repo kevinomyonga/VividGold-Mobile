@@ -11,33 +11,33 @@ class HorizontalList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: <Widget>[
           Category(
-            image_location: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Playstation_logo_colour.svg/1280px-Playstation_logo_colour.svg.png',
-            image_caption: 'Playstation',
+            imageLocation: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Playstation_logo_colour.svg/1280px-Playstation_logo_colour.svg.png',
+            imageCaption: 'Playstation',
           ),
 
           Category(
-            image_location: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Xbox_one_logo.svg/1024px-Xbox_one_logo.svg.png',
-            image_caption: 'XBOX',
+            imageLocation: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Xbox_one_logo.svg/1024px-Xbox_one_logo.svg.png',
+            imageCaption: 'XBOX',
           ),
 
           Category(
-            image_location: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Nintendo_Logo_2017.png',
-            image_caption: 'Nintendo',
+            imageLocation: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Nintendo_Logo_2017.png',
+            imageCaption: 'Nintendo',
           ),
 
           Category(
-            image_location: 'http://www.sclance.com/pngs/pc-logo-png/pc_logo_png_996767.png',
-            image_caption: 'PC',
+            imageLocation: 'http://www.sclance.com/pngs/pc-logo-png/pc_logo_png_996767.png',
+            imageCaption: 'PC',
           ),
 
           Category(
-            image_location: 'http://www.dutyfree.ca/application/files/3114/8597/6357/preorder.png',
-            image_caption: 'Pre Order',
+            imageLocation: 'http://www.dutyfree.ca/application/files/3114/8597/6357/preorder.png',
+            imageCaption: 'Pre Order',
           ),
 
           Category(
-            image_location: 'http://www.pngmart.com/files/7/Trade-PNG-Transparent.png',
-            image_caption: 'Trade In',
+            imageLocation: 'http://www.pngmart.com/files/7/Trade-PNG-Transparent.png',
+            imageCaption: 'Trade In',
           ),
         ],
       ),
@@ -46,10 +46,10 @@ class HorizontalList extends StatelessWidget {
 }
 
 class Category extends StatelessWidget {
-  final String image_location;
-  final String image_caption;
+  final String imageLocation;
+  final String imageCaption;
 
-  Category({this.image_location, this.image_caption});
+  Category({this.imageLocation, this.imageCaption});
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +99,7 @@ class Category extends StatelessWidget {
                       child: FadeInImage(
                         fit: BoxFit.fill,
                         placeholder: AssetImage(UIConstants.placeholder),
-                        image: NetworkImage(image_location),
+                        image: NetworkImage(imageLocation),
                       ),
                     ),
                   )
@@ -112,7 +112,7 @@ class Category extends StatelessWidget {
               subtitle: Container(
                 alignment: Alignment.topCenter,
                 child: Text(
-                  image_caption,
+                  imageCaption,
                   style: new TextStyle(
                     fontSize: 12.0,
                     fontWeight: FontWeight.w600,

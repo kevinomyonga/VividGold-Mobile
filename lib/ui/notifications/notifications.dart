@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vividgold_app/utils/uiconstants.dart';
 
 class NotificationsPage extends StatefulWidget {
+
   @override
   _NotificationsPageState createState() => _NotificationsPageState();
 }

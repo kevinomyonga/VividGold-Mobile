@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_range_slider/flutter_range_slider.dart';
-import 'package:scoped_model/scoped_model.dart';
 import 'package:vividgold_app/components/products.dart';
-import 'package:vividgold_app/scoped_model/product_scoped_model.dart';
-import 'package:vividgold_app/ui/cart/cart.dart';
-import 'package:vividgold_app/ui/products/product_details.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
-import 'package:vividgold_app/widgets/products_list_item.dart';
 
 class TabItem {
   String title;

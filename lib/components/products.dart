@@ -121,7 +121,7 @@ class Products extends StatefulWidget {
 }
 
 class _ProductsState extends State<Products> {
-  var product_list = [
+  var productList = [
     {
       "name": "NBA Live",
       "picture": "https://vividgold.co.ke/wp-content/uploads/2019/03/LIVE-18-203x250.jpg",
@@ -171,38 +171,38 @@ class _ProductsState extends State<Products> {
     return GridView.builder(
         shrinkWrap: true,
         physics: ScrollPhysics(), // to disable GridView's scrolling
-        itemCount: product_list.length,
+        itemCount: productList.length,
         gridDelegate:
         new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (BuildContext context, int index) {
-          return Single_prod(
-            prod_name: product_list[index]['name'],
-            prod_picture: product_list[index]['picture'],
-            prod_old_price: product_list[index]['old_price'],
-            prod_price: product_list[index]['price'],
+          return SingleProd(
+            prodName: productList[index]['name'],
+            prodPicture: productList[index]['picture'],
+            prodOldPrice: productList[index]['old_price'],
+            prodPrice: productList[index]['price'],
           );
         });
   }
 }
 
-class Single_prod extends StatelessWidget {
-  final prod_name;
-  final prod_picture;
-  final prod_old_price;
-  final prod_price;
+class SingleProd extends StatelessWidget {
+  final prodName;
+  final prodPicture;
+  final prodOldPrice;
+  final prodPrice;
 
-  Single_prod({
-    this.prod_name,
-    this.prod_picture,
-    this.prod_old_price,
-    this.prod_price,
+  SingleProd({
+    this.prodName,
+    this.prodPicture,
+    this.prodOldPrice,
+    this.prodPrice,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Hero(
-          tag: prod_name,
+          tag: prodName,
           child: Material(
             child: InkWell(
               onTap: () {
@@ -213,16 +213,16 @@ class Single_prod extends StatelessWidget {
                     color: Colors.white70,
                     child: ListTile(
                       leading: Text(
-                        prod_name,
+                        prodName,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       title: Text(
-                        "\$$prod_price",
+                        "\$$prodPrice",
                         style: TextStyle(
                             color: Colors.red, fontWeight: FontWeight.w800),
                       ),
                       subtitle: Text(
-                        "\$$prod_old_price",
+                        "\$$prodOldPrice",
                         style: TextStyle(
                             color: Colors.black54,
                             fontWeight: FontWeight.w800,
@@ -234,7 +234,7 @@ class Single_prod extends StatelessWidget {
                   child: FadeInImage(
                     fit: BoxFit.cover,
                     placeholder: AssetImage(UIConstants.placeholder),
-                    image: NetworkImage(prod_picture),
+                    image: NetworkImage(prodPicture),
                   ),
                   /*child: Image.network(
                     prod_pricture,

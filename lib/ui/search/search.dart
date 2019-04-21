@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vividgold_app/components/products.dart';
+import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
-import 'package:vividgold_app/utils/themes.dart';
 
 class SearchPage extends StatefulWidget {
   @override
@@ -23,46 +23,47 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
+  _buildSearchField(BuildContext context) {
+    return new Container(
+      color: Theme.of(context).primaryColor,
+      child: new Padding(
+        padding: new EdgeInsets.all(8.0),
+        child: new TextField(
+          //controller: searchController,
+          style: TextStyle(
+            //fontFamily: "WorkSansSemiBold",
+              fontSize: 16.0,
+              fontWeight: FontWeight.w600,
+              color: UIColors.searchFieldTextColor
+          ),
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: UIColors.searchFieldColor,
+            prefixIcon: Icon(
+              FontAwesomeIcons.search,
+              size: 22.0,
+              color: UIColors.searchPrefixIconColor,
+            ),
+            hintText: UIConstants.search_hint2,
+            hintStyle: TextStyle(
+              color: UIColors.searchFieldHintTextColor,
+              fontSize: 17.0,
+              fontWeight: FontWeight.w600,
+            ),
+            contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(32.0)),
+          ),
+        ),
+      ),
+    );
+  }
+
   _buildSearchPage(BuildContext context) {
     return new ListView(
       children: <Widget>[
 
-        new Container(
-          color: Theme.of(context).primaryColor,
-          child: new Padding(
-            padding: new EdgeInsets.all(8.0),
-            child: new TextField(
-              //controller: searchController,
-              style: TextStyle(
-                //fontFamily: "WorkSansSemiBold",
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
-                  color: UIConstants.searchFieldTextColor
-              ),
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: UIConstants.searchFieldColor,
-                prefixIcon: Icon(
-                  FontAwesomeIcons.search,
-                  size: 22.0,
-                  color: Colors.grey,
-                ),
-                hintText: UIConstants.search_hint2,
-                hintStyle: TextStyle(
-                  color: UIConstants.searchFieldHintTextColor,
-                  fontSize: 17.0,
-                  fontWeight: FontWeight.w600,
-                ),
-                contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(32.0)),
-              ),
-            ),
-          ),
-        ),
-
-        //padding widget
-        new Padding(padding: const EdgeInsets.all(20.0)),
+        _buildSearchField(context),
 
         //grid view
         Container(

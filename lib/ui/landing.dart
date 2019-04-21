@@ -6,6 +6,7 @@ import 'package:vividgold_app/ui/home/home.dart';
 import 'package:vividgold_app/ui/notifications/notifications.dart';
 import 'package:vividgold_app/ui/orders/order_history.dart';
 import 'package:vividgold_app/utils/themes.dart';
+import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
 class DrawerItem {
@@ -73,7 +74,7 @@ class _LandingPageState extends State<LandingPage> {
         elevation: 1.0,
         // here we display the title corresponding to the fragment
         // you can instead choose to have a static title
-        title: new Text(widget.drawerItems[_selectedDrawerIndex].title),
+        title: new Text(_selectedDrawerIndex != 0 ? widget.drawerItems[_selectedDrawerIndex].title : UIConstants.appName),
         actions: <Widget>[
           new Padding(
             padding: const EdgeInsets.all(10.0),
@@ -100,7 +101,7 @@ class _LandingPageState extends State<LandingPage> {
                         child: new Stack(
                           children: <Widget>[
                             new Icon(Icons.brightness_1,
-                                size: 20.0, color: UIConstants.cartIconColor),
+                                size: 20.0, color: UIColors.cartIconColor),
                             new Positioned(
                                 top: 4.0,
                                 right: 5.5,
@@ -110,11 +111,14 @@ class _LandingPageState extends State<LandingPage> {
                                     style: new TextStyle(
                                         color: Colors.white,
                                         fontSize: 11.0,
-                                        fontWeight: FontWeight.w500),
+                                        fontWeight: FontWeight.w500
+                                    ),
                                   ),
-                                )),
+                                )
+                            ),
                           ],
-                        )),
+                        )
+                    ),
                   ],
                 ),
               ),

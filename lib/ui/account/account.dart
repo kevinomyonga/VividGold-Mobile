@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
 class AccountPage extends StatefulWidget {
@@ -133,11 +134,11 @@ class AccountPageState extends State<AccountPage> {
                     ),
 
                     new OutlineButton(
-                        borderSide: BorderSide(color: Colors.amber.shade500),
+                        borderSide: BorderSide(color: UIColors.primaryColor),
                         child: const Text('Change'),
-                        textColor: Colors.amber.shade500,
+                        textColor: UIColors.primaryColor,
                         onPressed: () {
-                          Navigator.pushNamed(context, UIConstants.ROUTE_CATEGORIES);
+                          //Navigator.pushNamed(context, UIConstants.ROUTE_CATEGORIES);
                         },
                         shape: new OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),

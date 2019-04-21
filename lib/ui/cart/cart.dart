@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/ui/cart/checkout.dart';
-import 'package:vividgold_app/ui/products/products_list.dart';
+import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
 enum DialogDemoAction {
@@ -10,6 +11,7 @@ enum DialogDemoAction {
   agree,
 }
 class CartPage extends StatefulWidget {
+
   @override
   State<StatefulWidget> createState() => CartPageState();
 }
@@ -24,76 +26,50 @@ class Item {
 }
 
 class CartPageState extends State<CartPage> {
+
+  String currency = 'Kshs';
+
   List<Item> itemList = <Item>[
     Item(
-        itemImage: UIConstants.placeholder,
-        itemName: 'Black Grape',
-        itemQun: 'Qty:1',
-        itemPrice: '\$ 100'),
+        itemImage: 'https://vividgold.co.ke/wp-content/uploads/2018/09/PS4-Console-Pro-1TB-Black-SpiderMan.jpg',
+        itemName: 'PS4 Pro Console Spiderman Bundle',
+        itemQun: '1',
+        itemPrice: '42000'),
     Item(
-        itemImage: UIConstants.placeholder,
-        itemName: 'Tomato',
-        itemQun: 'Qty:3',
-        itemPrice: '\$ 112'),
+        itemImage: 'https://vividgold.co.ke/wp-content/uploads/2019/03/LIVE-18-203x250.jpg',
+        itemName: 'NBA Live 18',
+        itemQun: '3',
+        itemPrice: '6000'),
     Item(
-        itemImage: UIConstants.placeholder,
-        itemName: 'Guava',
-        itemQun: 'Qty:2',
-        itemPrice: '\Kshs 105'),
+        itemImage: 'https://vividgold.co.ke/wp-content/uploads/2019/01/500pro-headset.jpg',
+        itemName: 'Pro Gaming Headset',
+        itemQun: '2',
+        itemPrice: '15000'),
     Item(
-        itemImage: UIConstants.placeholder,
-        itemName: 'Kiwi',
-        itemQun: 'Qty:1',
-        itemPrice: '\Kshs 90'),
+        itemImage: 'https://vividgold.co.ke/wp-content/uploads/2017/10/ps4-red1.png',
+        itemName: 'PS4 Dualshock 4 - Red',
+        itemQun: '1',
+        itemPrice: '5500'),
     Item(
-        itemImage: UIConstants.placeholder,
-        itemName: 'Lemon',
-        itemQun: 'Qty:2',
-        itemPrice: '\₹ 70'),
+        itemImage: 'https://vividgold.co.ke/wp-content/uploads/2017/10/neon-switch.png',
+        itemName: 'Nintendo Switch Neon',
+        itemQun: '2',
+        itemPrice: '35000'),
     Item(
-        itemImage: UIConstants.placeholder,
-        itemName: 'Apple',
-        itemQun: 'Qty:1',
-        itemPrice: '\₹ 50'),
+        itemImage: 'https://vividgold.co.ke/wp-content/uploads/2019/02/viking.jpg',
+        itemName: 'Viking',
+        itemQun: '1',
+        itemPrice: '4000'),
   ];
   String toolbarname = UIConstants.cart;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  IconData _backIcon() {
-    switch (Theme
-        .of(context)
-        .platform) {
-      case TargetPlatform.android:
-      case TargetPlatform.fuchsia:
-        return Icons.arrow_back;
-      case TargetPlatform.iOS:
-        return Icons.arrow_back_ios;
-    }
-    assert(false);
-    return null;
-  }
-
-  String pincode;
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-
-
-    final ThemeData theme = Theme.of(context);
-    final TextStyle dialogTextStyle = theme.textTheme.subhead.copyWith(
-        color: theme.textTheme.caption.color);
 
     return new Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(_backIcon()),
-          alignment: Alignment.centerLeft,
-          tooltip: 'Back',
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
         title: Text(toolbarname),
       ),
       body: _buildCartPage(context),
@@ -102,7 +78,312 @@ class CartPageState extends State<CartPage> {
 
   _buildCartPage(BuildContext context) {
 
-    IconData _add_icon() {
+    final Size screenSize = MediaQuery.of(context).size;
+
+    final cartSummary = new Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: new Container(
+        margin: new EdgeInsets.only(top: 5.0, left: 5.0, right: 5.0),
+        child: new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              new Text(
+                "ITEMS (0)",
+                style: new TextStyle(
+                    fontSize: 15.0, fontWeight: FontWeight.w700),
+              ),
+              new Text(
+                "TOTAL : " + currency + "0",
+                style: new TextStyle(
+                    fontSize: 15.0, fontWeight: FontWeight.w700),
+              ),
+            ]),
+      ),
+    );
+
+    final firstList = new Flexible(
+      child: new ListView.builder(
+        scrollDirection: Axis.vertical,
+        itemCount: itemList.length,
+        itemBuilder: (context, index) {
+
+          final row = new GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {},
+            child: new SafeArea(
+              top: false,
+              bottom: false,
+              child: new Padding(
+                padding: const EdgeInsets.only(
+                    left: 16.0, top: 8.0, bottom: 8.0, right: 8.0),
+                child: new Row(
+                  children: <Widget>[
+                    new GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(new PageRouteBuilder(
+                            opaque: false,
+                            pageBuilder: (BuildContext context, _, __) {
+                              return new Material(
+                                color: Colors.black38,
+                                child: new Container(
+                                  padding: const EdgeInsets.all(30.0),
+                                  child: new GestureDetector(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: new Hero(
+                                      child: new Image.network(
+                                        itemList[index].itemImage,
+                                        width: 300.0,
+                                        height: 300.0,
+                                        alignment: Alignment.center,
+                                        fit: BoxFit.contain,
+                                      ),
+                                      tag: itemList[index].itemName,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }));
+                      },
+                      child: new Hero(
+                        tag: itemList[index].itemName,
+                        child: new Container(
+                          height: 60.0,
+                          width: 60.0,
+                          /*decoration: new BoxDecoration(
+                            //color: color,
+                            image: new DecorationImage(
+                                image: new NetworkImage(
+                                  "",
+                                  //fbconn.getDefaultIMGAsList()[index]
+                                )
+                            ),
+                            borderRadius: new BorderRadius.circular(8.0),
+                          ),*/
+                          child: FadeInImage(
+                            fit: BoxFit.fill,
+                            placeholder: AssetImage(UIConstants.placeholder),
+                            image: NetworkImage(itemList[index].itemImage,),
+                          ),
+                        ),
+                      ),
+                    ),
+                    new Expanded(
+                      child: new Padding(
+                        padding:
+                        const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: new Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            new Text(
+                                itemList[index].itemName),
+                            const Padding(
+                                padding: const EdgeInsets.only(top: 5.0)),
+                            new Text(
+                              currency + itemList[index].itemPrice,
+                              style: const TextStyle(
+                                color: const Color(0xFF8E8E93),
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    new CupertinoButton(
+                      padding: EdgeInsets.zero,
+                      child: new Icon(
+                        CupertinoIcons.minus_circled,
+                        color: UIColors.primaryColor,
+                        semanticLabel: 'Substract',
+                      ),
+                      onPressed: () {
+                      },
+                    ),
+                    new Text(
+                      itemList[index].itemQun.toString(),
+                      style: const TextStyle(
+                        color: const Color(0xFF8E8E93),
+                        fontSize: 13.0,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                    new CupertinoButton(
+                      padding: EdgeInsets.zero,
+                      child: new Icon(
+                        CupertinoIcons.plus_circled,
+                        color: UIColors.primaryColor,
+                        semanticLabel: 'Add',
+                      ),
+                      onPressed: () {
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+
+          final buttons = new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              new Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: new GestureDetector(
+                  onTap: () {
+                    //fbconn.removeFromCart(index);
+                    /* showInSnackBar(fbconn.getProductNameAsList()[index] +
+                              " has been removed");
+                          setState(() {});*/
+                  },
+                  child: new Container(
+                    width: 120.0,
+                    height: 40.0,
+                    decoration: new BoxDecoration(
+                        borderRadius: new BorderRadius.all(
+                            new Radius.circular(5.0))),
+                    child: new Center(
+                        child: new Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            new Padding(
+                              padding: const EdgeInsets.all(3.0),
+                              child: new Icon(
+                                Icons.remove_shopping_cart,
+                                size: 18.0,
+                              ),
+                            ),
+                            new Text(
+                              "REMOVE",
+                              style: new TextStyle(
+                                  fontSize: 10.0),
+                            ),
+                          ],
+                        )),
+                  ),
+                ),
+              ),
+              VerticalDivider(
+                color: UIColors.primaryColor,
+              ),
+              new Container(
+                height: 30.0,
+                width: 1.0,
+                color: Colors.black12,
+                margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+              ),
+              new Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: new GestureDetector(
+                  onTap: () {
+                    //fbconn.addIsFavoriteIndex(true, index);
+                    /* showInSnackBar(fbconn.getProductNameAsList()[index] +
+                              " has been added to your favorites");
+                          setState(() {});*/
+                  },
+                  child: new Container(
+                    width: 120.0,
+                    height: 40.0,
+                    decoration: new BoxDecoration(
+                        borderRadius: new BorderRadius.all(
+                            new Radius.circular(5.0))),
+                    child: new Center(
+                        child: new Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            new Padding(
+                              padding: const EdgeInsets.all(3.0),
+                              child: new Icon(
+                                Icons.favorite_border,
+                                size: 18.0,
+                              ),
+                            ),
+                            new Text(
+                              "ADD TO FAVORITES",
+                              style: new TextStyle(
+                                  fontSize: 10.0
+                              ),
+                            ),
+                          ],
+                        )
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
+
+          return new Container(
+            margin: new EdgeInsets.only(left: 8.0, right: 8.0, bottom: 2.0),
+            child: Card(
+                elevation: 4.0,
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(
+                      10.0, 10.0, 10.0, 10.0),
+                  child: new Column(
+                    children: <Widget>[
+                      row,
+                      Divider(
+                        height: 10.0,
+                        color: UIColors.primaryColor,
+                      ),
+                      buttons
+                    ],
+                  ),
+                )
+            ),
+          );
+        },
+      ),
+    );
+
+    return new Column(
+      children: <Widget>[
+        cartSummary,
+        firstList,
+        new Container(
+          height: 50.0,
+          //color: Colors.white,
+          child: new Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: new GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(new CupertinoPageRoute(
+                  /*builder: (BuildContext context) => new OrderSummary(
+                              cartTotal:
+                              fbconn.getTotalProductPrice().toString(),
+                              totalItems: fbconn.getDataSize().toString(),
+                            )*/
+                ));
+              },
+              child: new Container(
+                width: screenSize.width,
+                margin: new EdgeInsets.only(
+                    left: 10.0, right: 10.0, bottom: 2.0),
+                height: 50.0,
+                decoration: new BoxDecoration(
+                    color: UIColors.primaryColor,
+                    borderRadius:
+                    new BorderRadius.all(new Radius.circular(5.0))),
+                child: new Center(
+                    child: new Text(
+                      "PROCEED TO PAYMENT",
+                      style: new TextStyle(
+                        //color: Colors.white,
+                      ),
+                    )),
+              ),
+            ),
+          ),
+        )
+      ],
+    );
+
+    /*IconData _add_icon() {
       switch (Theme.of(context).platform) {
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
@@ -192,7 +473,7 @@ class CartPageState extends State<CartPage> {
                                                   ),
                                                   //  validator: this._validateEmail,
                                                   onSaved: (String value) {
-                                                    this.pincode = value;
+                                                    //this.pincode = value;
                                                   }
                                               ),),
 
@@ -317,9 +598,9 @@ class CartPageState extends State<CartPage> {
                                                           ),
                                                           Text(
                                                             item.toString(),
-                                                            /*     style: descriptionStyle.copyWith(
+                                                            *//*     style: descriptionStyle.copyWith(
                                                    fontSize: 20.0,
-                                                   color: Colors.black87),*/
+                                                   color: Colors.black87),*//*
                                                           ),
                                                           Container(
                                                             margin: EdgeInsets
@@ -333,11 +614,11 @@ class CartPageState extends State<CartPage> {
                                                                     .amber
                                                                     .shade500),
                                                             onPressed: () {
-                                                              /* if(item<0){
+                                                              *//* if(item<0){
                                                  }
                                                  else{
                                                    item = item -1;
-                                                 }*/
+                                                 }*//*
                                                             },
                                                           ),
                                                         ],
@@ -416,7 +697,7 @@ class CartPageState extends State<CartPage> {
               ),
             )),
       ],
-    );
+    );*/
   }
 
   verticalDivider() =>

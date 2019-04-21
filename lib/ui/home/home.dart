@@ -5,10 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vividgold_app/components/horizontal_listview.dart';
 import 'package:vividgold_app/components/products.dart';
+import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
-import 'package:vividgold_app/utils/themes.dart';
 
 class HomePage extends StatefulWidget {
+
+  final carouselItems = [
+    'https://vividgold.co.ke/wp-content/uploads/2019/04/days-gone.jpg',
+    'https://vividgold.co.ke/wp-content/uploads/2019/03/apex-legends.jpg',
+    'https://vividgold.co.ke/wp-content/uploads/2019/03/mortal-kombat-11.jpg',
+    'https://vividgold.co.ke/wp-content/uploads/2019/03/fifa-ultimate-team.jpg',
+    'https://vividgold.co.ke/wp-content/uploads/2019/01/game-pass.jpg',
+    'https://vividgold.co.ke/wp-content/uploads/2019/01/gaming-kenya.jpg',
+  ];
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -44,15 +53,15 @@ class _HomePageState extends State<HomePage> {
                 //controller: searchController,
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: UIConstants.searchFieldColor,
+                  fillColor: UIColors.searchFieldColor,
                   prefixIcon: Icon(
                     FontAwesomeIcons.search,
                     size: 22.0,
-                    color: UIConstants.searchPrefixIconColor,
+                    color: UIColors.searchPrefixIconColor,
                   ),
                   hintText: UIConstants.search_hint1,
                   hintStyle: TextStyle(
-                    color: UIConstants.searchFieldHintTextColor,
+                    color: UIColors.searchFieldHintTextColor,
                     fontSize: 17.0,
                     fontWeight: FontWeight.w600,
                   ),
@@ -106,14 +115,9 @@ class _HomePageState extends State<HomePage> {
       height: 200.0,
       child:  new Carousel(
         boxFit: BoxFit.cover,
-        images: [
-          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/04/days-gone.jpg'),
-          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/03/apex-legends.jpg'),
-          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/03/mortal-kombat-11.jpg'),
-          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/03/fifa-ultimate-team.jpg'),
-          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/01/game-pass.jpg'),
-          NetworkImage('https://vividgold.co.ke/wp-content/uploads/2019/01/gaming-kenya.jpg'),
-        ],
+        images: List.generate(widget.carouselItems.length, (int index){
+          return NetworkImage(widget.carouselItems[index]);
+        }),
         autoplay: true,
         autoplayDuration: Duration(milliseconds: 5000),
         animationCurve: Curves.fastOutSlowIn,

@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:vividgold_app/utils/uiconstants.dart';
+import 'package:vividgold_app/utils/uicolors.dart';
 
 class OrdersPage extends StatefulWidget {
 
-  final String toolbarName;
-
-  OrdersPage({Key key, this.toolbarName}) : super(key: key);
-
   @override
-  State<StatefulWidget> createState() => OrdersPageState(toolbarName);
+  State<StatefulWidget> createState() => OrdersPageState();
 }
 
 class Item {
@@ -82,33 +78,9 @@ class OrdersPageState extends State<OrdersPage> {
         cancelOrder: 'View Receipt'),
   ];
 
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  String toolbarName;
-
-  OrdersPageState(this.toolbarName);
-
   @override
   Widget build(BuildContext context) {
 
-    IconData _backIcon() {
-      switch (Theme.of(context).platform) {
-        case TargetPlatform.android:
-        case TargetPlatform.fuchsia:
-          return Icons.arrow_back;
-        case TargetPlatform.iOS:
-          return Icons.arrow_back_ios;
-      }
-      assert(false);
-      return null;
-    }
-
-    var size = MediaQuery.of(context).size;
-
-    /*24 is for notification bar on Android*/
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
-    final double itemWidth = size.width / 2;
-
-    final Orientation orientation = MediaQuery.of(context).orientation;
     return new Scaffold(
         body: _buildOrdersPage(context)
     );
@@ -124,7 +96,7 @@ class OrdersPageState extends State<OrdersPage> {
                   children: <Widget>[
                     Container(
                         margin: EdgeInsets.only(left: 5.0, right: 5.0, bottom: 5.0),
-                        color:Colors.black12,
+                        //color:Colors.black12,
                         child: Card(
                             elevation: 4.0,
                             child: Container(
@@ -164,7 +136,7 @@ class OrdersPageState extends State<OrdersPage> {
                                         ),
                                         Divider(
                                           height: 10.0,
-                                          color: Colors.amber.shade500,
+                                          color: UIColors.primaryColor,
                                         ),
 
                                         Row(
@@ -251,7 +223,7 @@ class OrdersPageState extends State<OrdersPage> {
                                         ),
                                         Divider(
                                           height: 10.0,
-                                          color: Colors.amber.shade500,
+                                          color: UIColors.primaryColor,
                                         ),
 
                                         Row(
@@ -260,19 +232,18 @@ class OrdersPageState extends State<OrdersPage> {
                                             Icon(
                                               Icons.location_on,
                                               size: 20.0,
-                                              color: Colors.amber.shade500,
+                                              color: UIColors.primaryColor,
                                             ),
                                             Text(itemList[ind].address,
                                                 style: TextStyle(
                                                   fontSize: 13.0,
-                                                  //color: Colors.black54
                                                 )
                                             ),
                                           ],
                                         ),
                                         Divider(
                                           height: 10.0,
-                                          color: Colors.amber.shade500,
+                                          color: UIColors.primaryColor,
                                         ),
                                         Container(
                                             child:_status(itemList[ind].cancelOrder)

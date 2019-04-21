@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/components/products.dart';
-import 'package:vividgold_app/utils/uiconstants.dart';
 
 class FavouritesPage extends StatefulWidget {
   @override
