@@ -25,7 +25,7 @@ class _SearchPageState extends State<SearchPage> {
 
   _buildSearchField(BuildContext context) {
     return new Container(
-      color: Theme.of(context).primaryColor,
+      color: UIColors.primaryColor,
       child: new Padding(
         padding: new EdgeInsets.all(8.0),
         child: new TextField(

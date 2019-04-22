@@ -60,7 +60,6 @@ class _IntroPageState extends State<IntroPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Introduction',
-      theme: ThemeData(primarySwatch: Colors.amber),
       home: IntroductionScreen(
         pages: pages,
         onDone: () => _onIntroEnd(context),

@@ -7,35 +7,23 @@ import 'package:vividgold_app/utils/uiconstants.dart';
 
 class ProductDetailsPage extends StatefulWidget {
 
-  final Product product;
+  //final Product product;
 
-  ProductDetailsPage({this.product});
+  //ProductDetailsPage({this.product});
 
   @override
-  State<StatefulWidget> createState() => _ProductDetailsPageState(product);
+  State<StatefulWidget> createState() => _ProductDetailsPageState();
 }
 
 class _ProductDetailsPageState extends State<ProductDetailsPage>
     with TickerProviderStateMixin {
 
-  final Product product;
+  //final Product product;
 
-  _ProductDetailsPageState(this.product);
+  //_ProductDetailsPageState(this.product);
 
   @override
   Widget build(BuildContext context) {
-
-    IconData _backIcon() {
-      switch (Theme.of(context).platform) {
-        case TargetPlatform.android:
-        case TargetPlatform.fuchsia:
-          return Icons.arrow_back;
-        case TargetPlatform.iOS:
-          return Icons.arrow_back_ios;
-      }
-      assert(false);
-      return null;
-    }
 
     var size = MediaQuery.of(context).size;
 
@@ -47,15 +35,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
 
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(_backIcon()),
-          alignment: Alignment.centerLeft,
-          tooltip: UIConstants.back,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        //backgroundColor: Colors.white,
         title: Text("Product Detail"),
       ),
       body: _buildProductDetailsPage(context),
@@ -124,7 +103,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
 
   _buildProductImagesWidgets() {
     TabController imagesController =
-    TabController(length: product.images.length, vsync: this);
+    TabController(length: 1, vsync: this);
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -132,20 +111,18 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
         height: 250.0,
         child: Center(
           child: DefaultTabController(
-            length: product.images.length,
+            length: 1,
             child: Stack(
               children: <Widget>[
                 TabBarView(
                   controller: imagesController,
-                  children: product.images.map(
-                        (image) {
-                      return FadeInImage(
+                  children: [
+                        FadeInImage(
                         fit: BoxFit.cover,
                         placeholder: AssetImage(UIConstants.placeholder),
-                        image: NetworkImage(image.imageURL),
-                      );
-                    },
-                  ).toList(),
+                        image: NetworkImage('https://vividgold.co.ke/wp-content/uploads/2018/09/PS4-Console-Pro-1TB-Black-SpiderMan.jpg'),
+                      ),
+                  ],
                 ),
                 Container(
                   alignment: FractionalOffset(0.5, 0.95),
@@ -168,9 +145,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: Center(
         child: Text(
-          //name,
-          product.productName,
-          style: TextStyle(fontSize: 16.0, color: Colors.black),
+          'product.productName',
+          style: TextStyle(fontSize: 16.0),
         ),
       ),
     );
@@ -184,14 +160,14 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           Text(
-            "\$${product.salePrice}",
-            style: TextStyle(fontSize: 16.0, color: Colors.black),
+            "product.salePrice",
+            style: TextStyle(fontSize: 16.0),
           ),
           SizedBox(
             width: 8.0,
           ),
           Text(
-            "\$${product.regularPrice}",
+            "product.regularPrice",
             style: TextStyle(
               fontSize: 12.0,
               color: Colors.grey,
@@ -202,7 +178,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
             width: 8.0,
           ),
           Text(
-            "${product.discount}% Off",
+            "product.discount% Off",
             style: TextStyle(
               fontSize: 12.0,
               color: Colors.blue[700],
@@ -285,17 +261,11 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
               Tab(
                 child: Text(
                   "DETAILS",
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
                 ),
               ),
               Tab(
                 child: Text(
                   "MATERIAL & CARE",
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
                 ),
               ),
             ],
@@ -308,15 +278,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
               children: <Widget>[
                 Text(
                   "76% acrylic, 19% polyster, 5% metallic yarn Hand-wash cold",
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
                 ),
                 Text(
                   "86% acrylic, 9% polyster, 1% metallic yarn Hand-wash cold",
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
                 )
               ],
             ),
@@ -346,9 +310,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
         left: 12.0,
       ),
       child: Text(
-        product.shortDescription == null
-            ? "Details unavailable"
-            : product.shortDescription,
+        "Details unavailable",
         style: TextStyle(
           color: Colors.grey[600],
         ),
@@ -376,8 +338,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
         left: 12.0,
       ),
       child: Text(
-        "Product Code: ${product
-            .productId}\nTax info: Applicable GST will be charged at the time of chekout",
+        "Product Code: \nTax info: Applicable GST will be charged at the time of chekout",
         style: TextStyle(
           color: Colors.grey[600],
         ),
@@ -423,7 +384,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
             flex: 2,
             child: RaisedButton(
               onPressed: () {},
-              color: Colors.greenAccent,
+              color: Colors.green,
               child: Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

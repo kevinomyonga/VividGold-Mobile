@@ -9,7 +9,8 @@ class UIColors {
   static Color opposingColor     = Colors.black;
 
   // Cart Icon
-  static Color cartIconColor     = Colors.green.shade500;
+  static Color cartIconColor          = Colors.green.shade500;
+  static Color cartItemPriceColor     = Colors.red.shade900;
 
   // Search Field Colors
   static Color searchFieldColor             = Colors.white;

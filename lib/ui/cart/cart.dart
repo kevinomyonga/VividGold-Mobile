@@ -1,15 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vividgold_app/ui/cart/checkout.dart';
 import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
-enum DialogDemoAction {
-  cancel,
-  discard,
-  disagree,
-  agree,
-}
 class CartPage extends StatefulWidget {
 
   @override
@@ -34,34 +27,35 @@ class CartPageState extends State<CartPage> {
         itemImage: 'https://vividgold.co.ke/wp-content/uploads/2018/09/PS4-Console-Pro-1TB-Black-SpiderMan.jpg',
         itemName: 'PS4 Pro Console Spiderman Bundle',
         itemQun: '1',
-        itemPrice: '42000'),
+        itemPrice: '42000.00'),
     Item(
         itemImage: 'https://vividgold.co.ke/wp-content/uploads/2019/03/LIVE-18-203x250.jpg',
         itemName: 'NBA Live 18',
         itemQun: '3',
-        itemPrice: '6000'),
+        itemPrice: '6000.00'),
     Item(
         itemImage: 'https://vividgold.co.ke/wp-content/uploads/2019/01/500pro-headset.jpg',
         itemName: 'Pro Gaming Headset',
         itemQun: '2',
-        itemPrice: '15000'),
+        itemPrice: '15000.00'),
     Item(
         itemImage: 'https://vividgold.co.ke/wp-content/uploads/2017/10/ps4-red1.png',
         itemName: 'PS4 Dualshock 4 - Red',
         itemQun: '1',
-        itemPrice: '5500'),
+        itemPrice: '5500.00'),
     Item(
         itemImage: 'https://vividgold.co.ke/wp-content/uploads/2017/10/neon-switch.png',
         itemName: 'Nintendo Switch Neon',
         itemQun: '2',
-        itemPrice: '35000'),
+        itemPrice: '35000.00'),
     Item(
         itemImage: 'https://vividgold.co.ke/wp-content/uploads/2019/02/viking.jpg',
         itemName: 'Viking',
         itemQun: '1',
-        itemPrice: '4000'),
+        itemPrice: '4000.00'),
   ];
-  String toolbarname = UIConstants.cart;
+
+  String toolbarName = UIConstants.cart;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -70,7 +64,7 @@ class CartPageState extends State<CartPage> {
     return new Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text(toolbarname),
+        title: Text(toolbarName),
       ),
       body: _buildCartPage(context),
     );
@@ -88,12 +82,12 @@ class CartPageState extends State<CartPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               new Text(
-                "ITEMS (0)",
+                "ITEMS (6)",
                 style: new TextStyle(
                     fontSize: 15.0, fontWeight: FontWeight.w700),
               ),
               new Text(
-                "TOTAL : " + currency + "0",
+                "TOTAL : " + currency + "262000.00",
                 style: new TextStyle(
                     fontSize: 15.0, fontWeight: FontWeight.w700),
               ),
@@ -177,15 +171,18 @@ class CartPageState extends State<CartPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             new Text(
-                                itemList[index].itemName),
+                              itemList[index].itemName,
+                              style: new TextStyle(
+                                  fontSize: 15.0, fontWeight: FontWeight.w700),
+                            ),
                             const Padding(
                                 padding: const EdgeInsets.only(top: 5.0)),
                             new Text(
                               currency + itemList[index].itemPrice,
-                              style: const TextStyle(
-                                color: const Color(0xFF8E8E93),
+                              style: TextStyle(
+                                color: UIColors.cartItemPriceColor,
                                 fontSize: 13.0,
-                                fontWeight: FontWeight.w300,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           ],
@@ -207,7 +204,7 @@ class CartPageState extends State<CartPage> {
                       style: const TextStyle(
                         color: const Color(0xFF8E8E93),
                         fontSize: 13.0,
-                        fontWeight: FontWeight.w300,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     new CupertinoButton(
@@ -254,25 +251,25 @@ class CartPageState extends State<CartPage> {
                               child: new Icon(
                                 Icons.remove_shopping_cart,
                                 size: 18.0,
+                                color: UIColors.primaryColor,
                               ),
                             ),
                             new Text(
                               "REMOVE",
                               style: new TextStyle(
-                                  fontSize: 10.0),
+                                  color: UIColors.primaryColor,
+                                  fontSize: 10.0
+                              ),
                             ),
                           ],
                         )),
                   ),
                 ),
               ),
-              VerticalDivider(
-                color: UIColors.primaryColor,
-              ),
               new Container(
                 height: 30.0,
                 width: 1.0,
-                color: Colors.black12,
+                color: UIColors.primaryColor,
                 margin: const EdgeInsets.only(left: 10.0, right: 10.0),
               ),
               new Padding(
@@ -300,11 +297,13 @@ class CartPageState extends State<CartPage> {
                               child: new Icon(
                                 Icons.favorite_border,
                                 size: 18.0,
+                                color: UIColors.primaryColor,
                               ),
                             ),
                             new Text(
                               "ADD TO FAVORITES",
                               style: new TextStyle(
+                                  color: UIColors.primaryColor,
                                   fontSize: 10.0
                               ),
                             ),
@@ -352,13 +351,14 @@ class CartPageState extends State<CartPage> {
             padding: const EdgeInsets.all(5.0),
             child: new GestureDetector(
               onTap: () {
-                Navigator.of(context).push(new CupertinoPageRoute(
-                  /*builder: (BuildContext context) => new OrderSummary(
+                Navigator.pushNamed(context, UIConstants.ROUTE_CHECKOUT);
+                /*Navigator.of(context).push(new CupertinoPageRoute(
+                  *//*builder: (BuildContext context) => new OrderSummary(
                               cartTotal:
                               fbconn.getTotalProductPrice().toString(),
                               totalItems: fbconn.getDataSize().toString(),
-                            )*/
-                ));
+                            )*//*
+                ));*/
               },
               child: new Container(
                 width: screenSize.width,
@@ -371,7 +371,7 @@ class CartPageState extends State<CartPage> {
                     new BorderRadius.all(new Radius.circular(5.0))),
                 child: new Center(
                     child: new Text(
-                      "PROCEED TO PAYMENT",
+                      "PROCEED TO CHECKOUT",
                       style: new TextStyle(
                         //color: Colors.white,
                       ),

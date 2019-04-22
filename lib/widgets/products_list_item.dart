@@ -32,7 +32,7 @@ class ProductsListItem extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              return ProductDetailsPage(product: product);
+              return ProductDetailsPage();
             },
           ),
         );
