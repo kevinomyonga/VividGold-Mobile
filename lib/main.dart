@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         themedWidgetBuilder: (context, theme) {
           return new MaterialApp(
             theme: theme,
-            home: new IntroPage(),
+            home: new IntroductionPage(),
             routes: routes,
           );
         }

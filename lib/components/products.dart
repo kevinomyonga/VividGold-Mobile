@@ -88,13 +88,7 @@ class _ProductsState extends State<Products> {
   _buildProductItemCard(BuildContext context, var product) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) {
-              return ProductDetailsPage();
-            },
-          ),
-        );
+        Navigator.pushNamed(context, UIConstants.ROUTE_PRODUCT_DETAILS);
       },
       child: Card(
         elevation: 4.0,
@@ -192,7 +186,7 @@ class _ProductsState extends State<Products> {
                             //fontFamily: "WorkSansBold"
                           ),
                         ),
-                        onPressed: null
+                        onPressed: () => _addToCart(context),
                     ),
                   ),
 
@@ -225,6 +219,10 @@ class _ProductsState extends State<Products> {
           );
         });
   }*/
+
+  void _addToCart(context) {
+    Navigator.pushNamed(context, UIConstants.ROUTE_CART);
+  }
 }
 
 class SingleProd extends StatelessWidget {

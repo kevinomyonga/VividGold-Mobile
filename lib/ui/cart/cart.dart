@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vividgold_app/ui/products/product_details.dart';
 import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
@@ -103,7 +104,9 @@ class CartPageState extends State<CartPage> {
 
           final row = new GestureDetector(
             behavior: HitTestBehavior.opaque,
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, UIConstants.ROUTE_PRODUCT_DETAILS);
+            },
             child: new SafeArea(
               top: false,
               bottom: false,
@@ -202,9 +205,9 @@ class CartPageState extends State<CartPage> {
                     new Text(
                       itemList[index].itemQun.toString(),
                       style: const TextStyle(
-                        color: const Color(0xFF8E8E93),
-                        fontSize: 13.0,
-                        fontWeight: FontWeight.w500,
+                        //color: const Color(0xFF8E8E93),
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     new CupertinoButton(
@@ -223,7 +226,7 @@ class CartPageState extends State<CartPage> {
             ),
           );
 
-          final buttons = new Row(
+          /*final buttons = new Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               new Padding(
@@ -231,9 +234,9 @@ class CartPageState extends State<CartPage> {
                 child: new GestureDetector(
                   onTap: () {
                     //fbconn.removeFromCart(index);
-                    /* showInSnackBar(fbconn.getProductNameAsList()[index] +
+                    *//* showInSnackBar(fbconn.getProductNameAsList()[index] +
                               " has been removed");
-                          setState(() {});*/
+                          setState(() {});*//*
                   },
                   child: new Container(
                     width: 120.0,
@@ -262,7 +265,8 @@ class CartPageState extends State<CartPage> {
                               ),
                             ),
                           ],
-                        )),
+                        )
+                    ),
                   ),
                 ),
               ),
@@ -277,9 +281,9 @@ class CartPageState extends State<CartPage> {
                 child: new GestureDetector(
                   onTap: () {
                     //fbconn.addIsFavoriteIndex(true, index);
-                    /* showInSnackBar(fbconn.getProductNameAsList()[index] +
+                    *//* showInSnackBar(fbconn.getProductNameAsList()[index] +
                               " has been added to your favorites");
-                          setState(() {});*/
+                          setState(() {});*//*
                   },
                   child: new Container(
                     width: 120.0,
@@ -309,6 +313,85 @@ class CartPageState extends State<CartPage> {
                             ),
                           ],
                         )
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );*/
+
+          final buttons = new Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Flexible(
+                fit: FlexFit.tight,
+                flex: 1,
+                child: FlatButton(
+                  onPressed: () {},
+                  //color: Colors.grey,
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        new Icon(
+                          Icons.remove_shopping_cart,
+                          size: 18.0,
+                          color: UIColors.primaryColor,
+                        ),
+                        SizedBox(
+                          width: 4.0,
+                        ),
+                        Flexible(
+                          child: new Text(
+                            "REMOVE",
+                            style: new TextStyle(
+                                color: UIColors.primaryColor,
+                                fontSize: 10.0
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+              new Container(
+                height: 30.0,
+                width: 1.0,
+                color: UIColors.primaryColor,
+                margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+              ),
+
+              Flexible(
+                flex: 1,
+                child: FlatButton(
+                  onPressed: () {},
+                  //color: Colors.green,
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(
+                          Icons.favorite_border,
+                          size: 18.0,
+                          color: UIColors.primaryColor,
+                        ),
+                        SizedBox(
+                          width: 4.0,
+                        ),
+                        Flexible(
+                          child: new Text(
+                            "ADD TO FAVORITES",
+                            style: new TextStyle(
+                                color: UIColors.primaryColor,
+                                fontSize: 10.0
+                            ),
+                          ),
+                        ),
+
+                      ],
                     ),
                   ),
                 ),

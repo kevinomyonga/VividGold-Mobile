@@ -25,6 +25,7 @@ class UIConstants {
   static const String appBarLogo    = "$imageDir/vivid_gold_logo.png";
   static const String loginLogo     = "$imageDir/vividgold_logo.png";
   static const String placeholder   = "$imageDir/placeholder.jpg";
+  static const String intro1        = "$imageDir/intro1.jpg";
 
   // Fonts
   static const String workSansFont = 'WorkSans';

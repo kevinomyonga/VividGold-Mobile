@@ -14,12 +14,12 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: new AppBar(
-        elevation: 1.0,
-        title: Text(UIConstants.search),
-      ),
+        appBar: new AppBar(
+          elevation: 1.0,
+          title: Text(UIConstants.search),
+        ),
 
-      body: _buildSearchPage(context)
+        body: _buildSearchPage(context)
     );
   }
 
@@ -60,16 +60,22 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   _buildSearchPage(BuildContext context) {
-    return new ListView(
+    return Column(
       children: <Widget>[
 
         _buildSearchField(context),
 
-        //grid view
-        Container(
-          //height: 320.0,
-          child: Products(),
-        )
+        new Expanded(
+          child: new ListView(
+            children: <Widget>[
+              //grid view
+              Container(
+                //height: 320.0,
+                child: Products(),
+              )
+            ],
+          ),
+        ),
       ],
     );
   }
