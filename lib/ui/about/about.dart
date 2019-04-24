@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:vividgold_app/ui/about/about_app.dart';
 import 'package:vividgold_app/ui/about/about_store.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
@@ -14,42 +15,6 @@ class _AboutPageState extends State<AboutPage> {
 
   ScrollController scrollController;
   var headerImageHeight = 260.0;
-
-  Widget _buildActions() {
-    Widget profile = new GestureDetector(
-      onTap: () => showProfile,
-      child: new Container(
-        height: 30.0,
-        width: 45.0,
-        decoration: new BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.grey,
-          image: new DecorationImage(
-            image: new ExactAssetImage(UIConstants.loginLogo),
-            fit: BoxFit.cover,
-          ),
-          border: Border.all(color: Colors.black, width: 2.0),
-        ),
-      ),
-    );
-
-    double scale;
-    if (scrollController.hasClients) {
-      scale = scrollController.offset / 300;
-      scale = scale * 2;
-      if (scale > 1) {
-        scale = 1.0;
-      }
-    } else {
-      scale = 0.0;
-    }
-
-    return new Transform(
-      transform: new Matrix4.identity()..scale(scale, scale),
-      alignment: Alignment.center,
-      child: profile,
-    );
-  }
 
   @override
   void dispose() {
@@ -127,12 +92,6 @@ class _AboutPageState extends State<AboutPage> {
               ]
           )
       ),
-      actions: <Widget>[
-        new Padding(
-          padding: EdgeInsets.all(5.0),
-          child: _buildActions(),
-        ),
-      ],
     );
 
     return Scaffold(
@@ -166,8 +125,8 @@ class _AboutPageState extends State<AboutPage> {
           },
           body: new TabBarView(
             children: <Widget>[
-              new TabScreen("Store Details"),
-              new TabScreen("App Details"),
+              new AboutStoreTabPage("Store Details"),
+              new AboutAppTabPage("App Details"),
             ],
           ),
         ),
@@ -175,9 +134,6 @@ class _AboutPageState extends State<AboutPage> {
     );
   }
 
-  showProfile() {
-    Navigator.pushNamed(context, UIConstants.ROUTE_ACCOUNT);
-  }
 }
 
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {

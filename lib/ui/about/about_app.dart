@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class AboutStoreTabPage extends StatelessWidget {
+class AboutAppTabPage extends StatelessWidget {
 
-  AboutStoreTabPage(this.listType);
+  AboutAppTabPage(this.listType);
   final String listType;
 
   @override
