@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vividgold_app/components/products.dart';
+import 'package:vividgold_app/components/favourites.dart';
 
 class FavouritesPage extends StatefulWidget {
   @override
@@ -21,7 +21,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
         //grid view
         Container(
           //height: 320.0,
-          child: Products(),
+          child: Favourites(),
         )
       ],
     );

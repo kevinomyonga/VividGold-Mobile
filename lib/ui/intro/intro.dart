@@ -191,10 +191,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
             new Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
-              child: FadeInImage(
+              child: Image.asset(
+                UIConstants.intro1,
                 fit: BoxFit.cover,
-                placeholder: AssetImage(UIConstants.placeholder),
-                image: AssetImage(UIConstants.intro1),
               ),
             ),
 

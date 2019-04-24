@@ -148,7 +148,7 @@ class AccountPageState extends State<AccountPage> {
                   ],
                 ),
               ]
-          )
+          ),
       )
   );
 

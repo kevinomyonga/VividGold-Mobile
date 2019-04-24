@@ -7,7 +7,13 @@ class TabItem {
   TabItem(this.title);
 }
 
-class ProductsListPage extends StatelessWidget {
+class ProductsListPage extends StatefulWidget {
+
+  @override
+  _ProductsListPageState createState() => _ProductsListPageState();
+}
+
+class _ProductsListPageState extends State<ProductsListPage> {
 
   List list = ['12', '11'];
 
@@ -75,17 +81,29 @@ class ProductsListPage extends StatelessWidget {
                 ),
               )
             ],
-            bottom: TabBar(
-                isScrollable: true,
-                tabs: List<Widget>.generate(tabItems.length, (int index){
-                  return new Tab(text: tabItems[index].title);
-                }),
+            bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(48.0),
+              child: Card(
+                margin: new EdgeInsets.all(0.0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(0.0),
+                ),
+                child: TabBar(
+                  labelColor: Theme.of(context).brightness == Brightness.dark ? Colors.white: Colors.black87,
+                  unselectedLabelColor: Colors.grey,
+                  //unselectedLabelColor: Colors.black26,
+                  isScrollable: true,
+                  tabs: List<Widget>.generate(tabItems.length, (int index){
+                    return new Tab(text: tabItems[index].title);
+                  }),
+                ),
+              ),
             ),
           ),
           body: TabBarView(
-            children: List<Widget>.generate(tabItems.length, (int index){
-              return Products();
-            })
+              children: List<Widget>.generate(tabItems.length, (int index){
+                return Products();
+              })
           ),
           floatingActionButtonLocation:
           FloatingActionButtonLocation.centerDocked,

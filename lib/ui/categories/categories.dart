@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vividgold_app/components/categories.dart';
 import 'package:vividgold_app/components/products.dart';
 
 class CategoriesPage extends StatefulWidget {
@@ -21,7 +22,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
         //grid view
         Container(
           //height: 320.0,
-          child: Products(),
+          child: Categories(),
         )
       ],
     );

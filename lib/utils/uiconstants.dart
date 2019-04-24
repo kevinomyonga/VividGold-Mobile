@@ -63,5 +63,7 @@ class UIConstants {
   static const String search_hint2            = 'What are you looking for?';
   static const String settings                = 'Settings';
   static const String sign_up                 = 'SIGN UP';
+  static const String store_name              = appName;
+  static const String the_app                 = 'The App';
   static const String tos_agreement           = 'By creating an account you acknowledge that you agree with our Terms Of Service, Privacy Policy and Refund Policy';
 }
