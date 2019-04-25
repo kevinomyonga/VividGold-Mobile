@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vividgold_app/models/product.dart';
 import 'package:vividgold_app/ui/cart/cart.dart';
 import 'package:vividgold_app/ui/cart/checkout.dart';
+import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
 class ProductDetailsPage extends StatefulWidget {
@@ -256,6 +257,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           TabBar(
+            labelColor: UIColors.tabsLabelThemeColor(context),
+            unselectedLabelColor: UIColors.tabsUnselectedLabelColor,
             controller: tabController,
             tabs: <Widget>[
               Tab(
@@ -297,9 +300,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
       ),
       child: Text(
         "STYLE NOTE",
-        style: TextStyle(
-          color: Colors.grey[800],
-        ),
       ),
     );
   }
@@ -311,9 +311,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
       ),
       child: Text(
         "Details unavailable",
-        style: TextStyle(
-          color: Colors.grey[600],
-        ),
       ),
     );
   }
@@ -325,9 +322,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
       ),
       child: Text(
         "MORE INFO",
-        style: TextStyle(
-          color: Colors.grey[800],
-        ),
       ),
     );
   }
@@ -339,9 +333,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
       ),
       child: Text(
         "Product Code: \nTax info: Applicable GST will be charged at the time of chekout",
-        style: TextStyle(
-          color: Colors.grey[600],
-        ),
       ),
     );
   }

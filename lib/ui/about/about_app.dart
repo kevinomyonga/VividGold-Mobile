@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
-class AboutAppTabPage extends StatelessWidget {
+class AboutAppTabPage extends StatefulWidget {
+
+  @override
+  State<StatefulWidget> createState() => AboutAppTabPageState();
+}
+
+class AboutAppTabPageState extends State<AboutAppTabPage> {
 
   String appName;
   String packageName;
   String version;
   String buildNumber;
 
-  AboutAppTabPage() {
+  AboutAppTabPageState() {
     asyncFunction().then((packageInfo) {
       this.appName = packageInfo.appName;
       this.packageName = packageInfo.packageName;
@@ -207,7 +213,7 @@ class AboutAppTabPage extends StatelessWidget {
     Navigator.push(context, MaterialPageRoute<void>(
         builder: (BuildContext context) => LicensePage(
             applicationName: UIConstants.appName,
-            applicationVersion: version + '(' + buildNumber + ')',
+            applicationVersion: version + ' (' + buildNumber + ')',
             applicationLegalese: UIConstants.appLegalese
         )
     ));

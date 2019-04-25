@@ -1,20 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
+import 'package:vividgold_app/widgets/description_text.dart';
 
-class AboutStoreTabPage extends StatelessWidget {
+class AboutStoreTabPage extends StatefulWidget {
 
-  AboutStoreTabPage();
+  @override
+  State<StatefulWidget> createState() => AboutStoreTabPageState();
+}
+
+class AboutStoreTabPageState extends State<AboutStoreTabPage> {
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: new Center(
+      body: new SingleChildScrollView(
+        padding: const EdgeInsets.all(8.0),
         child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            new SizedBox(
+              height: 50.0,
+            ),
+            _buildStoreDescInfo(context),
             _buildSocialMediaLinks(context),
           ],
         ),
+      ),
+      /*body: new Center(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            _buildStoreDescInfo(context),
+            _buildSocialMediaLinks(context),
+          ],
+        ),
+      ),*/
+    );
+  }
+
+  _buildStoreDescInfo(context) {
+
+    String description = UIConstants.store_desc;
+
+    return new Container(
+      margin: EdgeInsets.all(16.0),
+      child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          new DescriptionTextWidget(text: description),
+        ],
       ),
     );
   }

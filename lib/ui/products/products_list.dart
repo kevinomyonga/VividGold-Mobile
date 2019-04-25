@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/components/products.dart';
+import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
 class TabItem {
@@ -89,8 +90,8 @@ class _ProductsListPageState extends State<ProductsListPage> {
                   borderRadius: BorderRadius.circular(0.0),
                 ),
                 child: TabBar(
-                  labelColor: Theme.of(context).brightness == Brightness.dark ? Colors.white: Colors.black87,
-                  unselectedLabelColor: Colors.grey,
+                  labelColor: UIColors.tabsLabelThemeColor(context),
+                  unselectedLabelColor: UIColors.tabsUnselectedLabelColor,
                   //unselectedLabelColor: Colors.black26,
                   isScrollable: true,
                   tabs: List<Widget>.generate(tabItems.length, (int index){

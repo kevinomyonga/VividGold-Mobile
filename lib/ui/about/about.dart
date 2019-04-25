@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/ui/about/about_app.dart';
 import 'package:vividgold_app/ui/about/about_store.dart';
+import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
 class AboutPage extends StatefulWidget {
@@ -105,8 +106,8 @@ class _AboutPageState extends State<AboutPage> {
               SliverPersistentHeader(
                 delegate: _SliverAppBarDelegate(
                   TabBar(
-                    labelColor: Theme.of(context).brightness == Brightness.dark ? Colors.white: Colors.black87,
-                    unselectedLabelColor: Colors.grey,
+                    labelColor: UIColors.tabsLabelThemeColor(context),
+                    unselectedLabelColor: UIColors.tabsUnselectedLabelColor,
                     tabs: [
                       Tab(
                         icon: Icon(Icons.store),

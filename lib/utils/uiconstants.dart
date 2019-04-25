@@ -64,8 +64,26 @@ class UIConstants {
   static const String search_hint1            = 'Search Our Store';
   static const String search_hint2            = 'What are you looking for?';
   static const String settings                = 'Settings';
+  static const String show_less               = 'Show Less';
+  static const String show_more               = 'Show More';
   static const String sign_up                 = 'SIGN UP';
   static const String store_name              = appName;
   static const String the_app                 = 'The App';
   static const String tos_agreement           = 'By creating an account you acknowledge that you agree with our Terms Of Service, Privacy Policy and Refund Policy';
+  static const String store_desc              = "YOU\u2019VE PROBABLY HEARD OF US; "
+      "WE\u2019VE GOT THE BIGGEST GAMING PRESENCE IN KENYA. \r\nSOUNDS IMPRESSIVE? IT REALLY IS.\r\n\r\n"
+      "We are the specialist gaming retailer, and we\u2019ve got the look to go with it. "
+      "We\u2019re easy to spot, strong gaming and personal branding. We\u2019re known for "
+      "our early game launches and all the cool stuff we do with our community of gamers. "
+      "We not only get involved with our local communities, but we help them grow.\r\n\r\n"
+      "WHAT CAN YOU EXPECT?\r\nA fast-paced, customer-driven, dynamic place to shop. "
+      "We\u2019re passionate about what we do, and it shows in the way we work. "
+      "We know how to sell, and get out customer's talking \u2013 about the latest games "
+      "they can\u2019t wait to get their hands on, what they\u2019re playing right now, even "
+      "games that weren\u2019t as great as they had hoped. We know how to listen, and how to "
+      "give our customers the best; the best knowledge, best value, and best range of stuff \u2013 "
+      "creating the best experience. It\u2019s what keeps them coming back.\r\n\r\n"
+      "Pre-owned (or pre-loved, as some of us call it) stuff is big for us; in-store. "
+      "Making sure our customers know just what they can sell or trade-in with us, along "
+      "with the great lower prices offered with pre-owned, is key.";
 }
