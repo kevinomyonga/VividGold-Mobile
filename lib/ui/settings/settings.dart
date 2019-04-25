@@ -65,7 +65,8 @@ class SettingsPageState extends State<SettingsPage> {
     theme.textTheme.subhead.copyWith(color: theme.textTheme.caption.color);
 
     return Container(
-      child: Column(
+      child: ListView(
+        padding: EdgeInsets.only(bottom: 7.0),
         children: <Widget>[
           new Container(
             height: 50.0,

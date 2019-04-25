@@ -32,7 +32,9 @@ class UIConstants {
 
   // Strings
   static const String about                   = 'About';
+  static const String appAuthor               = 'Kevin Omyonga';
   static const String appName                 = 'VividGold';
+  static const String appLegalese             = '© 2019 ' + appAuthor;
   static const String auth_existing           = 'Existing';
   static const String auth_new                = 'New';
   static const String back                    = 'Back';

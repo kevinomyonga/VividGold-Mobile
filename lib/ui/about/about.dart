@@ -125,8 +125,8 @@ class _AboutPageState extends State<AboutPage> {
           },
           body: new TabBarView(
             children: <Widget>[
-              new AboutStoreTabPage("Store Details"),
-              new AboutAppTabPage("App Details"),
+              new AboutStoreTabPage(),
+              new AboutAppTabPage(),
             ],
           ),
         ),
