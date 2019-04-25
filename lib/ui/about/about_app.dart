@@ -4,13 +4,32 @@ import 'package:vividgold_app/utils/uiconstants.dart';
 
 class AboutAppTabPage extends StatefulWidget {
 
+  static String appName;
+  static String packageName;
+  static String version;
+  static String buildNumber;
+
+  AboutAppTabPage() {
+    asyncFunction().then((packageInfo) {
+      appName = packageInfo.appName;
+      packageName = packageInfo.packageName;
+      version = packageInfo.version;
+      buildNumber = packageInfo.buildNumber;
+    });
+  }
+
+  Future<PackageInfo> asyncFunction() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    return packageInfo;
+  }
+
   @override
   State<StatefulWidget> createState() => AboutAppTabPageState();
 }
 
 class AboutAppTabPageState extends State<AboutAppTabPage> {
 
-  String appName;
+  /*String appName;
   String packageName;
   String version;
   String buildNumber;
@@ -25,10 +44,9 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
   }
 
   Future<PackageInfo> asyncFunction() async {
-    //int val = await otherFunction();
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     return packageInfo;
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +55,7 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            //_buildAppInfo(context),
+            _buildAppInfo(context),
             _buildLegalInfo(context),
           ],
         ),
@@ -46,24 +64,44 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
   }
 
   _buildAppInfo(context) {
-    return AboutListTile(
-      applicationIcon: FlutterLogo(
-        colors: Colors.yellow,
+    return new Container(
+      child: new Column(
+        children: <Widget>[
+          new SizedBox(
+            height: 50.0,
+          ),
+          new Text(
+              UIConstants.appName + ' Mobile',
+              style: TextStyle(
+                fontSize: 32.0,
+                fontWeight: FontWeight.w600,
+              )
+          ),
+          new SizedBox(
+            height: 25.0,
+          ),
+          new Text(
+              AboutAppTabPage.version + ' (' + AboutAppTabPage.buildNumber + ')',
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.w600,
+              )
+          ),
+          new SizedBox(
+            height: 25.0,
+          ),
+          new Text(
+              UIConstants.appLegalese,
+              style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.w600,
+              )
+          ),
+          new SizedBox(
+            height: 50.0,
+          ),
+        ],
       ),
-      icon: FlutterLogo(
-        colors: Colors.yellow,
-      ),
-      aboutBoxChildren: <Widget>[
-        SizedBox(
-          height: 10.0,
-        ),
-        Text(
-          "Developed By Kevin Omyonga",
-        ),
-      ],
-      applicationName: UIConstants.appName,
-      applicationVersion: "1.0.1",
-      applicationLegalese: "Apache License 2.0",
     );
   }
 
@@ -213,7 +251,7 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
     Navigator.push(context, MaterialPageRoute<void>(
         builder: (BuildContext context) => LicensePage(
             applicationName: UIConstants.appName,
-            applicationVersion: version + ' (' + buildNumber + ')',
+            applicationVersion: AboutAppTabPage.version + ' (' + AboutAppTabPage.buildNumber + ')',
             applicationLegalese: UIConstants.appLegalese
         )
     ));
