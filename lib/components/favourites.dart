@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
 class Favourites extends StatefulWidget {
@@ -83,6 +84,46 @@ class _FavouritesState extends State<Favourites> {
   }
 
   _buildFavouriteItemCard(BuildContext context, var product) {
+
+    final buttons = new Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: <Widget>[
+        Flexible(
+          fit: FlexFit.tight,
+          flex: 1,
+          child: FlatButton(
+            onPressed: () {},
+            //color: Colors.grey,
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Icon(
+                    Icons.delete_forever,
+                    size: 18.0,
+                    color: UIColors.primaryColor,
+                  ),
+                  SizedBox(
+                    width: 4.0,
+                  ),
+                  Flexible(
+                    child: new Text(
+                      "REMOVE",
+                      style: new TextStyle(
+                          color: UIColors.primaryColor,
+                          fontSize: 10.0
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, UIConstants.ROUTE_PRODUCT_DETAILS);
@@ -152,6 +193,10 @@ class _FavouritesState extends State<Favourites> {
                       ),
                     ],
                   ),
+                  SizedBox(
+                    height: 8.0,
+                  ),
+                  buttons,
                   SizedBox(
                     height: 8.0,
                   ),

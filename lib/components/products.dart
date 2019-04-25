@@ -179,7 +179,7 @@ class _ProductsState extends State<Products> {
                         splashColor: Themes.loginGradientEnd,
                         //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
                         child: Text(
-                          'ADD TO CART',
+                          UIConstants.add_to_cart,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 13.0,

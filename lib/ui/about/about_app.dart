@@ -51,14 +51,19 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: new Center(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _buildAppInfo(context),
-            _buildLegalInfo(context),
-          ],
-        ),
+      body: ListView(
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        padding: const EdgeInsets.all(8.0),
+        children: <Widget>[
+          new SizedBox(
+            height: 50.0,
+          ),
+          _buildAppInfo(context),
+          _buildLegalInfo(context),
+          new SizedBox(
+            height: 50.0,
+          ),
+        ],
       ),
     );
   }
@@ -81,7 +86,7 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
             height: 25.0,
           ),
           new Text(
-              AboutAppTabPage.version + ' (' + AboutAppTabPage.buildNumber + ')',
+              'Version ' + AboutAppTabPage.version + ' (' + AboutAppTabPage.buildNumber + ')',
               style: TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.w600,

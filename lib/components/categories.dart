@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
@@ -11,52 +13,34 @@ class Categories extends StatefulWidget {
 class _CategoriesState extends State<Categories> {
   var categoriesList = [
     {
-      "name": "NBA Live",
-      "picture": "https://vividgold.co.ke/wp-content/uploads/2019/03/LIVE-18-203x250.jpg",
-      "old_price": 120,
-      "price": 85,
+      "name": "Playstation",
+      "picture": "https://pbs.twimg.com/media/D2hQseeXQAc8BxD.jpg",
     },
     {
-      "name": "Viking",
-      "picture": "https://vividgold.co.ke/wp-content/uploads/2019/02/viking.jpg",
-      "old_price": 100,
-      "price": 50,
+      "name": "XBOX",
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Xbox_one_logo.svg/1024px-Xbox_one_logo.svg.png",
     },
     {
-      "name": "PS4 Pro Console Spiderman Bundle",
-      "picture": "https://vividgold.co.ke/wp-content/uploads/2018/09/PS4-Console-Pro-1TB-Black-SpiderMan.jpg",
-      "old_price": 100,
-      "price": 50,
+      "name": "Nintendo",
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/9/95/Nintendo_Logo_2017.png",
     },
     {
-      "name": "Headphones",
-      "picture": "https://vividgold.co.ke/wp-content/uploads/2019/01/500pro-headset.jpg",
-      "old_price": 100,
-      "price": 50,
+      "name": "PC",
+      "picture": "http://www.sclance.com/pngs/pc-logo-png/pc_logo_png_996767.png",
     },
     {
-      "name": "N Switch",
-      "picture": "https://vividgold.co.ke/wp-content/uploads/2017/10/neon-switch.png",
-      "old_price": 100,
-      "price": 50,
+      "name": "Pre Order",
+      "picture": "http://www.dutyfree.ca/application/files/3114/8597/6357/preorder.png",
     },
     {
-      "name": "PS4 Pad",
-      "picture": "https://vividgold.co.ke/wp-content/uploads/2017/10/ps4-red1.png",
-      "old_price": 100,
-      "price": 50,
+      "name": "Trade In",
+      "picture": "http://www.pngmart.com/files/7/Trade-PNG-Transparent.png",
     },
-    {
-      "name": "XBOX Pad",
-      "picture": "https://vividgold.co.ke/wp-content/uploads/2017/10/xbox-1-white-slim.jpg",
-      "old_price": 100,
-      "price": 50,
-    }
   ];
 
   @override
   Widget build(BuildContext context) {
-    return new StaggeredGridView.countBuilder(
+    return /*new StaggeredGridView.countBuilder(
       shrinkWrap: true,
       physics: ScrollPhysics(), // to disable GridView's scrolling
       crossAxisCount: 4,
@@ -69,17 +53,17 @@ class _CategoriesState extends State<Categories> {
       new StaggeredTile.fit(2),
       mainAxisSpacing: 4.0,
       crossAxisSpacing: 4.0,
-    );
+    );*/
 
-    /*return GridView.builder(
-        shrinkWrap: true,
-        physics: ScrollPhysics(), // to disable GridView's scrolling
-        itemCount: productList.length,
-        gridDelegate:
-        new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        itemBuilder: (BuildContext context, int index) {
-          return _buildProductItemCard(context, productList[index]);
-        });*/
+      GridView.builder(
+          shrinkWrap: true,
+          physics: ScrollPhysics(), // to disable GridView's scrolling
+          itemCount: categoriesList.length,
+          gridDelegate:
+          new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+          itemBuilder: (BuildContext context, int index) {
+            return _buildCategoryItemCard(context, categoriesList[index]);
+          });
   }
 
   _buildCategoryItemCard(BuildContext context, var product) {
@@ -89,15 +73,71 @@ class _CategoriesState extends State<Categories> {
       },
       child: Card(
         elevation: 4.0,
-        child: Column(
+
+        child: new Stack(
+            children: <Widget>[
+              Container(
+                child: FadeInImage(
+                  fit: BoxFit.cover,
+                  placeholder: AssetImage(UIConstants.placeholder),
+                  image: NetworkImage(product['picture'],),
+                ),
+                height: MediaQuery.of(context).size.width,
+                width: MediaQuery.of(context).size.width / 2.0,
+              ),
+
+              Container(
+                width: MediaQuery.of(context).size.width / 2.0,
+                /*decoration: new BoxDecoration(
+                    image: new DecorationImage(
+                      image: NetworkImage("https://avatarfiles.alphacoders.com/149/149117.jpg"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),*/
+                child: new BackdropFilter(
+                  filter: new ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
+                  child: new Container(
+                    decoration: new BoxDecoration(color: Colors.black.withOpacity(0.3)),
+                  ),
+                ),
+              ),
+
+              new Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 8.0, right: 8.0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text(
+                        product['name'],
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 8.0,
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ]
+        ),
+
+        /*child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              /*child: Image.network(
+              *//*child: Image.network(
                 product['picture'],
                 fit: BoxFit.fitWidth,
-              ),*/
+              ),*//*
               child: FadeInImage(
                 fit: BoxFit.fitWidth,
                 placeholder: AssetImage(UIConstants.placeholder),
@@ -159,7 +199,7 @@ class _CategoriesState extends State<Categories> {
               ),
             ),
           ],
-        ),
+        ),*/
       ),
     );
   }

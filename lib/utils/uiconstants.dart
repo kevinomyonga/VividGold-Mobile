@@ -32,6 +32,7 @@ class UIConstants {
 
   // Strings
   static const String about                   = 'About';
+  static const String add_to_cart             = 'ADD TO CART';
   static const String appAuthor               = 'Kevin Omyonga';
   static const String appName                 = 'VividGold';
   static const String appLegalese             = '© 2019 ' + appAuthor;
@@ -59,6 +60,7 @@ class UIConstants {
   static const String notifications           = 'Notifications';
   static const String or                      = 'Or';
   static const String payment                 = 'Payment';
+  static const String proceed_to_payment      = 'PROCEED TO CHECKOUT';
   static const String recent_products         = 'Recent Products';
   static const String search                  = 'Search';
   static const String search_hint1            = 'Search Our Store';
