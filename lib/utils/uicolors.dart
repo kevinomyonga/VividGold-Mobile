@@ -23,10 +23,10 @@ class UIColors {
   }
 
   // Search Field Colors
-  static Color searchFieldColor             = Colors.white;
+  //static Color searchFieldColor             = Colors.white;
   static Color searchPrefixIconColor        = Colors.grey;
   static Color searchFieldHintTextColor     = Colors.grey;
-  static Color searchFieldTextColor         = Colors.black;
+  //static Color searchFieldTextColor         = Colors.black;
 
   // Show More Or Less
   static Color showMoreLessColor  = Colors.blue;

@@ -48,27 +48,33 @@ class _HomePageState extends State<HomePage> {
               onTap: (){
                 Navigator.pushNamed(context, UIConstants.ROUTE_SEARCH);
               },
-              child: new TextField(
-                enabled: false,
-                //controller: searchController,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: UIColors.searchFieldColor,
-                  prefixIcon: Icon(
-                    FontAwesomeIcons.search,
-                    size: 22.0,
-                    color: UIColors.searchPrefixIconColor,
-                  ),
-                  hintText: UIConstants.search_hint1,
-                  hintStyle: TextStyle(
-                    color: UIColors.searchFieldHintTextColor,
-                    fontSize: 17.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(32.0)),
+              child: Card(
+                margin: new EdgeInsets.all(0.0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(32.0),
                 ),
+                  child: new TextField(
+                    enabled: false,
+                    //controller: searchController,
+                    decoration: InputDecoration(
+                      filled: true,
+                      //fillColor: UIColors.searchFieldColor,
+                      prefixIcon: Icon(
+                        FontAwesomeIcons.search,
+                        size: 22.0,
+                        color: UIColors.searchPrefixIconColor,
+                      ),
+                      hintText: UIConstants.search_hint1,
+                      hintStyle: TextStyle(
+                        color: UIColors.searchFieldHintTextColor,
+                        fontSize: 17.0,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(32.0)),
+                    ),
+                  ),
               ),
             ),
           ),

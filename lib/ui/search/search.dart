@@ -28,17 +28,44 @@ class _SearchPageState extends State<SearchPage> {
       color: UIColors.primaryColor,
       child: new Padding(
         padding: new EdgeInsets.all(8.0),
-        child: new TextField(
+        child: Card(
+          margin: new EdgeInsets.all(0.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(32.0),
+          ),
+          child: new TextField(
+            //controller: searchController,
+            decoration: InputDecoration(
+              filled: true,
+              //fillColor: UIColors.searchFieldColor,
+              prefixIcon: Icon(
+                FontAwesomeIcons.search,
+                size: 22.0,
+                color: UIColors.searchPrefixIconColor,
+              ),
+              hintText: UIConstants.search_hint1,
+              hintStyle: TextStyle(
+                color: UIColors.searchFieldHintTextColor,
+                fontSize: 17.0,
+                fontWeight: FontWeight.w600,
+              ),
+              contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(32.0)),
+            ),
+          ),
+        ),
+        /*child: new TextField(
           //controller: searchController,
           style: TextStyle(
             //fontFamily: "WorkSansSemiBold",
               fontSize: 16.0,
               fontWeight: FontWeight.w600,
-              color: UIColors.searchFieldTextColor
+              //color: UIColors.searchFieldTextColor
           ),
           decoration: InputDecoration(
             filled: true,
-            fillColor: UIColors.searchFieldColor,
+            //fillColor: UIColors.searchFieldColor,
             prefixIcon: Icon(
               FontAwesomeIcons.search,
               size: 22.0,
@@ -54,7 +81,7 @@ class _SearchPageState extends State<SearchPage> {
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(32.0)),
           ),
-        ),
+        ),*/
       ),
     );
   }
