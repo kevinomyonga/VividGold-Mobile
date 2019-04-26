@@ -95,7 +95,7 @@ class _CategoriesState extends State<Categories> {
                     ),
                   ),*/
                 child: new BackdropFilter(
-                  filter: new ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
+                  filter: new ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0),
                   child: new Container(
                     decoration: new BoxDecoration(color: Colors.black.withOpacity(0.3)),
                   ),

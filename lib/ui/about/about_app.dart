@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
+import 'package:vividgold_app/utils/themes.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
 class AboutAppTabPage extends StatefulWidget {
@@ -51,19 +52,17 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: ListView(
-        // crossAxisAlignment: CrossAxisAlignment.start,
-        padding: const EdgeInsets.all(8.0),
-        children: <Widget>[
-          new SizedBox(
-            height: 50.0,
+      backgroundColor: Colors.transparent,
+      body: new Center(
+        child:  new SingleChildScrollView(
+          padding: const EdgeInsets.all(8.0),
+          child: new Column(
+            children: <Widget>[
+              _buildAppInfo(context),
+              _buildLegalInfo(context),
+            ],
           ),
-          _buildAppInfo(context),
-          _buildLegalInfo(context),
-          new SizedBox(
-            height: 50.0,
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -73,11 +72,28 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
       child: new Column(
         children: <Widget>[
           new SizedBox(
-            height: 50.0,
+            height: 25.0,
+          ),
+          Container(
+            width: 120.0,
+            height: 120.0,
+            margin: const EdgeInsets.all(10.0),
+            decoration: new BoxDecoration(
+              //shape: BoxShape.circle,
+              //color: Colors.grey,
+              image: new DecorationImage(
+                image: new ExactAssetImage(UIConstants.loginLogo),
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
+          new SizedBox(
+            height: 25.0,
           ),
           new Text(
               UIConstants.appName + ' Mobile',
               style: TextStyle(
+                color: Colors.white,
                 fontSize: 32.0,
                 fontWeight: FontWeight.w600,
               )
@@ -88,6 +104,7 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
           new Text(
               'Version ' + AboutAppTabPage.version + ' (' + AboutAppTabPage.buildNumber + ')',
               style: TextStyle(
+                color: Colors.white70,
                 fontSize: 24.0,
                 fontWeight: FontWeight.w600,
               )
@@ -98,6 +115,7 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
           new Text(
               UIConstants.appLegalese,
               style: TextStyle(
+                color: Colors.white70,
                 fontSize: 16.0,
                 fontWeight: FontWeight.w600,
               )
@@ -134,14 +152,14 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
                     'Legal',
                     style: TextStyle(
                         fontSize: 18.0,
-                        //color: Colors.black87,
+                        color: Colors.white,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
             ),
           ),
-          Container(
+          new Container(
             margin: EdgeInsets.only(left: 10.0),
             child: Card(
                 child: Container(
@@ -234,8 +252,12 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
                               })),
                     ],
                   ),
-                )),
-          )
+                )
+            ),
+          ),
+          new SizedBox(
+            height: 25.0,
+          ),
         ],
       ),
     );

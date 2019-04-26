@@ -4,8 +4,10 @@ import 'package:vividgold_app/utils/uiconstants.dart';
 
 class DescriptionTextWidget extends StatefulWidget {
   final String text;
+  final Color textColor;
+  final double textSize;
 
-  DescriptionTextWidget({@required this.text});
+  DescriptionTextWidget({@required this.text, @required this.textColor, @required this.textSize});
 
   @override
   _DescriptionTextWidgetState createState() => new _DescriptionTextWidgetState();
@@ -39,7 +41,10 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
           ? new Text(firstHalf)
           : new Column(
         children: <Widget>[
-          new Text(flag ? (firstHalf + "...") : (firstHalf + secondHalf)),
+          new Text(
+            flag ? (firstHalf + "...") : (firstHalf + secondHalf),
+            style: new TextStyle(color: widget.textColor, fontSize: widget.textSize),
+          ),
           new Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
