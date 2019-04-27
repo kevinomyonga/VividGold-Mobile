@@ -92,33 +92,39 @@ class _FavouritesState extends State<Favourites> {
         Flexible(
           fit: FlexFit.tight,
           flex: 1,
-          child: FlatButton(
-            onPressed: () {},
-            //color: Colors.grey,
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  new Icon(
-                    Icons.delete_forever,
-                    size: 18.0,
-                    color: UIColors.primaryColor,
-                  ),
-                  SizedBox(
-                    width: 4.0,
-                  ),
-                  Flexible(
-                    child: new Text(
-                      "REMOVE",
-                      style: new TextStyle(
-                          color: UIColors.primaryColor,
-                          fontSize: 10.0
+          child: new OutlineButton(
+              borderSide: BorderSide(color: UIColors.deleteButtonColor),
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    new Icon(
+                      Icons.delete_forever,
+                      size: 18.0,
+                      color: UIColors.deleteButtonColor,
+                    ),
+                    SizedBox(
+                      width: 4.0,
+                    ),
+                    Flexible(
+                      child: new Text(
+                        UIConstants.remove,
+                        style: new TextStyle(
+                            color: UIColors.deleteButtonColor,
+                            fontSize: 14.0
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
+              //textColor: UIColors.primaryColor,
+              onPressed: () {
+                //Navigator.pushNamed(context, UIConstants.ROUTE_CATEGORIES);
+              },
+              shape: new OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              )
           ),
         ),
       ],
@@ -194,11 +200,11 @@ class _FavouritesState extends State<Favourites> {
                     ],
                   ),
                   SizedBox(
-                    height: 8.0,
+                    height: 2.0,
                   ),
                   buttons,
                   SizedBox(
-                    height: 8.0,
+                    height: 2.0,
                   ),
                 ],
               ),

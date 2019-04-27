@@ -1,7 +1,7 @@
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:vividgold_app/ui/cart/cart.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
+import 'package:vividgold_app/widgets/platform_switch.dart';
 
 class SettingsPage extends StatefulWidget {
   final String toolbarName;
@@ -121,7 +121,7 @@ class SettingsPageState extends State<SettingsPage> {
                           ),
                         ],
                       ),
-                      Switch(
+                      PlatformSwitch(
                           value: darkThemeEnabled,
                           onChanged: (bool value) {
                             setState(() {
@@ -191,7 +191,8 @@ class SettingsPageState extends State<SettingsPage> {
                           ),
                         ],
                       ),
-                      Switch(
+                      PlatformSwitch
+                        (
                           value: switchValue,
                           onChanged: (bool value) {
                             setState(() {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
-import 'package:vividgold_app/utils/themes.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
 class AboutAppTabPage extends StatefulWidget {
@@ -54,7 +53,7 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
     return new Scaffold(
       backgroundColor: Colors.transparent,
       body: new Center(
-        child:  new SingleChildScrollView(
+        child: new SingleChildScrollView(
           padding: const EdgeInsets.all(8.0),
           child: new Column(
             children: <Widget>[

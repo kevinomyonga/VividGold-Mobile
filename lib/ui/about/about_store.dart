@@ -238,14 +238,14 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
               Padding(
                 padding: EdgeInsets.all(10.0),
                 child: FloatingActionButton(
-                  heroTag: "YouTubeTag",
+                  heroTag: "WhatsAppTag",
                   child: const Icon(
-                    FontAwesomeIcons.youtube,
+                    FontAwesomeIcons.whatsapp,
                     color: Colors.white,
                   ),
-                  backgroundColor: UIColors.youtubeColor,
+                  backgroundColor: UIColors.whatsappColor,
                   onPressed: () {
-                    showInSnackBar("YouTube button pressed", UIColors.youtubeColor);
+                    showInSnackBar("WhatApp button pressed", UIColors.whatsappColor);
                   },
                 ),
               ),
@@ -257,14 +257,14 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
               Padding(
                 padding: EdgeInsets.all(10.0),
                 child: FloatingActionButton(
-                  heroTag: "WhatsAppTag",
+                  heroTag: "YouTubeTag",
                   child: const Icon(
-                    FontAwesomeIcons.whatsapp,
+                    FontAwesomeIcons.youtube,
                     color: Colors.white,
                   ),
-                  backgroundColor: UIColors.whatsappColor,
+                  backgroundColor: UIColors.youtubeColor,
                   onPressed: () {
-                    showInSnackBar("WhatApp button pressed", UIColors.whatsappColor);
+                    showInSnackBar("YouTube button pressed", UIColors.youtubeColor);
                   },
                 ),
               ),

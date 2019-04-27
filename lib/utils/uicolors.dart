@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class UIColors {
 
   // Store Color
-  static Color brandColor      = Colors.amber;
+  static Color brandColor        = Colors.amber;
 
   // App Colors
   static Color primaryColor      = Colors.amber;
@@ -14,6 +14,9 @@ class UIColors {
   // Cart Icon
   static Color cartIconColor          = Colors.green.shade500;
   static Color cartItemPriceColor     = Colors.red.shade900;
+
+  // Favourites
+  static Color deleteButtonColor  = Colors.red;
 
   // Tabs Colors
   static Color tabsLabelLightThemeColor  = Colors.black87;
@@ -26,10 +29,8 @@ class UIColors {
   }
 
   // Search Field Colors
-  //static Color searchFieldColor             = Colors.white;
   static Color searchPrefixIconColor        = Colors.grey;
   static Color searchFieldHintTextColor     = Colors.grey;
-  //static Color searchFieldTextColor         = Colors.black;
 
   // Show More Or Less
   static Color showMoreLessColor  = Colors.blue;

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vividgold_app/ui/products/product_details.dart';
 import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
@@ -238,100 +237,6 @@ class CartPageState extends State<CartPage> {
               ),
             ),
           );
-
-          /*final buttons = new Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              new Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: new GestureDetector(
-                  onTap: () {
-                    //fbconn.removeFromCart(index);
-                    *//* showInSnackBar(fbconn.getProductNameAsList()[index] +
-                              " has been removed");
-                          setState(() {});*//*
-                  },
-                  child: new Container(
-                    width: 120.0,
-                    height: 40.0,
-                    decoration: new BoxDecoration(
-                        borderRadius: new BorderRadius.all(
-                            new Radius.circular(5.0))),
-                    child: new Center(
-                        child: new Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            new Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: new Icon(
-                                Icons.remove_shopping_cart,
-                                size: 18.0,
-                                color: UIColors.primaryColor,
-                              ),
-                            ),
-                            new Text(
-                              "REMOVE",
-                              style: new TextStyle(
-                                  color: UIColors.primaryColor,
-                                  fontSize: 10.0
-                              ),
-                            ),
-                          ],
-                        )
-                    ),
-                  ),
-                ),
-              ),
-              new Container(
-                height: 30.0,
-                width: 1.0,
-                color: UIColors.primaryColor,
-                margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-              ),
-              new Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: new GestureDetector(
-                  onTap: () {
-                    //fbconn.addIsFavoriteIndex(true, index);
-                    *//* showInSnackBar(fbconn.getProductNameAsList()[index] +
-                              " has been added to your favorites");
-                          setState(() {});*//*
-                  },
-                  child: new Container(
-                    width: 120.0,
-                    height: 40.0,
-                    decoration: new BoxDecoration(
-                        borderRadius: new BorderRadius.all(
-                            new Radius.circular(5.0))),
-                    child: new Center(
-                        child: new Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            new Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: new Icon(
-                                Icons.favorite_border,
-                                size: 18.0,
-                                color: UIColors.primaryColor,
-                              ),
-                            ),
-                            new Text(
-                              "ADD TO FAVORITES",
-                              style: new TextStyle(
-                                  color: UIColors.primaryColor,
-                                  fontSize: 10.0
-                              ),
-                            ),
-                          ],
-                        )
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          );*/
 
           final buttons = new Row(
             mainAxisSize: MainAxisSize.max,
