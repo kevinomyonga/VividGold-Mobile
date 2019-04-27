@@ -43,7 +43,7 @@ class _SearchPageState extends State<SearchPage> {
                 size: 22.0,
                 color: UIColors.searchPrefixIconColor,
               ),
-              hintText: UIConstants.search_hint1,
+              hintText: UIConstants.search_hint2,
               hintStyle: TextStyle(
                 color: UIColors.searchFieldHintTextColor,
                 fontSize: 17.0,
