@@ -68,7 +68,8 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   _buildSearchPage(BuildContext context) {
-    return Column(
+    return new ListView(
+      physics: ScrollPhysics(),
       children: <Widget>[
 
         _buildSearchField(context),
@@ -97,6 +98,14 @@ class _SearchPageState extends State<SearchPage> {
                 FontAwesomeIcons.search,
                 size: 22.0,
                 color: UIColors.searchPrefixIconColor,
+              ),
+              suffixIcon: IconButton(
+                icon:Icon(
+                  FontAwesomeIcons.microphone,
+                  size: 22.0,
+                  color: UIColors.searchPrefixIconColor,
+                ),
+                onPressed: () {},
               ),
               hintText: UIConstants.search_hint2,
               hintStyle: TextStyle(
@@ -128,87 +137,84 @@ class _SearchPageState extends State<SearchPage> {
       },
     );
 
-    return SingleChildScrollView(
-      child: Container(
-        child: Column(
-          children: <Widget>[
+    return new ListView(
+      shrinkWrap: true,
+        children: <Widget>[
+          Container(
+            child: Column(
+              children: <Widget>[
 
-            // Check if a search query has been specified
-            _searchText.length != 0 || _searchText.isNotEmpty ?
-            (
-                // Check if search results have been found
-                searchresult.length != 0 || searchresult.isNotEmpty //|| _controller.text.isNotEmpty
-                ? resultsList : _buildNoResultsView()
-            )
-                : _buildEmptyView(),
-          ],
-        ),
-      ),
+                // Check if a search query has been specified
+                _searchText.length != 0 || _searchText.isNotEmpty ?
+                (
+                    // Check if search results have been found
+                    searchresult.length != 0 || searchresult.isNotEmpty //|| _controller.text.isNotEmpty
+                        ? resultsList : _buildNoResultsView()
+                )
+                    : _buildEmptyView(),
+              ],
+            ),
+          ),
+        ]
     );
   }
 
   _buildNoResultsView() {
 
     return new Container(
-      constraints: const BoxConstraints(maxHeight: 500.0),
-      child: new SingleChildScrollView(
-        padding: const EdgeInsets.all(8.0),
-        child: new Center(
-            child: new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                new Container(
-                    margin: new EdgeInsets.only(top: 00.0, bottom: 0.0),
-                    height: 150.0,
-                    width: 150.0,
-                    child: new Icon(FontAwesomeIcons.bookOpen)
+      //constraints: const BoxConstraints(maxHeight: 500.0),
+      child: new Center(
+          child: new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Container(
+                  margin: new EdgeInsets.only(top: 00.0, bottom: 0.0),
+                  height: 150.0,
+                  width: 150.0,
+                  child: new Icon(FontAwesomeIcons.bookOpen)
+              ),
+              new Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: new Text(
+                  "No Results",
+                  style: new TextStyle(fontSize: 24.0,),
                 ),
-                new Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: new Text(
-                    "No Results",
-                    style: new TextStyle(fontSize: 24.0,),
-                  ),
+              ),
+              new Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: new Text(
+                  "We did not find anything for \"$_searchText\". Try something else.",
+                  style: new TextStyle(fontSize: 14.0,),
                 ),
-                new Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: new Text(
-                    "We did not find anything for \"$_searchText\". Try something else.",
-                    style: new TextStyle(fontSize: 14.0,),
-                  ),
-                ),
-              ],
-            )
-        ),
+              ),
+            ],
+          )
       ),
     );
   }
 
   _buildEmptyView() {
     return new Container(
-      constraints: const BoxConstraints(maxHeight: 500.0),
-      child: new SingleChildScrollView(
-        padding: const EdgeInsets.all(8.0),
-        child: new Center(
-            child: new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                new Container(
-                    margin: new EdgeInsets.only(top: 00.0, bottom: 0.0),
-                    height: 150.0,
-                    width: 150.0,
-                    child: new Icon(FontAwesomeIcons.bookOpen)
+      //constraints: const BoxConstraints(maxHeight: 500.0),
+      child: new Center(
+          child: new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Container(
+                  margin: new EdgeInsets.only(top: 00.0, bottom: 0.0),
+                  height: 150.0,
+                  width: 150.0,
+                  child: new Icon(FontAwesomeIcons.bookOpen)
+              ),
+              new Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: new Text(
+                  "Give me where to stand and I will move the earth....",
+                  style: new TextStyle(fontSize: 14.0,),
                 ),
-                new Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: new Text(
-                    "Give me where to stand and I will move the earth....",
-                    style: new TextStyle(fontSize: 14.0,),
-                  ),
-                ),
-              ],
-            )
-        ),
+              ),
+            ],
+          )
       ),
     );
   }

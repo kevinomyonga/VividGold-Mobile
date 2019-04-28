@@ -12,26 +12,8 @@ class Favourites extends StatefulWidget {
 class _FavouritesState extends State<Favourites> {
   var favouritesList = [
     {
-      "name": "NBA Live",
-      "picture": "https://vividgold.co.ke/wp-content/uploads/2019/03/LIVE-18-203x250.jpg",
-      "old_price": 120,
-      "price": 85,
-    },
-    {
-      "name": "Viking",
-      "picture": "https://vividgold.co.ke/wp-content/uploads/2019/02/viking.jpg",
-      "old_price": 100,
-      "price": 50,
-    },
-    {
       "name": "PS4 Pro Console Spiderman Bundle",
       "picture": "https://vividgold.co.ke/wp-content/uploads/2018/09/PS4-Console-Pro-1TB-Black-SpiderMan.jpg",
-      "old_price": 100,
-      "price": 50,
-    },
-    {
-      "name": "Headphones",
-      "picture": "https://vividgold.co.ke/wp-content/uploads/2019/01/500pro-headset.jpg",
       "old_price": 100,
       "price": 50,
     },

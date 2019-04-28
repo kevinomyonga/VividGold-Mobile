@@ -208,7 +208,7 @@ class CartPageState extends State<CartPage> {
                       padding: EdgeInsets.zero,
                       child: new Icon(
                         CupertinoIcons.minus_circled,
-                        color: UIColors.primaryColor,
+                        color: UIColors.brandColor,
                         semanticLabel: 'Substract',
                       ),
                       onPressed: () {
@@ -226,7 +226,7 @@ class CartPageState extends State<CartPage> {
                       padding: EdgeInsets.zero,
                       child: new Icon(
                         CupertinoIcons.plus_circled,
-                        color: UIColors.primaryColor,
+                        color: UIColors.brandColor,
                         semanticLabel: 'Add',
                       ),
                       onPressed: () {
@@ -255,16 +255,14 @@ class CartPageState extends State<CartPage> {
                         new Icon(
                           Icons.remove_shopping_cart,
                           size: 18.0,
-                          color: UIColors.primaryColor,
                         ),
                         SizedBox(
                           width: 4.0,
                         ),
                         Flexible(
                           child: new Text(
-                            "REMOVE",
+                            UIConstants.remove,
                             style: new TextStyle(
-                                color: UIColors.primaryColor,
                                 fontSize: 10.0
                             ),
                           ),
@@ -294,16 +292,14 @@ class CartPageState extends State<CartPage> {
                         Icon(
                           Icons.favorite_border,
                           size: 18.0,
-                          color: UIColors.primaryColor,
                         ),
                         SizedBox(
                           width: 4.0,
                         ),
                         Flexible(
                           child: new Text(
-                            "ADD TO FAVORITES",
+                            UIConstants.add_to_favourites,
                             style: new TextStyle(
-                                color: UIColors.primaryColor,
                                 fontSize: 10.0
                             ),
                           ),

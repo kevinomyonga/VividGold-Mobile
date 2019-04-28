@@ -33,6 +33,7 @@ class UIConstants {
   // Strings
   static const String about                   = 'About';
   static const String add_to_cart             = 'ADD TO CART';
+  static const String add_to_favourites       = 'ADD TO FAVORITES';
   static const String appAuthor               = 'Kevin Omyonga';
   static const String appName                 = 'VividGold';
   static const String appLegalese             = '© 2019 ' + appAuthor;

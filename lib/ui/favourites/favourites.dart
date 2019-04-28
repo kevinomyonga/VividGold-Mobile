@@ -20,7 +20,6 @@ class _FavouritesPageState extends State<FavouritesPage> {
       children: <Widget>[
         //grid view
         Container(
-          //height: 320.0,
           child: Favourites(),
         )
       ],
