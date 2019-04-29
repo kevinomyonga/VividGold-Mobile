@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:launch_review/launch_review.dart';
 import 'package:package_info/package_info.dart';
@@ -444,7 +447,55 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
 
   _sendFeedback() {
     String subject = 'VividGold App Feedback';
-    _launchURL('mailto:${UIConstants.store_email_address}?subject=$subject&body=<body>');
+
+    String appVersion       = AboutAppTabPage.version;
+    String appVersionBuild  = AboutAppTabPage.buildNumber;
+    String deviceMake;
+    String deviceModel;
+    String deviceOSVersion;
+    String carrierName;
+    String deviceLanguage;
+
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+
+    if(Platform.isAndroid) {
+      getAndroidDeviceInfo(deviceInfo).then((androidInfo) {
+        deviceMake = androidInfo.manufacturer;
+        deviceModel = androidInfo.model;
+        deviceOSVersion = androidInfo.version.toString();
+        carrierName = androidInfo.model;
+        deviceLanguage = androidInfo.model;
+      });
+    } else if (Platform.isIOS) {
+      getIosInfo(deviceInfo).then((iosInfo) {
+        deviceMake = iosInfo.utsname.version;
+        deviceModel = iosInfo.utsname.machine;
+        deviceOSVersion = iosInfo.utsname.version;
+        carrierName = '';
+        deviceLanguage = iosInfo.systemName.toString();
+      });
+    }
+
+    String body = "\bFeedback:\b  \n\n" +
+        "\n\bApp Version:\b $appVersion " +
+        "\n\bApp Version Code:\b $appVersionBuild " +
+        "\n\bManufacturer:\b $deviceMake " +
+        "\n\bDevice:\b $deviceModel " +
+        "\n\bOS Version:\b $deviceOSVersion " +
+        "\n\bCarrier:\b $carrierName " +
+        "\n\bLanguage:\b $deviceLanguage ";
+
+    _launchURL('mailto:${UIConstants.store_email_address}?subject=$subject&body=$body');
+  }
+
+  Future<AndroidDeviceInfo> getAndroidDeviceInfo(deviceInfo) async {
+    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo();
+    return androidInfo;
+  }
+
+  Future<IosDeviceInfo> getIosInfo(deviceInfo) async {
+    IosDeviceInfo iosInfo = await deviceInfo.androidInfo();
+    return iosInfo;
   }
 
   _launchURL(String url) async {

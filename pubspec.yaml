@@ -27,6 +27,9 @@ dependencies:
   # A Flutter Carousel widget.
   carousel_pro: ^0.0.13
 
+  # Get current device information from within the Flutter application.
+  device_info: ^0.4.0+1
+
   dots_indicator: ^0.0.4
 
   # A package that manages changing your theme during runtime and persiting that theme
