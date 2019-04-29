@@ -90,7 +90,8 @@ class _ProductsListPageState extends State<ProductsListPage> {
                   borderRadius: BorderRadius.circular(0.0),
                 ),
                 child: TabBar(
-                  labelColor: UIColors.tabsLabelThemeColor(context),
+                  labelColor: UIColors.tabsSelectedLabelColor,
+                  //labelColor: UIColors.tabsLabelThemeColor(context),
                   unselectedLabelColor: UIColors.tabsUnselectedLabelColor,
                   //unselectedLabelColor: Colors.black26,
                   isScrollable: true,

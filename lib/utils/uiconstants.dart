@@ -33,7 +33,7 @@ class UIConstants {
   // Strings
   static const String about                   = 'About';
   static const String add_to_cart             = 'ADD TO CART';
-  static const String add_to_favourites       = 'ADD TO FAVORITES';
+  static const String add_to_favourites       = 'ADD TO FAVOURITES';
   static const String appAuthor               = 'Kevin Omyonga';
   static const String appName                 = 'VividGold';
   static const String appLegalese             = '© 2019 ' + appAuthor;
@@ -63,17 +63,22 @@ class UIConstants {
   static const String payment                 = 'Payment';
   static const String proceed_to_payment      = 'PROCEED TO CHECKOUT';
   static const String recent_products         = 'Recent Products';
+  static const String rate_the_app            = 'Rate The App';
   static const String remove                  = 'REMOVE';
   static const String search                  = 'Search';
   static const String search_hint1            = 'Search Our Store';
   static const String search_hint2            = 'What are you looking for?';
+  static const String send_feedback           = 'Send Feedback';
   static const String settings                = 'Settings';
   static const String show_less               = 'Show Less';
   static const String show_more               = 'Show More';
   static const String sign_up                 = 'SIGN UP';
   static const String store_name              = appName;
+  static const String store_email_address     = 'info@vividgold.co.ke';
+  static const String tell_a_friend           = 'Tell A Friend';
   static const String the_app                 = 'The App';
-  static const String tos_agreement           = 'By creating an account you acknowledge that you agree with our Terms Of Service, Privacy Policy and Refund Policy';
+  static const String tos_agreement           = 'By creating an account you acknowledge '
+      'that you agree with our Terms Of Service, Privacy Policy and Refund Policy';
   static const String store_physical_address  = "Shop S410, 2nd Floor, Sky Mall, \n"
       "Luthuli Avenue - Off Tom Mboya Street\n"
       "(Behind Accra Plaza)\n"

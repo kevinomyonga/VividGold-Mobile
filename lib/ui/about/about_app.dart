@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:launch_review/launch_review.dart';
 import 'package:package_info/package_info.dart';
+import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
 class AboutAppTabPage extends StatefulWidget {
@@ -53,12 +56,13 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
     return new Scaffold(
       backgroundColor: Colors.transparent,
       body: new Center(
-        child: new SingleChildScrollView(
+        child:  new SingleChildScrollView(
           padding: const EdgeInsets.all(8.0),
           child: new Column(
             children: <Widget>[
               _buildAppInfo(context),
               _buildLegalInfo(context),
+              _buildMoreInfo(context),
             ],
           ),
         ),
@@ -120,7 +124,7 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
               )
           ),
           new SizedBox(
-            height: 50.0,
+            height: 40.0,
           ),
         ],
       ),
@@ -168,39 +172,43 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Container(
+                      InkWell(
+                        onTap: () {
+                          showLicensePage(context: context);
+                        },
+                        child: Container(
                           padding: EdgeInsets.only(
                               left: 10.0, top: 15.0, bottom: 15.0),
-                          child: GestureDetector(
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.copyright,
-                                  //color: Colors.black54
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.copyright,
+                                //color: Colors.black54
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 5.0),
+                              ),
+                              Text(
+                                'Software Licenses',
+                                style: TextStyle(
+                                  fontSize: 17.0,
+                                  //color: Colors.black87,
                                 ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 5.0),
-                                ),
-                                Text(
-                                  'Software Licenses',
-                                  style: TextStyle(
-                                    fontSize: 17.0,
-                                    //color: Colors.black87,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            onTap: () {
-                              showLicensePage(context: context);
-                            },
-                          )),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                       Divider(
                         height: 5.0,
                       ),
-                      Container(
-                          padding: EdgeInsets.only(
-                              left: 10.0, top: 15.0, bottom: 15.0),
-                          child: GestureDetector(
+                      InkWell(
+                          onTap: () {
+                            _launchURL("https://vividgold.co.ke/legal/");
+                          },
+                          child: Container(
+                            padding: EdgeInsets.only(
+                                left: 10.0, top: 15.0, bottom: 15.0),
                             child: Row(
                               children: <Widget>[
                                 Icon(
@@ -219,36 +227,179 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
                                 ),
                               ],
                             ),
-                            onTap: () {
-                            },
-                          )),
+                          )
+                      ),
                       Divider(
                         height: 5.0,
                       ),
-                      Container(
+                      InkWell(
+                          onTap: () {
+                            _launchURL("https://vividgold.co.ke/legal/");
+                          },
+                          child: Container(
+                            padding: EdgeInsets.only(
+                                left: 10.0, top: 15.0, bottom: 15.0),
+                            child: Row(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.lock_outline,
+                                  //color: Colors.black54
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 5.0),
+                                ),
+                                Text(
+                                  'Privacy Policy',
+                                  style: TextStyle(
+                                    fontSize: 17.0,
+                                    //color: Colors.black87
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                      ),
+                    ],
+                  ),
+                )
+            ),
+          ),
+          new SizedBox(
+            height: 15.0,
+          ),
+        ],
+      ),
+    );
+  }
+
+  _buildMoreInfo(context) {
+
+    return Container(
+      child: Column(
+        //padding: EdgeInsets.only(bottom: 7.0),
+        children: <Widget>[
+          new Container(
+            height: 50.0,
+            alignment: Alignment.topLeft,
+            margin: EdgeInsets.only(top: 7.0),
+            child: new Row(
+              children: <Widget>[
+                _verticalD(),
+                new GestureDetector(
+                  onTap: () {
+                    /*Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => signup_screen()));*/
+                  },
+                  child: new Text(
+                    'More',
+                    style: TextStyle(
+                        fontSize: 18.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          new Container(
+            margin: EdgeInsets.only(left: 10.0),
+            child: Card(
+                child: Container(
+                  //  padding: EdgeInsets.only(left: 10.0,top: 15.0,bottom: 5.0,right: 5.0),
+
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      InkWell(
+                        onTap: () {
+                          _sendFeedback();
+                        },
+                        child: Container(
                           padding: EdgeInsets.only(
                               left: 10.0, top: 15.0, bottom: 15.0),
-                          child: GestureDetector(
-                              child: Row(
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.lock_outline,
-                                    //color: Colors.black54
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(left: 5.0),
-                                  ),
-                                  Text(
-                                    'Privacy Policy',
-                                    style: TextStyle(
-                                      fontSize: 17.0,
-                                      //color: Colors.black87
-                                    ),
-                                  ),
-                                ],
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.feedback,
+                                //color: Colors.black54
                               ),
-                              onTap: () {
-                              })),
+                              Container(
+                                margin: EdgeInsets.only(left: 5.0),
+                              ),
+                              Text(
+                                UIConstants.send_feedback,
+                                style: TextStyle(
+                                  fontSize: 17.0,
+                                  //color: Colors.black87,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Divider(
+                        height: 5.0,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          _tellAFriend();
+                        },
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              left: 10.0, top: 15.0, bottom: 15.0),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.share,
+                                //color: Colors.black54
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 5.0),
+                              ),
+                              Text(
+                                UIConstants.tell_a_friend,
+                                style: TextStyle(
+                                  fontSize: 17.0,
+                                  //color: Colors.black87,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Divider(
+                        height: 5.0,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          _rateTheApp();
+                        },
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              left: 10.0, top: 15.0, bottom: 15.0),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.rate_review,
+                                //color: Colors.black54
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 5.0),
+                              ),
+                              Text(
+                                UIConstants.rate_the_app,
+                                style: TextStyle(
+                                  fontSize: 17.0,
+                                  //color: Colors.black87
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 )
@@ -281,5 +432,27 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
             applicationLegalese: UIConstants.appLegalese
         )
     ));
+  }
+
+  _tellAFriend() {
+    Share.share('Check out my website https://example.com');
+  }
+
+  _rateTheApp() {
+    LaunchReview.launch();
+  }
+
+  _sendFeedback() {
+    String subject = 'VividGold App Feedback';
+    _launchURL('mailto:${UIConstants.store_email_address}?subject=$subject&body=<body>');
+  }
+
+  _launchURL(String url) async {
+    //const url = 'https://flutter.io';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

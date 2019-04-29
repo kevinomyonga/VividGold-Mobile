@@ -52,6 +52,9 @@ dependencies:
 
   #introduction_screen: ^1.0.0
 
+  # A Flutter plugin to assist in leaving user reviews/ratings in Google Play Store and Apple App Store.
+  launch_review: ^2.0.0
+
   loader_search_bar: ^1.0.2
 
   # This Flutter plugin provides an API for querying information about an application package.
@@ -59,6 +62,12 @@ dependencies:
 
   # A set of utilities that allow you to easily pass a data Model from a parent Widget down to it's descendants.
   scoped_model: ^1.0.1
+
+  # A Flutter plugin to share content from your Flutter app via the platform's share dialog.
+  share: ^0.6.1+1
+
+  # A Flutter plugin for launching a URL in the mobile platform. Supports iOS and Android.
+  url_launcher: ^5.0.2
 
 
 dev_dependencies:

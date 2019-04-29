@@ -111,7 +111,8 @@ class _AboutPageState extends State<AboutPage> {
                   borderRadius: BorderRadius.circular(0.0),
                 ),
                 child: TabBar(
-                  labelColor: UIColors.tabsLabelThemeColor(context),
+                  labelColor: UIColors.tabsSelectedLabelColor,
+                  //labelColor: UIColors.tabsLabelThemeColor(context),
                   unselectedLabelColor: UIColors.tabsUnselectedLabelColor,
                   tabs: [
                     Tab(

@@ -19,9 +19,10 @@ class UIColors {
   static Color deleteButtonColor  = Colors.red;
 
   // Tabs Colors
-  static Color tabsLabelLightThemeColor  = Colors.black87;
-  static Color tabsLabelDarkThemeColor  = Colors.white;
-  static Color tabsUnselectedLabelColor  = Colors.grey;
+  static Color tabsLabelLightThemeColor   = Colors.black87;
+  static Color tabsLabelDarkThemeColor    = Colors.white;
+  static Color tabsSelectedLabelColor     = accentColor;
+  static Color tabsUnselectedLabelColor   = Colors.grey;
 
   static tabsLabelThemeColor(context) {
     return Theme.of(context).brightness == Brightness.dark ?

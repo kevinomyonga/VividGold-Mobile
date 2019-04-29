@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 import 'package:vividgold_app/widgets/description_text.dart';
@@ -27,31 +28,15 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
 
   LatLng storeLocation = LatLng(-1.284637, 36.826658);
   GoogleMapController _mapController;
-  //final Set<Marker> _markers = {};
-  Map<MarkerId, Marker> _markers = <MarkerId, Marker>{}; // CLASS MEMBER, MAP OF MARKS
+  final Set<Marker> _markers = {};
 
   void _onMapCreated(GoogleMapController controller) {
     _mapController = controller;
-    _add();
-  }
-
-  void _add() {
-    var markerIdVal = UIConstants.store_name;
-    final MarkerId markerId = MarkerId(markerIdVal);
-
-    // creating a new MARKER
-    final Marker marker = Marker(
-      markerId: markerId,
-      position: storeLocation,
-      infoWindow: InfoWindow(title: markerIdVal, snippet: '*'),
-      onTap: () {
-        //_onMarkerTapped(markerId);
-      },
-    );
-
     setState(() {
-      // adding a new marker to map
-      _markers[markerId] = marker;
+      _markers.add(Marker(
+        markerId: MarkerId('VividGold Store'),
+        position: storeLocation,
+      ));
     });
   }
 
@@ -165,6 +150,7 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
                   ),
                   backgroundColor: UIColors.brandColor,
                   onPressed: () {
+                    _launchURL("https://vividgold.co.ke/");
                     showInSnackBar("Website button pressed", UIColors.brandColor);
                   },
                 ),
@@ -184,6 +170,7 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
                   ),
                   backgroundColor: UIColors.facebookColor,
                   onPressed: () {
+                    _launchURL("https://www.facebook.com/vividgoldltd/");
                     showInSnackBar("Facebook button pressed", UIColors.facebookColor);
                   },
                 ),
@@ -198,6 +185,7 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
                   ),
                   backgroundColor: UIColors.instagramColor,
                   onPressed: () {
+                    _launchURL("https://www.instagram.com/vivid_gold/");
                     showInSnackBar("Instagram button pressed", UIColors.instagramColor);
                   },
                 ),
@@ -217,6 +205,7 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
                   ),
                   backgroundColor: UIColors.linkedInColor,
                   onPressed: () {
+                    _launchURL("https://ke.linkedin.com/company/vivid-gold");
                     showInSnackBar("LinkedIn button pressed", UIColors.linkedInColor);
                   },
                 ),
@@ -231,6 +220,7 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
                   ),
                   backgroundColor: UIColors.twitterColor,
                   onPressed: () {
+                    _launchURL("https://twitter.com/vivid_gold?lang=en");
                     showInSnackBar("Twitter button pressed", UIColors.twitterColor);
                   },
                 ),
@@ -238,14 +228,15 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
               Padding(
                 padding: EdgeInsets.all(10.0),
                 child: FloatingActionButton(
-                  heroTag: "WhatsAppTag",
+                  heroTag: "YouTubeTag",
                   child: const Icon(
-                    FontAwesomeIcons.whatsapp,
+                    FontAwesomeIcons.youtube,
                     color: Colors.white,
                   ),
-                  backgroundColor: UIColors.whatsappColor,
+                  backgroundColor: UIColors.youtubeColor,
                   onPressed: () {
-                    showInSnackBar("WhatApp button pressed", UIColors.whatsappColor);
+                    _launchURL("https://www.youtube.com/channel/UCUDyL2N64_6PzgBfJVXSQug");
+                    showInSnackBar("YouTube button pressed", UIColors.youtubeColor);
                   },
                 ),
               ),
@@ -257,14 +248,14 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
               Padding(
                 padding: EdgeInsets.all(10.0),
                 child: FloatingActionButton(
-                  heroTag: "YouTubeTag",
+                  heroTag: "WhatsAppTag",
                   child: const Icon(
-                    FontAwesomeIcons.youtube,
+                    FontAwesomeIcons.whatsapp,
                     color: Colors.white,
                   ),
-                  backgroundColor: UIColors.youtubeColor,
+                  backgroundColor: UIColors.whatsappColor,
                   onPressed: () {
-                    showInSnackBar("YouTube button pressed", UIColors.youtubeColor);
+                    showInSnackBar("WhatApp button pressed", UIColors.whatsappColor);
                   },
                 ),
               ),
@@ -293,6 +284,15 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
       duration: Duration(seconds: 3),
     ));
   }
+
+  _launchURL(String url) async {
+    //const url = 'https://flutter.io';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 }
 
 class _Map extends StatelessWidget {
@@ -309,7 +309,7 @@ class _Map extends StatelessWidget {
   final LatLng center;
   final GoogleMapController mapController;
   final ArgumentCallback<GoogleMapController> onMapCreated;
-  final Map<MarkerId, Marker> markers;
+  final Set<Marker> markers;
 
   @override
   Widget build(BuildContext context) {
@@ -325,7 +325,7 @@ class _Map extends StatelessWidget {
             target: center,
             zoom: 16.0,
           ),
-          markers: Set<Marker>.of(markers.values),
+          markers: markers,
           zoomGesturesEnabled: false,
           rotateGesturesEnabled: false,
           tiltGesturesEnabled: false,
