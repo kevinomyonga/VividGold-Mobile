@@ -83,7 +83,7 @@ class SettingsPageState extends State<SettingsPage> {
                                 builder: (context) => signup_screen()));*/
                   },
                   child: new Text(
-                    'Theme',
+                    'Appearance',
                     style: TextStyle(
                         fontSize: 18.0,
                         //color: Colors.black87,
@@ -113,7 +113,7 @@ class SettingsPageState extends State<SettingsPage> {
                             margin: EdgeInsets.only(left: 5.0),
                           ),
                           Text(
-                            'Dark Theme',
+                            'Dark Mode',
                             style: TextStyle(
                               fontSize: 17.0,
                               //color: Colors.black87,

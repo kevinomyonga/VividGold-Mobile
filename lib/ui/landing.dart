@@ -158,178 +158,123 @@ class _LandingPageState extends State<LandingPage> {
     }
 
     return new Drawer(
-      child: new ListView(
-        children: <Widget>[
-          // header
-          new UserAccountsDrawerHeader(
-            accountName: Text(firstName + " " + lastName,
-              style: TextStyle(
-                color: Colors.white,
-                shadows: <Shadow>[
-                  Shadow(
-                    offset: Offset(10.0, 10.0),
-                    blurRadius: 3.0,
-                    color: Color.fromARGB(0, 0, 0, 0),
-                  ),
-                ],
-              ),
-            ),
-            accountEmail: Text(emailAddress,
-              style: TextStyle(
-                color: Colors.white,
-                shadows: <Shadow>[
-                  Shadow(
-                    offset: Offset(10.0, 10.0),
-                    blurRadius: 3.0,
-                    color: Color.fromARGB(0, 0, 0, 0),
-                  ),
-                ],
-              ),
-            ),
-            currentAccountPicture: Container(
-              /*child: new CircleAvatar(
+      child: Column(
+          children: <Widget>[
+            Expanded(
+              child: new ListView(
+                children: <Widget>[
+                  // header
+                  new UserAccountsDrawerHeader(
+                    accountName: Text(firstName + " " + lastName,
+                      style: TextStyle(
+                        color: Colors.white,
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(10.0, 10.0),
+                            blurRadius: 3.0,
+                            color: Color.fromARGB(0, 0, 0, 0),
+                          ),
+                        ],
+                      ),
+                    ),
+                    accountEmail: Text(emailAddress,
+                      style: TextStyle(
+                        color: Colors.white,
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(10.0, 10.0),
+                            blurRadius: 3.0,
+                            color: Color.fromARGB(0, 0, 0, 0),
+                          ),
+                        ],
+                      ),
+                    ),
+                    currentAccountPicture: Container(
+                      /*child: new CircleAvatar(
                 backgroundColor: Colors.grey,
                 child: Icon(Icons.person, color: Colors.white,),
               ),*/
-              /*decoration: BoxDecoration(
+                      /*decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
                       fit: BoxFit.fill,
                       image: NetworkImage("https://avatarfiles.alphacoders.com/149/149117.jpg")
                   )
               ),*/
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(35),
-                child: FadeInImage(
-                  fit: BoxFit.fill,
-                  placeholder: AssetImage(UIConstants.placeholder),
-                  image: NetworkImage(avatarURL),
-                ),
-              ),
-            ),
-            decoration: /*new BoxDecoration(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(35),
+                        child: FadeInImage(
+                          fit: BoxFit.fill,
+                          placeholder: AssetImage(UIConstants.placeholder),
+                          image: NetworkImage(avatarURL),
+                        ),
+                      ),
+                    ),
+                    decoration: /*new BoxDecoration(
               image: new DecorationImage(
                 image: new NetworkImage(avatarURL),
                 fit: BoxFit.cover,
               ),*/
-            new BoxDecoration(
-              gradient: new LinearGradient(
-                  colors: [
-                    Themes.loginGradientEnd,
-                    Themes.loginGradientStart
-                  ],
-                  begin: const FractionalOffset(0.2, 0.2),
-                  end: const FractionalOffset(1.0, 1.0),
-                  stops: [0.0, 1.0],
-                  tileMode: TileMode.clamp),
+                    new BoxDecoration(
+                      gradient: new LinearGradient(
+                          colors: [
+                            Themes.loginGradientEnd,
+                            Themes.loginGradientStart
+                          ],
+                          begin: const FractionalOffset(0.2, 0.2),
+                          end: const FractionalOffset(1.0, 1.0),
+                          stops: [0.0, 1.0],
+                          tileMode: TileMode.clamp),
+                    ),
+                  ),
+
+                  // body
+                  new Column(children: drawerOptions),
+
+                  InkWell(
+                    onTap: (){
+                      Navigator.pushNamed(context, UIConstants.ROUTE_SETTINGS);
+                    },
+                    child: ListTile(
+                      title: Text(UIConstants.settings),
+                      leading: Icon(Icons.settings, color: Colors.blue,),
+                    ),
+                  ),
+
+                  InkWell(
+                    onTap: (){
+                      Navigator.pushNamed(context, UIConstants.ROUTE_ABOUT);
+                    },
+                    child: ListTile(
+                      title: Text(UIConstants.about),
+                      leading: Icon(Icons.info, color: Colors.green),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
+            Divider(height: 0.0,),
+            InkWell(
+              onTap: (){
+              },
+              child: ListTile(
+                title: new Center(
+                    child: new Text("v1.0.0",
+                      style: new TextStyle(
+                        fontSize: 17.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    )
+                ),
+                subtitle: new Center(
+                    child: new Text(
+                      UIConstants.appLegalese,
+                    )
+                ),
 
-          // body
-          new Column(children: drawerOptions),
-
-          InkWell(
-            onTap: (){
-              Navigator.pushNamed(context, UIConstants.ROUTE_SETTINGS);
-            },
-            child: ListTile(
-              title: Text(UIConstants.settings),
-              leading: Icon(Icons.settings, color: Colors.blue,),
+              ),
             ),
-          ),
-
-          InkWell(
-            onTap: (){
-              Navigator.pushNamed(context, UIConstants.ROUTE_ABOUT);
-            },
-            child: ListTile(
-              title: Text(UIConstants.about),
-              leading: Icon(Icons.info, color: Colors.green),
-            ),
-          ),
-
-          /*InkWell(
-            onTap: (){},
-            child: ListTile(
-              title: Text(UIConstants.home),
-              leading: Icon(Icons.home),
-            ),
-          ),
-
-          InkWell(
-            onTap: (){
-              Navigator.pushNamed(context, UIConstants.ROUTE_CATEGORIES);
-            },
-            child: ListTile(
-              title: Text(UIConstants.categories),
-              leading: Icon(Icons.dashboard),
-            ),
-          ),
-
-          InkWell(
-            onTap: (){
-              Navigator.pushNamed(context, UIConstants.ROUTE_NOTIFICATIONS);
-            },
-            child: ListTile(
-              title: Text(UIConstants.notifications),
-              leading: Icon(Icons.notifications),
-            ),
-          ),
-
-          Divider(),
-
-          InkWell(
-            onTap: (){
-              Navigator.pushNamed(context, UIConstants.ROUTE_ACCOUNT);
-            },
-            child: ListTile(
-              title: Text(UIConstants.my_account),
-              leading: Icon(Icons.person),
-            ),
-          ),
-
-          InkWell(
-            onTap: (){
-              Navigator.pushNamed(context, UIConstants.ROUTE_ORDERS);
-            },
-            child: ListTile(
-              title: Text(UIConstants.my_orders),
-              leading: Icon(Icons.shopping_basket),
-            ),
-          ),
-
-          InkWell(
-            onTap: (){
-              Navigator.pushNamed(context, UIConstants.ROUTE_FAVOURITES);
-            },
-            child: ListTile(
-              title: Text(UIConstants.favourites),
-              leading: Icon(Icons.favorite),
-            ),
-          ),
-
-          Divider(),
-
-          InkWell(
-            onTap: (){
-              Navigator.pushNamed(context, UIConstants.ROUTE_SETTINGS);
-            },
-            child: ListTile(
-              title: Text(UIConstants.settings),
-              leading: Icon(Icons.settings, color: Colors.blue,),
-            ),
-          ),
-
-          InkWell(
-            onTap: (){
-              Navigator.pushNamed(context, UIConstants.ROUTE_ABOUT);
-            },
-            child: ListTile(
-              title: Text(UIConstants.about),
-              leading: Icon(Icons.info, color: Colors.green),
-            ),
-          ),*/
-        ],
+          ]
       ),
     );
   }
