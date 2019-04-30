@@ -16,13 +16,6 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  // Store Social Media Info
-  String facebook = 'https://www.facebook.com/vividgoldltd/';
-  String instagram = 'https://www.instagram.com/vivid_gold/';
-  String linkedIn = 'https://ke.linkedin.com/company/vivid-gold';
-  String twitter = 'https://twitter.com/vivid_gold?lang=en';
-  String youtube = 'https://www.youtube.com/channel/UCUDyL2N64_6PzgBfJVXSQug';
-
   static String phone = "+123456789";
   var whatsappUrl ="whatsapp://send?phone=$phone";
 
@@ -34,7 +27,7 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
     _mapController = controller;
     setState(() {
       _markers.add(Marker(
-        markerId: MarkerId('VividGold Store'),
+        markerId: MarkerId(UIConstants.store_name),
         position: storeLocation,
       ));
     });
@@ -150,7 +143,7 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
                   ),
                   backgroundColor: UIColors.brandColor,
                   onPressed: () {
-                    _launchURL("https://vividgold.co.ke/");
+                    _launchURL(UIConstants.store_website);
                     showInSnackBar("Website button pressed", UIColors.brandColor);
                   },
                 ),
@@ -170,7 +163,7 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
                   ),
                   backgroundColor: UIColors.facebookColor,
                   onPressed: () {
-                    _launchURL("https://www.facebook.com/vividgoldltd/");
+                    _launchURL(UIConstants.store_facebookUrl);
                     showInSnackBar("Facebook button pressed", UIColors.facebookColor);
                   },
                 ),
@@ -185,7 +178,7 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
                   ),
                   backgroundColor: UIColors.instagramColor,
                   onPressed: () {
-                    _launchURL("https://www.instagram.com/vivid_gold/");
+                    _launchURL(UIConstants.store_instagramUrl);
                     showInSnackBar("Instagram button pressed", UIColors.instagramColor);
                   },
                 ),
@@ -205,7 +198,7 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
                   ),
                   backgroundColor: UIColors.linkedInColor,
                   onPressed: () {
-                    _launchURL("https://ke.linkedin.com/company/vivid-gold");
+                    _launchURL(UIConstants.store_linkedInUrl);
                     showInSnackBar("LinkedIn button pressed", UIColors.linkedInColor);
                   },
                 ),
@@ -220,7 +213,7 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
                   ),
                   backgroundColor: UIColors.twitterColor,
                   onPressed: () {
-                    _launchURL("https://twitter.com/vivid_gold?lang=en");
+                    _launchURL(UIConstants.store_twitterUrl);
                     showInSnackBar("Twitter button pressed", UIColors.twitterColor);
                   },
                 ),
@@ -235,7 +228,7 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
                   ),
                   backgroundColor: UIColors.youtubeColor,
                   onPressed: () {
-                    _launchURL("https://www.youtube.com/channel/UCUDyL2N64_6PzgBfJVXSQug");
+                    _launchURL(UIConstants.store_youtubeUrl);
                     showInSnackBar("YouTube button pressed", UIColors.youtubeColor);
                   },
                 ),
@@ -255,6 +248,7 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
                   ),
                   backgroundColor: UIColors.whatsappColor,
                   onPressed: () {
+                    _launchURL(whatsappUrl);
                     showInSnackBar("WhatApp button pressed", UIColors.whatsappColor);
                   },
                 ),

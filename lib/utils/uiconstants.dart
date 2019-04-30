@@ -75,14 +75,6 @@ class UIConstants {
   static const String sign_up                 = 'SIGN UP';
   static const String store_name              = appName;
   static const String store_email_address     = 'info@vividgold.co.ke';
-  static const String tell_a_friend           = 'Tell A Friend';
-  static const String the_app                 = 'The App';
-  static const String tos_agreement           = 'By creating an account you acknowledge '
-      'that you agree with our Terms Of Service, Privacy Policy and Refund Policy';
-  static const String store_physical_address  = "Shop S410, 2nd Floor, Sky Mall, \n"
-      "Luthuli Avenue - Off Tom Mboya Street\n"
-      "(Behind Accra Plaza)\n"
-      "Nairobi - Kenya";
   static const String store_desc              = "YOU\u2019VE PROBABLY HEARD OF US; "
       "WE\u2019VE GOT THE BIGGEST GAMING PRESENCE IN KENYA. \r\nSOUNDS IMPRESSIVE? IT REALLY IS.\r\n\r\n"
       "We are the specialist gaming retailer, and we\u2019ve got the look to go with it. "
@@ -99,4 +91,21 @@ class UIConstants {
       "Pre-owned (or pre-loved, as some of us call it) stuff is big for us; in-store. "
       "Making sure our customers know just what they can sell or trade-in with us, along "
       "with the great lower prices offered with pre-owned, is key.";
+  static const String store_physical_address  = "Shop S410, 2nd Floor, Sky Mall, \n"
+      "Luthuli Avenue - Off Tom Mboya Street\n"
+      "(Behind Accra Plaza)\n"
+      "Nairobi - Kenya";
+  static const String store_slogan            = 'Elevate Your Game';
+  static const String store_website           = 'https://vividgold.co.ke/';
+  static const String tell_a_friend           = 'Tell A Friend';
+  static const String the_app                 = 'The App';
+  static const String tos_agreement           = 'By creating an account you acknowledge '
+      'that you agree with our Terms Of Service, Privacy Policy and Refund Policy';
+
+  // Social Media Web Links
+  static const String store_facebookUrl   = 'https://www.facebook.com/vividgoldltd/';
+  static const String store_instagramUrl  = 'https://www.instagram.com/vivid_gold/';
+  static const String store_linkedInUrl   = 'https://ke.linkedin.com/company/vivid-gold';
+  static const String store_twitterUrl    = 'https://twitter.com/vivid_gold?lang=en';
+  static const String store_youtubeUrl    = 'https://www.youtube.com/channel/UCUDyL2N64_6PzgBfJVXSQug';
 }

@@ -268,7 +268,7 @@ class _LandingPageState extends State<LandingPage> {
                 ),
                 subtitle: new Center(
                     child: new Text(
-                      UIConstants.appLegalese,
+                      UIConstants.store_slogan,
                     )
                 ),
 
