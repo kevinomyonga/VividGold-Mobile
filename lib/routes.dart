@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/ui/about/about.dart';
+import 'package:vividgold_app/ui/addresses.dart';
 import 'package:vividgold_app/ui/auth/auth.dart';
 import 'package:vividgold_app/ui/cart/cart.dart';
 import 'package:vividgold_app/ui/cart/checkout.dart';
@@ -19,6 +20,7 @@ final routes = <String, WidgetBuilder> {
   UIConstants.ROUTE_ABOUT             : (context) => AboutPage(),
   /*UIConstants.ROUTE_ACCOUNT           : (context) => AccountPage(),*/
   UIConstants.ROUTE_AUTH              : (context) => AuthPage(),
+  UIConstants.ROUTE_ADDRESSES         : (context) => AddressesPage(),
   UIConstants.ROUTE_CART              : (context) => CartPage(),
   /*UIConstants.ROUTE_CATEGORIES        : (context) => CategoriesPage(),*/
   UIConstants.ROUTE_CHECKOUT          : (context) => CheckoutPage(),

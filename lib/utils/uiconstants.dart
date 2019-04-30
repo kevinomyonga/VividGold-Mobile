@@ -4,6 +4,7 @@ class UIConstants {
   static const String ROUTE_BASE            = '/';
   static const String ROUTE_ABOUT           = '/about';
   static const String ROUTE_ACCOUNT         = '/account';
+  static const String ROUTE_ADDRESSES       = '/addresses';
   static const String ROUTE_AUTH            = '/auth';
   static const String ROUTE_CART            = '/cart';
   static const String ROUTE_CATEGORIES      = '/categories';
@@ -34,6 +35,8 @@ class UIConstants {
   static const String about                   = 'About';
   static const String add_to_cart             = 'ADD TO CART';
   static const String add_to_favourites       = 'ADD TO FAVOURITES';
+  static const String add_addresses           = 'Add Address';
+  static const String addresses               = 'Addresses';
   static const String appAuthor               = 'Kevin Omyonga';
   static const String appName                 = 'VividGold';
   static const String appLegalese             = '© 2019 ' + appAuthor;

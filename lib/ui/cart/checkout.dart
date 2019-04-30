@@ -80,9 +80,9 @@ class CheckoutPageState extends State<CheckoutPage> {
     );
 
     return new Scaffold(
-      key: _scaffoldKey,
-      appBar: appBar,
-      body: _buildCheckoutPage(context)
+        key: _scaffoldKey,
+        appBar: appBar,
+        body: _buildCheckoutPage(context)
     );
   }
 
@@ -173,17 +173,22 @@ class CheckoutPageState extends State<CheckoutPage> {
               children: <Widget>[
                 Container(
                   height: 165.0,
-                  width: 56.0,
-                  child: Card(
-                    elevation: 3.0,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        new Container(
-                            alignment: Alignment.center,
-                            child: IconButton(
-                                icon: Icon(Icons.add), onPressed: null)),
-                      ],
+                  width: 165.0,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, UIConstants.ROUTE_ADDRESSES);
+                    },
+                    child: Card(
+                      elevation: 3.0,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          new Container(
+                              alignment: Alignment.center,
+                              child: IconButton(
+                                  icon: Icon(Icons.add), onPressed: null)),
+                        ],
+                      ),
                     ),
                   ),
                 ),
