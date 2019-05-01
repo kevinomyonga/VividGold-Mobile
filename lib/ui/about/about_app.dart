@@ -166,7 +166,7 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
             ),
           ),
           new Container(
-            margin: EdgeInsets.only(left: 10.0),
+            margin: EdgeInsets.all(7.0),
             child: Card(
                 child: Container(
                   //  padding: EdgeInsets.only(left: 10.0,top: 15.0,bottom: 5.0,right: 5.0),
@@ -192,7 +192,7 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
                                 margin: EdgeInsets.only(left: 5.0),
                               ),
                               Text(
-                                'Software Licenses',
+                                UIConstants.software_licenses,
                                 style: TextStyle(
                                   fontSize: 17.0,
                                   //color: Colors.black87,
@@ -222,7 +222,7 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
                                   margin: EdgeInsets.only(left: 5.0),
                                 ),
                                 Text(
-                                  'Terms Of Use',
+                                  UIConstants.terms_of_use,
                                   style: TextStyle(
                                     fontSize: 17.0,
                                     //color: Colors.black87,
@@ -252,7 +252,7 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
                                   margin: EdgeInsets.only(left: 5.0),
                                 ),
                                 Text(
-                                  'Privacy Policy',
+                                  UIConstants.privacy_policy,
                                   style: TextStyle(
                                     fontSize: 17.0,
                                     //color: Colors.black87
@@ -296,7 +296,7 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
                                 builder: (context) => signup_screen()));*/
                   },
                   child: new Text(
-                    'More',
+                    UIConstants.more,
                     style: TextStyle(
                         fontSize: 18.0,
                         color: Colors.white,
@@ -307,7 +307,7 @@ class AboutAppTabPageState extends State<AboutAppTabPage> {
             ),
           ),
           new Container(
-            margin: EdgeInsets.only(left: 10.0),
+            margin: EdgeInsets.all(7.0),
             child: Card(
                 child: Container(
                   //  padding: EdgeInsets.only(left: 10.0,top: 15.0,bottom: 5.0,right: 5.0),

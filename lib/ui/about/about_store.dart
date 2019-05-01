@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:vividgold_app/components/map.dart';
 import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 import 'package:vividgold_app/widgets/description_text.dart';
@@ -100,11 +101,12 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            child: _Map(
+            child: MapCard(
               center: storeLocation,
               mapController: _mapController,
               onMapCreated: _onMapCreated,
               markers: _markers,
+              height: 340.0,
             ),
           ),
           Padding(
@@ -304,43 +306,3 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
   }
 }
 
-class _Map extends StatelessWidget {
-  const _Map({
-    @required this.center,
-    @required this.mapController,
-    @required this.onMapCreated,
-    @required this.markers,
-    Key key,
-  })  : assert(center != null),
-        assert(onMapCreated != null),
-        super(key: key);
-
-  final LatLng center;
-  final GoogleMapController mapController;
-  final ArgumentCallback<GoogleMapController> onMapCreated;
-  final Map<MarkerId, Marker> markers;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 16.0),
-      elevation: 4.0,
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: 340.0,
-        child: GoogleMap(
-          onMapCreated: onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: center,
-            zoom: 16.0,
-          ),
-          markers: Set<Marker>.of(markers.values),
-          zoomGesturesEnabled: false,
-          rotateGesturesEnabled: false,
-          tiltGesturesEnabled: false,
-          scrollGesturesEnabled: false,
-        ),
-      ),
-    );
-  }
-}

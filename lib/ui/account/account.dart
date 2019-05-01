@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
@@ -42,9 +43,11 @@ class AccountPageState extends State<AccountPage> {
   );
   Icon logout = new Icon(
     Icons.do_not_disturb_on,
+    color: Colors.red,
   );
   Icon deactivateAccount = new Icon(
     Icons.close,
+    color: Colors.red,
   );
   Icon menu = new Icon(
     Icons.more_vert,
@@ -65,7 +68,9 @@ class AccountPageState extends State<AccountPage> {
                 _profileHeader(),
                 _profileInfo(),
                 _profileAddresses(),
-                _profileActions()
+                Divider(),
+                _profileActions(),
+                _profileDeactivation(),
               ],
             )
         )
@@ -77,83 +82,83 @@ class AccountPageState extends State<AccountPage> {
       alignment: Alignment.topCenter,
       height: headerImageHeight,
       child: new Card(
-          elevation: 3.0,
-          child: new Stack(
-              children: <Widget>[
+        elevation: 3.0,
+        child: new Stack(
+            children: <Widget>[
 
-                new Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: headerImageHeight,
-                  child: FadeInImage(
-                    fit: BoxFit.cover,
-                    placeholder: AssetImage(UIConstants.placeholder),
-                    image: NetworkImage(avatarURL),
-                  ),
+              new Container(
+                width: MediaQuery.of(context).size.width,
+                height: headerImageHeight,
+                child: FadeInImage(
+                  fit: BoxFit.cover,
+                  placeholder: AssetImage(UIConstants.placeholder),
+                  image: NetworkImage(avatarURL),
                 ),
+              ),
 
-                new Container(
-                  height: headerImageHeight,
-                  /*decoration: new BoxDecoration(
+              new Container(
+                height: headerImageHeight,
+                /*decoration: new BoxDecoration(
                     image: new DecorationImage(
                       image: NetworkImage("https://avatarfiles.alphacoders.com/149/149117.jpg"),
                       fit: BoxFit.cover,
                     ),
                   ),*/
-                  child: new BackdropFilter(
-                    filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-                    child: new Container(
-                      decoration: new BoxDecoration(color: Colors.white.withOpacity(0.0)),
-                    ),
+                child: new BackdropFilter(
+                  filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                  child: new Container(
+                    decoration: new BoxDecoration(color: Colors.white.withOpacity(0.0)),
                   ),
                 ),
+              ),
 
-                new Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
+              new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
 
-                    new Container(
-                        alignment: Alignment.topCenter,
-                        child: Container(
-                          width: 120.0,
-                          height: 120.0,
-                          margin: const EdgeInsets.all(10.0),
-                          // padding: const EdgeInsets.all(3.0),
-                          /*child: CircleAvatar(
+                  new Container(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        width: 120.0,
+                        height: 120.0,
+                        margin: const EdgeInsets.all(10.0),
+                        // padding: const EdgeInsets.all(3.0),
+                        /*child: CircleAvatar(
                             radius: 40.0,
                             backgroundImage: NetworkImage(avatarURL),
                           ),*/
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(60),
-                            child: FadeInImage(
-                              fit: BoxFit.fill,
-                              placeholder: AssetImage(UIConstants.placeholder),
-                              image: NetworkImage(avatarURL),
-                            ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(60),
+                          child: FadeInImage(
+                            fit: BoxFit.fill,
+                            placeholder: AssetImage(UIConstants.placeholder),
+                            image: NetworkImage(avatarURL),
                           ),
-                        )
-                    ),
+                        ),
+                      )
+                  ),
 
-                    new OutlineButton(
-                        borderSide: BorderSide(color: UIColors.primaryColor),
-                        child: const Text('Change'),
-                        textColor: UIColors.primaryColor,
-                        onPressed: () {
-                          //Navigator.pushNamed(context, UIConstants.ROUTE_CATEGORIES);
-                        },
-                        shape: new OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        )
-                    ),
-                    // VerticalDivider(),
-                  ],
-                ),
-              ]
-          ),
+                  new OutlineButton(
+                      borderSide: BorderSide(color: UIColors.primaryColor),
+                      child: const Text('Change'),
+                      textColor: UIColors.primaryColor,
+                      onPressed: () {
+                        //Navigator.pushNamed(context, UIConstants.ROUTE_CATEGORIES);
+                      },
+                      shape: new OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      )
+                  ),
+                  // VerticalDivider(),
+                ],
+              ),
+            ]
+        ),
       )
   );
 
   _profileInfo() => Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         new Container(
           margin: EdgeInsets.only(left: 12.0, top: 5.0, right: 0.0, bottom: 5.0),
@@ -299,432 +304,183 @@ class AccountPageState extends State<AccountPage> {
       ]
   );
 
-  _profileAddresses() => Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        new Container(
-          margin:
-          EdgeInsets.only(left: 12.0, top: 5.0, right: 0.0, bottom: 5.0),
-          child: new Text(
-            'Addresses',
-            style: TextStyle(
-              //color: Colors.black87,
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0),
-          ),
-        ),
-        new Container(
-            height: 165.0,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: <Widget>[
-                Container(
-                  height: 165.0,
-                  width: 165.0,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, UIConstants.ROUTE_ADDRESSES);
-                    },
-                    child: Card(
-                      elevation: 3.0,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          new Container(
-                              alignment: Alignment.center,
-                              child: IconButton(
-                                  icon: Icon(Icons.add), onPressed: null)),
-                        ],
+  _profileAddresses() => Container(
+    margin: EdgeInsets.all(7.0),
+    child: Card(
+        child: Container(
+          //  padding: EdgeInsets.only(left: 10.0,top: 15.0,bottom: 5.0,right: 5.0),
+
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, UIConstants.ROUTE_ADDRESSES);
+                },
+                child: Container(
+                  padding: EdgeInsets.only(
+                      left: 10.0, top: 15.0, bottom: 15.0),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        FontAwesomeIcons.addressBook,
+                        //color: Colors.black54
                       ),
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 165.0,
-                  width: 230.0,
-                  margin: EdgeInsets.all(7.0),
-                  child: Card(
-                    elevation: 3.0,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-
-                      children: <Widget>[
-                        new Column(
-
-                          children: <Widget>[
-                            new Container(
-                              margin:
-                              EdgeInsets.only(left: 12.0, top: 5.0, right: 0.0, bottom: 5.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-
-                                children: <Widget>[
-                                  new Text(
-                                    'Naomi A. Schultz',
-                                    style: TextStyle(
-                                      //color: Colors.black87,
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 0.5,
-                                    ),
-                                  ),
-                                  _verticalDivider(),
-                                  new Text(
-                                    '2585 Columbia Boulevard',
-                                    style: TextStyle(
-                                      //color: Colors.black45,
-                                        fontSize: 13.0,
-                                        letterSpacing: 0.5),
-                                  ),
-                                  _verticalDivider(),
-                                  new Text(
-                                    'Salisbury',
-                                    style: TextStyle(
-                                      //color: Colors.black45,
-                                        fontSize: 13.0,
-                                        letterSpacing: 0.5),
-                                  ),
-                                  _verticalDivider(),
-                                  new Text(
-                                    ' MD 21801',
-                                    style: TextStyle(
-                                      //color: Colors.black45,
-                                        fontSize: 13.0,
-                                        letterSpacing: 0.5),
-                                  ),
-
-                                  new Container(
-                                    margin: EdgeInsets.only(left: 00.0,top: 05.0,right: 0.0,bottom: 5.0),
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        new Text(
-                                          'Delivery Address',
-                                          style: TextStyle(
-                                            fontSize: 15.0,
-                                            //color: Colors.black26,
-                                          ),
-
-                                        ),
-                                        _verticalD(),
-
-                                        new Checkbox(
-                                          value: checkboxValueA,
-                                          onChanged: (bool value) {
-                                            setState(() {
-                                              checkboxValueA = value;
-                                            });
-                                          },
-                                        ),
-                                      ],
-                                    ),
-
-                                  )
-
-                                ],
-                              ),
-                            ),
-
-                          ],
+                      _verticalD(),
+                      Container(
+                        margin: EdgeInsets.only(left: 5.0),
+                      ),
+                      Text(
+                        UIConstants.my_addresses,
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          //color: Colors.black87,
                         ),
-                        new Container(
-                          alignment: Alignment.topLeft,
-                          child: IconButton(
-                              icon: menu,
-                              //color: Colors.black38,
-                              onPressed: null),
-                        )
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-                Container(
-                  height: 130.0,
-                  width: 230.0,
-                  margin: EdgeInsets.all(7.0),
-                  child: Card(
-                    elevation: 3.0,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-
-                      children: <Widget>[
-                        new Column(
-
-
-                          children: <Widget>[
-                            new Container(
-                              margin:
-                              EdgeInsets.only(left: 12.0, top: 5.0, right: 0.0, bottom: 5.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-
-                                children: <Widget>[
-                                  new Text(
-                                    'Bradford R. Butler',
-                                    style: TextStyle(
-                                      //color: Colors.black87,
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 0.5,
-                                    ),
-                                  ),
-                                  _verticalDivider(),
-                                  new Text(
-                                    '4528 Filbert Street',
-                                    style: TextStyle(
-                                      //color: Colors.black45,
-                                        fontSize: 13.0,
-                                        letterSpacing: 0.5),
-                                  ),
-                                  _verticalDivider(),
-                                  new Text(
-                                    'Philadelphia',
-                                    style: TextStyle(
-                                      //color: Colors.black45,
-                                        fontSize: 13.0,
-                                        letterSpacing: 0.5),
-                                  ),
-                                  _verticalDivider(),
-                                  new Text(
-                                    ' PA 19103',
-                                    style: TextStyle(
-                                      //color: Colors.black45,
-                                        fontSize: 13.0,
-                                        letterSpacing: 0.5),
-                                  ),
-                                  new Container(
-                                    margin: EdgeInsets.only(left: 00.0,top: 05.0,right: 0.0,bottom: 5.0),
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        new Text(
-                                          'Delivery Address',
-                                          style: TextStyle(
-                                            fontSize: 15.0,
-                                            //color: Colors.black12,
-                                          ),
-
-                                        ),
-                                        _verticalD(),
-
-                                        new Checkbox(
-                                          value: checkboxValueB,
-                                          onChanged: (bool value) {
-                                            setState(() {
-                                              checkboxValueB = value;
-                                            });
-                                          },
-                                        ),
-                                      ],
-                                    ),
-
-                                  )
-                                ],
-                              ),
-                            ),
-
-                          ],
-                        ),
-                        new Container(
-                          alignment: Alignment.topLeft,
-                          child: IconButton(
-                              icon: menu,
-                              //color: Colors.black38,
-                              onPressed: null),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 130.0,
-                  width: 230.0,
-                  margin: EdgeInsets.all(7.0),
-                  child: Card(
-                    elevation: 3.0,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-
-                      children: <Widget>[
-                        new Column(
-
-
-                          children: <Widget>[
-                            new Container(
-                              margin:
-                              EdgeInsets.only(left: 12.0, top: 5.0, right: 0.0, bottom: 5.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-
-                                children: <Widget>[
-                                  new Text(
-                                    'Elizabeth J. Schmidt',
-                                    style: TextStyle(
-                                      //color: Colors.black87,
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 0.5,
-                                    ),
-                                  ),
-                                  _verticalDivider(),
-                                  new Text(
-                                    '3674 Oakway Lane',
-                                    style: TextStyle(
-                                      //color: Colors.black45,
-                                        fontSize: 13.0,
-                                        letterSpacing: 0.5),
-                                  ),
-                                  _verticalDivider(),
-                                  new Text(
-                                    'Long Beach',
-                                    style: TextStyle(
-                                      //color: Colors.black45,
-                                        fontSize: 13.0,
-                                        letterSpacing: 0.5),
-                                  ),
-                                  _verticalDivider(),
-                                  new Text(
-                                    'CA 90802',
-                                    style: TextStyle(
-                                      //color: Colors.black45,
-                                        fontSize: 13.0,
-                                        letterSpacing: 0.5),
-                                  ),
-                                  new Container(
-                                    margin: EdgeInsets.only(left: 00.0,top: 05.0,right: 0.0,bottom: 5.0),
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        new Text(
-                                          'Delivery Address',
-                                          style: TextStyle(
-                                            fontSize: 15.0,
-                                            //color: Colors.black12,
-                                          ),
-
-                                        ),
-                                        _verticalD(),
-
-                                        new Checkbox(
-                                          value: checkboxValueC,
-                                          onChanged: (bool value) {
-                                            setState(() {
-                                              checkboxValueC = value;
-                                            });
-                                          },
-                                        ),
-                                      ],
-                                    ),
-
-                                  )
-                                ],
-                              ),
-                            ),
-                            _profileActions(),
-                          ],
-                        ),
-                        new Container(
-                          alignment: Alignment.topLeft,
-                          child: IconButton(
-                              icon: menu,
-                              //color: Colors.black38,
-                              onPressed: null),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            )
-        )
-      ]
+              ),
+            ],
+          ),
+        )),
   );
 
-  _profileActions() => Column(
-      children: <Widget>[
-        new Container(
-          margin: EdgeInsets.all(7.0),
-          child: Card(
-            elevation: 1.0,
-            child: Row(
-              children: <Widget>[
-                new IconButton(icon: keyLock, onPressed: _changePass),
-                _verticalD(),
-                new Text(
-                  UIConstants.change_password,
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    //color: Colors.black87
+  _profileActions() => new Container(
+    margin: EdgeInsets.all(7.0),
+    child: Card(
+        child: Container(
+          //  padding: EdgeInsets.only(left: 10.0,top: 15.0,bottom: 5.0,right: 5.0),
+
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              InkWell(
+                onTap: () {
+                  _changePass();
+                },
+                child: Container(
+                  padding: EdgeInsets.only(
+                      left: 10.0, top: 15.0, bottom: 15.0),
+                  child: Row(
+                    children: <Widget>[
+                      keyLock,
+                      _verticalD(),
+                      Container(
+                        margin: EdgeInsets.only(left: 5.0),
+                      ),
+                      Text(
+                        UIConstants.change_password,
+                        style: TextStyle(
+                          fontSize: 17.0,
+                          //color: Colors.black87,
+                        ),
+                      ),
+                    ],
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
-        new Container(
-          margin: EdgeInsets.all(7.0),
-          child: Card(
-            elevation: 1.0,
-            child: Row(
-              children: <Widget>[
-                new IconButton(icon: clear, onPressed: _clearHistory),
-                _verticalD(),
-                new Text(
-                  UIConstants.clear_history,
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    //color: Colors.black87,
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-        new Container(
-          margin: EdgeInsets.all(7.0),
-          child: Card(
-            elevation: 1.0,
-            child: Row(
-              children: <Widget>[
-                new IconButton(
-                    icon: logout,
-                    onPressed: _logout
                 ),
-                _verticalD(),
-                new Text(
-                  UIConstants.logout,
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    color: Colors.redAccent,
+              ),
+              Divider(
+                height: 5.0,
+              ),
+              InkWell(
+                onTap: () {
+                  _clearHistory();
+                },
+                child: Container(
+                  padding: EdgeInsets.only(
+                      left: 10.0, top: 15.0, bottom: 15.0),
+                  child: Row(
+                    children: <Widget>[
+                      clear,
+                      _verticalD(),
+                      Container(
+                        margin: EdgeInsets.only(left: 5.0),
+                      ),
+                      Text(
+                        UIConstants.clear_history,
+                        style: TextStyle(
+                          fontSize: 17.0,
+                          //color: Colors.black87,
+                        ),
+                      ),
+                    ],
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
-        new Container(
-          margin: EdgeInsets.all(7.0),
-          child: Card(
-            elevation: 1.0,
-            child: Row(
-              children: <Widget>[
-                new IconButton(icon: deactivateAccount, onPressed: _deactivate),
-                _verticalD(),
-                new Text(
-                  UIConstants.deactivate_account,
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    color: Colors.redAccent,
+                ),
+              ),
+              Divider(
+                height: 5.0,
+              ),
+              InkWell(
+                onTap: () {
+                  _logout();
+                },
+                child: Container(
+                  padding: EdgeInsets.only(
+                      left: 10.0, top: 15.0, bottom: 15.0),
+                  child: Row(
+                    children: <Widget>[
+                      logout,
+                      _verticalD(),
+                      Container(
+                        margin: EdgeInsets.only(left: 5.0),
+                      ),
+                      Text(
+                        UIConstants.logout,
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          color: Colors.redAccent,
+                        ),
+                      ),
+                    ],
                   ),
-                )
-              ],
-            ),
+                ),
+              ),
+            ],
           ),
         )
-      ]
+    ),
+  );
+
+  _profileDeactivation() => Container(
+    margin: EdgeInsets.all(7.0),
+    child: Card(
+        child: Container(
+          //  padding: EdgeInsets.only(left: 10.0,top: 15.0,bottom: 5.0,right: 5.0),
+
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              InkWell(
+                onTap: () {
+                },
+                child: Container(
+                  padding: EdgeInsets.only(
+                      left: 10.0, top: 15.0, bottom: 15.0),
+                  child: Row(
+                    children: <Widget>[
+                      deactivateAccount,
+                      _verticalD(),
+                      Container(
+                        margin: EdgeInsets.only(left: 5.0),
+                      ),
+                      Text(
+                        UIConstants.deactivate_account,
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        )),
   );
 
   _verticalDivider() => Container(

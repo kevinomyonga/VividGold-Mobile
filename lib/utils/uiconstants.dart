@@ -1,5 +1,8 @@
 class UIConstants {
 
+  // Keys
+  static const String GMAPS_API_KEY = 'AIzaSyAykljM3Hn20bFf72Y_JoDc-vPNdghLSj8';
+
   // Routes
   static const String ROUTE_BASE            = '/';
   static const String ROUTE_ABOUT           = '/about';
@@ -36,8 +39,8 @@ class UIConstants {
   static const String add_to_cart             = 'ADD TO CART';
   static const String add_to_favourites       = 'ADD TO FAVOURITES';
   static const String add_addresses           = 'Add Address';
-  static const String addresses               = 'Addresses';
   static const String appAuthor               = 'Kevin Omyonga';
+  static const String appearance              = 'Appearance';
   static const String appName                 = 'VividGold';
   static const String appLegalese             = '© 2019 ' + appAuthor;
   static const String auth_existing           = 'Existing';
@@ -48,6 +51,7 @@ class UIConstants {
   static const String change_password         = 'Change Password';
   static const String checkout                = 'Checkout';
   static const String clear_history           = 'Clear History';
+  static const String dark_mode               = 'Dark Mode';
   static const String deactivate_account      = 'Deactivate Account';
   static const String favourites              = 'Favourites';
   static const String forgot_password         = 'Forgot Password?';
@@ -59,11 +63,14 @@ class UIConstants {
   static const String home                    = 'Home';
   static const String login                   = 'LOGIN';
   static const String logout                  = 'Logout';
+  static const String more                    = 'More';
   static const String my_account              = 'My Account';
+  static const String my_addresses            = 'My Addresses';
   static const String my_orders               = 'My Orders';
   static const String notifications           = 'Notifications';
   static const String or                      = 'Or';
   static const String payment                 = 'Payment';
+  static const String privacy_policy          = 'Privacy Policy';
   static const String proceed_to_payment      = 'PROCEED TO CHECKOUT';
   static const String recent_products         = 'Recent Products';
   static const String rate_the_app            = 'Rate The App';
@@ -76,6 +83,7 @@ class UIConstants {
   static const String show_less               = 'Show Less';
   static const String show_more               = 'Show More';
   static const String sign_up                 = 'SIGN UP';
+  static const String software_licenses       = 'Software Licenses';
   static const String store_name              = appName;
   static const String store_email_address     = 'info@vividgold.co.ke';
   static const String store_desc              = "YOU\u2019VE PROBABLY HEARD OF US; "
@@ -101,6 +109,7 @@ class UIConstants {
   static const String store_slogan            = 'Elevate Your Game';
   static const String store_website           = 'https://vividgold.co.ke/';
   static const String tell_a_friend           = 'Tell A Friend';
+  static const String terms_of_use            = 'Terms Of Use';
   static const String the_app                 = 'The App';
   static const String tos_agreement           = 'By creating an account you acknowledge '
       'that you agree with our Terms Of Service, Privacy Policy and Refund Policy';

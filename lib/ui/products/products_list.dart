@@ -73,9 +73,11 @@ class _ProductsListPageState extends State<ProductsListPage> {
                                             fontSize: 11.0,
                                             fontWeight: FontWeight.w500),
                                       ),
-                                    )),
+                                    )
+                                ),
                               ],
-                            )),
+                            )
+                        ),
                       ],
                     ),
                   ),

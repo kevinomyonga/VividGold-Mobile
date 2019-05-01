@@ -83,7 +83,7 @@ class SettingsPageState extends State<SettingsPage> {
                                 builder: (context) => signup_screen()));*/
                   },
                   child: new Text(
-                    'Appearance',
+                    UIConstants.appearance,
                     style: TextStyle(
                         fontSize: 18.0,
                         //color: Colors.black87,
@@ -113,7 +113,7 @@ class SettingsPageState extends State<SettingsPage> {
                             margin: EdgeInsets.only(left: 5.0),
                           ),
                           Text(
-                            'Dark Mode',
+                            UIConstants.dark_mode,
                             style: TextStyle(
                               fontSize: 17.0,
                               //color: Colors.black87,
@@ -204,100 +204,6 @@ class SettingsPageState extends State<SettingsPage> {
                   ),
                 )),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 15.0),
-          ),
-          new Container(
-            height: 50.0,
-            alignment: Alignment.topLeft,
-            margin: EdgeInsets.only(top: 7.0),
-            child: new Row(
-              children: <Widget>[
-                _verticalD(),
-                new GestureDetector(
-                  onTap: () {
-                    /*Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => signup_screen()));*/
-                  },
-                  child: new Text(
-                    'Legal',
-                    style: TextStyle(
-                        fontSize: 18.0,
-                        //color: Colors.black87,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 10.0),
-            child: Card(
-                child: Container(
-                  //  padding: EdgeInsets.only(left: 10.0,top: 15.0,bottom: 5.0,right: 5.0),
-
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                          padding: EdgeInsets.only(
-                              left: 10.0, top: 15.0, bottom: 15.0),
-                          child: GestureDetector(
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.assignment,
-                                  //color: Colors.black54
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 5.0),
-                                ),
-                                Text(
-                                  'Terms Of Use',
-                                  style: TextStyle(
-                                    fontSize: 17.0,
-                                    //color: Colors.black87,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            onTap: () {
-                            },
-                          )),
-                      Divider(
-                        height: 5.0,
-                      ),
-                      Container(
-                          padding: EdgeInsets.only(
-                              left: 10.0, top: 15.0, bottom: 15.0),
-                          child: GestureDetector(
-                              child: Row(
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.lock_outline,
-                                    //color: Colors.black54
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(left: 5.0),
-                                  ),
-                                  Text(
-                                    'Privacy Policy',
-                                    style: TextStyle(
-                                      fontSize: 17.0,
-                                      //color: Colors.black87
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              onTap: () {
-                              })),
-                    ],
-                  ),
-                )),
-          )
         ],
       ),
     );

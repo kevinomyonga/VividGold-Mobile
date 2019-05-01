@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/ui/about/about.dart';
-import 'package:vividgold_app/ui/addresses.dart';
+import 'package:vividgold_app/ui/account/addresses.dart';
 import 'package:vividgold_app/ui/auth/auth.dart';
 import 'package:vividgold_app/ui/cart/cart.dart';
 import 'package:vividgold_app/ui/cart/checkout.dart';
