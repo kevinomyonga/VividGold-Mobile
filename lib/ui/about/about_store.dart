@@ -21,15 +21,30 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
 
   LatLng storeLocation = LatLng(-1.284637, 36.826658);
   GoogleMapController _mapController;
-  final Set<Marker> _markers = {};
+  Map<MarkerId, Marker> _markers = <MarkerId, Marker>{}; // CLASS MEMBER, MAP OF MARKS
 
   void _onMapCreated(GoogleMapController controller) {
     _mapController = controller;
+    _add();
+  }
+
+  void _add() {
+    var markerIdVal = UIConstants.store_name;
+    final MarkerId markerId = MarkerId(markerIdVal);
+
+    // creating a new MARKER
+    final Marker marker = Marker(
+      markerId: markerId,
+      position: storeLocation,
+      infoWindow: InfoWindow(title: markerIdVal, snippet: '*'),
+      onTap: () {
+        //_onMarkerTapped(markerId);
+      },
+    );
+
     setState(() {
-      _markers.add(Marker(
-        markerId: MarkerId(UIConstants.store_name),
-        position: storeLocation,
-      ));
+      // adding a new marker to map
+      _markers[markerId] = marker;
     });
   }
 
@@ -303,7 +318,7 @@ class _Map extends StatelessWidget {
   final LatLng center;
   final GoogleMapController mapController;
   final ArgumentCallback<GoogleMapController> onMapCreated;
-  final Set<Marker> markers;
+  final Map<MarkerId, Marker> markers;
 
   @override
   Widget build(BuildContext context) {
@@ -319,7 +334,7 @@ class _Map extends StatelessWidget {
             target: center,
             zoom: 16.0,
           ),
-          markers: markers,
+          markers: Set<Marker>.of(markers.values),
           zoomGesturesEnabled: false,
           rotateGesturesEnabled: false,
           tiltGesturesEnabled: false,

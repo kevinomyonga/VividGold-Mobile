@@ -11,6 +11,7 @@ import 'package:vividgold_app/utils/uiconstants.dart';
 class HomePage extends StatefulWidget {
 
   final carouselItems = [
+    'https://vividgold.co.ke/wp-content/uploads/2019/04/mortal-kombat-11-slider.jpg',
     'https://vividgold.co.ke/wp-content/uploads/2019/04/days-gone.jpg',
     'https://vividgold.co.ke/wp-content/uploads/2019/03/apex-legends.jpg',
     'https://vividgold.co.ke/wp-content/uploads/2019/03/mortal-kombat-11.jpg',

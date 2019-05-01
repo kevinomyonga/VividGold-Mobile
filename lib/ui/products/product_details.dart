@@ -118,11 +118,11 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                 TabBarView(
                   controller: imagesController,
                   children: [
-                        FadeInImage(
-                        fit: BoxFit.cover,
-                        placeholder: AssetImage(UIConstants.placeholder),
-                        image: NetworkImage('https://vividgold.co.ke/wp-content/uploads/2018/09/PS4-Console-Pro-1TB-Black-SpiderMan.jpg'),
-                      ),
+                    FadeInImage(
+                      fit: BoxFit.cover,
+                      placeholder: AssetImage(UIConstants.placeholder),
+                      image: NetworkImage('https://vividgold.co.ke/wp-content/uploads/2018/09/PS4-Console-Pro-1TB-Black-SpiderMan.jpg'),
+                    ),
                   ],
                 ),
                 Container(
@@ -268,22 +268,36 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
               ),
               Tab(
                 child: Text(
-                  "MATERIAL & CARE",
+                  "PRODUCT INFO",
                 ),
               ),
             ],
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
-            height: 60.0,
+            height: 160.0,
             child: TabBarView(
               controller: tabController,
               children: <Widget>[
                 Text(
-                  "76% acrylic, 19% polyster, 5% metallic yarn Hand-wash cold",
+                  "Be greater and explore a new chapter in Marvel’s Spider-Man universe "
+                      "in HDR quality graphics* with the Marvel’s Spider-Man bundle on PlayStation4; "
+                      "This great value Jet Black 1TB PS4 PRO bundle includes a matching Jet Black DUALSHOCK4 "
+                      "wireless controller and a copy of the Standard Edition of the game on Blu-ray Disc; "
+                      "Starring one of the world’s most iconic Super Heroes, Marvel’s Spider-Man features "
+                      "the acrobatic abilities, improvisation and web-slinging that the wall-crawler is famous for, "
+                      "while also introducing elements never-before-seen in a Spider-Man game; From traversing by parkour "
+                      "and unique environmental interactions, to new combat and blockbuster action, it’s Spider-Man unlike "
+                      "any you’ve played before. Sony Interactive Entertainment, Insomniac Games, and Marvel have teamed up "
+                      "to create a brand-new and authentic Spider-Man adventure. This isn’t the Spider-Man you’ve met or ever "
+                      "seen before. This is an experienced Peter Parker who’s more masterful at fighting big crime in New York City. "
+                      "At the same time, he’s struggling to balance his chaotic personal life and career while the fate of millions "
+                      "of New Yorkers rest upon his shoulders",
                 ),
                 Text(
-                  "86% acrylic, 9% polyster, 1% metallic yarn Hand-wash cold",
+                  "Box Contains\n\n"
+                      "PS4 PRO Console;\n"
+                      "Spider-Man PS4",
                 )
               ],
             ),

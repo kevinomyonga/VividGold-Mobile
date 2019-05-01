@@ -320,6 +320,27 @@ class AccountPageState extends State<AccountPage> {
               children: <Widget>[
                 Container(
                   height: 165.0,
+                  width: 165.0,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, UIConstants.ROUTE_ADDRESSES);
+                    },
+                    child: Card(
+                      elevation: 3.0,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          new Container(
+                              alignment: Alignment.center,
+                              child: IconButton(
+                                  icon: Icon(Icons.add), onPressed: null)),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 165.0,
                   width: 230.0,
                   margin: EdgeInsets.all(7.0),
                   child: Card(
