@@ -60,9 +60,7 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
           child: new Column(
             children: <Widget>[
               _buildStoreDescInfo(context),
-
               _buildStoreLocationInfo(context),
-
               _buildSocialMediaLinks(context),
               new SizedBox(
                 height: 25.0,
@@ -106,7 +104,7 @@ class AboutStoreTabPageState extends State<AboutStoreTabPage> {
               mapController: _mapController,
               onMapCreated: _onMapCreated,
               markers: _markers,
-              height: 340.0,
+              height: 240.0,
             ),
           ),
           Padding(

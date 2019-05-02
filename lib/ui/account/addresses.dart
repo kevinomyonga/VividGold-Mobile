@@ -25,7 +25,7 @@ class AddressesPageState extends State<AddressesPage> {
             semanticLabel: UIConstants.add_addresses,
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        //floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         body: _buildAddressesPage(context)
     );
   }

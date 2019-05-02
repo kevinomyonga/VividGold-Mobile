@@ -77,7 +77,7 @@ class UIConstants {
   static const String proceed_to_payment      = 'PROCEED TO CHECKOUT';
   static const String recent_products         = 'Recent Products';
   static const String rate_the_app            = 'Rate The App';
-  static const String remove                  = 'REMOVE';
+  static const String remove                  = 'Remove';
   static const String search                  = 'Search';
   static const String search_hint1            = 'Search Our Store';
   static const String search_hint2            = 'What are you looking for?';

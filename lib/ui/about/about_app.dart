@@ -35,25 +35,6 @@ class AboutAppTabPage extends StatefulWidget {
 
 class AboutAppTabPageState extends State<AboutAppTabPage> {
 
-  /*String appName;
-  String packageName;
-  String version;
-  String buildNumber;
-
-  AboutAppTabPageState() {
-    asyncFunction().then((packageInfo) {
-      this.appName = packageInfo.appName;
-      this.packageName = packageInfo.packageName;
-      this.version = packageInfo.version;
-      this.buildNumber = packageInfo.buildNumber;
-    });
-  }
-
-  Future<PackageInfo> asyncFunction() async {
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    return packageInfo;
-  }*/
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
