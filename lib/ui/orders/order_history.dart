@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/utils/uicolors.dart';
+import 'package:vividgold_app/utils/uiconstants.dart';
 
 class OrdersPage extends StatefulWidget {
 
@@ -281,6 +282,7 @@ class OrdersPageState extends State<OrdersPage> {
           icon: const Icon(Icons.check_circle, size: 18.0,color: Colors.green,),
           onPressed: () {
             // Perform some action
+            Navigator.pushNamed(context, UIConstants.ROUTE_ORDER_DETAILS);
           }
       );
     }

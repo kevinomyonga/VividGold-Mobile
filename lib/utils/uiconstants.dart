@@ -20,6 +20,7 @@ class UIConstants {
   static const String ROUTE_PRODUCTS        = '/products';
   static const String ROUTE_NOTIFICATIONS   = '/notifications';
   static const String ROUTE_ORDERS          = '/orders';
+  static const String ROUTE_ORDER_DETAILS   = '/orders_details';
   static const String ROUTE_PAYMENT         = '/payment';
   static const String ROUTE_SEARCH          = '/search';
   static const String ROUTE_SETTINGS        = '/settings';
@@ -69,6 +70,7 @@ class UIConstants {
   static const String my_orders               = 'My Orders';
   static const String notifications           = 'Notifications';
   static const String or                      = 'Or';
+  static const String order_details           = 'Order Details';
   static const String payment                 = 'Payment';
   static const String privacy_policy          = 'Privacy Policy';
   static const String proceed_to_payment      = 'PROCEED TO CHECKOUT';

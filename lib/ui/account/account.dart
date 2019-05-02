@@ -6,6 +6,7 @@ import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
 class AccountPage extends StatefulWidget {
+
   @override
   State<StatefulWidget> createState() => AccountPageState();
 }
