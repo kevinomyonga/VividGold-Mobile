@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:vividgold_app/components/map.dart';
@@ -74,82 +75,100 @@ class _AddressesState extends State<Addresses> {
 
   @override
   Widget build(BuildContext context) {
-    return new StaggeredGridView.countBuilder(
-      shrinkWrap: true,
-      physics: ScrollPhysics(), // to disable GridView's scrolling
-      crossAxisCount: 2,
+    return new ListView.builder(
+      scrollDirection: Axis.vertical,
       itemCount: addressesList.length,
       itemBuilder: (BuildContext context, int index) {
         return _buildAddressCard(context, addressesList[index]);
       },
-      staggeredTileBuilder: (int index) =>
-      //new StaggeredTile.count(2, index.isEven ? 2 : 1),
-      new StaggeredTile.fit(2),
-      mainAxisSpacing: 4.0,
-      crossAxisSpacing: 4.0,
     );
-
-    /*return GridView.builder(
-        shrinkWrap: true,
-        physics: ScrollPhysics(), // to disable GridView's scrolling
-        itemCount: productList.length,
-        gridDelegate:
-        new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        itemBuilder: (BuildContext context, int index) {
-          return _buildProductItemCard(context, productList[index]);
-        });*/
   }
 
   _buildAddressCard(BuildContext context, var address) {
 
-    return InkWell(
-      onTap: () {
-        Navigator.pushNamed(context, UIConstants.ROUTE_PRODUCT_DETAILS);
-      },
-      child: Card(
-        elevation: 4.0,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              child: MapCard(
-                center: LatLng(address['lat'], address['lng']),
-                mapController: _mapController,
-                onMapCreated: _onMapCreated,
-                markers: _markers,
-                height: 240.0,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 8.0, right: 8.0,
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Icon(
-                    Icons.location_on,
+    return new Slidable(
+      delegate: new SlidableDrawerDelegate(),
+      actionExtentRatio: 0.25,
+      child: new Container(
+        //color: Colors.white,
+        child: InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, UIConstants.ROUTE_PRODUCT_DETAILS);
+          },
+          child: Card(
+            elevation: 4.0,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  child: MapCard(
+                    center: LatLng(address['lat'], address['lng']),
+                    mapController: _mapController,
+                    onMapCreated: _onMapCreated,
+                    markers: _markers,
+                    height: 240.0,
                   ),
-                  SizedBox(
-                    width: 8.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 8.0, right: 8.0,
                   ),
-                  Flexible(
-                    child: Text(
-                      address['address'],
-                      style: TextStyle(fontSize: 16.0),
-                    ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Icon(
+                        Icons.location_on,
+                      ),
+                      SizedBox(
+                        width: 8.0,
+                      ),
+                      Flexible(
+                        child: Text(
+                          address['address'],
+                          style: TextStyle(fontSize: 16.0),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+              ],
             ),
-            SizedBox(
-              height: 8.0,
-            ),
-          ],
+          ),
         ),
       ),
+      actions: <Widget>[
+        new IconSlideAction(
+          caption: 'Archive',
+          color: Colors.blue,
+          icon: Icons.archive,
+          //onTap: () => _showSnackBar('Archive'),
+        ),
+        new IconSlideAction(
+          caption: 'Share',
+          color: Colors.indigo,
+          icon: Icons.share,
+          //onTap: () => _showSnackBar('Share'),
+        ),
+      ],
+      secondaryActions: <Widget>[
+        new IconSlideAction(
+          caption: 'More',
+          color: Colors.black45,
+          icon: Icons.more_horiz,
+          //onTap: () => _showSnackBar('More'),
+        ),
+        new IconSlideAction(
+          caption: 'Delete',
+          color: Colors.red,
+          icon: Icons.delete,
+          //onTap: () => _showSnackBar('Delete'),
+        ),
+      ],
     );
   }
 }

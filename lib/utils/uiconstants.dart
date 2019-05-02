@@ -54,6 +54,7 @@ class UIConstants {
   static const String clear_history           = 'Clear History';
   static const String dark_mode               = 'Dark Mode';
   static const String deactivate_account      = 'Deactivate Account';
+  static const String favourite               = 'Favourite';
   static const String favourites              = 'Favourites';
   static const String forgot_password         = 'Forgot Password?';
   static const String hint_confirm_password   = 'Confirm Password';

@@ -1,9 +1,4 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:location/location.dart';
 import 'package:vividgold_app/components/addresses.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
@@ -37,12 +32,14 @@ class AddressesPageState extends State<AddressesPage> {
 
   _buildAddressesPage(context) {
 
-    return new ListView(
+    return new Column(
       children: <Widget>[
         //grid view
         Container(
-          child: Addresses(),
-        )
+          child: new Flexible(
+            child: Addresses(),
+          ),
+        ),
       ],
     );
 

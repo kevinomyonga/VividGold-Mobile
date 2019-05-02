@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
@@ -313,25 +314,57 @@ class CartPageState extends State<CartPage> {
             ],
           );
 
-          return new Container(
-            margin: new EdgeInsets.only(left: 8.0, right: 8.0, bottom: 2.0),
-            child: Card(
-                elevation: 4.0,
-                child: Container(
-                  padding: const EdgeInsets.fromLTRB(
-                      10.0, 10.0, 10.0, 10.0),
-                  child: new Column(
-                    children: <Widget>[
-                      row,
-                      Divider(
-                        height: 10.0,
-                        color: UIColors.primaryColor,
-                      ),
-                      buttons
-                    ],
-                  ),
-                )
+          return new Slidable(
+            delegate: new SlidableDrawerDelegate(),
+            actionExtentRatio: 0.25,
+            child: new Container(
+              margin: new EdgeInsets.only(left: 8.0, right: 8.0, bottom: 2.0),
+              child: Card(
+                  elevation: 4.0,
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(
+                        10.0, 10.0, 10.0, 10.0),
+                    child: new Column(
+                      children: <Widget>[
+                        row,
+                        Divider(
+                          height: 10.0,
+                          color: UIColors.primaryColor,
+                        ),
+                        buttons
+                      ],
+                    ),
+                  )
+              ),
             ),
+            actions: <Widget>[
+              new IconSlideAction(
+                caption: UIConstants.favourite,
+                color: Colors.blue,
+                icon: Icons.favorite_border,
+                //onTap: () => _showSnackBar('Archive'),
+              ),
+              new IconSlideAction(
+                caption: 'Share',
+                color: Colors.indigo,
+                icon: Icons.share,
+                //onTap: () => _showSnackBar('Share'),
+              ),
+            ],
+            secondaryActions: <Widget>[
+              new IconSlideAction(
+                caption: 'More',
+                color: Colors.black45,
+                icon: Icons.more_horiz,
+                //onTap: () => _showSnackBar('More'),
+              ),
+              new IconSlideAction(
+                caption: UIConstants.remove,
+                color: Colors.red,
+                icon: Icons.remove_shopping_cart,
+                //onTap: () => _showSnackBar('Delete'),
+              ),
+            ],
           );
         },
       ),
