@@ -342,21 +342,14 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
 
         return new Container(
           margin: new EdgeInsets.only(left: 8.0, right: 8.0, bottom: 2.0),
-          child: Card(
-              elevation: 4.0,
-              child: Container(
-                padding: const EdgeInsets.fromLTRB(
-                    10.0, 10.0, 10.0, 10.0),
-                child: new Column(
-                  children: <Widget>[
-                    row,
-                    Divider(
-                      height: 10.0,
-                      color: UIColors.primaryColor,
-                    ),
-                  ],
-                ),
-              )
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+            child: new Column(
+              children: <Widget>[
+                Divider(height: 15.0),
+                row,
+              ],
+            ),
           ),
         );
       },
@@ -382,7 +375,14 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
               ],
             ),
           ),
-          firstList,
+          Card(
+            elevation: 4.0,
+            margin: EdgeInsets.all(16.0),
+            child: Container(
+              child: firstList,
+            ),
+          ),
+          //firstList,
           new SizedBox(
             height: 15.0,
           ),
@@ -405,11 +405,11 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
               children: <Widget>[
                 _verticalD(),
                 new Text(
-                    UIConstants.shipping_address,
-                    style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold),
-                  ),
+                  UIConstants.shipping_address,
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold),
+                ),
               ],
             ),
           ),
