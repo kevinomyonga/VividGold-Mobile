@@ -47,6 +47,7 @@ class UIConstants {
   static const String auth_existing           = 'Existing';
   static const String auth_new                = 'New';
   static const String back                    = 'Back';
+  static const String billing_address         = 'Billing Address';
   static const String cart                    = 'Cart';
   static const String categories              = 'Categories';
   static const String change_password         = 'Change Password';
@@ -83,6 +84,7 @@ class UIConstants {
   static const String search_hint2            = 'What are you looking for?';
   static const String send_feedback           = 'Send Feedback';
   static const String settings                = 'Settings';
+  static const String shipping_address        = 'Shipping Address';
   static const String show_less               = 'Show Less';
   static const String show_more               = 'Show More';
   static const String sign_up                 = 'SIGN UP';

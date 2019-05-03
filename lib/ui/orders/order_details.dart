@@ -78,7 +78,8 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
               _buildOrderInfo(context),
               _buildProductsList(context),
               _buildShippingAddress(context),
-              _buildSubtotal(context),
+              _buildPaymentInfo(context),
+              _buildOrderSummary(context),
             ],
           ),
         )
@@ -361,7 +362,33 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
       },
     );
 
-    return firstList;
+    return Container(
+      child: Column(
+        //padding: EdgeInsets.only(bottom: 7.0),
+        children: <Widget>[
+          new Container(
+            height: 50.0,
+            alignment: Alignment.topLeft,
+            margin: EdgeInsets.only(top: 7.0),
+            child: new Row(
+              children: <Widget>[
+                _verticalD(),
+                new Text(
+                  'Items',
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
+          firstList,
+          new SizedBox(
+            height: 15.0,
+          ),
+        ],
+      ),
+    );firstList;
   }
 
   _buildShippingAddress(context) {
@@ -377,20 +404,143 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
             child: new Row(
               children: <Widget>[
                 _verticalD(),
-                new GestureDetector(
-                  onTap: () {
-                    /*Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => signup_screen()));*/
-                  },
-                  child: new Text(
-                    'Legal',
+                new Text(
+                    UIConstants.shipping_address,
                     style: TextStyle(
                         fontSize: 18.0,
-                        color: Colors.white,
                         fontWeight: FontWeight.bold),
                   ),
+              ],
+            ),
+          ),
+          new Container(
+            margin: EdgeInsets.all(7.0),
+            child: Card(
+                child: Container(
+                  //  padding: EdgeInsets.only(left: 10.0,top: 15.0,bottom: 5.0,right: 5.0),
+
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      InkWell(
+                        onTap: () {
+                          showLicensePage(context: context);
+                        },
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              left: 10.0, top: 15.0, bottom: 15.0),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.copyright,
+                                //color: Colors.black54
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 5.0),
+                              ),
+                              Text(
+                                UIConstants.software_licenses,
+                                style: TextStyle(
+                                  fontSize: 17.0,
+                                  //color: Colors.black87,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Divider(
+                        height: 5.0,
+                      ),
+                      InkWell(
+                          onTap: () {
+                            //_launchURL("https://vividgold.co.ke/legal/");
+                          },
+                          child: Container(
+                            padding: EdgeInsets.only(
+                                left: 10.0, top: 15.0, bottom: 15.0),
+                            child: Row(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.assignment,
+                                  //color: Colors.black54
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 5.0),
+                                ),
+                                Text(
+                                  UIConstants.terms_of_use,
+                                  style: TextStyle(
+                                    fontSize: 17.0,
+                                    //color: Colors.black87,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                      ),
+                      Divider(
+                        height: 5.0,
+                      ),
+                      InkWell(
+                          onTap: () {
+                            //_launchURL("https://vividgold.co.ke/legal/");
+                          },
+                          child: Container(
+                            padding: EdgeInsets.only(
+                                left: 10.0, top: 15.0, bottom: 15.0),
+                            child: Row(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.lock_outline,
+                                  //color: Colors.black54
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 5.0),
+                                ),
+                                Text(
+                                  UIConstants.privacy_policy,
+                                  style: TextStyle(
+                                    fontSize: 17.0,
+                                    //color: Colors.black87
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                      ),
+                    ],
+                  ),
+                )
+            ),
+          ),
+          new SizedBox(
+            height: 15.0,
+          ),
+        ],
+      ),
+    );
+  }
+
+  _buildPaymentInfo(context) {
+
+    return Container(
+      child: Column(
+        //padding: EdgeInsets.only(bottom: 7.0),
+        children: <Widget>[
+          new Container(
+            height: 50.0,
+            alignment: Alignment.topLeft,
+            margin: EdgeInsets.only(top: 7.0),
+            child: new Row(
+              children: <Widget>[
+                _verticalD(),
+                new Text(
+                  'Payment Information',
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -505,7 +655,7 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
     );
   }
 
-  _buildSubtotal(context) {
+  _buildOrderSummary(context) {
 
     return Container(
       child: Column(
@@ -518,20 +668,11 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
             child: new Row(
               children: <Widget>[
                 _verticalD(),
-                new GestureDetector(
-                  onTap: () {
-                    /*Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => signup_screen()));*/
-                  },
-                  child: new Text(
-                    'Legal',
-                    style: TextStyle(
-                        fontSize: 18.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ),
+                new Text(
+                  'Order Summary',
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold),
                 ),
               ],
             ),
