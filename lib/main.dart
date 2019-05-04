@@ -1,7 +1,7 @@
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/routes.dart';
-import 'package:vividgold_app/ui/intro/intro.dart';
+import 'package:vividgold_app/ui/landing.dart';
 import 'package:vividgold_app/utils/themes.dart';
 
 void main() => runApp(MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         themedWidgetBuilder: (context, theme) {
           return new MaterialApp(
             theme: theme,
-            home: new IntroductionPage(),
+            home: new LandingPage(),
             routes: routes,
           );
         }

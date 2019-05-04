@@ -144,7 +144,7 @@ class _ProductsListPageState extends State<ProductsListPage> {
     );
   }
 
-  void _goToSearch(context) {
+  _goToSearch(context) {
     Navigator.pushNamed(context, UIConstants.ROUTE_SEARCH);
   }
 

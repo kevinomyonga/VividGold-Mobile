@@ -12,8 +12,12 @@ class UIColors {
   static Color opposingColor     = Colors.black;
 
   // Cart Icon
-  static Color cartIconColor          = Colors.green.shade500;
-  static Color cartItemPriceColor     = Colors.red.shade900;
+  static Color cartIconColor         = Colors.green.shade500;
+  static Color cartItemPriceColor    = Colors.red.shade900;
+
+  // Orders
+  static Color orderCompletedColor   = Colors.greenAccent;
+  static Color orderPendingColor     = Colors.amberAccent;
 
   // Favourites
   static Color deleteButtonColor  = Colors.red;

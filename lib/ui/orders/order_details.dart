@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:vividgold_app/components/categories.dart';
 import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
@@ -21,7 +19,11 @@ class Item {
 
 class OrderDetailsPageState extends State<OrderDetailsPage> {
 
-  String currency = 'Kshs';
+  int totalItems = 0;
+  double itemsPriceTotal = 0.00;
+  double orderTotal = 0.00;
+
+  String currency = 'KES';
 
   List<Item> itemList = <Item>[
     Item(
@@ -55,6 +57,12 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
         itemQun: '1',
         itemPrice: '4000.00'),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _getTotals();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,31 +101,6 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
         //padding: EdgeInsets.only(bottom: 7.0),
         children: <Widget>[
           new Container(
-            height: 50.0,
-            alignment: Alignment.topLeft,
-            margin: EdgeInsets.only(top: 7.0),
-            child: new Row(
-              children: <Widget>[
-                _verticalD(),
-                new GestureDetector(
-                  onTap: () {
-                    /*Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => signup_screen()));*/
-                  },
-                  child: new Text(
-                    'Legal',
-                    style: TextStyle(
-                        fontSize: 18.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          new Container(
             margin: EdgeInsets.all(7.0),
             child: Card(
                 child: Container(
@@ -127,92 +110,62 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      InkWell(
-                        onTap: () {
-                          showLicensePage(context: context);
-                        },
+                      new Container(
+                        margin: EdgeInsets.all(7.0),
                         child: Container(
-                          padding: EdgeInsets.only(
-                              left: 10.0, top: 15.0, bottom: 15.0),
-                          child: Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.copyright,
-                                //color: Colors.black54
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(left: 5.0),
-                              ),
-                              Text(
-                                UIConstants.software_licenses,
-                                style: TextStyle(
-                                  fontSize: 17.0,
-                                  //color: Colors.black87,
+                          // height: MediaQuery.of(context).size.height,
+                          child: Padding(
+                            padding: const EdgeInsets.all(14.0),
+                            child: Table(
+                              /*border: TableBorder.all(width: 1.0, color: Colors.black),*/
+                              children: [
+                                TableRow(
+                                    children: [
+                                      new Text('Order Date:'),
+                                      Align(
+                                        alignment: Alignment.centerRight,
+                                        child: new Text('May 3, 2019'),
+                                      ),
+                                    ]
                                 ),
-                              ),
-                            ],
+                                TableRow(
+                                    children: [
+                                      new Text('Order #:'),
+                                      Align(
+                                        alignment: Alignment.centerRight,
+                                        child: new Text('007'),
+                                      ),
+                                    ]
+                                ),
+                                TableRow(
+                                    children: [
+                                      new Text('Order Total:'),
+                                      Align(
+                                        alignment: Alignment.centerRight,
+                                        child: new Text(currency +
+                                            '${orderTotal.toStringAsFixed(2)}',),
+                                      ),
+                                    ]
+                                ),
+                                TableRow(
+                                    children: [
+                                      new Text('Order Status:'),
+                                      Align(
+                                        alignment: Alignment.centerRight,
+                                        child: new Text(
+                                          'Completed',
+                                          style: TextStyle(
+                                            color: UIColors.orderCompletedColor,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                      ),
+                                    ]
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      Divider(
-                        height: 5.0,
-                      ),
-                      InkWell(
-                          onTap: () {
-                            //_launchURL("https://vividgold.co.ke/legal/");
-                          },
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: 10.0, top: 15.0, bottom: 15.0),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.assignment,
-                                  //color: Colors.black54
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 5.0),
-                                ),
-                                Text(
-                                  UIConstants.terms_of_use,
-                                  style: TextStyle(
-                                    fontSize: 17.0,
-                                    //color: Colors.black87,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                      ),
-                      Divider(
-                        height: 5.0,
-                      ),
-                      InkWell(
-                          onTap: () {
-                            //_launchURL("https://vividgold.co.ke/legal/");
-                          },
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: 10.0, top: 15.0, bottom: 15.0),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.lock_outline,
-                                  //color: Colors.black54
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 5.0),
-                                ),
-                                Text(
-                                  UIConstants.privacy_policy,
-                                  style: TextStyle(
-                                    fontSize: 17.0,
-                                    //color: Colors.black87
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
                       ),
                     ],
                   ),
@@ -246,7 +199,7 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
             bottom: false,
             child: new Padding(
               padding: const EdgeInsets.only(
-                  left: 16.0, top: 8.0, bottom: 8.0, right: 8.0),
+                  left: 8.0, top: 8.0, bottom: 8.0, right: 8.0),
               child: new Row(
                 children: <Widget>[
                   new GestureDetector(
@@ -314,24 +267,55 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                           ),
                           const Padding(
                               padding: const EdgeInsets.only(top: 5.0)),
-                          new Text(
-                            currency + itemList[index].itemPrice,
-                            style: TextStyle(
-                              color: UIColors.cartItemPriceColor,
-                              fontSize: 13.0,
-                              fontWeight: FontWeight.w500,
+                          Container(
+                            // height: MediaQuery.of(context).size.height,
+                            child: Table(
+                              /*border: TableBorder.all(width: 1.0, color: Colors.black),*/
+                              children: [
+                                TableRow(
+                                    children: [
+                                      new Text('Price'),
+                                      Align(
+                                        alignment: Alignment.centerRight,
+                                        child: new Text(
+                                          currency + itemList[index].itemPrice,
+                                        ),
+                                      ),
+                                    ]
+                                ),
+                                TableRow(
+                                    children: [
+                                      new Text('Quantity:'),
+                                      Align(
+                                        alignment: Alignment.centerRight,
+                                        child: new Text(
+                                          itemList[index].itemQun.toString(),
+                                        ),
+                                      ),
+                                    ]
+                                ),
+                                TableRow(
+                                    children: [
+                                      new Text(
+                                        'Total:',
+                                      ),
+                                      Align(
+                                        alignment: Alignment.centerRight,
+                                        child: new Text(currency +
+                                          (double.parse(itemList[index].itemPrice) *
+                                              int.parse(itemList[index].itemQun)).toStringAsFixed(2),
+                                          style: TextStyle(
+                                            color: UIColors.cartItemPriceColor,
+                                          ),
+                                        ),
+                                      ),
+                                    ]
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
-                    ),
-                  ),
-                  new Text(
-                    itemList[index].itemQun.toString(),
-                    style: const TextStyle(
-                      //color: const Color(0xFF8E8E93),
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],
@@ -343,7 +327,7 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
         return new Container(
           margin: new EdgeInsets.only(left: 8.0, right: 8.0, bottom: 2.0),
           child: Container(
-            padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+            //padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
             child: new Column(
               children: <Widget>[
                 Divider(height: 15.0),
@@ -360,7 +344,6 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
         //padding: EdgeInsets.only(bottom: 7.0),
         children: <Widget>[
           new Container(
-            height: 50.0,
             alignment: Alignment.topLeft,
             margin: EdgeInsets.only(top: 7.0),
             child: new Row(
@@ -376,7 +359,7 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
             ),
           ),
           Card(
-            elevation: 4.0,
+            //elevation: 4.0,
             margin: EdgeInsets.all(16.0),
             child: Container(
               child: firstList,
@@ -388,7 +371,7 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
           ),
         ],
       ),
-    );firstList;
+    );
   }
 
   _buildShippingAddress(context) {
@@ -398,7 +381,6 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
         //padding: EdgeInsets.only(bottom: 7.0),
         children: <Widget>[
           new Container(
-            height: 50.0,
             alignment: Alignment.topLeft,
             margin: EdgeInsets.only(top: 7.0),
             child: new Row(
@@ -416,103 +398,28 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
           new Container(
             margin: EdgeInsets.all(7.0),
             child: Card(
-                child: Container(
-                  //  padding: EdgeInsets.only(left: 10.0,top: 15.0,bottom: 5.0,right: 5.0),
-
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Container(
+                // height: MediaQuery.of(context).size.height,
+                child: Padding(
+                  padding: const EdgeInsets.all(14.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      InkWell(
-                        onTap: () {
-                          showLicensePage(context: context);
-                        },
-                        child: Container(
-                          padding: EdgeInsets.only(
-                              left: 10.0, top: 15.0, bottom: 15.0),
-                          child: Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.copyright,
-                                //color: Colors.black54
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(left: 5.0),
-                              ),
-                              Text(
-                                UIConstants.software_licenses,
-                                style: TextStyle(
-                                  fontSize: 17.0,
-                                  //color: Colors.black87,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                      Icon(
+                        Icons.location_on,
+                        size: 20.0,
+                        color: UIColors.primaryColor,
                       ),
-                      Divider(
-                        height: 5.0,
-                      ),
-                      InkWell(
-                          onTap: () {
-                            //_launchURL("https://vividgold.co.ke/legal/");
-                          },
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: 10.0, top: 15.0, bottom: 15.0),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.assignment,
-                                  //color: Colors.black54
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 5.0),
-                                ),
-                                Text(
-                                  UIConstants.terms_of_use,
-                                  style: TextStyle(
-                                    fontSize: 17.0,
-                                    //color: Colors.black87,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                      ),
-                      Divider(
-                        height: 5.0,
-                      ),
-                      InkWell(
-                          onTap: () {
-                            //_launchURL("https://vividgold.co.ke/legal/");
-                          },
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: 10.0, top: 15.0, bottom: 15.0),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.lock_outline,
-                                  //color: Colors.black54
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 5.0),
-                                ),
-                                Text(
-                                  UIConstants.privacy_policy,
-                                  style: TextStyle(
-                                    fontSize: 17.0,
-                                    //color: Colors.black87
-                                  ),
-                                ),
-                              ],
-                            ),
+                      Text(
+                          '319 Alexander Drive,Ponder,Texas',
+                          style: TextStyle(
+                            fontSize: 13.0,
                           )
                       ),
                     ],
                   ),
-                )
+                ),
+              ),
             ),
           ),
           new SizedBox(
@@ -530,7 +437,6 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
         //padding: EdgeInsets.only(bottom: 7.0),
         children: <Widget>[
           new Container(
-            height: 50.0,
             alignment: Alignment.topLeft,
             margin: EdgeInsets.only(top: 7.0),
             child: new Row(
@@ -548,103 +454,28 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
           new Container(
             margin: EdgeInsets.all(7.0),
             child: Card(
-                child: Container(
-                  //  padding: EdgeInsets.only(left: 10.0,top: 15.0,bottom: 5.0,right: 5.0),
-
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Container(
+                // height: MediaQuery.of(context).size.height,
+                child: Padding(
+                  padding: const EdgeInsets.all(14.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      InkWell(
-                        onTap: () {
-                          showLicensePage(context: context);
-                        },
-                        child: Container(
-                          padding: EdgeInsets.only(
-                              left: 10.0, top: 15.0, bottom: 15.0),
-                          child: Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.copyright,
-                                //color: Colors.black54
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(left: 5.0),
-                              ),
-                              Text(
-                                UIConstants.software_licenses,
-                                style: TextStyle(
-                                  fontSize: 17.0,
-                                  //color: Colors.black87,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                      Icon(
+                        Icons.location_on,
+                        size: 20.0,
+                        color: UIColors.primaryColor,
                       ),
-                      Divider(
-                        height: 5.0,
-                      ),
-                      InkWell(
-                          onTap: () {
-                            //_launchURL("https://vividgold.co.ke/legal/");
-                          },
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: 10.0, top: 15.0, bottom: 15.0),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.assignment,
-                                  //color: Colors.black54
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 5.0),
-                                ),
-                                Text(
-                                  UIConstants.terms_of_use,
-                                  style: TextStyle(
-                                    fontSize: 17.0,
-                                    //color: Colors.black87,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                      ),
-                      Divider(
-                        height: 5.0,
-                      ),
-                      InkWell(
-                          onTap: () {
-                            //_launchURL("https://vividgold.co.ke/legal/");
-                          },
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: 10.0, top: 15.0, bottom: 15.0),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.lock_outline,
-                                  //color: Colors.black54
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 5.0),
-                                ),
-                                Text(
-                                  UIConstants.privacy_policy,
-                                  style: TextStyle(
-                                    fontSize: 17.0,
-                                    //color: Colors.black87
-                                  ),
-                                ),
-                              ],
-                            ),
+                      Text(
+                          '1338 Karen Lane,Louisville,Kentucky',
+                          style: TextStyle(
+                            fontSize: 13.0,
                           )
                       ),
                     ],
                   ),
-                )
+                ),
+              ),
             ),
           ),
           new SizedBox(
@@ -662,7 +493,6 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
         //padding: EdgeInsets.only(bottom: 7.0),
         children: <Widget>[
           new Container(
-            height: 50.0,
             alignment: Alignment.topLeft,
             margin: EdgeInsets.only(top: 7.0),
             child: new Row(
@@ -680,103 +510,65 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
           new Container(
             margin: EdgeInsets.all(7.0),
             child: Card(
-                child: Container(
-                  //  padding: EdgeInsets.only(left: 10.0,top: 15.0,bottom: 5.0,right: 5.0),
-
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      InkWell(
-                        onTap: () {
-                          showLicensePage(context: context);
-                        },
-                        child: Container(
-                          padding: EdgeInsets.only(
-                              left: 10.0, top: 15.0, bottom: 15.0),
-                          child: Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.copyright,
-                                //color: Colors.black54
+              child: Container(
+                // height: MediaQuery.of(context).size.height,
+                child: Padding(
+                  padding: const EdgeInsets.all(14.0),
+                  child: Table(
+                    /*border: TableBorder.all(width: 1.0, color: Colors.black),*/
+                    children: [
+                      TableRow(
+                          children: [
+                            new Text('Items($totalItems):'),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: new Text(currency + '${itemsPriceTotal.toStringAsFixed(2)}'),
+                            ),
+                          ]
+                      ),
+                      TableRow(
+                          children: [
+                            new Text('Shipping & Handling:'),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: new Text(currency + '0.00'),
+                            ),
+                          ]
+                      ),
+                      TableRow(
+                          children: [
+                            new Text('Discount:'),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: new Text(currency + '0.00'),
+                            ),
+                          ]
+                      ),
+                      TableRow(
+                          children: [
+                            new Text('Order Total:',
+                              style: TextStyle(
+                                fontSize: 17.0,
+                                fontWeight: FontWeight.w700,
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 5.0),
-                              ),
-                              Text(
-                                UIConstants.software_licenses,
+                            ),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: new Text(currency +
+                                '${orderTotal.toStringAsFixed(2)}',
                                 style: TextStyle(
+                                  color: UIColors.cartItemPriceColor,
                                   fontSize: 17.0,
-                                  //color: Colors.black87,
+                                  fontWeight: FontWeight.w700,
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Divider(
-                        height: 5.0,
-                      ),
-                      InkWell(
-                          onTap: () {
-                            //_launchURL("https://vividgold.co.ke/legal/");
-                          },
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: 10.0, top: 15.0, bottom: 15.0),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.assignment,
-                                  //color: Colors.black54
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 5.0),
-                                ),
-                                Text(
-                                  UIConstants.terms_of_use,
-                                  style: TextStyle(
-                                    fontSize: 17.0,
-                                    //color: Colors.black87,
-                                  ),
-                                ),
-                              ],
                             ),
-                          )
-                      ),
-                      Divider(
-                        height: 5.0,
-                      ),
-                      InkWell(
-                          onTap: () {
-                            //_launchURL("https://vividgold.co.ke/legal/");
-                          },
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: 10.0, top: 15.0, bottom: 15.0),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.lock_outline,
-                                  //color: Colors.black54
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 5.0),
-                                ),
-                                Text(
-                                  UIConstants.privacy_policy,
-                                  style: TextStyle(
-                                    fontSize: 17.0,
-                                    //color: Colors.black87
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                      ),
+                          ]
+                      )
                     ],
                   ),
-                )
+                ),
+              ),
             ),
           ),
           new SizedBox(
@@ -790,4 +582,21 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
   _verticalD() => Container(
     margin: EdgeInsets.only(left: 10.0, right: 0.0, top: 0.0, bottom: 0.0),
   );
+
+  _getTotals() {
+    setState(() {
+
+      for (var item in itemList) {
+        // Total Items
+        totalItems = totalItems + int.parse(item.itemQun);
+
+        // Total Items Price
+        itemsPriceTotal = itemsPriceTotal + (double.parse(item.itemPrice) *
+            int.parse(item.itemQun));
+
+        // Order Total
+        orderTotal = itemsPriceTotal;
+      }
+    });
+  }
 }
