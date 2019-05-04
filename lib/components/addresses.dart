@@ -17,25 +17,25 @@ class _AddressesState extends State<Addresses> {
   var addressesList = [
     {
       "name": "Delivery Address 1",
-      "address": "https://vividgold.co.ke/wp-content/uploads/2018/09/PS4-Console-Pro-1TB-Black-SpiderMan.jpg",
+      "address": "319 Alexander Drive,Ponder,Texas",
       "lat": -1.255673,
       "lng": 36.840818,
     },
     {
       "name": "Delivery Address 2",
-      "address": "https://vividgold.co.ke/wp-content/uploads/2017/10/neon-switch.png",
+      "address": "319 Alexander Drive,Ponder,Texas",
       "lat": -1.264080,
       "lng": 36.800948,
     },
     {
       "name": "Delivery Address 3",
-      "address": "https://vividgold.co.ke/wp-content/uploads/2017/10/ps4-red1.png",
+      "address": "319 Alexander Drive,Ponder,Texas",
       "lat": -1.278523,
       "lng": 36.803317,
     },
     {
       "name": "Delivery Address 4",
-      "address": "https://vividgold.co.ke/wp-content/uploads/2017/10/xbox-1-white-slim.jpg",
+      "address": "319 Alexander Drive,Ponder,Texas",
       "lat": -1.300387,
       "lng": 36.785837,
     }
@@ -107,7 +107,7 @@ class _AddressesState extends State<Addresses> {
                     mapController: _mapController,
                     onMapCreated: _onMapCreated,
                     markers: _markers,
-                    height: 240.0,
+                    height: 140.0,
                   ),
                 ),
                 Padding(

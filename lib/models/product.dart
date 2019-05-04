@@ -19,7 +19,8 @@ class Product {
   int quantity;
 
   Product(
-      {this.lineItemId,
+      {
+        this.lineItemId,
         this.productId,
         this.productName,
         this.categories,
@@ -33,7 +34,8 @@ class Product {
         this.ifAddedToCart,
         this.description,
         this.stockQuantity,
-        this.quantity});
+        this.quantity
+      });
 
   @override
   toString() => "productId: $productId , productName: $productName";

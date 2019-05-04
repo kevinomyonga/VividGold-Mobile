@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:vividgold_app/models/cart_item.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
 class PaymentPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => PaymentPageState();
-}
-
-class Item {
-  final String itemName;
-  final String itemQun;
-  final String itemPrice;
-
-  Item({this.itemName, this.itemQun, this.itemPrice});
 }
 
 class PaymentPageState extends State<PaymentPage> {
@@ -171,7 +164,10 @@ class PaymentPageState extends State<PaymentPage> {
                             "GET EXTRA 5% OFF* with MONEY bank Simply Save Credit card. T&C.",
                             maxLines: 10,
                             style: TextStyle(
-                                fontSize: 13.0, color: Colors.black87))),
+                                fontSize: 13.0, color: Colors.black87,
+                            )
+                        )
+                    ),
                   ),
                 )),
             new Container(
@@ -272,8 +268,8 @@ class PaymentPageState extends State<PaymentPage> {
                                         groupValue: 0,
                                         onChanged: null),
                                   ],
-                                )),
-                            Divider(),
+                                )
+                            ),
                           ],
                         )),
                   ),

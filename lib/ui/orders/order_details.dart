@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:vividgold_app/models/cart_item.dart';
 import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
+import 'package:vividgold_app/widgets/checkout_list_item.dart';
 
 class OrderDetailsPage extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => OrderDetailsPageState();
-}
-
-class Item {
-  final String itemImage;
-  final String itemName;
-  final String itemQun;
-  final String itemPrice;
-
-  Item({this.itemImage, this.itemName, this.itemQun, this.itemPrice});
 }
 
 class OrderDetailsPageState extends State<OrderDetailsPage> {
@@ -103,73 +96,60 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
           new Container(
             margin: EdgeInsets.all(7.0),
             child: Card(
-                child: Container(
-                  //  padding: EdgeInsets.only(left: 10.0,top: 15.0,bottom: 5.0,right: 5.0),
-
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      new Container(
-                        margin: EdgeInsets.all(7.0),
-                        child: Container(
-                          // height: MediaQuery.of(context).size.height,
-                          child: Padding(
-                            padding: const EdgeInsets.all(14.0),
-                            child: Table(
-                              /*border: TableBorder.all(width: 1.0, color: Colors.black),*/
-                              children: [
-                                TableRow(
-                                    children: [
-                                      new Text('Order Date:'),
-                                      Align(
-                                        alignment: Alignment.centerRight,
-                                        child: new Text('May 3, 2019'),
-                                      ),
-                                    ]
-                                ),
-                                TableRow(
-                                    children: [
-                                      new Text('Order #:'),
-                                      Align(
-                                        alignment: Alignment.centerRight,
-                                        child: new Text('007'),
-                                      ),
-                                    ]
-                                ),
-                                TableRow(
-                                    children: [
-                                      new Text('Order Total:'),
-                                      Align(
-                                        alignment: Alignment.centerRight,
-                                        child: new Text(currency +
-                                            '${orderTotal.toStringAsFixed(2)}',),
-                                      ),
-                                    ]
-                                ),
-                                TableRow(
-                                    children: [
-                                      new Text('Order Status:'),
-                                      Align(
-                                        alignment: Alignment.centerRight,
-                                        child: new Text(
-                                          'Completed',
-                                          style: TextStyle(
-                                            color: UIColors.orderCompletedColor,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ),
-                                    ]
-                                ),
-                              ],
+              child: Container(
+                // height: MediaQuery.of(context).size.height,
+                child: Padding(
+                  padding: const EdgeInsets.all(14.0),
+                  child: Table(
+                    /*border: TableBorder.all(width: 1.0, color: Colors.black),*/
+                    children: [
+                      TableRow(
+                          children: [
+                            new Text('Order Date:'),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: new Text('May 3, 2019'),
                             ),
-                          ),
-                        ),
+                          ]
+                      ),
+                      TableRow(
+                          children: [
+                            new Text('Order #:'),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: new Text('007'),
+                            ),
+                          ]
+                      ),
+                      TableRow(
+                          children: [
+                            new Text('Order Total:'),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: new Text(currency +
+                                  '${orderTotal.toStringAsFixed(2)}',),
+                            ),
+                          ]
+                      ),
+                      TableRow(
+                          children: [
+                            new Text('Order Status:'),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: new Text(
+                                'Completed',
+                                style: TextStyle(
+                                  color: UIColors.orderCompletedColor,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ]
                       ),
                     ],
                   ),
-                )
+                ),
+              ),
             ),
           ),
           new SizedBox(
@@ -189,149 +169,14 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
       itemCount: itemList.length,
       itemBuilder: (context, index) {
 
-        final row = new GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: () {
-            Navigator.pushNamed(context, UIConstants.ROUTE_PRODUCT_DETAILS);
-          },
-          child: new SafeArea(
-            top: false,
-            bottom: false,
-            child: new Padding(
-              padding: const EdgeInsets.only(
-                  left: 8.0, top: 8.0, bottom: 8.0, right: 8.0),
-              child: new Row(
-                children: <Widget>[
-                  new GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(new PageRouteBuilder(
-                          opaque: false,
-                          pageBuilder: (BuildContext context, _, __) {
-                            return new Material(
-                              color: Colors.black38,
-                              child: new Container(
-                                padding: const EdgeInsets.all(30.0),
-                                child: new GestureDetector(
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: new Hero(
-                                    child: new Image.network(
-                                      itemList[index].itemImage,
-                                      width: 300.0,
-                                      height: 300.0,
-                                      alignment: Alignment.center,
-                                      fit: BoxFit.contain,
-                                    ),
-                                    tag: itemList[index].itemName,
-                                  ),
-                                ),
-                              ),
-                            );
-                          }));
-                    },
-                    child: new Hero(
-                      tag: itemList[index].itemName,
-                      child: new Container(
-                        height: 60.0,
-                        width: 60.0,
-                        /*decoration: new BoxDecoration(
-                            //color: color,
-                            image: new DecorationImage(
-                                image: new NetworkImage(
-                                  "",
-                                  //fbconn.getDefaultIMGAsList()[index]
-                                )
-                            ),
-                            borderRadius: new BorderRadius.circular(8.0),
-                          ),*/
-                        child: FadeInImage(
-                          fit: BoxFit.fill,
-                          placeholder: AssetImage(UIConstants.placeholder),
-                          image: NetworkImage(itemList[index].itemImage,),
-                        ),
-                      ),
-                    ),
-                  ),
-                  new Expanded(
-                    child: new Padding(
-                      padding:
-                      const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: new Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          new Text(
-                            itemList[index].itemName,
-                            style: new TextStyle(
-                                fontSize: 15.0, fontWeight: FontWeight.w700),
-                          ),
-                          const Padding(
-                              padding: const EdgeInsets.only(top: 5.0)),
-                          Container(
-                            // height: MediaQuery.of(context).size.height,
-                            child: Table(
-                              /*border: TableBorder.all(width: 1.0, color: Colors.black),*/
-                              children: [
-                                TableRow(
-                                    children: [
-                                      new Text('Price'),
-                                      Align(
-                                        alignment: Alignment.centerRight,
-                                        child: new Text(
-                                          currency + itemList[index].itemPrice,
-                                        ),
-                                      ),
-                                    ]
-                                ),
-                                TableRow(
-                                    children: [
-                                      new Text('Quantity:'),
-                                      Align(
-                                        alignment: Alignment.centerRight,
-                                        child: new Text(
-                                          itemList[index].itemQun.toString(),
-                                        ),
-                                      ),
-                                    ]
-                                ),
-                                TableRow(
-                                    children: [
-                                      new Text(
-                                        'Total:',
-                                      ),
-                                      Align(
-                                        alignment: Alignment.centerRight,
-                                        child: new Text(currency +
-                                          (double.parse(itemList[index].itemPrice) *
-                                              int.parse(itemList[index].itemQun)).toStringAsFixed(2),
-                                          style: TextStyle(
-                                            color: UIColors.cartItemPriceColor,
-                                          ),
-                                        ),
-                                      ),
-                                    ]
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-
         return new Container(
           margin: new EdgeInsets.only(left: 8.0, right: 8.0, bottom: 2.0),
           child: Container(
             //padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
             child: new Column(
               children: <Widget>[
-                Divider(height: 15.0),
-                row,
+                index > 0 ? Divider(height: 15.0) : new Container(),
+                CheckoutListItem(product: itemList[index],),
               ],
             ),
           ),
@@ -555,7 +400,7 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                             Align(
                               alignment: Alignment.centerRight,
                               child: new Text(currency +
-                                '${orderTotal.toStringAsFixed(2)}',
+                                  '${orderTotal.toStringAsFixed(2)}',
                                 style: TextStyle(
                                   color: UIColors.cartItemPriceColor,
                                   fontSize: 17.0,
