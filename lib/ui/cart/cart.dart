@@ -16,6 +16,9 @@ class CartPageState extends State<CartPage> {
 
   String currency = 'KES';
 
+  int totalItems = 0;
+  double itemsPriceTotal = 0.00;
+
   List<Item> itemList = <Item>[
     Item(
         itemImage: 'https://vividgold.co.ke/wp-content/uploads/2018/09/PS4-Console-Pro-1TB-Black-SpiderMan.jpg',
@@ -53,6 +56,12 @@ class CartPageState extends State<CartPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    super.initState();
+    _getTotals();
+  }
+
+  @override
   Widget build(BuildContext context) {
 
     return new Scaffold(
@@ -60,13 +69,13 @@ class CartPageState extends State<CartPage> {
       appBar: AppBar(
         title: Text(toolbarName),
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(48.0),
+          preferredSize: const Size.fromHeight(40.0),
           child: Card(
             margin: new EdgeInsets.all(0.0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(0.0),
             ),
-            child: _buildCartSummary(context),
+            child: _buildCartSummary(),
           ),
         ),
       ),
@@ -74,7 +83,7 @@ class CartPageState extends State<CartPage> {
     );
   }
 
-  _buildCartSummary(BuildContext context) {
+  _buildCartSummary() {
     return new Padding(
       padding: const EdgeInsets.all(8.0),
       child: new Container(
@@ -83,13 +92,14 @@ class CartPageState extends State<CartPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               new Text(
-                "ITEMS (6)",
+                "ITEMS ($totalItems)",
                 style: new TextStyle(
                     fontSize: 15.0, fontWeight: FontWeight.w700),
               ),
               new Text(
-                "TOTAL : " + currency + "262000.00",
+                "TOTAL : " + currency + " ${itemsPriceTotal.toStringAsFixed(2)}",
                 style: new TextStyle(
+                    color: UIColors.cartItemPriceColor,
                     fontSize: 15.0, fontWeight: FontWeight.w700),
               ),
             ]
@@ -154,6 +164,20 @@ class CartPageState extends State<CartPage> {
         )
       ],
     );
+  }
+
+  _getTotals() {
+    setState(() {
+
+      for (var item in itemList) {
+        // Total Items
+        totalItems = totalItems + int.parse(item.itemQun);
+
+        // Total Items Price
+        itemsPriceTotal = itemsPriceTotal + (double.parse(item.itemPrice) *
+            int.parse(item.itemQun));
+      }
+    });
   }
 
   verticalDivider() =>

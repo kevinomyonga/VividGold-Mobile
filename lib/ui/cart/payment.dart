@@ -1,88 +1,52 @@
 import 'package:flutter/material.dart';
-import 'package:vividgold_app/models/cart_item.dart';
+import 'package:vividgold_app/models/payment_method.dart';
 import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
 class PaymentPage extends StatefulWidget {
+
   @override
   State<StatefulWidget> createState() => PaymentPageState();
 }
 
 class PaymentPageState extends State<PaymentPage> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  bool checkboxValueA = true;
-  bool checkboxValueB = false;
-  bool checkboxValueC = false;
 
-  IconData _backIcon() {
-    switch (Theme.of(context).platform) {
-      case TargetPlatform.android:
-      case TargetPlatform.fuchsia:
-        return Icons.arrow_back;
-      case TargetPlatform.iOS:
-        return Icons.arrow_back_ios;
-    }
-    assert(false);
-    return null;
+  List<PaymentMethod> paymentMethods = PaymentMethod.getPaymentMethods();
+
+  String currency = 'KES';
+
+  int totalItems = 0;
+  double itemsPriceTotal = 0.00;
+  double orderTotal = 540000000.00;
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  int selectedRadio;
+
+  bool _isPaymentButtonEnabled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    //selectedRadio = 0;
+    //paymentMethods = PaymentMethod.getPaymentMethods();
   }
-  int radioValue = 0;
-  void handleRadioValueChanged(int value) {
+
+  handleRadioValueChanged(int value) {
     setState(() {
-      radioValue = value;
+      selectedRadio = value;
+      _isPaymentButtonEnabled = true;
     });
   }
 
-  List<Item> itemList = <Item>[
-    Item(itemName: 'Black Grape', itemQun: 'Qty:1', itemPrice: '\₹ 100'),
-    Item(itemName: 'Tomato', itemQun: 'Qty:3', itemPrice: '\₹ 112'),
-    Item(itemName: 'Mango', itemQun: 'Qty:2', itemPrice: '\₹ 105'),
-    Item(itemName: 'Capsicum', itemQun: 'Qty:1', itemPrice: '\₹ 90'),
-    Item(itemName: 'Lemon', itemQun: 'Qty:2', itemPrice: '\₹ 70'),
-    Item(itemName: 'Apple', itemQun: 'Qty:1', itemPrice: '\₹ 50'),
-  ];
-
-  String toolbarname = UIConstants.payment;
-
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-
-    final double height = MediaQuery.of(context).size.height;
-
-    AppBar appBar = AppBar(
-      leading: IconButton(
-        icon: Icon(_backIcon()),
-        alignment: Alignment.centerLeft,
-        tooltip: 'Back',
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
-      title: Text(toolbarname),
-      actions: <Widget>[
-        new Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: new Container(
-            height: 150.0,
-            width: 30.0,
-            child: new GestureDetector(
-              onTap: () {
-                /*Navigator.of(context).push(
-                  new MaterialPageRoute(
-                      builder:(BuildContext context) =>
-                      new CartItemsScreen()
-                  )
-              );*/
-              },
-            ),
-          ),
-        )
-      ],
-    );
 
     return new Scaffold(
       key: _scaffoldKey,
-      appBar: appBar,
+      appBar: AppBar(
+        title: Text(UIConstants.payment),
+      ),
       body: _buildPaymentPage(context),
       bottomNavigationBar: _buildBottomNavigationBar(),
     );
@@ -147,29 +111,33 @@ class PaymentPageState extends State<PaymentPage> {
                                               ),
                                               onPressed: null)
                                         ],
-                                      )),
+                                      )
+                                  ),
                                 ),
                               ],
                             ),
                           ],
-                        )))),
+                        )
+                    )
+                )
+            ),
             new Container(
-                alignment: Alignment.bottomLeft,
-                height: 50.0,
-                child: Row(
+              //alignment: Alignment.bottomLeft,
+              //height: 50.0,
+                child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      'Total :',
+                      'Total',
                       style: TextStyle(
                           fontSize: 17.0,
                           fontWeight: FontWeight.bold
                       ),
                     ),
                     Text(
-                      'KES 524000000',
-                      style: TextStyle(fontSize: 25.0,
+                      currency + ' ${orderTotal.toStringAsFixed(2)}',
+                      style: TextStyle(fontSize: 32.0,
                       ),
                     ),
                   ],
@@ -193,114 +161,218 @@ class PaymentPageState extends State<PaymentPage> {
                         )
                     ),
                   ),
-                )),
-            new Container(
-              alignment: Alignment.topLeft,
-              margin:
-              EdgeInsets.only(left: 12.0, top: 5.0, right: 0.0, bottom: 5.0),
-              child: new Text(
-                'Payment Method',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.0),
-              ),
+                )
             ),
-            _verticalDivider(),
-            new Container(
-                height: 264.0,
-                margin: EdgeInsets.all(10.0),
-                child: Card(
-                  child: Container(
-                    child: Container(
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.only(left: 10.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text("Wallet / UPI",
-                                      maxLines: 10,
-                                      style: TextStyle(
-                                        fontSize: 15.0,
-                                      )
-                                  ),
-                                  Radio<int>(
-                                      value: 0,
-                                      groupValue: 0,
-                                      onChanged: handleRadioValueChanged),
-                                ],
-                              ),
-                            ),
-                            Divider(),
-                            _verticalD(),
-                            Container(
-                                padding: EdgeInsets.only(left: 10.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text("Net Banking",
-                                        maxLines: 10,
-                                        style: TextStyle(
-                                          fontSize: 15.0,
-                                        )
-                                    ),
-                                    Radio<int>(
-                                        value: 0,
-                                        groupValue: radioValue,
-                                        onChanged: handleRadioValueChanged),
-                                  ],
-                                )),
-                            Divider(),
-                            _verticalD(),
-                            Container(
-                                padding: EdgeInsets.only(left: 10.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text("Credit / Debit / ATM Card",
-                                        maxLines: 10,
-                                        style: TextStyle(
-                                          fontSize: 15.0,
-                                        )
-                                    ),
-                                    Radio<int>(
-                                        value: 0,
-                                        groupValue: 0,
-                                        onChanged: handleRadioValueChanged),
-                                  ],
-                                )),
-                            Divider(),
-                            _verticalD(),
-                            Container(
-                                padding: EdgeInsets.only(left: 10.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text("Cash on Delivery",
-                                        maxLines: 10,
-                                        style: TextStyle(
-                                          fontSize: 15.0,
-                                        )
-                                    ),
-                                    Radio<int>(
-                                        value: 0,
-                                        groupValue: 0,
-                                        onChanged: handleRadioValueChanged),
-                                  ],
-                                )
-                            ),
-                          ],
-                        )),
-                  ),
-                )),
+            _buildPaymentMethod(),
           ],
         ),
       ),
+    );
+  }
+
+  /*_buildPaymentMethod() {
+    return Container(
+        child: Column(
+          //padding: EdgeInsets.only(bottom: 7.0),
+            children: <Widget>[
+              new Container(
+                alignment: Alignment.topLeft,
+                margin:
+                EdgeInsets.only(left: 12.0, top: 5.0, right: 0.0, bottom: 5.0),
+                child: new Text(
+                  'Payment Method',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.0),
+                ),
+              ),
+              _verticalDivider(),
+              new Container(
+                  height: 264.0,
+                  margin: EdgeInsets.all(10.0),
+                  child: Card(
+                    child: Container(
+                      child: Container(
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                padding: EdgeInsets.only(left: 10.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Text("Wallet / UPI",
+                                        maxLines: 10,
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                        )
+                                    ),
+                                    Radio<int>(
+                                      value: 0,
+                                      groupValue: selectedRadio,
+                                      onChanged: (val) {
+                                        handleRadioValueChanged(val);
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Divider(),
+                              _verticalD(),
+                              Container(
+                                  padding: EdgeInsets.only(left: 10.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Text("Net Banking",
+                                          maxLines: 10,
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                          )
+                                      ),
+                                      Radio<int>(
+                                        value: 1,
+                                        groupValue: selectedRadio,
+                                        onChanged: (val) {
+                                          handleRadioValueChanged(val);
+                                        },
+                                      ),
+                                    ],
+                                  )
+                              ),
+                              Divider(),
+                              _verticalD(),
+                              Container(
+                                  padding: EdgeInsets.only(left: 10.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Text("Credit / Debit / ATM Card",
+                                          maxLines: 10,
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                          )
+                                      ),
+                                      Radio<int>(
+                                        value: 2,
+                                        groupValue: selectedRadio,
+                                        onChanged: (val) {
+                                          handleRadioValueChanged(val);
+                                        },
+                                      ),
+                                    ],
+                                  )),
+                              Divider(),
+                              _verticalD(),
+                              Container(
+                                  padding: EdgeInsets.only(left: 10.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Text("Cash on Delivery",
+                                          maxLines: 10,
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                          )
+                                      ),
+                                      Radio<int>(
+                                        value: 3,
+                                        groupValue: selectedRadio,
+                                        onChanged: (val) {
+                                          handleRadioValueChanged(val);
+                                        },
+                                      ),
+                                    ],
+                                  )
+                              ),
+                            ],
+                          )
+                      ),
+                    ),
+                  )
+              ),
+            ]
+        )
+    );
+  }*/
+
+  _buildPaymentMethod() {
+    return Container(
+        child: Column(
+          //padding: EdgeInsets.only(bottom: 7.0),
+            children: <Widget>[
+              new Container(
+                alignment: Alignment.topLeft,
+                margin:
+                EdgeInsets.only(left: 12.0, top: 5.0, right: 0.0, bottom: 5.0),
+                child: new Text(
+                  'Payment Method',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.0),
+                ),
+              ),
+              _verticalDivider(),
+              new Container(
+                  margin: EdgeInsets.all(10.0),
+                  child: Card(
+                    child: Container(
+                      child: new ListView.builder(
+                        shrinkWrap: true,
+                        physics: ScrollPhysics(),
+                        scrollDirection: Axis.vertical,
+                        itemCount: paymentMethods.length,
+                        itemBuilder: (context, index) {
+
+                          return new Container(
+                            margin: new EdgeInsets.only(left: 8.0, right: 8.0, bottom: 2.0),
+                            child: Container(
+                              //padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                              child: new Column(
+                                children: <Widget>[
+                                  index > 0 ? Divider(height: 15.0) : new Container(),
+                                  _buildPaymentMethodListItemCard(paymentMethods[index], index),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  )
+              ),
+            ]
+        )
+    );
+  }
+
+  _buildPaymentMethodListItemCard(PaymentMethod paymentMethod,
+      int paymentMethodValue) {
+
+    return Container(
+        padding: EdgeInsets.only(left: 10.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(paymentMethod.pMethodName,
+                maxLines: 10,
+                style: TextStyle(
+                  fontSize: 15.0,
+                )
+            ),
+            Radio<int>(
+              value: paymentMethodValue,
+              groupValue: selectedRadio,
+              onChanged: (val) {
+                handleRadioValueChanged(val);
+              },
+            ),
+          ],
+        )
     );
   }
 
@@ -315,7 +387,7 @@ class PaymentPageState extends State<PaymentPage> {
           Flexible(
             flex: 2,
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: _isPaymentButtonEnabled ? _proceedToPay : null,
               color: UIColors.proceedToPayButtonColor,
               child: Center(
                 child: Row(
@@ -340,6 +412,26 @@ class PaymentPageState extends State<PaymentPage> {
         ],
       ),
     );
+  }
+
+  _proceedToPay() {
+    switch (selectedRadio) {
+      case 0:
+        //return new HomePage();
+      case 1:
+        //return new CategoriesPage();
+      case 2:
+        //return new NotificationsPage();
+      case 3:
+        //return new AccountPage();
+      case 4:
+        //return new OrdersPage();
+      case 5:
+        //return new FavouritesPage();
+
+      default:
+        return new Text("Error");
+    }
   }
 
   _verticalDivider() => Container(

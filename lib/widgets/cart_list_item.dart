@@ -147,7 +147,7 @@ class CartListItem extends StatelessWidget {
       ),
     );
 
-    final buttons = new Row(
+    /*final buttons = new Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
@@ -220,7 +220,7 @@ class CartListItem extends StatelessWidget {
           ),
         ),
       ],
-    );
+    );*/
 
     return new Slidable(
       delegate: new SlidableDrawerDelegate(),
@@ -235,11 +235,11 @@ class CartListItem extends StatelessWidget {
               child: new Column(
                 children: <Widget>[
                   row,
-                  Divider(
+                  /*Divider(
                     height: 10.0,
                     color: UIColors.primaryColor,
-                  ),
-                  buttons
+                  ),*/
+                  //buttons
                 ],
               ),
             )
@@ -252,20 +252,8 @@ class CartListItem extends StatelessWidget {
           icon: Icons.favorite_border,
           //onTap: () => _showSnackBar('Archive'),
         ),
-        new IconSlideAction(
-          caption: 'Share',
-          color: Colors.indigo,
-          icon: Icons.share,
-          //onTap: () => _showSnackBar('Share'),
-        ),
       ],
       secondaryActions: <Widget>[
-        new IconSlideAction(
-          caption: 'More',
-          color: Colors.black45,
-          icon: Icons.more_horiz,
-          //onTap: () => _showSnackBar('More'),
-        ),
         new IconSlideAction(
           caption: UIConstants.remove,
           color: Colors.red,

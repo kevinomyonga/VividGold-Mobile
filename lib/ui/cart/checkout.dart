@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vividgold_app/models/cart_item.dart';
-import 'package:vividgold_app/ui/cart/payment.dart';
 import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 import 'package:vividgold_app/widgets/checkout_list_item.dart';
@@ -13,6 +12,8 @@ class CheckoutPage extends StatefulWidget {
 
 class CheckoutPageState extends State<CheckoutPage> {
 
+  String currency = 'KES';
+
   int totalItems = 0;
   double itemsPriceTotal = 0.00;
   double orderTotal = 0.00;
@@ -21,8 +22,6 @@ class CheckoutPageState extends State<CheckoutPage> {
   bool checkboxValueA = true;
   bool checkboxValueB = false;
   bool checkboxValueC = false;
-
-  String currency = 'KES';
 
   List<Item> itemList = <Item>[
     Item(
@@ -67,12 +66,12 @@ class CheckoutPageState extends State<CheckoutPage> {
   Widget build(BuildContext context) {
 
     return new Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          title: Text(UIConstants.checkout),
-        ),
-        body: _buildCheckoutPage(context),
-        bottomNavigationBar: _buildBottomNavigationBar(),
+      key: _scaffoldKey,
+      appBar: AppBar(
+        title: Text(UIConstants.checkout),
+      ),
+      body: _buildCheckoutPage(context),
+      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
@@ -466,62 +465,8 @@ class CheckoutPageState extends State<CheckoutPage> {
                     ],
                   )),
               _verticalDivider(),
-              new Container(
-                alignment: Alignment.topLeft,
-                margin: EdgeInsets.only(left: 12.0, top: 5.0, right: 0.0, bottom: 5.0),
-                child: new Text(
-                  'Order Summary',
-                  style: TextStyle(
-                    //color: Colors.black87,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0),
-                ),
-              ),
               _buildOrderSummary(context),
               _buildProductsList(context),
-              /*Container(
-                  margin: EdgeInsets.only(
-                      left: 12.0, top: 5.0, right: 12.0, bottom: 5.0),
-                  height: 170.0,
-                  child: ListView.builder(
-                      itemCount: itemList.length,
-                      itemBuilder: (BuildContext cont, int ind) {
-                        return SafeArea(
-                            child: Column(
-                              children: <Widget>[
-                                Divider(height: 15.0),
-                                Container(
-                                  padding: EdgeInsets.all(5.0),
-                                  child: Row(
-
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                    children: <Widget>[
-
-                                      Text(itemList[ind].itemName,
-                                          style: TextStyle(
-                                              fontSize: 16.0,
-                                              //color: Colors.black87,
-                                              fontWeight: FontWeight.bold)),
-                                      Text(itemList[ind].itemQun,
-                                          style: TextStyle(
-                                              fontSize: 16.0,
-                                              //color: Colors.black87,
-                                              fontWeight: FontWeight.bold)),
-                                      Text(itemList[ind].itemPrice,
-                                          style: TextStyle(
-                                              fontSize: 16.0,
-                                              //color: Colors.black87,
-                                              fontWeight: FontWeight.bold)),
-                                    ],
-
-                                  ),
-                                ),
-                              ],
-                            ));
-                      })),*/
             ],
           ),
         )
