@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vividgold_app/models/cart_item.dart';
 import 'package:vividgold_app/ui/cart/payment.dart';
 import 'package:vividgold_app/utils/uicolors.dart';
@@ -693,13 +694,13 @@ class CheckoutPageState extends State<CheckoutPage> {
               onPressed: () {
                 Navigator.pushNamed(context, UIConstants.ROUTE_PAYMENT);
               },
-              color: Colors.green,
+              color: UIColors.confirmOrderButtonColor,
               child: Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Icon(
-                      Icons.shopping_cart,
+                      FontAwesomeIcons.checkDouble,
                       color: Colors.white,
                     ),
                     SizedBox(

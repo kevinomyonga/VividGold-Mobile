@@ -15,6 +15,9 @@ class UIColors {
   static Color cartIconColor         = Colors.green.shade500;
   static Color cartItemPriceColor    = Colors.red.shade900;
 
+  static Color confirmOrderButtonColor    = Colors.green;
+  static Color proceedToPayButtonColor    = Colors.green;
+
   // Orders
   static Color orderCompletedColor   = Colors.greenAccent;
   static Color orderPendingColor     = Colors.amberAccent;

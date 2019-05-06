@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vividgold_app/models/cart_item.dart';
+import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
 
 class PaymentPage extends StatefulWidget {
@@ -80,9 +81,10 @@ class PaymentPageState extends State<PaymentPage> {
     );
 
     return new Scaffold(
-        key: _scaffoldKey,
-        appBar: appBar,
-        body: _buildPaymentPage(context)
+      key: _scaffoldKey,
+      appBar: appBar,
+      body: _buildPaymentPage(context),
+      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
@@ -151,6 +153,28 @@ class PaymentPageState extends State<PaymentPage> {
                             ),
                           ],
                         )))),
+            new Container(
+                alignment: Alignment.bottomLeft,
+                height: 50.0,
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'Total :',
+                      style: TextStyle(
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    Text(
+                      'KES 524000000',
+                      style: TextStyle(fontSize: 25.0,
+                      ),
+                    ),
+                  ],
+                )
+            ),
             _verticalDivider(),
             Container(
                 margin: EdgeInsets.all(10.0),
@@ -164,7 +188,7 @@ class PaymentPageState extends State<PaymentPage> {
                             "GET EXTRA 5% OFF* with MONEY bank Simply Save Credit card. T&C.",
                             maxLines: 10,
                             style: TextStyle(
-                                fontSize: 13.0, color: Colors.black87,
+                              fontSize: 13.0, color: Colors.black87,
                             )
                         )
                     ),
@@ -205,7 +229,7 @@ class PaymentPageState extends State<PaymentPage> {
                                   Radio<int>(
                                       value: 0,
                                       groupValue: 0,
-                                      onChanged: null),
+                                      onChanged: handleRadioValueChanged),
                                 ],
                               ),
                             ),
@@ -226,7 +250,7 @@ class PaymentPageState extends State<PaymentPage> {
                                     Radio<int>(
                                         value: 0,
                                         groupValue: radioValue,
-                                        onChanged: null),
+                                        onChanged: handleRadioValueChanged),
                                   ],
                                 )),
                             Divider(),
@@ -266,7 +290,7 @@ class PaymentPageState extends State<PaymentPage> {
                                     Radio<int>(
                                         value: 0,
                                         groupValue: 0,
-                                        onChanged: null),
+                                        onChanged: handleRadioValueChanged),
                                   ],
                                 )
                             ),
@@ -274,48 +298,46 @@ class PaymentPageState extends State<PaymentPage> {
                         )),
                   ),
                 )),
-            Container(
-                alignment: Alignment.bottomLeft,
-                height: 50.0,
-                child: Card(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      IconButton(icon: Icon(Icons.info), onPressed: null),
-                      Text(
-                        'Total :',
-                        style: TextStyle(
-                            fontSize: 17.0,
-                            fontWeight: FontWeight.bold
-                        ),
-                      ),
-                      Text(
-                        '\₹ 524',
-                        style: TextStyle(fontSize: 17.0,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          alignment: Alignment.center,
-                          child: OutlineButton(
-                              borderSide: BorderSide(color: Colors.green),
-                              child: const Text('PROCEED TO PAY'),
-                              textColor: Colors.green,
-                              onPressed: () {
-                                //   Navigator.push(context, MaterialPageRoute(builder: (context)=> Item_Details()));
-                              },
-                              shape: new OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30.0),
-                              )),
-                        ),
-                      ),
-                    ],
-                  ),
-                )),
           ],
         ),
+      ),
+    );
+  }
+
+  _buildBottomNavigationBar() {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 50.0,
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          Flexible(
+            flex: 2,
+            child: RaisedButton(
+              onPressed: () {},
+              color: UIColors.proceedToPayButtonColor,
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.monetization_on,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 4.0,
+                    ),
+                    Text(
+                      "PROCEED TO PAY",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
