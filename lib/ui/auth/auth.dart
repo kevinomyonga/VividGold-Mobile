@@ -149,10 +149,10 @@ class AuthPageState extends State<AuthPage>
   void initState() {
     super.initState();
 
-    SystemChrome.setPreferredOrientations([
+    /*SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
-    ]);
+    ]);*/
 
     _pageController = PageController();
   }

@@ -147,99 +147,18 @@ class CartListItem extends StatelessWidget {
       ),
     );
 
-    /*final buttons = new Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: <Widget>[
-        Flexible(
-          fit: FlexFit.tight,
-          flex: 1,
-          child: FlatButton(
-            onPressed: () {},
-            //color: Colors.grey,
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  new Icon(
-                    Icons.remove_shopping_cart,
-                    size: 18.0,
-                  ),
-                  SizedBox(
-                    width: 4.0,
-                  ),
-                  Flexible(
-                    child: new Text(
-                      UIConstants.remove,
-                      style: new TextStyle(
-                          fontSize: 10.0
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-
-        new Container(
-          height: 30.0,
-          width: 1.0,
-          color: UIColors.primaryColor,
-          margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-        ),
-
-        Flexible(
-          flex: 1,
-          child: FlatButton(
-            onPressed: () {},
-            //color: Colors.green,
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Icon(
-                    Icons.favorite_border,
-                    size: 18.0,
-                  ),
-                  SizedBox(
-                    width: 4.0,
-                  ),
-                  Flexible(
-                    child: new Text(
-                      UIConstants.add_to_favourites,
-                      style: new TextStyle(
-                          fontSize: 10.0
-                      ),
-                    ),
-                  ),
-
-                ],
-              ),
-            ),
-          ),
-        ),
-      ],
-    );*/
-
     return new Slidable(
       delegate: new SlidableDrawerDelegate(),
       actionExtentRatio: 0.25,
       child: new Container(
         margin: new EdgeInsets.only(left: 8.0, right: 8.0, bottom: 2.0),
         child: Card(
-            elevation: 4.0,
+          //elevation: 1.0,
             child: Container(
-              padding: const EdgeInsets.fromLTRB(
-                  10.0, 10.0, 10.0, 10.0),
+              padding: const EdgeInsets.all(10.0),
               child: new Column(
                 children: <Widget>[
                   row,
-                  /*Divider(
-                    height: 10.0,
-                    color: UIColors.primaryColor,
-                  ),*/
-                  //buttons
                 ],
               ),
             )

@@ -147,7 +147,7 @@ class CheckoutPageState extends State<CheckoutPage> {
               _verticalDivider(),
               _buildOrderSummary(context),
               _verticalDivider(),
-              _buildDeliveryAddress(context),
+              _buildShippingAddress(context),
               _buildProductsList(context),
             ],
           ),
@@ -155,7 +155,7 @@ class CheckoutPageState extends State<CheckoutPage> {
     );
   }
 
-  _buildDeliveryAddress(context) {
+  _buildShippingAddress(context) {
 
     return Container(
       child: Column(

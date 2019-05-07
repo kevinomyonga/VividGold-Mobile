@@ -125,9 +125,28 @@ class _AddressesState extends State<Addresses> {
                         width: 8.0,
                       ),
                       Flexible(
-                        child: Text(
-                          address['address'],
-                          style: TextStyle(fontSize: 16.0),
+                        flex: 1,
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              // Name
+                              Text(
+                                'Kevin Omyonga',
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 0.5,
+                                ),
+                              ),
+                              // Address
+                              Text(
+                                address['address'],
+                                style: TextStyle(
+                                    fontSize: 15.0,
+                                    letterSpacing: 0.5
+                                ),
+                              ),
+                            ]
                         ),
                       ),
                     ],

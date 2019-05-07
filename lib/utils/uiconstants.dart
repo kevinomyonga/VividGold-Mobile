@@ -5,6 +5,7 @@ class UIConstants {
   // Keys
   static const String GMAPS_API_KEY = 'AIzaSyAykljM3Hn20bFf72Y_JoDc-vPNdghLSj8';
 
+  // Formatting
   static final formatter = new NumberFormat("#,##0.00");
 
   // Routes

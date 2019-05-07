@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vividgold_app/models/cart_item.dart';
 import 'package:vividgold_app/utils/uicolors.dart';
 import 'package:vividgold_app/utils/uiconstants.dart';
@@ -19,7 +20,9 @@ class CartPageState extends State<CartPage> {
   int totalItems = 0;
   double itemsPriceTotal = 0.00;
 
-  List<Item> itemList = <Item>[
+  bool _isCheckoutButtonEnabled = false;
+
+  List<Item> cartItemList = <Item>[
     Item(
         itemImage: 'https://vividgold.co.ke/wp-content/uploads/2018/09/PS4-Console-Pro-1TB-Black-SpiderMan.jpg',
         itemName: 'PS4 Pro Console Spiderman Bundle',
@@ -59,6 +62,12 @@ class CartPageState extends State<CartPage> {
   void initState() {
     super.initState();
     _getTotals();
+
+    setState(() {
+      if(cartItemList.length > 0) {
+        _isCheckoutButtonEnabled = true;
+      }
+    });
   }
 
   @override
@@ -80,6 +89,7 @@ class CartPageState extends State<CartPage> {
         ),
       ),
       body: _buildCartPage(context),
+      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
@@ -110,15 +120,13 @@ class CartPageState extends State<CartPage> {
 
   _buildCartPage(BuildContext context) {
 
-    final Size screenSize = MediaQuery.of(context).size;
-
     final firstList = new Flexible(
       child: new ListView.builder(
         scrollDirection: Axis.vertical,
-        itemCount: itemList.length,
+        itemCount: cartItemList.length,
         itemBuilder: (context, index) {
 
-          return CartListItem(product: itemList[index]);
+          return CartListItem(product: cartItemList[index]);
         },
       ),
     );
@@ -126,50 +134,56 @@ class CartPageState extends State<CartPage> {
     return new Column(
       children: <Widget>[
         firstList,
-        new Container(
-          height: 50.0,
-          //color: Colors.white,
-          child: new Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: new GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, UIConstants.ROUTE_CHECKOUT);
-                /*Navigator.of(context).push(new CupertinoPageRoute(
-                  *//*builder: (BuildContext context) => new OrderSummary(
-                              cartTotal:
-                              fbconn.getTotalProductPrice().toString(),
-                              totalItems: fbconn.getDataSize().toString(),
-                            )*//*
-                ));*/
-              },
-              child: new Container(
-                width: screenSize.width,
-                margin: new EdgeInsets.only(
-                    left: 10.0, right: 10.0, bottom: 2.0),
-                height: 50.0,
-                decoration: new BoxDecoration(
-                    color: UIColors.primaryColor,
-                    borderRadius:
-                    new BorderRadius.all(new Radius.circular(5.0))),
-                child: new Center(
-                    child: new Text(
+      ],
+    );
+  }
+
+  _buildBottomNavigationBar() {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 50.0,
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          Flexible(
+            flex: 2,
+            child: RaisedButton(
+              onPressed: _isCheckoutButtonEnabled ? _proceedToCheckout : null,
+              color: UIColors.proceedToCheckoutButtonColor,
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      FontAwesomeIcons.cashRegister,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 4.0,
+                    ),
+                    Text(
                       UIConstants.proceed_to_payment,
-                      style: new TextStyle(
-                        //color: Colors.white,
-                      ),
-                    )),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        )
-      ],
+        ],
+      ),
     );
+  }
+
+  _proceedToCheckout() {
+    Navigator.pushNamed(context, UIConstants.ROUTE_CHECKOUT);
   }
 
   _getTotals() {
     setState(() {
 
-      for (var item in itemList) {
+      for (var item in cartItemList) {
         // Total Items
         totalItems = totalItems + int.parse(item.itemQun);
 

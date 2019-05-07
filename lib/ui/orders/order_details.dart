@@ -407,7 +407,7 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                               alignment: Alignment.centerRight,
                               child: new Text(
                                 currency +
-                                  ' ${UIConstants.formatter.format(orderTotal)}',
+                                    ' ${UIConstants.formatter.format(orderTotal)}',
                                 style: TextStyle(
                                   color: UIColors.cartItemPriceColor,
                                   fontSize: 17.0,
