@@ -127,7 +127,7 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                             Align(
                               alignment: Alignment.centerRight,
                               child: new Text(currency +
-                                  '${orderTotal.toStringAsFixed(2)}',),
+                                  ' ${UIConstants.formatter.format(orderTotal)}',),
                             ),
                           ]
                       ),
@@ -367,7 +367,9 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                             new Text('Items($totalItems):'),
                             Align(
                               alignment: Alignment.centerRight,
-                              child: new Text(currency + '${itemsPriceTotal.toStringAsFixed(2)}'),
+                              child: new Text(
+                                  currency + ' ${UIConstants.formatter.format(itemsPriceTotal)}'
+                              ),
                             ),
                           ]
                       ),
@@ -376,7 +378,9 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                             new Text('Shipping & Handling:'),
                             Align(
                               alignment: Alignment.centerRight,
-                              child: new Text(currency + '0.00'),
+                              child: new Text(
+                                  currency + ' ${UIConstants.formatter.format(0.00)}'
+                              ),
                             ),
                           ]
                       ),
@@ -385,7 +389,9 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                             new Text('Discount:'),
                             Align(
                               alignment: Alignment.centerRight,
-                              child: new Text(currency + '0.00'),
+                              child: new Text(
+                                  currency + ' ${UIConstants.formatter.format(0.00)}'
+                              ),
                             ),
                           ]
                       ),
@@ -399,8 +405,9 @@ class OrderDetailsPageState extends State<OrderDetailsPage> {
                             ),
                             Align(
                               alignment: Alignment.centerRight,
-                              child: new Text(currency +
-                                  '${orderTotal.toStringAsFixed(2)}',
+                              child: new Text(
+                                currency +
+                                  ' ${UIConstants.formatter.format(orderTotal)}',
                                 style: TextStyle(
                                   color: UIColors.cartItemPriceColor,
                                   fontSize: 17.0,

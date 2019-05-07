@@ -312,7 +312,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                             new Text('Items($totalItems):'),
                             Align(
                               alignment: Alignment.centerRight,
-                              child: new Text(currency + '${itemsPriceTotal.toStringAsFixed(2)}'),
+                              child: new Text(currency + ' ${UIConstants.formatter.format(itemsPriceTotal)}'),
                             ),
                           ]
                       ),
@@ -321,7 +321,9 @@ class CheckoutPageState extends State<CheckoutPage> {
                             new Text('Shipping & Handling:'),
                             Align(
                               alignment: Alignment.centerRight,
-                              child: new Text(currency + '0.00'),
+                              child: new Text(
+                                  currency + ' ${UIConstants.formatter.format(0.00)}',
+                              ),
                             ),
                           ]
                       ),
@@ -330,7 +332,9 @@ class CheckoutPageState extends State<CheckoutPage> {
                             new Text('Discount:'),
                             Align(
                               alignment: Alignment.centerRight,
-                              child: new Text(currency + '0.00'),
+                              child: new Text(
+                                currency + ' ${UIConstants.formatter.format(0.00)}',
+                              ),
                             ),
                           ]
                       ),
@@ -345,7 +349,7 @@ class CheckoutPageState extends State<CheckoutPage> {
                             Align(
                               alignment: Alignment.centerRight,
                               child: new Text(currency +
-                                  '${orderTotal.toStringAsFixed(2)}',
+                                  ' ${UIConstants.formatter.format(orderTotal)}',
                                 style: TextStyle(
                                   color: UIColors.cartItemPriceColor,
                                   fontSize: 17.0,

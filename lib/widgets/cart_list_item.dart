@@ -102,7 +102,7 @@ class CartListItem extends StatelessWidget {
                       const Padding(
                           padding: const EdgeInsets.only(top: 5.0)),
                       new Text(
-                        currency + product.itemPrice,
+                        currency + ' ${UIConstants.formatter.format(double.parse(product.itemPrice))}',
                         style: TextStyle(
                           color: UIColors.cartItemPriceColor,
                           fontSize: 13.0,

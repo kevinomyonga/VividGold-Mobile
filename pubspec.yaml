@@ -59,6 +59,9 @@ dependencies:
 
   #introduction_screen: ^1.0.0
 
+  # Provides internationalization and localization facilities, including message translation, plurals and genders, date/number formatting and parsing, and bidirectional text.
+  intl: ^0.15.8
+
   # A Flutter plugin to assist in leaving user reviews/ratings in Google Play Store and Apple App Store.
   launch_review: ^2.0.0
 

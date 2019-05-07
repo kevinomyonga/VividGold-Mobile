@@ -28,6 +28,7 @@ class PaymentPageState extends State<PaymentPage> {
 
   String barcode = "";
 
+  bool _isApplyCodeButtonVisible = false;
   bool _isPaymentButtonEnabled = false;
 
   @override
@@ -141,7 +142,7 @@ class PaymentPageState extends State<PaymentPage> {
                       ),
                     ),
                     Text(
-                      currency + ' ${orderTotal.toStringAsFixed(2)}',
+                      currency + ' ${UIConstants.formatter.format(orderTotal)}',
                       style: TextStyle(fontSize: 32.0,
                       ),
                     ),
@@ -194,7 +195,7 @@ class PaymentPageState extends State<PaymentPage> {
               ),
               _verticalDivider(),
               new Container(
-                  margin: EdgeInsets.all(10.0),
+                  margin: EdgeInsets.all(7.0),
                   child: Card(
                     child: Container(
                       child: new ListView.builder(
@@ -291,7 +292,6 @@ class PaymentPageState extends State<PaymentPage> {
                               controller: TextEditingController(text: barcode),
                               decoration: InputDecoration(
                                 filled: true,
-                                //fillColor: UIColors.searchFieldColor,
                                 suffixIcon: IconButton(
                                   icon:Icon(
                                     FontAwesomeIcons.camera,
@@ -313,8 +313,33 @@ class PaymentPageState extends State<PaymentPage> {
                                     borderRadius: BorderRadius.circular(0.0)
                                 ),
                               ),
-                              //onChanged: searchOperation,
+                              onChanged: codeUpdateOperation,
                             ),
+                            _isApplyCodeButtonVisible ?
+                            RaisedButton(
+                              onPressed: () {},
+                              color: UIColors.confirmOrderButtonColor,
+                              child: Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.add_circle_outline,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 4.0,
+                                    ),
+                                    Text(
+                                      "APPLY",
+                                      style: TextStyle(
+                                          color: Colors.white
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ) : new Container(),
                           ],
                         ),
                       ),
@@ -396,16 +421,47 @@ class PaymentPageState extends State<PaymentPage> {
     } on PlatformException catch (e) {
       if (e.code == BarcodeScanner.CameraAccessDenied) {
         setState(() {
-          this.barcode = 'The user did not grant the camera permission!';
+          //this.barcode = 'The user did not grant the camera permission!';
+          showInSnackBar('Camera permission not granted');
         });
       } else {
-        setState(() => this.barcode = 'Unknown error: $e');
+        //setState(() => this.barcode = 'Unknown error: $e');
+        showInSnackBar('Error scanning code');
       }
     } on FormatException{
-      setState(() => this.barcode = 'null (User returned using the "back"-button before scanning anything. Result)');
+      //setState(() => this.barcode = 'null (User returned using the "back"-button before scanning anything. Result)');
+      showInSnackBar('No code scanned');
     } catch (e) {
-      setState(() => this.barcode = 'Unknown error: $e');
+      //setState(() => this.barcode = 'Unknown error: $e');
+      showInSnackBar('Error scanning code');
     }
+  }
+
+  void codeUpdateOperation(String codeText) {
+    barcode = codeText;
+
+    setState(() {
+      codeText.length > 7 ? _isApplyCodeButtonVisible = true : _isApplyCodeButtonVisible = false;
+    });
+  }
+
+  showInSnackBar(String value) {
+    FocusScope.of(context).requestFocus(new FocusNode());
+    _scaffoldKey.currentState?.removeCurrentSnackBar();
+    _scaffoldKey.currentState.showSnackBar(new SnackBar(
+      content: new Text(
+        value,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 16.0,
+          fontWeight: FontWeight.w600,
+          //fontFamily: "WorkSansSemiBold"
+        ),
+      ),
+      backgroundColor: Colors.indigo,
+      duration: Duration(seconds: 3),
+    ));
   }
 
   _verticalDivider() => Container(

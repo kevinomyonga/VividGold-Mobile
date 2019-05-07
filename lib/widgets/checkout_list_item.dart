@@ -110,7 +110,8 @@ class CheckoutListItem extends StatelessWidget {
                                   Align(
                                     alignment: Alignment.centerRight,
                                     child: new Text(
-                                      currency + product.itemPrice,
+                                      currency + ' ${UIConstants.formatter
+                                          .format(double.parse(product.itemPrice))}',
                                     ),
                                   ),
                                 ]
@@ -133,9 +134,10 @@ class CheckoutListItem extends StatelessWidget {
                                   ),
                                   Align(
                                     alignment: Alignment.centerRight,
-                                    child: new Text(currency +
-                                        (double.parse(product.itemPrice) *
-                                            int.parse(product.itemQun)).toStringAsFixed(2),
+                                    child: new Text(
+                                      currency + ' ${UIConstants.formatter
+                                          .format(double.parse(product.itemPrice) *
+                                          int.parse(product.itemQun))}',
                                       style: TextStyle(
                                         color: UIColors.cartItemPriceColor,
                                       ),

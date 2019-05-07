@@ -97,7 +97,7 @@ class CartPageState extends State<CartPage> {
                     fontSize: 15.0, fontWeight: FontWeight.w700),
               ),
               new Text(
-                "TOTAL : " + currency + " ${itemsPriceTotal.toStringAsFixed(2)}",
+                "TOTAL : " + currency + " ${UIConstants.formatter.format(itemsPriceTotal)}",
                 style: new TextStyle(
                     color: UIColors.cartItemPriceColor,
                     fontSize: 15.0, fontWeight: FontWeight.w700),

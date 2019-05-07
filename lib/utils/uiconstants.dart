@@ -1,7 +1,11 @@
+import 'package:intl/intl.dart';
+
 class UIConstants {
 
   // Keys
   static const String GMAPS_API_KEY = 'AIzaSyAykljM3Hn20bFf72Y_JoDc-vPNdghLSj8';
+
+  static final formatter = new NumberFormat("#,##0.00");
 
   // Routes
   static const String ROUTE_BASE            = '/';
