@@ -275,27 +275,6 @@ class AccountPageState extends State<AccountPage> {
                             },
                           ),
                           const SizedBox(height: 24.0),
-                          /*SizedBox(height: 35.0,),
-                          new Container(
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: <Widget>[
-
-                                new Container(
-                                  alignment: Alignment.bottomRight,
-                                  child: new GestureDetector(
-                                    onTap: (){
-                                      _submit();
-                                    },
-                                    child: Text('SIGNUP',style: TextStyle(
-                                        color: Colors.orange,fontSize: 20.0,fontWeight: FontWeight.bold
-                                    ),),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),*/
                         ]
                     ),
                   )
