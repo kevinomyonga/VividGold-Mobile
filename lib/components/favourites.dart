@@ -10,30 +10,33 @@ class Favourites extends StatefulWidget {
 }
 
 class _FavouritesState extends State<Favourites> {
+
+  String currency = 'KES';
+
   var favouritesList = [
     {
       "name": "PS4 Pro Console Spiderman Bundle",
       "picture": "https://vividgold.co.ke/wp-content/uploads/2018/09/PS4-Console-Pro-1TB-Black-SpiderMan.jpg",
-      "old_price": 100,
-      "price": 50,
+      "old_price": 100000.00,
+      "price": 50000.00,
     },
     {
       "name": "N Switch",
       "picture": "https://vividgold.co.ke/wp-content/uploads/2017/10/neon-switch.png",
-      "old_price": 100,
-      "price": 50,
+      "old_price": 100000.00,
+      "price": 50000.00,
     },
     {
       "name": "PS4 Pad",
       "picture": "https://vividgold.co.ke/wp-content/uploads/2017/10/ps4-red1.png",
-      "old_price": 100,
-      "price": 50,
+      "old_price": 0.00,
+      "price": 5000.00,
     },
     {
       "name": "XBOX Pad",
       "picture": "https://vividgold.co.ke/wp-content/uploads/2017/10/xbox-1-white-slim.jpg",
-      "old_price": 100,
-      "price": 50,
+      "old_price": 0.00,
+      "price": 5500.00,
     }
   ];
 
@@ -53,16 +56,6 @@ class _FavouritesState extends State<Favourites> {
       mainAxisSpacing: 4.0,
       crossAxisSpacing: 4.0,
     );
-
-    /*return GridView.builder(
-        shrinkWrap: true,
-        physics: ScrollPhysics(), // to disable GridView's scrolling
-        itemCount: productList.length,
-        gridDelegate:
-        new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        itemBuilder: (BuildContext context, int index) {
-          return _buildProductItemCard(context, productList[index]);
-        });*/
   }
 
   _buildFavouriteItemCard(BuildContext context, var product) {
@@ -118,102 +111,117 @@ class _FavouritesState extends State<Favourites> {
       },
       child: Card(
         elevation: 4.0,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child:  new Stack(
           children: <Widget>[
-            Container(
-              /*child: Image.network(
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  /*child: Image.network(
                 product['picture'],
                 fit: BoxFit.fitWidth,
               ),*/
-              child: FadeInImage(
-                fit: BoxFit.fitWidth,
-                placeholder: AssetImage(UIConstants.placeholder),
-                image: NetworkImage(product['picture'],),
-              ),
-              //height: 250.0,
-              width: MediaQuery.of(context).size.width / 2.0,
-            ),
-            SizedBox(
-              height: 8.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 8.0, right: 8.0,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Text(
-                    product['name'],
-                    style: TextStyle(fontSize: 16.0),
+                  child: FadeInImage(
+                    fit: BoxFit.fitWidth,
+                    placeholder: AssetImage(UIConstants.placeholder),
+                    image: NetworkImage(product['picture'],),
                   ),
-                  SizedBox(
-                    height: 2.0,
+                  //height: 250.0,
+                  width: MediaQuery.of(context).size.width / 2.0,
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 8.0, right: 8.0,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Text(
-                        "\$${product['price']}",
-                        style: TextStyle(fontSize: 16.0,),
+                        product['name'],
+                        style: TextStyle(fontSize: 16.0),
                       ),
                       SizedBox(
-                        width: 8.0,
+                        height: 2.0,
                       ),
-                      Text(
-                        "\$${product['old_price']}",
+                      // Hide Old Price if no discount is being offered.
+                      product['old_price'] > 0 ? Text(
+                        currency + ' ${UIConstants.formatter.format(product['old_price'])}',
                         style: TextStyle(
                           fontSize: 12.0,
                           color: Colors.grey,
                           decoration: TextDecoration.lineThrough,
                         ),
+                      ) : new Container(),
+                      Text(
+                        currency + ' ${UIConstants.formatter.format(product['price'])}',
+                        style: TextStyle(fontSize: 14.0,),
                       ),
                       SizedBox(
-                        width: 8.0,
+                        height: 2.0,
                       ),
-                      Text(
-                        "12% Off",
-                        style: TextStyle(fontSize: 12.0, color: Colors.grey),
+                      buttons,
+                      SizedBox(
+                        height: 2.0,
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 2.0,
+                ),
+              ],
+            ),
+            Container(
+              alignment: Alignment.topLeft,
+              // padding: EdgeInsets.all(5.0),
+              child: IconButton(
+                  icon: const Icon(
+                    Icons.favorite_border, color: Colors.grey,
                   ),
-                  buttons,
-                  SizedBox(
-                    height: 2.0,
-                  ),
-                ],
+                  onPressed: (){}
               ),
             ),
+            // Hide discount stack if none is being offered
+            product['old_price'] > 0 ? discountStack(12) : new Container(),
           ],
         ),
       ),
     );
   }
 
-  /*@override
-  Widget build(BuildContext context) {
-    return GridView.builder(
-        shrinkWrap: true,
-        physics: ScrollPhysics(), // to disable GridView's scrolling
-        itemCount: productList.length,
-        gridDelegate:
-        new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        itemBuilder: (BuildContext context, int index) {
-          return SingleProd(
-            prodName: productList[index]['name'],
-            prodPicture: productList[index]['picture'],
-            prodOldPrice: productList[index]['old_price'],
-            prodPrice: productList[index]['price'],
-          );
-        });
-  }*/
+  Widget discountStack(double discount) => Positioned(
+    top: 0.0,
+    right: 0.0,
+    child: Container(
+      padding: EdgeInsets.all(4.0),
+      decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.9),
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(10.0),
+              bottomLeft: Radius.circular(10.0))),
+      child: Row(
+        children: <Widget>[
+          Icon(
+            Icons.arrow_drop_down,
+            color: Colors.cyanAccent,
+            size: 10.0,
+          ),
+          SizedBox(
+            width: 2.0,
+          ),
+          Text(
+            discount.toString() + '% Off',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 10.0
+            ),
+          )
+        ],
+      ),
+    ),
+  );
 
   void _addToCart(context) {
     Navigator.pushNamed(context, UIConstants.ROUTE_CART);
